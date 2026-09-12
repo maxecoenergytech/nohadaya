@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.nohadaya.com/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/yoga_class.webp</image:loc>
+      <image:title>Live Yoga Class at NOHADAYA Studio Guwahati</image:title>
+      <image:caption>Hatha and Vinyasa Yoga, Pranayama &amp; Meditation classes in Bagharbari Guwahati</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/abacus_competition.webp</image:loc>
+      <image:title>NOHADAYA Abacus Champions in Guwahati</image:title>
+      <image:caption>NE Green Abacus Competition award winners</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/logo.webp</image:loc>
+      <image:title>NOHADAYA The Mind and Motion Studio Emblem</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/flyer.webp</image:loc>
+      <image:title>NOHADAYA Mind and Motion Studio Programs Flyer</image:title>
+    </image:image>
+  </url>
+
+  <!-- Yoga Dedicated Landing Page -->
+  <url>
+    <loc>https://www.nohadaya.com/yoga-classes-guwahati/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/yoga_class.webp</image:loc>
+      <image:title>Yoga Classes in Guwahati - NOHADAYA</image:title>
+      <image:caption>Hatha, Vinyasa, Pranayama &amp; Meditation Sessions in Bagharbari, Guwahati</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/studio_interior.webp</image:loc>
+      <image:title>NOHADAYA Studio Interior in Bagharbari Guwahati</image:title>
+      <image:caption>Serene, clean yoga studio with mats and props provided</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Abacus Dedicated Landing Page -->
+  <url>
+    <loc>https://www.nohadaya.com/abacus-classes-guwahati/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/abacus_competition.webp</image:loc>
+      <image:title>Abacus Classes for Kids in Guwahati - NOHADAYA</image:title>
+      <image:caption>Certified NE Green Abacus mental math curriculum for ages 5 to 14</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/award_ceremony.webp</image:loc>
+      <image:title>Abacus Award Ceremony &amp; Medal Winners</image:title>
+      <image:caption>Students receiving certificates and trophies at state competition</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Calligraphy Dedicated Landing Page -->
+  <url>
+    <loc>https://www.nohadaya.com/calligraphy-classes-guwahati/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/calligraphy_work.webp</image:loc>
+      <image:title>Calligraphy &amp; Handwriting Classes in Guwahati - NOHADAYA</image:title>
+      <image:caption>Certified NE Unique Calligraphy training in cursive, Gothic, and brush lettering</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.nohadaya.com/images/flyer.webp</image:loc>
+      <image:title>Calligraphy Portfolio &amp; Certification Program</image:title>
+    </image:image>
+  </url>
+
+  <!-- NOHADAYA Blog & Learning Hub -->
+  <url>
+    <loc>https://www.nohadaya.com/blog/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

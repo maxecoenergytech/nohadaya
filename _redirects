@@ -1,0 +1,6 @@
+/erp       /erp/index.html   200
+/erp/*     /erp/index.html   200
+
+# Custom 404 Routing (fallback for non-existent paths)
+/*         /404.html         404
+

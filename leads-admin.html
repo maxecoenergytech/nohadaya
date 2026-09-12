@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOHADAYA Studio | Student Lifecycle &amp; Lead Management CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gd: #142d21;
+      --g: #2d6a4f;
+      --gl: #d8f3dc;
+      --go: #c9a84c;
+      --gol: #e6c875;
+      --bg: #f4f7f5;
+      --card-bg: #ffffff;
+      --text: #1a3a2a;
+      --text-mid: #52796f;
+      --text-lt: #88a898;
+      --border: #d4e8dd;
+      --shadow: 0 4px 20px rgba(20,45,33,0.08);
+      --danger: #dc2626;
+      --warning: #d97706;
+      --success: #16a34a;
+      --info: #2563eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: linear-gradient(135deg, var(--gd), var(--g));
+      color: #fff;
+      padding: 1rem 2rem;
+      border-bottom: 2px solid var(--go);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-in {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid var(--go);
+      object-fit: cover;
+    }
+    .brand-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--go);
+      letter-spacing: 2px;
+    }
+    .brand-text p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-gold { background: var(--go); color: #142d21; }
+    .btn-gold:hover { background: var(--gol); }
+    .btn-outline { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
+    .btn-outline:hover { background: rgba(255,255,255,0.2); }
+    
+    main {
+      max-width: 1400px;
+      width: 100%;
+      margin: 1.8rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    /* STATS KPI STRIP */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .stat-card:hover { transform: translateY(-2px); border-color: var(--g); }
+    .stat-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: var(--gd);
+      line-height: 1.1;
+      margin-top: 4px;
+    }
+    .stat-lbl {
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .stat-icon { font-size: 2rem; opacity: 0.85; }
+
+    /* FUNNEL PIPELINE TABS */
+    .funnel-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid var(--border);
+    }
+    .f-tab {
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .f-tab:hover { border-color: var(--g); color: var(--g); }
+    .f-tab.active {
+      background: var(--gd);
+      color: #fff;
+      border-color: var(--gd);
+      box-shadow: 0 4px 12px rgba(20,45,33,0.25);
+    }
+    .f-count {
+      background: rgba(0,0,0,0.08);
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+    }
+    .f-tab.active .f-count {
+      background: var(--go);
+      color: #142d21;
+    }
+
+    /* CONTROLS BAR */
+    .controls-bar {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 9px 16px 9px 36px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .search-box input:focus { border-color: var(--g); }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-lt);
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-select {
+      padding: 8px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-family: inherit;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* TABLE */
+    .table-wrap {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1100px;
+    }
+    thead {
+      background: var(--gd);
+      color: #fff;
+    }
+    th {
+      padding: 13px 16px;
+      font-size: 0.74rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: left;
+    }
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    tbody tr:hover { background: #f0fdf4; cursor: pointer; }
+    td {
+      padding: 13px 16px;
+      font-size: 0.86rem;
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    /* STAGE BADGES */
+    .stage-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .stage-NEW_LEAD { background: #fee2e2; color: #991b1b; }
+    .stage-TRIAL_BOOKED { background: #e0e8ff; color: #1e3a8a; }
+    .stage-TRIAL_ATTENDED { background: #dbeafe; color: #1d4ed8; }
+    .stage-FOLLOW_UP { background: #fef3c7; color: #92400e; }
+    .stage-ADMITTED { background: #dcfce7; color: #15803d; }
+    .stage-PAID { background: #d1fae5; color: #065f46; font-weight: 900; }
+    .stage-RENEWAL_DUE { background: #fde8e8; color: #c81e1e; border: 1px solid #f98080; }
+
+    .prog-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+    .prog-yoga { background: #d8f3dc; color: #145a32; }
+    .prog-abacus { background: #e0e8ff; color: #1a2a6a; }
+    .prog-calligraphy { background: #ffe0ec; color: #7a1a40; }
+
+    .act-btns {
+      display: flex;
+      gap: 6px;
+    }
+    .act-btn {
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: none;
+      cursor: pointer;
+    }
+    .act-wa { background: #25d366; color: #fff; }
+    .act-wa:hover { background: #20ba59; }
+    .act-call { background: var(--g); color: #fff; }
+    .act-call:hover { background: var(--gd); }
+    .act-manage { background: #e0e8ff; color: #1e3a8a; }
+    .act-manage:hover { background: #c7d2fe; }
+
+    /* ══════ STUDENT 360° LIFECYCLE DRAWER / MODAL ══════ */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10,24,17,0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .drawer-overlay.open { display: flex; }
+    .drawer {
+      background: var(--card-bg);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 900px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modalPop .25s ease;
+    }
+    @keyframes modalPop {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .drawer-header {
+      background: linear-gradient(135deg, var(--gd), var(--g));
+      color: #fff;
+      padding: 1.4rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    .drawer-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    .drawer-header small { color: var(--gol); font-weight: 700; letter-spacing: 1px; }
+    .drawer-close {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .drawer-close:hover { background: rgba(255,255,255,0.35); }
+
+    .drawer-body {
+      padding: 1.8rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    /* LIFECYCLE ROADMAP */
+    .lifecycle-track {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      background: #f8faf9;
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      gap: 10px;
+    }
+    .lc-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-lt);
+      text-transform: uppercase;
+      gap: 4px;
+      cursor: pointer;
+      min-width: 80px;
+    }
+    .lc-step.active { color: var(--g); }
+    .lc-step.completed { color: var(--go); }
+    .lc-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e5e7eb;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+    .lc-step.active .lc-circle { background: var(--g); color: #fff; }
+    .lc-step.completed .lc-circle { background: var(--go); color: #142d21; }
+
+    /* SECTIONS */
+    .section-box {
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      background: #fafcfb;
+    }
+    .section-title {
+      font-size: 0.92rem;
+      font-weight: 900;
+      color: var(--gd);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .f-field label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-mid);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .f-field input, .f-field select, .f-field textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      background: #fff;
+    }
+    .f-field input:focus, .f-field select:focus, .f-field textarea:focus {
+      border-color: var(--g);
+    }
+    .btn-wa-trigger {
+      background: #25d366;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-wa-trigger:hover { background: #20ba59; }
+
+    .drawer-footer {
+      padding: 1.2rem 1.8rem;
+      background: #f8faf9;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-lt);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-in">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="NOHADAYA Logo">
+      <div class="brand-text">
+        <h1>NOHADAYA</h1>
+        <p>Student Lifecycle &amp; Lead Management CRM</p>
+      </div>
+    </a>
+    <div class="header-actions">
+      <a href="erp/" class="btn btn-gold" style="font-weight:bold; margin-right:6px;">💼 Operations ERP</a>
+      <a href="index.html" class="btn btn-outline">← Back to Website</a>
+      <button class="btn btn-gold" onclick="exportToCSV()">📥 Export Full CSV</button>
+      <button class="btn btn-outline" onclick="loadLeads()">🔄 Refresh</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- STATS STRIP -->
+  <div class="stats-grid">
+    <div class="stat-card" onclick="filterByStage('')">
+      <div>
+        <div class="stat-lbl">Total Students / Leads</div>
+        <div class="stat-val" id="stat-total">0</div>
+      </div>
+      <div class="stat-icon">📋</div>
+    </div>
+    <div class="stat-card" onclick="filterByStage('TRIAL_BOOKED')">
+      <div>
+        <div class="stat-lbl">Trials Scheduled</div>
+        <div class="stat-val" id="stat-trials" style="color:#2563eb;">0</div>
+      </div>
+      <div class="stat-icon">📅</div>
+    </div>
+    <div class="stat-card" onclick="filterByStage('ADMITTED')">
+      <div>
+        <div class="stat-lbl">Admissions Confirmed</div>
+        <div class="stat-val" id="stat-admitted" style="color:#16a34a;">0</div>
+      </div>
+      <div class="stat-icon">🎓</div>
+    </div>
+    <div class="stat-card" onclick="filterByStage('PAID')">
+      <div>
+        <div class="stat-lbl">Active Paid Students</div>
+        <div class="stat-val" id="stat-paid" style="color:#059669;">0</div>
+      </div>
+      <div class="stat-icon">💳</div>
+    </div>
+    <div class="stat-card" onclick="filterByStage('RENEWAL_DUE')">
+      <div>
+        <div class="stat-lbl">Renewals Due &lt; 7 Days</div>
+        <div class="stat-val" id="stat-renewals" style="color:#dc2626;">0</div>
+      </div>
+      <div class="stat-icon">🔔</div>
+    </div>
+  </div>
+
+  <!-- FUNNEL TABS -->
+  <div class="funnel-tabs" id="funnelTabs">
+    <div class="f-tab active" data-stage="" onclick="selectFunnelTab(this, '')">
+      All Pipeline <span class="f-count" id="fc-all">0</span>
+    </div>
+    <div class="f-tab" data-stage="NEW_LEAD" onclick="selectFunnelTab(this, 'NEW_LEAD')">
+      📥 1. New Inquiries <span class="f-count" id="fc-new">0</span>
+    </div>
+    <div class="f-tab" data-stage="TRIAL_BOOKED" onclick="selectFunnelTab(this, 'TRIAL_BOOKED')">
+      📅 2. Trial Booked <span class="f-count" id="fc-trial-b">0</span>
+    </div>
+    <div class="f-tab" data-stage="TRIAL_ATTENDED" onclick="selectFunnelTab(this, 'TRIAL_ATTENDED')">
+      🧘 3. Trial Attended <span class="f-count" id="fc-trial-a">0</span>
+    </div>
+    <div class="f-tab" data-stage="FOLLOW_UP" onclick="selectFunnelTab(this, 'FOLLOW_UP')">
+      📞 4. Follow-up Active <span class="f-count" id="fc-fu">0</span>
+    </div>
+    <div class="f-tab" data-stage="ADMITTED" onclick="selectFunnelTab(this, 'ADMITTED')">
+      🎓 5. Admitted <span class="f-count" id="fc-adm">0</span>
+    </div>
+    <div class="f-tab" data-stage="PAID" onclick="selectFunnelTab(this, 'PAID')">
+      💳 6. Active &amp; Paid <span class="f-count" id="fc-paid">0</span>
+    </div>
+    <div class="f-tab" data-stage="RENEWAL_DUE" onclick="selectFunnelTab(this, 'RENEWAL_DUE')">
+      🔄 7. Renewals Due <span class="f-count" id="fc-ren">0</span>
+    </div>
+  </div>
+
+  <!-- SEARCH & FILTER -->
+  <div class="controls-bar">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Search by student name, phone, admission #, or ref code..." oninput="renderTable()">
+    </div>
+    <div class="filter-group">
+      <select class="filter-select" id="programFilter" onchange="renderTable()">
+        <option value="">All Programs</option>
+        <option value="Yoga">Yoga Classes</option>
+        <option value="Abacus">Abacus Training</option>
+        <option value="Calligraphy">Calligraphy Classes</option>
+      </select>
+      <select class="filter-select" id="paymentFilter" onchange="renderTable()">
+        <option value="">Payment: All</option>
+        <option value="PAID">Paid</option>
+        <option value="UNPAID">Unpaid / Pending</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- CRM PIPELINE TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ref / Adm No</th>
+          <th>Student Name</th>
+          <th>Contact &amp; Age</th>
+          <th>Program &amp; Batch</th>
+          <th>Lifecycle Stage</th>
+          <th>Trial Date / Status</th>
+          <th>Fee &amp; Renewal</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="leadsBody">
+        <tr>
+          <td colspan="8" style="text-align:center; padding:3rem; color:var(--text-mid);">Loading student lifecycle CRM...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<!-- ════════ STUDENT 360° LIFECYCLE DRAWER / MODAL ════════ -->
+<div class="drawer-overlay" id="lifecycleDrawer">
+  <div class="drawer">
+    <div class="drawer-header">
+      <div>
+        <h2 id="d-student-name">Student Full Name</h2>
+        <small id="d-ref-code">LEAD REF: NOH-2026-0000</small>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- VISUAL 6-STEP ROADMAP -->
+      <div class="lifecycle-track">
+        <div class="lc-step" id="step-lead" onclick="setLeadStage('NEW_LEAD')">
+          <div class="lc-circle">1</div>
+          <span>Inquiry</span>
+        </div>
+        <div class="lc-step" id="step-trial-b" onclick="setLeadStage('TRIAL_BOOKED')">
+          <div class="lc-circle">2</div>
+          <span>Trial Booked</span>
+        </div>
+        <div class="lc-step" id="step-trial-a" onclick="setLeadStage('TRIAL_ATTENDED')">
+          <div class="lc-circle">3</div>
+          <span>Attended</span>
+        </div>
+        <div class="lc-step" id="step-fu" onclick="setLeadStage('FOLLOW_UP')">
+          <div class="lc-circle">4</div>
+          <span>Follow-up</span>
+        </div>
+        <div class="lc-step" id="step-adm" onclick="setLeadStage('ADMITTED')">
+          <div class="lc-circle">5</div>
+          <span>Admission</span>
+        </div>
+        <div class="lc-step" id="step-paid" onclick="setLeadStage('PAID')">
+          <div class="lc-circle">6</div>
+          <span>Paid / Active</span>
+        </div>
+      </div>
+
+      <!-- SECTION 1: INQUIRY & CONTACT -->
+      <div class="section-box">
+        <div class="section-title">
+          <span>📋 1. Inquiry &amp; Student Profile</span>
+          <div style="display:flex; gap:8px;">
+            <a id="d-call-btn" href="#" class="btn btn-gold" style="padding:4px 10px; font-size:0.75rem;">📞 Call</a>
+            <a id="d-wa-chat" href="#" target="_blank" class="btn-wa-trigger" style="padding:4px 10px; font-size:0.75rem;">💬 WhatsApp</a>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Student / Parent Name</label>
+            <input type="text" id="df-name">
+          </div>
+          <div class="f-field">
+            <label>Phone Number</label>
+            <input type="tel" id="df-phone">
+          </div>
+          <div class="f-field">
+            <label>Email</label>
+            <input type="email" id="df-email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Program</label>
+            <select id="df-program">
+              <option value="Yoga Classes">🧘 Yoga Classes</option>
+              <option value="Abacus Training">🔢 Abacus Training</option>
+              <option value="Calligraphy Classes">✍️ Calligraphy Classes</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Student Age / Group</label>
+            <input type="text" id="df-age" placeholder="e.g. 8 years">
+          </div>
+          <div class="f-field">
+            <label>Preferred Batch</label>
+            <input type="text" id="df-batch" placeholder="e.g. Morning 6:00 AM">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: TRIAL MANAGEMENT -->
+      <div class="section-box">
+        <div class="section-title">
+          <span>📅 2. Free Trial Class Scheduling &amp; Attendance</span>
+          <button type="button" class="btn-wa-trigger" onclick="sendTrialConfirmationWA()">📲 Send Trial Invite via WhatsApp</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Trial Date</label>
+            <input type="date" id="df-trial-date">
+          </div>
+          <div class="f-field">
+            <label>Trial Time</label>
+            <input type="time" id="df-trial-time">
+          </div>
+          <div class="f-field">
+            <label>Trial Attendance Status</label>
+            <select id="df-trial-status" onchange="onTrialStatusChange(this.value)">
+              <option value="NOT_SCHEDULED">Not Scheduled</option>
+              <option value="SCHEDULED">Scheduled</option>
+              <option value="ATTENDED">Attended</option>
+              <option value="NO_SHOW">No-Show</option>
+              <option value="RESCHEDULED">Rescheduled</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: SALES FOLLOW-UP -->
+      <div class="section-box">
+        <div class="section-title">
+          <span>📞 3. Instructor Follow-up &amp; Evaluation</span>
+          <button type="button" class="btn-wa-trigger" onclick="sendFollowupWA()">📲 Send Follow-up WhatsApp</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Next Follow-up Date</label>
+            <input type="date" id="df-fu-date">
+          </div>
+          <div class="f-field">
+            <label>Interest Level</label>
+            <select id="df-fu-status">
+              <option value="PENDING">Pending Initial Call</option>
+              <option value="HIGHLY_INTERESTED">Highly Interested</option>
+              <option value="UNDECIDED">Thinking / Checking Timings</option>
+              <option value="JOINING_NEXT_MONTH">Joining Next Month</option>
+              <option value="NOT_INTERESTED">Not Interested</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-field">
+          <label>Discussion &amp; Evaluation Notes</label>
+          <textarea id="df-fu-notes" rows="2" placeholder="e.g. Student attended Saturday demo. Needs posture guidance. Parent agreed on 3-month package."></textarea>
+        </div>
+      </div>
+
+      <!-- SECTION 4: ADMISSION CONFIRMATION -->
+      <div class="section-box">
+        <div class="section-title">
+          <span>🎓 4. Admission &amp; Enrollment</span>
+          <button type="button" class="btn-wa-trigger" onclick="sendAdmissionWelcomeWA()">📲 Send Welcome &amp; Admission Letter</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Admission No</label>
+            <div style="display:flex; gap:6px;">
+              <input type="text" id="df-adm-no" placeholder="ADM-26-XXXX">
+              <button type="button" class="btn btn-outline" style="color:var(--gd); border-color:var(--border);" onclick="generateAdmissionNo()">🎲 Auto</button>
+            </div>
+          </div>
+          <div class="f-field">
+            <label>Admission Date</label>
+            <input type="date" id="df-adm-date">
+          </div>
+          <div class="f-field">
+            <label>Enrollment Type</label>
+            <select id="df-enroll-type">
+              <option value="Monthly">Monthly Membership</option>
+              <option value="Quarterly (3 Months)">Quarterly (3 Months - 10% Off)</option>
+              <option value="Half-Yearly (6 Months)">Half-Yearly (6 Months)</option>
+              <option value="Annual (12 Months)">Annual Package</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: PAYMENT & RECEIPT -->
+      <div class="section-box">
+        <div class="section-title">
+          <span>💳 5. Tuition Payment &amp; Receipts</span>
+          <button type="button" class="btn-wa-trigger" onclick="sendPaymentReceiptWA()">📲 Send Payment Receipt via WhatsApp</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Fee Amount (₹)</label>
+            <input type="number" id="df-fee-amount" placeholder="1500">
+          </div>
+          <div class="f-field">
+            <label>Payment Status</label>
+            <select id="df-pay-status" onchange="onPaymentStatusChange(this.value)">
+              <option value="UNPAID">UNPAID</option>
+              <option value="PARTIAL">PARTIAL</option>
+              <option value="PAID">PAID</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Payment Mode</label>
+            <select id="df-pay-mode">
+              <option value="UPI (GPay / PhonePe)">UPI (GPay / PhonePe / Paytm)</option>
+              <option value="Cash">Cash at Studio</option>
+              <option value="Bank Transfer">Bank Transfer (NEFT/IMPS)</option>
+              <option value="Card">Card</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Payment Date</label>
+            <input type="date" id="df-pay-date">
+          </div>
+          <div class="f-field">
+            <label>Receipt No</label>
+            <input type="text" id="df-receipt-no" placeholder="REC-26-XXXX">
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: RENEWAL TRACKING -->
+      <div class="section-box" style="border-color: #f98080; background: #fffaf9;">
+        <div class="section-title" style="color:#b91c1c;">
+          <span>🔄 6. Monthly Renewal Tracking</span>
+          <button type="button" class="btn-wa-trigger" style="background:#dc2626;" onclick="sendRenewalReminderWA()">📲 Send Renewal Notice on WhatsApp</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Renewal Due Date</label>
+            <input type="date" id="df-renewal-date">
+          </div>
+          <div class="f-field">
+            <label>Last Renewal Date</label>
+            <input type="date" id="df-last-renewal">
+          </div>
+          <div class="f-field">
+            <label>Renewal Status</label>
+            <div id="d-renewal-badge" style="padding:9px; font-weight:700; font-size:0.88rem;">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div style="font-size:0.82rem; color:var(--text-lt);" id="d-save-status">Ready to update student.</div>
+      <div style="display:flex; gap:10px;">
+        <button type="button" class="btn btn-outline" style="color:var(--gd); border-color:var(--border);" onclick="closeDrawer()">Cancel</button>
+        <button type="button" class="btn btn-outline" style="background:#1B4332; color:#fff; font-weight:bold;" onclick="promoteLeadToERP()">🎓 Promote to Student ERP</button>
+        <button type="button" class="btn btn-gold" onclick="saveStudentLifecycle()">💾 Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  NOHADAYA Mind &amp; Motion Studio · Roseland Academy Road, Bagharbari, Guwahati, Assam 781037<br>
+  Owner: Mrs. Noor Nahar Begum (+91 70026 04856 / +91 70990 79914) · Confidential Student CRM
+</footer>
+
+<script>
+let allLeads = [];
+let activeLeadIndex = -1;
+let currentStageFilter = '';
+
+async function loadLeads() {
+  const localLeads = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
+  let apiLeads = [];
+
+  try {
+    const res = await fetch('/api/contact/leads', { signal: AbortSignal.timeout(2500) });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.leads) apiLeads = data.leads;
+    }
+  } catch (err) {
+    console.warn("Backend API offline, loading localStorage ledger:", err);
+  }
+
+  const seen = new Set();
+  const merged = [];
+
+  for (const l of [...apiLeads, ...localLeads]) {
+    const key = l.lead_id || (l.name + l.phone);
+    if (!seen.has(key)) {
+      seen.add(key);
+      // Ensure stage exists
+      if (!l.stage) l.stage = l.payment_status === 'PAID' ? 'PAID' : (l.status === 'ENROLLED' ? 'ADMITTED' : 'NEW_LEAD');
+      merged.push(l);
+    }
+  }
+
+  allLeads = merged;
+  updateCounts();
+  renderTable();
+}
+
+function updateCounts() {
+  document.getElementById('stat-total').textContent = allLeads.length;
+  document.getElementById('fc-all').textContent = allLeads.length;
+
+  const count = (stage) => allLeads.filter(l => l.stage === stage).length;
+
+  document.getElementById('fc-new').textContent = count('NEW_LEAD');
+  document.getElementById('fc-trial-b').textContent = count('TRIAL_BOOKED');
+  document.getElementById('fc-trial-a').textContent = count('TRIAL_ATTENDED');
+  document.getElementById('fc-fu').textContent = count('FOLLOW_UP');
+  document.getElementById('fc-adm').textContent = count('ADMITTED');
+  document.getElementById('fc-paid').textContent = count('PAID');
+
+  document.getElementById('stat-trials').textContent = count('TRIAL_BOOKED') + count('TRIAL_ATTENDED');
+  document.getElementById('stat-admitted').textContent = count('ADMITTED') + count('PAID');
+  document.getElementById('stat-paid').textContent = count('PAID');
+
+  // Renewals due in <= 7 days
+  const now = new Date();
+  const sevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+  const renewalsDue = allLeads.filter(l => l.renewal_due_date && l.renewal_due_date <= sevenDays);
+  document.getElementById('stat-renewals').textContent = renewalsDue.length;
+  document.getElementById('fc-ren').textContent = renewalsDue.length;
+}
+
+function selectFunnelTab(el, stage) {
+  document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentStageFilter = stage;
+  renderTable();
+}
+
+function filterByStage(stage) {
+  currentStageFilter = stage;
+  document.querySelectorAll('.f-tab').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('data-stage') === stage);
+  });
+  renderTable();
+}
+
+function getProgClass(prog) {
+  const p = (prog || '').toLowerCase();
+  if (p.includes('yoga')) return 'prog-yoga';
+  if (p.includes('abacus')) return 'prog-abacus';
+  if (p.includes('calligraphy')) return 'prog-calligraphy';
+  return '';
+}
+
+function renderTable() {
+  const tbody = document.getElementById('leadsBody');
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const progFilter = document.getElementById('programFilter').value.toLowerCase();
+  const payFilter = document.getElementById('paymentFilter').value;
+
+  const nowStr = new Date().toISOString().slice(0, 10);
+  const sevenDaysStr = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+  const filtered = allLeads.filter(l => {
+    const matchSearch = !search ||
+      (l.name || '').toLowerCase().includes(search) ||
+      (l.phone || '').includes(search) ||
+      (l.lead_id || '').toLowerCase().includes(search) ||
+      (l.admission_no || '').toLowerCase().includes(search);
+
+    const matchProg = !progFilter || (l.program || '').toLowerCase().includes(progFilter);
+    const matchPay = !payFilter || l.payment_status === payFilter;
+
+    let matchStage = true;
+    if (currentStageFilter === 'RENEWAL_DUE') {
+      matchStage = l.renewal_due_date && l.renewal_due_date <= sevenDaysStr;
+    } else if (currentStageFilter) {
+      matchStage = l.stage === currentStageFilter;
+    }
+
+    return matchSearch && matchProg && matchPay && matchStage;
+  });
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:3rem; color:var(--text-mid);">No students found matching your criteria.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map((l, index) => {
+    const origIndex = allLeads.indexOf(l);
+    const cleanPhone = (l.phone || '').replace(/\D/g, '');
+    const waPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
+
+    const stageTitles = {
+      'NEW_LEAD': '📥 1. New Lead',
+      'TRIAL_BOOKED': '📅 2. Trial Booked',
+      'TRIAL_ATTENDED': '🧘 3. Attended',
+      'FOLLOW_UP': '📞 4. Follow-up',
+      'ADMITTED': '🎓 5. Admitted',
+      'PAID': '💳 6. Paid & Active',
+      'DROPPED': '❌ Dropped'
+    };
+
+    let renewalTag = '—';
+    if (l.renewal_due_date) {
+      const isOverdue = l.renewal_due_date < nowStr;
+      const isSoon = l.renewal_due_date <= sevenDaysStr;
+      if (isOverdue) {
+        renewalTag = `<span style="color:#b91c1c; font-weight:700;">⚠️ Due: ${l.renewal_due_date}</span>`;
+      } else if (isSoon) {
+        renewalTag = `<span style="color:#d97706; font-weight:700;">🔔 Due: ${l.renewal_due_date}</span>`;
+      } else {
+        renewalTag = `<span style="color:#15803d;">Due: ${l.renewal_due_date}</span>`;
+      }
+    }
+
+    return `
+      <tr onclick="openDrawer(${origIndex})">
+        <td>
+          <strong>${l.admission_no || l.lead_id || 'NOH-LEAD'}</strong><br>
+          <small style="color:var(--text-lt);">${l.created_at || 'Recent'}</small>
+        </td>
+        <td>
+          <strong style="font-size:0.95rem;">${escapeHtml(l.name)}</strong>
+        </td>
+        <td>
+          <a href="tel:+${cleanPhone}" onclick="event.stopPropagation()" style="color:var(--g); font-weight:700; text-decoration:none;">📞 ${escapeHtml(l.phone)}</a><br>
+          <small style="color:var(--text-mid);">${escapeHtml(l.age_group || 'Age not specified')}</small>
+        </td>
+        <td>
+          <span class="prog-badge ${getProgClass(l.program)}">${escapeHtml(l.program)}</span><br>
+          <small style="color:var(--text-lt);">${escapeHtml(l.batch || 'Any batch')}</small>
+        </td>
+        <td>
+          <span class="stage-badge stage-${l.stage || 'NEW_LEAD'}">${stageTitles[l.stage] || l.stage}</span>
+        </td>
+        <td>
+          <div>${l.trial_date ? '📅 ' + l.trial_date : '<span style="color:var(--text-lt);">Not scheduled</span>'}</div>
+          <small style="color:var(--text-mid);">${l.trial_status || 'NOT_SCHEDULED'}</small>
+        </td>
+        <td>
+          <div>${l.payment_status === 'PAID' ? '<span style="color:#059669; font-weight:700;">₹' + (l.fee_amount || 0) + ' (PAID)</span>' : '<span style="color:#dc2626; font-weight:700;">UNPAID</span>'}</div>
+          <small>${renewalTag}</small>
+        </td>
+        <td onclick="event.stopPropagation()">
+          <div class="act-btns">
+            <button class="act-btn act-manage" onclick="openDrawer(${origIndex})" title="Manage Student Lifecycle">⚙️ Lifecycle</button>
+            <a href="https://wa.me/${waPhone}" target="_blank" class="act-btn act-wa" title="WhatsApp Student">💬</a>
+            <a href="tel:+${cleanPhone}" class="act-btn act-call" title="Call Student">📞</a>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+/* ══════ DRAWER MANAGEMENT ══════ */
+function openDrawer(index) {
+  activeLeadIndex = index;
+  const l = allLeads[index];
+  if (!l) return;
+
+  document.getElementById('d-student-name').textContent = l.name || 'Student';
+  document.getElementById('d-ref-code').textContent = `LEAD REF: ${l.lead_id || 'NOH-2026'} | ADM: ${l.admission_no || 'Pending'}`;
+
+  const cleanPhone = (l.phone || '').replace(/\D/g, '');
+  document.getElementById('d-call-btn').href = `tel:+${cleanPhone}`;
+  document.getElementById('d-wa-chat').href = `https://wa.me/${cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone}`;
+
+  // Populate fields
+  document.getElementById('df-name').value = l.name || '';
+  document.getElementById('df-phone').value = l.phone || '';
+  document.getElementById('df-email').value = l.email || '';
+  document.getElementById('df-program').value = l.program || 'Yoga Classes';
+  document.getElementById('df-age').value = l.age_group || '';
+  document.getElementById('df-batch').value = l.batch || '';
+
+  document.getElementById('df-trial-date').value = l.trial_date || '';
+  document.getElementById('df-trial-time').value = l.trial_time || '07:00';
+  document.getElementById('df-trial-status').value = l.trial_status || 'NOT_SCHEDULED';
+
+  document.getElementById('df-fu-date').value = l.follow_up_date || '';
+  document.getElementById('df-fu-status').value = l.follow_up_status || 'PENDING';
+  document.getElementById('df-fu-notes').value = l.follow_up_notes || l.message || '';
+
+  document.getElementById('df-adm-no').value = l.admission_no || '';
+  document.getElementById('df-adm-date').value = l.admission_date || '';
+  document.getElementById('df-enroll-type').value = l.enrollment_type || 'Monthly';
+
+  document.getElementById('df-fee-amount').value = l.fee_amount || 1500;
+  document.getElementById('df-pay-status').value = l.payment_status || 'UNPAID';
+  document.getElementById('df-pay-mode').value = l.payment_mode || 'UPI (GPay / PhonePe)';
+  document.getElementById('df-pay-date').value = l.payment_date || '';
+  document.getElementById('df-receipt-no').value = l.receipt_no || '';
+
+  document.getElementById('df-renewal-date').value = l.renewal_due_date || '';
+  document.getElementById('df-last-renewal').value = l.last_renewal_date || '';
+
+  updateRenewalStatusBadge(l.renewal_due_date);
+  updateRoadmapSteps(l.stage || 'NEW_LEAD');
+
+  document.getElementById('d-save-status').textContent = 'Ready to update.';
+  document.getElementById('lifecycleDrawer').classList.add('open');
+}
+
+function closeDrawer() {
+  document.getElementById('lifecycleDrawer').classList.remove('open');
+}
+
+function updateRenewalStatusBadge(dueDate) {
+  const badge = document.getElementById('d-renewal-badge');
+  if (!dueDate) {
+    badge.textContent = 'No renewal scheduled yet';
+    badge.style.color = 'var(--text-lt)';
+    return;
+  }
+  const nowStr = new Date().toISOString().slice(0, 10);
+  if (dueDate < nowStr) {
+    badge.textContent = `⚠️ Overdue since ${dueDate}`;
+    badge.style.color = '#dc2626';
+  } else {
+    badge.textContent = `✅ Active until ${dueDate}`;
+    badge.style.color = '#15803d';
+  }
+}
+
+function updateRoadmapSteps(stage) {
+  const steps = ['step-lead', 'step-trial-b', 'step-trial-a', 'step-fu', 'step-adm', 'step-paid'];
+  const stageMap = {
+    'NEW_LEAD': 0,
+    'TRIAL_BOOKED': 1,
+    'TRIAL_ATTENDED': 2,
+    'FOLLOW_UP': 3,
+    'ADMITTED': 4,
+    'PAID': 5
+  };
+  const currentLevel = stageMap[stage] !== undefined ? stageMap[stage] : 0;
+
+  steps.forEach((id, idx) => {
+    const el = document.getElementById(id);
+    el.classList.remove('active', 'completed');
+    if (idx < currentLevel) el.classList.add('completed');
+    if (idx === currentLevel) el.classList.add('active');
+  });
+}
+
+function setLeadStage(stage) {
+  if (activeLeadIndex === -1) return;
+  allLeads[activeLeadIndex].stage = stage;
+  updateRoadmapSteps(stage);
+}
+
+function onTrialStatusChange(status) {
+  if (status === 'SCHEDULED') setLeadStage('TRIAL_BOOKED');
+  if (status === 'ATTENDED') setLeadStage('TRIAL_ATTENDED');
+}
+
+function onPaymentStatusChange(status) {
+  if (status === 'PAID') {
+    setLeadStage('PAID');
+    const now = new Date();
+    document.getElementById('df-pay-date').value = now.toISOString().slice(0, 10);
+    const nextMonth = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+    document.getElementById('df-renewal-date').value = nextMonth;
+    document.getElementById('df-last-renewal').value = now.toISOString().slice(0, 10);
+    updateRenewalStatusBadge(nextMonth);
+  }
+}
+
+function generateAdmissionNo() {
+  const prog = document.getElementById('df-program').value;
+  const pCode = prog.includes('Yoga') ? 'YOG' : (prog.includes('Abacus') ? 'ABC' : 'CAL');
+  const rnd = Math.floor(1000 + Math.random() * 9000);
+  document.getElementById('df-adm-no').value = `NOH-26-${pCode}-${rnd}`;
+  document.getElementById('df-adm-date').value = new Date().toISOString().slice(0, 10);
+  setLeadStage('ADMITTED');
+}
+
+/* ══════ AUTOMATED WHATSAPP TEMPLATES ══════ */
+function getStudentPhone() {
+  const raw = document.getElementById('df-phone').value || '';
+  const clean = raw.replace(/\D/g, '');
+  return clean.startsWith('91') ? clean : '91' + clean;
+}
+
+function sendTrialConfirmationWA() {
+  const name = document.getElementById('df-name').value;
+  const prog = document.getElementById('df-program').value;
+  const date = document.getElementById('df-trial-date').value;
+  const time = document.getElementById('df-trial-time').value;
+
+  if (!date) {
+    alert("Please select a Trial Date first.");
+    return;
+  }
+
+  const msg = encodeURIComponent(`Namaste ${name}! 🌿
+
+We are pleased to confirm your Free Trial Class at *NOHADAYA Mind & Motion Studio*:
+
+🧘 *Program:* ${prog}
+📅 *Date:* ${date}
+⏰ *Time:* ${time || 'Morning Batch'}
+📍 *Studio Address:* Roseland Academy Rd, Near Satgaon Nowapara Masjid, Bagharbari, Guwahati – 781037
+👩‍🏫 *Chief Instructor:* Mrs. Noor Nahar Begum
+
+Please arrive 10 minutes early in comfortable clothing. For any directions assistance, call us at +91 70026 04856. We look forward to welcoming you!`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+function sendFollowupWA() {
+  const name = document.getElementById('df-name').value;
+  const prog = document.getElementById('df-program').value;
+
+  const msg = encodeURIComponent(`Hi ${name}! 🌿
+
+Thank you for visiting *NOHADAYA Studio* for your ${prog} trial session. 
+
+Mrs. Noor Nahar Begum and our faculty were delighted to meet you. We have structured monthly and quarterly batches starting this week.
+
+Would you like us to reserve your preferred batch slot? Please let us know if you have any questions regarding batch timings or enrollment!
+
+Warm regards,
+*NOHADAYA Studio*, Bagharbari`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+function sendAdmissionWelcomeWA() {
+  const name = document.getElementById('df-name').value;
+  const prog = document.getElementById('df-program').value;
+  const admNo = document.getElementById('df-adm-no').value || 'ADM-2026';
+  const batch = document.getElementById('df-batch').value || 'Regular Batch';
+
+  const msg = encodeURIComponent(`🎉 *Congratulations & Welcome to NOHADAYA!*
+
+Dear ${name}, your admission is officially confirmed:
+
+📜 *Admission No:* ${admNo}
+🧘 *Enrolled Program:* ${prog}
+⏰ *Batch Schedule:* ${batch}
+🏢 *Studio:* Roseland Rd, Bagharbari, Guwahati (ISO 9001:2015 Certified)
+
+We are committed to nurturing mind, motion, and creativity on your learning journey. See you at your next scheduled class!`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+function sendPaymentReceiptWA() {
+  const name = document.getElementById('df-name').value;
+  const prog = document.getElementById('df-program').value;
+  const amount = document.getElementById('df-fee-amount').value || '1500';
+  const recNo = document.getElementById('df-receipt-no').value || ('REC-' + Date.now().toString().slice(-4));
+  const renewDate = document.getElementById('df-renewal-date').value || 'Next Month';
+
+  const msg = encodeURIComponent(`🧾 *NOHADAYA Tuition Fee Receipt*
+
+Student: ${name}
+Program: ${prog}
+Receipt No: ${recNo}
+Amount Received: ₹${amount}
+Payment Status: PAID ✅
+Valid Until: ${renewDate}
+
+Thank you for your prompt payment! A unit of Mind Castle Mercantile.`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+function sendRenewalReminderWA() {
+  const name = document.getElementById('df-name').value;
+  const prog = document.getElementById('df-program').value;
+  const amount = document.getElementById('df-fee-amount').value || '1500';
+  const dueDate = document.getElementById('df-renewal-date').value || 'Upcoming';
+
+  const msg = encodeURIComponent(`🔔 *NOHADAYA Monthly Fee Renewal Notice*
+
+Dear ${name},
+
+This is a friendly reminder that your monthly membership renewal for *${prog}* is due on *${dueDate}*.
+
+💰 *Amount Due:* ₹${amount}
+📲 *Pay via UPI:* 7002604856@upi (or scan QR at studio reception)
+
+Kindly share the transaction screenshot once completed. Thank you for your continued dedication!
+
+*NOHADAYA Mind & Motion Studio*, Bagharbari`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+/* ══════ SAVE LIFECYCLE CHANGES ══════ */
+async function saveStudentLifecycle() {
+  if (activeLeadIndex === -1) return;
+  const lead = allLeads[activeLeadIndex];
+
+  const updated = {
+    name: document.getElementById('df-name').value.trim(),
+    phone: document.getElementById('df-phone').value.trim(),
+    email: document.getElementById('df-email').value.trim(),
+    program: document.getElementById('df-program').value,
+    age_group: document.getElementById('df-age').value.trim(),
+    batch: document.getElementById('df-batch').value.trim(),
+    trial_date: document.getElementById('df-trial-date').value,
+    trial_time: document.getElementById('df-trial-time').value,
+    trial_status: document.getElementById('df-trial-status').value,
+    follow_up_date: document.getElementById('df-fu-date').value,
+    follow_up_status: document.getElementById('df-fu-status').value,
+    follow_up_notes: document.getElementById('df-fu-notes').value.trim(),
+    admission_no: document.getElementById('df-adm-no').value.trim(),
+    admission_date: document.getElementById('df-adm-date').value,
+    enrollment_type: document.getElementById('df-enroll-type').value,
+    fee_amount: parseFloat(document.getElementById('df-fee-amount').value) || 0,
+    payment_status: document.getElementById('df-pay-status').value,
+    payment_mode: document.getElementById('df-pay-mode').value,
+    payment_date: document.getElementById('df-pay-date').value,
+    receipt_no: document.getElementById('df-receipt-no').value.trim(),
+    renewal_due_date: document.getElementById('df-renewal-date').value,
+    last_renewal_date: document.getElementById('df-last-renewal').value,
+    stage: lead.stage || 'NEW_LEAD'
+  };
+
+  Object.assign(lead, updated);
+
+  // Save in local storage
+  localStorage.setItem('nohadaya_leads', JSON.stringify(allLeads));
+
+  // Save to backend API
+  document.getElementById('d-save-status').textContent = '⏳ Saving to server...';
+  try {
+    const idToUpdate = lead.id || lead.lead_id;
+    await fetch(`/api/contact/leads/${idToUpdate}/lifecycle`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updated),
+      signal: AbortSignal.timeout(3000)
+    });
+    document.getElementById('d-save-status').textContent = '✅ Saved to server & local storage!';
+  } catch (err) {
+    document.getElementById('d-save-status').textContent = '✅ Saved locally (server offline)';
+  }
+
+  updateCounts();
+  renderTable();
+  setTimeout(() => closeDrawer(), 800);
+}
+
+function exportToCSV() {
+  if (allLeads.length === 0) {
+    alert("No leads to export!");
+    return;
+  }
+  const headers = [
+    "Lead ID", "Admission No", "Stage", "Student Name", "Phone", "Email",
+    "Program", "Age Group", "Batch", "Trial Date", "Trial Status",
+    "Follow-up Date", "Follow-up Notes", "Admission Date", "Enrollment Type",
+    "Fee Amount", "Payment Status", "Payment Mode", "Payment Date", "Receipt No",
+    "Renewal Due Date", "Last Renewal Date", "Created At"
+  ];
+
+  const rows = allLeads.map(l => [
+    `"${l.lead_id || ''}"`,
+    `"${l.admission_no || ''}"`,
+    `"${l.stage || 'NEW_LEAD'}"`,
+    `"${(l.name || '').replace(/"/g, '""')}"`,
+    `"${l.phone || ''}"`,
+    `"${l.email || ''}"`,
+    `"${(l.program || '').replace(/"/g, '""')}"`,
+    `"${l.age_group || ''}"`,
+    `"${l.batch || ''}"`,
+    `"${l.trial_date || ''}"`,
+    `"${l.trial_status || ''}"`,
+    `"${l.follow_up_date || ''}"`,
+    `"${(l.follow_up_notes || l.message || '').replace(/"/g, '""')}"`,
+    `"${l.admission_date || ''}"`,
+    `"${l.enrollment_type || ''}"`,
+    `"${l.fee_amount || 0}"`,
+    `"${l.payment_status || 'UNPAID'}"`,
+    `"${l.payment_mode || ''}"`,
+    `"${l.payment_date || ''}"`,
+    `"${l.receipt_no || ''}"`,
+    `"${l.renewal_due_date || ''}"`,
+    `"${l.last_renewal_date || ''}"`,
+    `"${l.created_at || ''}"`
+  ]);
+
+  const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+  const encodedUri = encodeURI(csvContent);
+  const link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  link.setAttribute("download", `NOHADAYA_Student_Lifecycle_CRM_${new Date().toISOString().slice(0,10)}.csv`);
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+function escapeHtml(str) {
+  return (str || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+  })[m]);
+}
+
+document.addEventListener('DOMContentLoaded', loadLeads);
+
+function promoteLeadToERP() {
+  if (activeLeadIndex < 0 || activeLeadIndex >= allLeads.length) {
+    alert("Please select a lead first.");
+    return;
+  }
+  const lead = allLeads[activeLeadIndex];
+  const erpDb = JSON.parse(localStorage.getItem('NOHADAYA_ERP_DB') || '{"students":[],"staff":[],"fees":[],"expenses":[],"packages":[]}');
+  
+  // Check if student already exists by phone
+  const existing = erpDb.students.find(s => s.phone === (lead.phone || ''));
+  if (existing) {
+    if (confirm(`Student ${existing.name} is already registered in the ERP (${existing.id}). Would you like to open the ERP now?`)) {
+      window.location.href = 'erp/';
+    }
+    return;
+  }
+
+  // Generate ID
+  const newId = 'NOH-STU-' + String(erpDb.students.length + 1).padStart(3, '0');
+  const nowStr = new Date().toISOString().split('T')[0];
+  const expiry = new Date();
+  expiry.setDate(expiry.getDate() + 30);
+
+  // Map program
+  let prog = 'Yoga';
+  const rawProg = (lead.program || '').toLowerCase();
+  if (rawProg.includes('abacus')) prog = 'Abacus';
+  else if (rawProg.includes('calligraphy') || rawProg.includes('handwriting')) prog = 'Calligraphy';
+
+  erpDb.students.push({
+    id: newId,
+    name: lead.name || 'New Student',
+    age: lead.age || 8,
+    guardian: lead.guardian || 'Parent/Guardian',
+    phone: lead.phone || '',
+    program: prog,
+    batch: lead.preferredBatch || 'Morning 9:00 AM - 11:00 AM',
+    stage: 'Level 1 (Enrolled via CRM)',
+    feeStatus: 'Paid',
+    status: 'Active',
+    admitted: nowStr,
+    validUntil: expiry.toISOString().split('T')[0]
+  });
+
+  localStorage.setItem('NOHADAYA_ERP_DB', JSON.stringify(erpDb));
+  alert(`🎉 Success! ${lead.name || 'Lead'} has been enrolled into the Operations ERP as ${newId}!
+Opening Operations ERP...`);
+  window.location.href = 'erp/';
+}
+
+</script>
+
+</body>
+</html>
