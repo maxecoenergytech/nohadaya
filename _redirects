@@ -1,6 +1,4 @@
-/erp       /erp/index.html   200
-/erp/*     /erp/index.html   200
-
-# Custom 404 Routing (fallback for non-existent paths)
-/*         /404.html         404
-
+# Cloudflare Pages Redirect Rules
+/erp                  /erp/             301
+/erp-admin.html       /erp/             301
+/portal-login.html    /erp/             301
