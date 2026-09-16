@@ -215,7 +215,7 @@
         <div class="form-group">
           <label>Security Passcode / PIN *</label>
           <div style="position:relative;">
-            <input type="password" id="portalPass" class="form-control" placeholder="Enter 4-digit PIN (default: 1088)" required autocomplete="current-password" style="width:100%; padding-right:40px;">
+            <input type="password" id="portalPass" class="form-control" placeholder="Enter Security Passcode / PIN" required autocomplete="current-password" style="width:100%; padding-right:40px;">
             <button type="button" onclick="togglePassVisibility()" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:1.1rem; color:var(--text-muted);" aria-label="Toggle password">👁️</button>
           </div>
         </div>
@@ -224,9 +224,7 @@
           <span>🚀</span> Log In to Workspace
         </button>
 
-        <div class="cred-hint">
-          🔑 Studio Default Access PIN: <strong>1088</strong>
-        </div>
+        
       </form>
     </div>
 
@@ -244,21 +242,46 @@
 
     function handlePortalLogin(e) {
       e.preventDefault();
+      const username = (document.getElementById('portalUser').value || '').trim().toLowerCase();
       const pass = document.getElementById('portalPass').value.trim();
-      const dest = document.getElementById('portalDestination').value;
+      let dest = document.getElementById('portalDestination').value;
+      if (dest === 'erp-admin.html') dest = 'erp/';
       const errorEl = document.getElementById('loginError');
 
-      const savedPin = localStorage.getItem('NOHADAYA_ADMIN_PIN') || '1088';
-      const validPins = [savedPin, '1088', 'nohadaya2026'];
+      const usersRaw = localStorage.getItem('nohadaya_erp_users');
+      let users = [];
+      try { users = JSON.parse(usersRaw) || []; } catch(e) {}
 
-      if (validPins.includes(pass)) {
+      const savedPin = localStorage.getItem('NOHADAYA_ADMIN_PIN') || '99544';
+
+      // Master override
+      if (pass === 'nohadaya2026') {
         errorEl.style.display = 'none';
         sessionStorage.setItem('nohadaya_backend_auth', 'true');
-        sessionStorage.setItem('nohadaya_auth_time', Date.now().toString());
-        
-        // Redirect to target workspace
+        sessionStorage.setItem('nohadaya_current_user', JSON.stringify({ name: 'Director (Master Override)', role: 'Super Admin' }));
+        window.location.href = dest;
+        return;
+      }
+
+      const matched = users.find(u => u.username.toLowerCase() === username && (u.pin === pass || (username === 'admin' && pass === savedPin)));
+
+      if (matched) {
+        if (matched.status !== 'Active') {
+          errorEl.innerText = '⚠️ This staff account is currently inactive.';
+          errorEl.style.display = 'flex';
+          return;
+        }
+        errorEl.style.display = 'none';
+        sessionStorage.setItem('nohadaya_backend_auth', 'true');
+        sessionStorage.setItem('nohadaya_current_user', JSON.stringify(matched));
+        window.location.href = dest;
+      } else if ((username === 'admin' || username === '') && (pass === '99544' || pass === savedPin)) {
+        errorEl.style.display = 'none';
+        sessionStorage.setItem('nohadaya_backend_auth', 'true');
+        sessionStorage.setItem('nohadaya_current_user', JSON.stringify({ name: 'Mrs. Noor Nahar Begum', role: 'Studio Director' }));
         window.location.href = dest;
       } else {
+        errorEl.innerText = '⚠️ Invalid username or security passcode.';
         errorEl.style.display = 'flex';
         document.getElementById('portalPass').value = '';
         document.getElementById('portalPass').focus();

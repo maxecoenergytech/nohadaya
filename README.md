@@ -88,7 +88,7 @@
 
 ## 🔐 Back-Office & ERP Access
 - **Private Route**: `https://www.nohadaya.com/erp`
-- **Default Studio PIN**: `1088`
+- **Default Studio PIN**: `[Configured in Private Settings]`
 - **Master Admin Key**: `nohadaya2026`
 - **Modules Included**:
   - Student Directory & Attendance Tracker
