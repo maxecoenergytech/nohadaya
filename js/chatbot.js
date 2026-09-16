@@ -146,7 +146,7 @@
       id: 'contact',
       patterns: [/\b(contact|phone|call|mobile|number|email|whatsapp|reach|touch)\b/i],
       response: () => ({
-        text: `📞 **Contact NOHADAYA Directly**:\n\n• **Phone**: +91 91010 65541 / +91 88761 21675\n• **WhatsApp**: +91 91010 65541\n• **Email**: contact@nohadaya.com\n• **Studio**: Bagharbari, Guwahati (Open Mon–Sat, 6:00 AM – 7:30 PM)`,
+        text: `📞 **Contact NOHADAYA Directly**:\n\n• **Phone**: +91 91010 65541 / +91 88761 21675\n• **WhatsApp**: +91 91010 65541\n• **Email**: nohadayastudio@gmail.com\n• **Studio**: Bagharbari, Guwahati (Open Mon–Sat, 6:00 AM – 7:30 PM)`,
         actions: [
           { text: '📞 Call Now', action: 'call' },
           { text: '💬 Chat on WhatsApp', action: 'whatsapp', query: 'Hello NOHADAYA team, I have a quick question.' }

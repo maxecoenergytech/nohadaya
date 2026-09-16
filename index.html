@@ -1008,36 +1008,38 @@
     /* ═══ DIRECTOR'S MESSAGE SECTION ═══ */
     .director-section { background: linear-gradient(135deg, #f0f7f4 0%, #fefcf0 100%); padding: 80px 0; position: relative; overflow: hidden; }
     .director-section::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
-    .director-inner { display: flex; align-items: center; gap: 60px; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    .director-photo-wrap { flex: 0 0 320px; position: relative; }
-    .director-photo-frame { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(27,67,50,0.18); }
-    .director-photo-frame img { width: 100%; height: 380px; object-fit: cover; object-position: top center; display: block; }
-    .director-photo-badge { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, rgba(27,67,50,0.92) 0%, transparent 100%); padding: 32px 20px 18px; }
-    .director-photo-name { color: #fff; font-size: 1.15rem; font-weight: 700; font-family: 'Playfair Display', serif; margin: 0; }
-    .director-photo-role { color: #D4AF37; font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin: 3px 0 0; }
-    .director-content { flex: 1; }
+    .director-inner { display: flex; align-items: flex-start; gap: 50px; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .director-photo-wrap { flex: 0 0 440px; position: sticky; top: 100px; }
+    .director-photo-frame { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 24px 60px rgba(27,67,50,0.22); border: 3.5px solid #D4AF37; background: #FFFFFF; }
+    .director-photo-frame img { width: 100%; height: auto; aspect-ratio: 1 / 1.08; object-fit: cover; object-position: center 10%; display: block; }
+    .director-photo-badge { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg, rgba(18,46,34,0.95) 0%, rgba(18,46,34,0.7) 60%, transparent 100%); padding: 36px 20px 20px; }
+    .director-photo-name { color: #fff; font-size: 1.25rem; font-weight: 700; font-family: 'Playfair Display', serif; margin: 0; }
+    .director-photo-role { color: #D4AF37; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin: 4px 0 0; }
+    .director-content { flex: 1; min-width: 0; }
     .director-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.4); color: #8a6f00; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 30px; margin-bottom: 16px; }
-    .director-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: #1B4332; line-height: 1.25; margin: 0 0 20px; }
+    .director-title { font-family: 'Playfair Display', serif; font-size: 2.1rem; color: #1B4332; line-height: 1.25; margin: 0 0 20px; }
     .director-title span { color: #D4AF37; }
-    .director-quote { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #1B4332; font-style: italic; line-height: 1.5; border-left: 4px solid #D4AF37; padding-left: 20px; margin: 0 0 22px; background: rgba(212,175,55,0.06); padding: 16px 20px; border-radius: 0 12px 12px 0; }
+    .director-quote { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: #1B4332; font-style: italic; line-height: 1.5; border-left: 4px solid #D4AF37; padding-left: 20px; margin: 0 0 22px; background: rgba(212,175,55,0.06); padding: 18px 22px; border-radius: 0 12px 12px 0; }
     .director-quote::before { content: '\201C'; font-size: 2.5rem; color: #D4AF37; line-height: 0; vertical-align: -0.6em; margin-right: 4px; }
-    .director-body { color: #374151; font-size: 0.96rem; line-height: 1.8; margin: 0 0 20px; }
-    .director-tagline { background: linear-gradient(135deg, #1B4332, #2d6a4f); color: #fff; border-radius: 12px; padding: 18px 24px; font-size: 0.92rem; line-height: 1.7; margin: 22px 0; }
+    .director-body { color: #374151; font-size: 1rem; line-height: 1.85; margin: 0 0 20px; }
+    .director-tagline { background: linear-gradient(135deg, #1B4332, #2d6a4f); color: #fff; border-radius: 12px; padding: 20px 24px; font-size: 0.95rem; line-height: 1.7; margin: 24px 0; }
     .director-tagline strong { color: #D4AF37; }
-    .director-sign { display: flex; align-items: center; gap: 14px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(27,67,50,0.12); }
-    .director-sign-icon { width: 44px; height: 44px; background: linear-gradient(135deg, #1B4332, #2d6a4f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
-    .director-sign-text { font-size: 0.9rem; color: #6B7280; }
-    .director-sign-text strong { display: block; color: #1B4332; font-size: 0.95rem; }
-    @media (max-width: 900px) {
-      .director-inner { flex-direction: column; gap: 32px; }
-      .director-photo-wrap { flex: 0 0 auto; width: 100%; max-width: 340px; margin: 0 auto; }
-      .director-photo-frame img { height: 320px; }
-      .director-title { font-size: 1.6rem; }
+    .director-sign { display: flex; align-items: center; gap: 14px; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(27,67,50,0.12); }
+    .director-sign-icon { width: 48px; height: 48px; background: linear-gradient(135deg, #1B4332, #2d6a4f); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .director-sign-text { font-size: 0.92rem; color: #6B7280; }
+    .director-sign-text strong { display: block; color: #1B4332; font-size: 0.98rem; }
+    @media (max-width: 1024px) {
+      .director-inner { flex-direction: column; gap: 36px; }
+      .director-photo-wrap { flex: 0 0 auto; width: 100%; max-width: 400px; margin: 0 auto; position: static; }
+      .director-photo-frame img { aspect-ratio: 1 / 1; }
+      .director-title { font-size: 1.8rem; }
     }
     @media (max-width: 480px) {
-      .director-quote { font-size: 1.05rem; }
-      .director-title { font-size: 1.35rem; }
+      .director-photo-wrap { max-width: 100%; }
+      .director-quote { font-size: 1.1rem; }
+      .director-title { font-size: 1.45rem; }
     }
+
 
     /* ═══ GALLERY (100% AUTHENTIC NOHADAYA PHOTOGRAPHY) ═══ */
     .gallery { background: var(--bg); }
@@ -2796,7 +2798,7 @@
           <img loading="lazy" decoding="async" width="1024" height="1024" src="images/logo.jpg" alt="Mrs. Noor Nahar Begum - Yoga Classes in Guwahati Instructor at NOHADAYA Studio" class="oav" />
           <div class="oi">
             <strong>Mrs. Noor Nahar Begum</strong>
-            <span>Yoga Instructor &amp; Studio Director, NOHADAYA</span>
+            <span>Studio Director (Certified Calligraphy and Abacus Instructor Cum Director)</span>
           </div>
         </div>
       </div>
@@ -2997,6 +2999,42 @@
           <span class="gov-label">📜 Multi-Discipline Syllabus Prospectus</span>
         </div>
       </div>
+
+      <!-- 9. Live Malasana & Prayer Pose Session -->
+      <div class="gi">
+        <img decoding="async" width="1024" height="472" src="images/yoga_malasana_session.jpg" alt="Live yoga group class practicing Malasana prayer pose at NOHADAYA Studio Bagharbari" loading="lazy" />
+        <div class="gov">
+          <span class="gov-sub">Daily Batches</span>
+          <span class="gov-label">🧘 Malasana &amp; Hip Mobility Practice</span>
+        </div>
+      </div>
+
+      <!-- 10. Bhujangasana Cobra Pose Flexibility -->
+      <div class="gi">
+        <img decoding="async" width="1024" height="472" src="images/yoga_cobra_bhujangasana.jpg" alt="Yoga students practicing Bhujangasana cobra pose for spinal alignment at NOHADAYA Guwahati" loading="lazy" />
+        <div class="gov">
+          <span class="gov-sub">Spinal Health</span>
+          <span class="gov-label">🐍 Bhujangasana &amp; Flexibility Flow</span>
+        </div>
+      </div>
+
+      <!-- 11. Core Balance & Spinal Alignment -->
+      <div class="gi">
+        <img decoding="async" width="1024" height="472" src="images/yoga_core_balance.jpg" alt="Core balance and back strength yoga session at NOHADAYA Studio" loading="lazy" />
+        <div class="gov">
+          <span class="gov-sub">Core Strength</span>
+          <span class="gov-label">🌿 Balance &amp; Posture Restoration</span>
+        </div>
+      </div>
+
+      <!-- 12. Salabhasana Back Strengthening -->
+      <div class="gi">
+        <img decoding="async" width="1024" height="472" src="images/yoga_back_strengthening.jpg" alt="Students practicing back strengthening postures at NOHADAYA Mind and Motion Studio" loading="lazy" />
+        <div class="gov">
+          <span class="gov-sub">Posture Correction</span>
+          <span class="gov-label">✨ Salabhasana &amp; Core Stamina</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3018,14 +3056,14 @@
       </div>
       <div class="ach-milestones">
         <div class="ach-m reveal"><div class="ach-m-icon">🏅</div><div><div class="ach-m-title">NE Green Abacus — Competition Achievers</div><div class="ach-m-desc">Our students actively participate in district and regional abacus competitions, earning recognized medals and certificates.</div></div></div>
-        <div class="ach-m reveal"><div class="ach-m-icon">🎓</div><div><div class="ach-m-title">ISO 9001:2015 Quality Management Certified</div><div class="ach-m-desc">Certificate Holder: <strong>Mind Castle Mercantile</strong> · Cert No: <strong>MCM-QMS-2023-0984</strong> · Scope: Yoga, Abacus &amp; Calligraphy Education. <a href="#" onclick="openCertModal();return false;" style="color:var(--gol);text-decoration:underline;font-weight:700;display:inline-block;margin-top:4px;">📄 View Certificate Details ↗</a></div></div></div>
+        <div class="ach-m reveal"><div class="ach-m-icon">🎓</div><div><div class="ach-m-title">ISO 9001:2015 Quality Management Certified</div><div class="ach-m-desc">Certificate Holder: <strong>Mind Castle Mercantile</strong> · Cert No: <strong>MCM-QMS-2023-0984</strong> · Scope: Yoga, Abacus &amp; Calligraphy Education.</div></div></div>
         <div class="ach-m reveal"><div class="ach-m-icon">🌟</div><div><div class="ach-m-title">500+ Students Successfully Trained</div><div class="ach-m-desc">Over 500 students across all three programs in just 5 years.</div></div></div>
         <div class="ach-m reveal"><div class="ach-m-icon">✍️</div><div><div class="ach-m-title">NE Unique Calligraphy Curriculum</div><div class="ach-m-desc">Structured handwriting and artistic lettering curriculum with Course Completion Certificates issued under NE Unique Calligraphy.</div></div></div>
         <div class="ach-m reveal"><div class="ach-m-icon">🧘</div><div><div class="ach-m-title">International Yoga Day Celebrations</div><div class="ach-m-desc">Actively participates in and organises International Yoga Day events.</div></div></div>
       </div>
     </div>
     <div class="ach-badges">
-      <div class="ach-badge" onclick="openCertModal()" style="cursor:pointer;" title="View Certificate">🎓 ISO 9001:2015 (Mind Castle Mercantile)</div>
+      <div class="ach-badge">🎓 ISO 9001:2015 (Mind Castle Mercantile)</div>
       <div class="ach-badge">🟢 NE Green Abacus Partner</div>
       <div class="ach-badge">✍️ NE Unique Calligraphy Curriculum</div>
       <div class="ach-badge">🧘 Certified Yoga Instruction</div>
@@ -3225,7 +3263,7 @@
             <span class="gbp-info-icon">👤</span>
             <div>
               <strong>Studio Director:</strong>
-              <p>Mrs. Noor Nahar Begum (Certified Yoga Instructor &amp; Director)</p>
+              <p>Mrs. Noor Nahar Begum (Certified Calligraphy and Abacus Instructor Cum Director)</p>
             </div>
           </div>
         </div>
@@ -3281,14 +3319,14 @@
       <div class="director-photo-frame">
         <img
           src="images/director.jpg"
-          alt="Director of Nohadaya – the mind and motion studio"
+          alt="Mrs. Noor Nahar Begum – Director of Nohadaya, the mind and motion studio"
           loading="lazy"
-          width="320"
-          height="380"
+          width="440"
+          height="480"
         />
         <div class="director-photo-badge">
-          <p class="director-photo-name">Director</p>
-          <p class="director-photo-role">Nohadaya – The Mind &amp; Motion Studio</p>
+          <p class="director-photo-name">Mrs. Noor Nahar Begum</p>
+          <p class="director-photo-role">Studio Director &amp; Certified Instructor</p>
         </div>
       </div>
     </div>
@@ -3599,7 +3637,7 @@
       <div class="fci"><span>📍</span><span>H/No. 422, 1st Floor, Near Satgaon Nowapara Jame Masjid, Roseland Rd, Bagharbari — 781037<br/><a href="https://maps.app.goo.gl/cJE7DFjCNrw2roVSA?g_st=aw" target="_blank" rel="noopener noreferrer" style="color:var(--gol);text-decoration:none;font-size:.78rem;font-weight:700;display:inline-block;margin-top:2px;">📍 Open on Google Maps ↗</a></span></div>
       <div class="fci"><span>📱</span><span>+91 70026 04856<br/>+91 70990 79914</span></div>
       <div class="fci"><span>📧</span><span>nohadayastudio@gmail.com</span></div>
-      <div class="fci"><span>👤</span><span>Mrs. Noor Nahar Begum<br/><em style="color:rgba(255,255,255,.4);font-size:.78rem;">Studio Director &amp; Yoga Instructor</em></span></div>
+      <div class="fci"><span>👤</span><span>Mrs. Noor Nahar Begum<br/><em style="color:rgba(255,255,255,.4);font-size:.78rem;">Studio Director (Certified Calligraphy &amp; Abacus Instructor)</em></span></div>
     </div>
   </div>
     <div class="fb">
