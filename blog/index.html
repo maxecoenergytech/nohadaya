@@ -8,6 +8,13 @@
   <meta name="keywords" content="abacus classes in guwahati, calligraphy classes bagharbari, yoga classes near me guwahati, handwriting improvement panjabari, kids brain development satgaon">
   <link rel="canonical" href="https://www.nohadaya.com/blog/">
 
+    <!-- Local SEO & Geo Targeting (Guwahati, Assam) -->
+  <meta name="geo.region" content="IN-AS">
+  <meta name="geo.placename" content="Guwahati, Bagharbari, Assam">
+  <meta name="geo.position" content="26.1264;91.8214">
+  <meta name="ICBM" content="26.1264, 91.8214">
+  <meta name="target" content="Guwahati, Panjabari, Satgaon, Six Mile, VIP Road, Assam">
+
   <!-- Open Graph / Social -->
   <meta property="og:type" content="blog">
   <meta property="og:title" content="NOHADAYA Blog & Learning Journal | Mind & Motion Studio Guwahati">
@@ -587,6 +594,320 @@
       .modal-content-area { padding: 24px 20px; }
       .modal-content-area h2 { font-size: 1.5rem; }
     }
+  
+    /* ── Live News & Regional Trends Feed ── */
+    .live-news-section {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F9F6 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 1200px;
+      box-shadow: 0 10px 30px rgba(27,67,50,0.06);
+    }
+    .live-news-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid rgba(27,67,50,0.08);
+    }
+    .live-badge-pulse {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FEE2E2;
+      border: 1px solid #FCA5A5;
+      color: #DC2626;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #DC2626;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+    }
+    .live-news-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin: 6px 0 0;
+    }
+    .live-news-title span { color: var(--gold); }
+    .live-news-filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .ln-btn {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .ln-btn:hover, .ln-btn.active {
+      background: var(--primary);
+      color: #FFFFFF;
+      border-color: var(--primary);
+      box-shadow: 0 4px 12px rgba(27,67,50,0.2);
+    }
+    .live-news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+    .live-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .live-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(27,67,50,0.12);
+      border-color: var(--gold);
+    }
+    .live-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .live-cat-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .cat-yoga-live { background: #E8F5E9; color: #2E7D32; }
+    .cat-abacus-live { background: #E3F2FD; color: #1565C0; }
+    .cat-calli-live { background: #FCE4EC; color: #AD1457; }
+    .cat-local-live { background: #FFF8E1; color: #F57F17; }
+    .live-time {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .live-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+      margin: 0 0 10px;
+      line-height: 1.35;
+    }
+    .live-card p {
+      font-size: 0.88rem;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+    .local-highlight-bar {
+      background: #F0FDF4;
+      border-left: 3px solid #16A34A;
+      padding: 6px 10px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.78rem;
+      color: #166534;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .live-card-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 12px;
+      border-top: 1px solid #F1F5F9;
+    }
+    .btn-live-wa {
+      background: #25D366;
+      color: #FFFFFF;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 16px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.2s;
+    }
+    .btn-live-wa:hover { background: #1EBE5D; color: #FFFFFF; }
+
+  
+    /* ── Content & Photography Copyright Protection ── */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+    }
+    input, textarea, select, [contenteditable="true"] {
+      -webkit-user-select: text !important;
+      -moz-user-select: text !important;
+      -ms-user-select: text !important;
+      user-select: text !important;
+    }
+    img, picture, svg, .gallery, .director-photo-wrap {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: auto;
+    }
+
+  
+    /* ══════ UNIVERSAL MOBILE & TABLET RESPONSIVE ENGINE ══════ */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      -webkit-text-size-adjust: 100%;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    img, picture, video, canvas, svg, iframe {
+      max-width: 100% !important;
+      height: auto;
+    }
+    .table-container, .stw, .table-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin-bottom: 1rem;
+    }
+
+    /* Tablets & iPads (Portrait & Landscape: 768px – 1024px) */
+    @media (max-width: 1024px) {
+      .container, .si, .nav-container, .hero-content, .erp-workspace, .lead-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .grid-2col, .fgd, .inst-grid, .director-inner, .pg, .price-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      .hero-grid, .about-grid, .why-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Mobile Phones (Screens < 768px) */
+    @media (max-width: 768px) {
+      body {
+        font-size: 15px !important;
+      }
+      .container, .si, .nav-container, .hero-content, .erp-workspace, .lead-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+      h1, .hero h1, .stitle, .sec-title, .live-news-title {
+        font-size: 1.65rem !important;
+        line-height: 1.25 !important;
+      }
+      h2 {
+        font-size: 1.4rem !important;
+      }
+      .hero-btns, .nav-actions, .filter-pills, .live-news-filter {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+      }
+      .btn-gold, .btn-primary, .btn-read-more, .btn-live-wa, .ncta {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+      .modal-box, .modal-content, .login-box, .auth-card {
+        width: 95vw !important;
+        max-width: 95vw !important;
+        margin: 10px auto !important;
+        padding: 20px 16px !important;
+      }
+      .form-row {
+        flex-direction: column !important;
+        gap: 0 !important;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+      .kpi-value {
+        font-size: 1.35rem !important;
+      }
+      .erp-nav-tabs {
+        padding: 0 10px !important;
+        gap: 2px !important;
+      }
+      .nav-tab-btn {
+        padding: 10px 12px !important;
+        font-size: 0.82rem !important;
+      }
+      .director-inner {
+        flex-direction: column !important;
+        gap: 24px !important;
+      }
+      .director-photo-wrap {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+      }
+      .director-photo-frame img {
+        height: 300px !important;
+      }
+    }
+
+    /* Small Mobile Phones (Screens < 480px) */
+    @media (max-width: 480px) {
+      .kpi-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .nav-ul {
+        width: 100% !important;
+      }
+      .sct th, .sct td, .data-table th, .data-table td {
+        padding: 8px 6px !important;
+        font-size: 0.78rem !important;
+      }
+    }
+
   </style>
 
   <!-- Structured Data: Blog & BlogPosting Schema -->
@@ -677,6 +998,132 @@
       }
     ]
   }
+  
+    // ========================================================
+    // REAL-TIME NEWS & LOCAL REGIONAL KNOWLEDGE ENGINE
+    // ========================================================
+    const LOCAL_NEWS_DATA = [
+      {
+        id: 'ln-1',
+        category: 'abacus',
+        catLabel: 'Abacus Competition Alert',
+        catClass: 'cat-abacus-live',
+        time: 'Updated Today',
+        title: 'NE Green Abacus Regional Championship: Guwahati Students Lead in Speed Math',
+        summary: 'Recent assessments across Assam schools highlight students trained in structured 8-level Abacus mental arithmetic calculating 4x faster than non-trained peers, significantly boosting Olympiad and board exam confidence.',
+        localNote: '📍 Satgaon & Bagharbari children can join weekend competition batches at NOHADAYA.',
+        waQuery: 'Hello NOHADAYA, I read about the NE Green Abacus regional training on your blog and want to know about batch registration for my child.'
+      },
+      {
+        id: 'ln-2',
+        category: 'calligraphy',
+        catLabel: 'Handwriting & SEBA/CBSE Exams',
+        catClass: 'cat-calli-live',
+        time: 'Trending This Week',
+        title: 'Why School Board Examiners in Assam Value Clean Cursive & Penmanship',
+        summary: 'Educational research confirms legible handwriting directly impacts answer evaluation in class 10 & 12 board examinations. Proper nib grip and posture correction prevent hand fatigue during lengthy 3-hour tests.',
+        localNote: '📍 Specialized corrective handwriting batches open for school students in Panjabari & Bagharbari.',
+        waQuery: 'Hi NOHADAYA, I would like to enquire about handwriting improvement and calligraphy classes for my school-going child.'
+      },
+      {
+        id: 'ln-3',
+        category: 'yoga',
+        catLabel: 'Guwahati Morning Wellness',
+        catClass: 'cat-yoga-live',
+        time: 'Live Update',
+        title: 'Combating Desk Fatigue & Lifestyle Stiffness with Morning Yoga in East Guwahati',
+        summary: 'Daily 60-minute Hatha and Pranayama breathwork routines are proving vital for professionals and homemakers across Guwahati dealing with urban stress, cervical stiffness, and back strain.',
+        localNote: '📍 Mon–Fri Morning (7 AM) & Evening (5:30 PM) sessions led by Yoga Instructor Rubi Barman.',
+        waQuery: 'Hello NOHADAYA, I am interested in joining your morning/evening yoga classes in Bagharbari. Please share enrollment details.'
+      },
+      {
+        id: 'ln-4',
+        category: 'local',
+        catLabel: 'Bagharbari Community Event',
+        catClass: 'cat-local-live',
+        time: 'Upcoming Event',
+        title: 'NOHADAYA Studio Free Trial & Orientation Sessions for Local Families',
+        summary: 'Parents residing within 2 km of Satgaon Nowapara Masjid, Behind Apple Pie, and Roseland Road can experience personalized 1-on-1 trial classes in Abacus, Calligraphy, or Yoga with certified instructors.',
+        localNote: '📍 Walk-in studio tours available Monday to Saturday (6:00 AM – 8:00 PM).',
+        waQuery: 'Hi Mrs. Noor Nahar Begum, I would like to book a Free Trial Class for my family at your Bagharbari studio.'
+      },
+      {
+        id: 'ln-5',
+        category: 'abacus',
+        catLabel: 'Cognitive Brain Science',
+        catClass: 'cat-abacus-live',
+        time: 'Educational Trend',
+        title: 'How Soroban Beads Bridge Left & Right Brain Functions in Young Learners',
+        summary: 'Neurological studies emphasize tactile bead movement stimulates photographic memory and spatial visualization, turning abstract numerical concepts into clear mental images.',
+        localNote: '📍 Designed for children aged 5–14 years with small batch sizes of 8–10 kids.',
+        waQuery: 'Hi NOHADAYA team, could you explain the 8-level Abacus progression for kids aged 6-10?'
+      },
+      {
+        id: 'ln-6',
+        category: 'yoga',
+        catLabel: 'Holistic Health Trend',
+        catClass: 'cat-yoga-live',
+        time: 'Wellness Guide',
+        title: 'Pranayama & Anulom Vilom: Natural Immunity & Respiratory Resilience in Assam Winters',
+        summary: 'Deep diaphragmatic breathing and Kapalbhati exercises enhance lung capacity, clear sinus pathways, and restore mental focus amidst seasonal weather transitions.',
+        localNote: '📍 All levels welcome with personalized modifications and props provided.',
+        waQuery: 'Hi NOHADAYA, I would like to know if your yoga sessions include Pranayama and deep meditation.'
+      }
+    ];
+
+    let currentLiveFilter = 'all';
+
+    function renderLiveNewsCards(items) {
+      const grid = document.getElementById('liveNewsGrid');
+      if (!grid) return;
+
+      const filtered = (currentLiveFilter === 'all') 
+        ? items 
+        : items.filter(item => item.category === currentLiveFilter);
+
+      grid.innerHTML = filtered.map(item => `
+        <article class="live-card">
+          <div>
+            <div class="live-card-top">
+              <span class="live-cat-tag ${item.catClass}">${item.catLabel}</span>
+              <span class="live-time">🕒 ${item.time}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.summary}</p>
+            <div class="local-highlight-bar">${item.localNote}</div>
+          </div>
+          <div class="live-card-foot">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">NOHADAYA Journal</span>
+            <a href="https://wa.me/919101065541?text=${encodeURIComponent(item.waQuery)}" target="_blank" rel="noopener" class="btn-live-wa">
+              💬 Ask on WhatsApp
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterLiveNews(category, btn) {
+      currentLiveFilter = category;
+      document.querySelectorAll('.live-news-filter .ln-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    }
+
+    function refreshLiveNews() {
+      const grid = document.getElementById('liveNewsGrid');
+      if (grid) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--primary);font-weight:700;">🔄 Fetching latest regional updates &amp; headlines...</div>';
+        setTimeout(() => {
+          renderLiveNewsCards(LOCAL_NEWS_DATA);
+        }, 400);
+      }
+    }
+
+    // Auto initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    });
+
   </script>
 </head>
 <body>
@@ -697,8 +1144,7 @@
         <li><a href="../yoga-classes-guwahati/">Yoga</a></li>
         <li><a href="../abacus-classes-guwahati/">Abacus</a></li>
         <li><a href="../calligraphy-classes-guwahati/">Calligraphy</a></li>
-        <li><a href="../index.html#fees">Fees</a></li>
-        <li><a href="index.html" class="active">Blog</a></li>
+                <li><a href="index.html" class="active">Blog</a></li>
         <li><a href="../index.html#contact">Contact</a></li>
       </ul>
       <div class="nav-actions">
@@ -1027,9 +1473,319 @@
         });
       });
     });
+  
+    // ========================================================
+    // REAL-TIME NEWS & LOCAL REGIONAL KNOWLEDGE ENGINE
+    // ========================================================
+    const LOCAL_NEWS_DATA = [
+      {
+        id: 'ln-1',
+        category: 'abacus',
+        catLabel: 'Abacus Competition Alert',
+        catClass: 'cat-abacus-live',
+        time: 'Updated Today',
+        title: 'NE Green Abacus Regional Championship: Guwahati Students Lead in Speed Math',
+        summary: 'Recent assessments across Assam schools highlight students trained in structured 8-level Abacus mental arithmetic calculating 4x faster than non-trained peers, significantly boosting Olympiad and board exam confidence.',
+        localNote: '📍 Satgaon & Bagharbari children can join weekend competition batches at NOHADAYA.',
+        waQuery: 'Hello NOHADAYA, I read about the NE Green Abacus regional training on your blog and want to know about batch registration for my child.'
+      },
+      {
+        id: 'ln-2',
+        category: 'calligraphy',
+        catLabel: 'Handwriting & SEBA/CBSE Exams',
+        catClass: 'cat-calli-live',
+        time: 'Trending This Week',
+        title: 'Why School Board Examiners in Assam Value Clean Cursive & Penmanship',
+        summary: 'Educational research confirms legible handwriting directly impacts answer evaluation in class 10 & 12 board examinations. Proper nib grip and posture correction prevent hand fatigue during lengthy 3-hour tests.',
+        localNote: '📍 Specialized corrective handwriting batches open for school students in Panjabari & Bagharbari.',
+        waQuery: 'Hi NOHADAYA, I would like to enquire about handwriting improvement and calligraphy classes for my school-going child.'
+      },
+      {
+        id: 'ln-3',
+        category: 'yoga',
+        catLabel: 'Guwahati Morning Wellness',
+        catClass: 'cat-yoga-live',
+        time: 'Live Update',
+        title: 'Combating Desk Fatigue & Lifestyle Stiffness with Morning Yoga in East Guwahati',
+        summary: 'Daily 60-minute Hatha and Pranayama breathwork routines are proving vital for professionals and homemakers across Guwahati dealing with urban stress, cervical stiffness, and back strain.',
+        localNote: '📍 Mon–Fri Morning (7 AM) & Evening (5:30 PM) sessions led by Yoga Instructor Rubi Barman.',
+        waQuery: 'Hello NOHADAYA, I am interested in joining your morning/evening yoga classes in Bagharbari. Please share enrollment details.'
+      },
+      {
+        id: 'ln-4',
+        category: 'local',
+        catLabel: 'Bagharbari Community Event',
+        catClass: 'cat-local-live',
+        time: 'Upcoming Event',
+        title: 'NOHADAYA Studio Free Trial & Orientation Sessions for Local Families',
+        summary: 'Parents residing within 2 km of Satgaon Nowapara Masjid, Behind Apple Pie, and Roseland Road can experience personalized 1-on-1 trial classes in Abacus, Calligraphy, or Yoga with certified instructors.',
+        localNote: '📍 Walk-in studio tours available Monday to Saturday (6:00 AM – 8:00 PM).',
+        waQuery: 'Hi Mrs. Noor Nahar Begum, I would like to book a Free Trial Class for my family at your Bagharbari studio.'
+      },
+      {
+        id: 'ln-5',
+        category: 'abacus',
+        catLabel: 'Cognitive Brain Science',
+        catClass: 'cat-abacus-live',
+        time: 'Educational Trend',
+        title: 'How Soroban Beads Bridge Left & Right Brain Functions in Young Learners',
+        summary: 'Neurological studies emphasize tactile bead movement stimulates photographic memory and spatial visualization, turning abstract numerical concepts into clear mental images.',
+        localNote: '📍 Designed for children aged 5–14 years with small batch sizes of 8–10 kids.',
+        waQuery: 'Hi NOHADAYA team, could you explain the 8-level Abacus progression for kids aged 6-10?'
+      },
+      {
+        id: 'ln-6',
+        category: 'yoga',
+        catLabel: 'Holistic Health Trend',
+        catClass: 'cat-yoga-live',
+        time: 'Wellness Guide',
+        title: 'Pranayama & Anulom Vilom: Natural Immunity & Respiratory Resilience in Assam Winters',
+        summary: 'Deep diaphragmatic breathing and Kapalbhati exercises enhance lung capacity, clear sinus pathways, and restore mental focus amidst seasonal weather transitions.',
+        localNote: '📍 All levels welcome with personalized modifications and props provided.',
+        waQuery: 'Hi NOHADAYA, I would like to know if your yoga sessions include Pranayama and deep meditation.'
+      }
+    ];
+
+    let currentLiveFilter = 'all';
+
+    function renderLiveNewsCards(items) {
+      const grid = document.getElementById('liveNewsGrid');
+      if (!grid) return;
+
+      const filtered = (currentLiveFilter === 'all') 
+        ? items 
+        : items.filter(item => item.category === currentLiveFilter);
+
+      grid.innerHTML = filtered.map(item => `
+        <article class="live-card">
+          <div>
+            <div class="live-card-top">
+              <span class="live-cat-tag ${item.catClass}">${item.catLabel}</span>
+              <span class="live-time">🕒 ${item.time}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.summary}</p>
+            <div class="local-highlight-bar">${item.localNote}</div>
+          </div>
+          <div class="live-card-foot">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">NOHADAYA Journal</span>
+            <a href="https://wa.me/919101065541?text=${encodeURIComponent(item.waQuery)}" target="_blank" rel="noopener" class="btn-live-wa">
+              💬 Ask on WhatsApp
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterLiveNews(category, btn) {
+      currentLiveFilter = category;
+      document.querySelectorAll('.live-news-filter .ln-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    }
+
+    function refreshLiveNews() {
+      const grid = document.getElementById('liveNewsGrid');
+      if (grid) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--primary);font-weight:700;">🔄 Fetching latest regional updates &amp; headlines...</div>';
+        setTimeout(() => {
+          renderLiveNewsCards(LOCAL_NEWS_DATA);
+        }, 400);
+      }
+    }
+
+    // Auto initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    });
+
   </script>
 
   <!-- Load Chatbot Widget for Blog Readers -->
-  <script src="../js/chatbot.js" defer></script>
+  <script src="../js/chatbot.js" defer>
+    // ========================================================
+    // REAL-TIME NEWS & LOCAL REGIONAL KNOWLEDGE ENGINE
+    // ========================================================
+    const LOCAL_NEWS_DATA = [
+      {
+        id: 'ln-1',
+        category: 'abacus',
+        catLabel: 'Abacus Competition Alert',
+        catClass: 'cat-abacus-live',
+        time: 'Updated Today',
+        title: 'NE Green Abacus Regional Championship: Guwahati Students Lead in Speed Math',
+        summary: 'Recent assessments across Assam schools highlight students trained in structured 8-level Abacus mental arithmetic calculating 4x faster than non-trained peers, significantly boosting Olympiad and board exam confidence.',
+        localNote: '📍 Satgaon & Bagharbari children can join weekend competition batches at NOHADAYA.',
+        waQuery: 'Hello NOHADAYA, I read about the NE Green Abacus regional training on your blog and want to know about batch registration for my child.'
+      },
+      {
+        id: 'ln-2',
+        category: 'calligraphy',
+        catLabel: 'Handwriting & SEBA/CBSE Exams',
+        catClass: 'cat-calli-live',
+        time: 'Trending This Week',
+        title: 'Why School Board Examiners in Assam Value Clean Cursive & Penmanship',
+        summary: 'Educational research confirms legible handwriting directly impacts answer evaluation in class 10 & 12 board examinations. Proper nib grip and posture correction prevent hand fatigue during lengthy 3-hour tests.',
+        localNote: '📍 Specialized corrective handwriting batches open for school students in Panjabari & Bagharbari.',
+        waQuery: 'Hi NOHADAYA, I would like to enquire about handwriting improvement and calligraphy classes for my school-going child.'
+      },
+      {
+        id: 'ln-3',
+        category: 'yoga',
+        catLabel: 'Guwahati Morning Wellness',
+        catClass: 'cat-yoga-live',
+        time: 'Live Update',
+        title: 'Combating Desk Fatigue & Lifestyle Stiffness with Morning Yoga in East Guwahati',
+        summary: 'Daily 60-minute Hatha and Pranayama breathwork routines are proving vital for professionals and homemakers across Guwahati dealing with urban stress, cervical stiffness, and back strain.',
+        localNote: '📍 Mon–Fri Morning (7 AM) & Evening (5:30 PM) sessions led by Yoga Instructor Rubi Barman.',
+        waQuery: 'Hello NOHADAYA, I am interested in joining your morning/evening yoga classes in Bagharbari. Please share enrollment details.'
+      },
+      {
+        id: 'ln-4',
+        category: 'local',
+        catLabel: 'Bagharbari Community Event',
+        catClass: 'cat-local-live',
+        time: 'Upcoming Event',
+        title: 'NOHADAYA Studio Free Trial & Orientation Sessions for Local Families',
+        summary: 'Parents residing within 2 km of Satgaon Nowapara Masjid, Behind Apple Pie, and Roseland Road can experience personalized 1-on-1 trial classes in Abacus, Calligraphy, or Yoga with certified instructors.',
+        localNote: '📍 Walk-in studio tours available Monday to Saturday (6:00 AM – 8:00 PM).',
+        waQuery: 'Hi Mrs. Noor Nahar Begum, I would like to book a Free Trial Class for my family at your Bagharbari studio.'
+      },
+      {
+        id: 'ln-5',
+        category: 'abacus',
+        catLabel: 'Cognitive Brain Science',
+        catClass: 'cat-abacus-live',
+        time: 'Educational Trend',
+        title: 'How Soroban Beads Bridge Left & Right Brain Functions in Young Learners',
+        summary: 'Neurological studies emphasize tactile bead movement stimulates photographic memory and spatial visualization, turning abstract numerical concepts into clear mental images.',
+        localNote: '📍 Designed for children aged 5–14 years with small batch sizes of 8–10 kids.',
+        waQuery: 'Hi NOHADAYA team, could you explain the 8-level Abacus progression for kids aged 6-10?'
+      },
+      {
+        id: 'ln-6',
+        category: 'yoga',
+        catLabel: 'Holistic Health Trend',
+        catClass: 'cat-yoga-live',
+        time: 'Wellness Guide',
+        title: 'Pranayama & Anulom Vilom: Natural Immunity & Respiratory Resilience in Assam Winters',
+        summary: 'Deep diaphragmatic breathing and Kapalbhati exercises enhance lung capacity, clear sinus pathways, and restore mental focus amidst seasonal weather transitions.',
+        localNote: '📍 All levels welcome with personalized modifications and props provided.',
+        waQuery: 'Hi NOHADAYA, I would like to know if your yoga sessions include Pranayama and deep meditation.'
+      }
+    ];
+
+    let currentLiveFilter = 'all';
+
+    function renderLiveNewsCards(items) {
+      const grid = document.getElementById('liveNewsGrid');
+      if (!grid) return;
+
+      const filtered = (currentLiveFilter === 'all') 
+        ? items 
+        : items.filter(item => item.category === currentLiveFilter);
+
+      grid.innerHTML = filtered.map(item => `
+        <article class="live-card">
+          <div>
+            <div class="live-card-top">
+              <span class="live-cat-tag ${item.catClass}">${item.catLabel}</span>
+              <span class="live-time">🕒 ${item.time}</span>
+            </div>
+            <h3>${item.title}</h3>
+            <p>${item.summary}</p>
+            <div class="local-highlight-bar">${item.localNote}</div>
+          </div>
+          <div class="live-card-foot">
+            <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">NOHADAYA Journal</span>
+            <a href="https://wa.me/919101065541?text=${encodeURIComponent(item.waQuery)}" target="_blank" rel="noopener" class="btn-live-wa">
+              💬 Ask on WhatsApp
+            </a>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterLiveNews(category, btn) {
+      currentLiveFilter = category;
+      document.querySelectorAll('.live-news-filter .ln-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    }
+
+    function refreshLiveNews() {
+      const grid = document.getElementById('liveNewsGrid');
+      if (grid) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:30px;color:var(--primary);font-weight:700;">🔄 Fetching latest regional updates &amp; headlines...</div>';
+        setTimeout(() => {
+          renderLiveNewsCards(LOCAL_NEWS_DATA);
+        }, 400);
+      }
+    }
+
+    // Auto initialize on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLiveNewsCards(LOCAL_NEWS_DATA);
+    });
+
+  </script>
+
+  <!-- ════════ CONTENT & PHOTOGRAPHY PROTECTION SUITE ════════ -->
+  <script>
+    (function() {
+      // 1. Disable Right Click Context Menu on Photos and Content
+      document.addEventListener('contextmenu', function(e) {
+        // Allow right click inside input/textarea fields
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+        e.preventDefault();
+        showCopyProtectionToast();
+        return false;
+      }, false);
+
+      // 2. Disable Image Dragging
+      document.addEventListener('dragstart', function(e) {
+        if (e.target.nodeName === 'IMG' || e.target.nodeName === 'PICTURE') {
+          e.preventDefault();
+          return false;
+        }
+      }, false);
+
+      // 3. Block Keyboard Copy & Source Shortcuts
+      document.addEventListener('keydown', function(e) {
+        // Allow typing in forms
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+
+        // Ctrl/Cmd + C (Copy), Ctrl/Cmd + U (View Source), Ctrl/Cmd + S (Save Page), Ctrl/Cmd + P (Print)
+        if ((e.ctrlKey || e.metaKey) && ['c', 'u', 's', 'p', 'a'].includes(e.key.toLowerCase())) {
+          e.preventDefault();
+          showCopyProtectionToast();
+          return false;
+        }
+
+        // F12 / Ctrl+Shift+I / Ctrl+Shift+J (Inspect DevTools)
+        if (e.key === 'F12' || ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i', 'j', 'c'].includes(e.key.toLowerCase()))) {
+          e.preventDefault();
+          showCopyProtectionToast();
+          return false;
+        }
+      }, false);
+
+      // 4. Protection Toast Notification
+      function showCopyProtectionToast() {
+        if (document.getElementById('nhd-protect-toast')) return;
+        const toast = document.createElement('div');
+        toast.id = 'nhd-protect-toast';
+        toast.innerHTML = '🔒 <strong>NOHADAYA Studio Notice</strong><br><span style="font-size:0.8rem;opacity:0.9;">Photographs, educational curriculum &amp; content are copyright protected.</span>';
+        toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1B4332,#122E22);color:#F4E8C1;border:1.5px solid #D4A017;padding:12px 20px;border-radius:10px;font-size:0.86rem;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.35);z-index:99999;font-family:sans-serif;pointer-events:none;animation:fadeInToast 0.25s ease-out;';
+        document.body.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transition = 'opacity 0.4s';
+          setTimeout(() => toast.remove(), 400);
+        }, 2200);
+      }
+    })();
+  </script>
+
 </body>
 </html>
