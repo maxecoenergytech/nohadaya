@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2559,4 +2560,2567 @@
     });
   </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOHADAYA Studio | Operations ERP &amp; Management Suite</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #1B4332;
+      --primary-dark: #122E22;
+      --primary-light: #2D6A4F;
+      --accent-gold: #D4A017;
+      --accent-gold-light: #F4E8C1;
+      --accent-gold-hover: #C99426;
+      --bg-light: #F4F7F5;
+      --surface: #FFFFFF;
+      --surface-alt: #FAF8F5;
+      --text: #2D3748;
+      --text-muted: #64748B;
+      --border: #E2E8F0;
+      --border-dark: #CBD5E1;
+      --danger: #DC2626;
+      --danger-bg: #FEE2E2;
+      --warning: #D97706;
+      --warning-bg: #FEF3C7;
+      --success: #16A34A;
+      --success-bg: #DCFCE7;
+      --info: #2563EB;
+      --info-bg: #DBEAFE;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 14px rgba(27,67,50,0.08);
+      --shadow-lg: 0 10px 28px rgba(27,67,50,0.12);
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Top Header Navigation ── */
+    .erp-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-bottom: 3px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .erp-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+    .erp-logo-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      border: 2px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--accent-gold-light);
+    }
+    .erp-title-group h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    .erp-title-group span {
+      font-size: 0.72rem;
+      color: var(--accent-gold-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .erp-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn-portal-switch {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #FFFFFF;
+      padding: 7px 14px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-portal-switch:hover {
+      background: rgba(255,255,255,0.22);
+      color: var(--accent-gold-light);
+    }
+    .live-clock {
+      font-size: 0.8rem;
+      color: #A3CFBB;
+      font-family: monospace;
+      background: rgba(0,0,0,0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    /* ── Main Tab Navigation Bar ── */
+    .erp-nav-tabs {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .nav-tab-btn:hover {
+      color: var(--primary);
+      background: var(--surface-alt);
+    }
+    .nav-tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--accent-gold);
+      background: var(--surface-alt);
+    }
+    .nav-tab-btn .tab-badge {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 12px;
+      background: var(--border);
+      color: var(--text);
+    }
+    .nav-tab-btn.active .tab-badge {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+
+    /* ── Workspace Container ── */
+    .erp-workspace {
+      max-width: 1400px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 24px;
+      flex: 1;
+    }
+    .tab-view {
+      display: none;
+      animation: fadeIn 0.2s ease-in-out;
+    }
+    .tab-view.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Metric KPI Grid ── */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+    }
+    .kpi-card.gold::before { background: var(--accent-gold); }
+    .kpi-card.success::before { background: var(--success); }
+    .kpi-card.danger::before { background: var(--danger); }
+    .kpi-card.info::before { background: var(--info); }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .kpi-value {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.1;
+    }
+    .kpi-sub {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* ── Controls & Filter Bar ── */
+    .controls-bar {
+      background: var(--surface);
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .controls-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-input {
+      padding: 8px 14px;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      min-width: 240px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(27,67,50,0.15);
+    }
+    .filter-select {
+      padding: 8px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      font-size: 0.88rem;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #FFFFFF;
+    }
+    .btn-primary:hover {
+      background: var(--primary-light);
+    }
+    .btn-gold {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+    .btn-gold:hover {
+      background: var(--accent-gold-hover);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-dark);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: var(--surface-alt);
+      border-color: var(--primary);
+    }
+    .btn-sm {
+      padding: 4px 10px;
+      font-size: 0.78rem;
+    }
+    .btn-danger-sm {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid #FCA5A5;
+    }
+    .btn-danger-sm:hover {
+      background: var(--danger);
+      color: #FFFFFF;
+    }
+
+    /* ── Data Tables ── */
+    .table-container {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow-x: auto;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+    table.data-table th {
+      background: #F8FAFC;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.5px;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    table.data-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      vertical-align: middle;
+    }
+    table.data-table tbody tr:hover {
+      background: #F8FAFC;
+    }
+
+    /* ── Status Pills & Badges ── */
+    .status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .status-active { background: var(--success-bg); color: var(--success); }
+    .status-leave { background: var(--warning-bg); color: var(--warning); }
+    .status-graduated { background: var(--info-bg); color: var(--info); }
+    .status-trial { background: #F3E8FF; color: #7E22CE; }
+    .status-paid { background: var(--success-bg); color: var(--success); }
+    .status-pending { background: var(--danger-bg); color: var(--danger); }
+    .status-partial { background: var(--warning-bg); color: var(--warning); }
+
+    .program-tag {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+    }
+    .prog-yoga { background: #E0F2FE; color: #0369A1; }
+    .prog-abacus { background: #DCFCE7; color: #15803D; }
+    .prog-calligraphy { background: #FEF3C7; color: #B45309; }
+    .prog-combo { background: #F3E8FF; color: #6B21A8; }
+
+    /* ── Two-Column Layouts ── */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 992px) {
+      .grid-2col { grid-template-columns: 1fr; }
+    }
+
+    .panel-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .panel-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ── Modal Popups ── */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-backdrop.active {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--accent-gold);
+    }
+    .modal-head {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #FFFFFF;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--accent-gold);
+    }
+    .modal-head h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin: 0;
+      color: var(--accent-gold-light);
+    }
+    .modal-close-icon {
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-form {
+      padding: 20px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .form-control {
+      padding: 9px 12px;
+      border: 1px solid var(--border-dark);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+      font-family: inherit;
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(27,67,50,0.15);
+    }
+    .modal-foot {
+      padding: 16px 20px;
+      background: #F8FAFC;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* ── Printable Documents (Receipt & ID Card) ── */
+    .printable-paper {
+      background: #FFFFFF;
+      border: 2px solid var(--accent-gold);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      font-family: 'Lato', sans-serif;
+    }
+    .receipt-header {
+      text-align: center;
+      border-bottom: 2px solid var(--accent-gold);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .receipt-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin: 0;
+    }
+    .receipt-header p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .receipt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    .receipt-table td {
+      padding: 6px 0;
+      font-size: 0.88rem;
+    }
+    .receipt-table td.strong {
+      font-weight: bold;
+    }
+    .receipt-seal {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+    }
+
+    /* ── Quick Alert Banner ── */
+    .alert-banner {
+      background: var(--warning-bg);
+      border: 1px solid #FCD34D;
+      color: #92400E;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    /* ── Footer ── */
+    .erp-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 14px 24px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: auto;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 20px;
+      }
+    }
+  
+    /* ══════ UNIVERSAL MOBILE & TABLET RESPONSIVE ENGINE ══════ */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      -webkit-text-size-adjust: 100%;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box !important;
+    }
+    img, picture, video, canvas, svg, iframe {
+      max-width: 100% !important;
+      height: auto;
+    }
+    .table-container, .stw, .table-wrapper {
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      margin-bottom: 1rem;
+    }
+
+    /* Tablets & iPads (Portrait & Landscape: 768px – 1024px) */
+    @media (max-width: 1024px) {
+      .container, .si, .nav-container, .hero-content, .erp-workspace, .lead-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+      }
+      .grid-2col, .fgd, .inst-grid, .director-inner, .pg, .price-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      .hero-grid, .about-grid, .why-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* Mobile Phones (Screens < 768px) */
+    @media (max-width: 768px) {
+      body {
+        font-size: 15px !important;
+      }
+      .container, .si, .nav-container, .hero-content, .erp-workspace, .lead-container {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+      h1, .hero h1, .stitle, .sec-title, .live-news-title {
+        font-size: 1.65rem !important;
+        line-height: 1.25 !important;
+      }
+      h2 {
+        font-size: 1.4rem !important;
+      }
+      .hero-btns, .nav-actions, .filter-pills, .live-news-filter {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+      }
+      .btn-gold, .btn-primary, .btn-read-more, .btn-live-wa, .ncta {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+      .modal-box, .modal-content, .login-box, .auth-card {
+        width: 95vw !important;
+        max-width: 95vw !important;
+        margin: 10px auto !important;
+        padding: 20px 16px !important;
+      }
+      .form-row {
+        flex-direction: column !important;
+        gap: 0 !important;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+      }
+      .kpi-value {
+        font-size: 1.35rem !important;
+      }
+      .erp-nav-tabs {
+        padding: 0 10px !important;
+        gap: 2px !important;
+      }
+      .nav-tab-btn {
+        padding: 10px 12px !important;
+        font-size: 0.82rem !important;
+      }
+      .director-inner {
+        flex-direction: column !important;
+        gap: 24px !important;
+      }
+      .director-photo-wrap {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin: 0 auto !important;
+      }
+      .director-photo-frame img {
+        height: 300px !important;
+      }
+    }
+
+    /* Small Mobile Phones (Screens < 480px) */
+    @media (max-width: 480px) {
+      .kpi-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .nav-ul {
+        width: 100% !important;
+      }
+      .sct th, .sct td, .data-table th, .data-table td {
+        padding: 8px 6px !important;
+        font-size: 0.78rem !important;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="erp-header">
+    <a href="erp-admin.html" class="erp-brand">
+      <div class="erp-logo-badge">N</div>
+      <div class="erp-title-group">
+        <h1>NOHADAYA STUDIO</h1>
+        <span>Operations ERP &amp; Management Suite</span>
+      </div>
+    </a>
+    <div class="erp-header-actions">
+      <span class="live-clock" id="liveClock">--:--:--</span>
+      <a href="leads-admin.html" class="btn-portal-switch">
+        🎯 Leads CRM
+      </a>
+      <a href="index.html" class="btn-portal-switch" target="_blank">
+        🌐 Public Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Navigation Tabs -->
+  <nav class="erp-nav-tabs">
+    <button class="nav-tab-btn active" data-tab="overview">
+      📊 Overview Dashboard
+    </button>
+    <button class="nav-tab-btn" data-tab="students">
+      🎓 Student Management <span class="tab-badge" id="badgeStudents">0</span>
+    </button>
+    <button class="nav-tab-btn" data-tab="hrms">
+      👥 HRMS &amp; Staff <span class="tab-badge" id="badgeStaff">0</span>
+    </button>
+    <button class="nav-tab-btn" data-tab="finance">
+      💰 Financial &amp; Expenses
+    </button>
+    <button class="nav-tab-btn" data-tab="packages">
+      📦 Package Management
+    </button>
+    <button class="nav-tab-btn" data-tab="settings">
+      ⚙️ Backup &amp; Settings
+    </button>
+  </nav>
+
+  <!-- Main Workspace -->
+  <main class="erp-workspace">
+
+    <!-- ========================================================
+         TAB 1: OVERVIEW DASHBOARD
+         ======================================================== -->
+    <div class="tab-view active" id="tab-overview">
+      <div class="kpi-grid">
+        <div class="kpi-card gold">
+          <span class="kpi-label">Active Students</span>
+          <span class="kpi-value" id="kpiActiveStudents">0</span>
+          <span class="kpi-sub">Across Yoga, Abacus &amp; Calligraphy</span>
+        </div>
+        <div class="kpi-card info">
+          <span class="kpi-label">Staff &amp; Faculty</span>
+          <span class="kpi-value" id="kpiActiveStaff">0</span>
+          <span class="kpi-sub">Certified Masters &amp; Coordinators</span>
+        </div>
+        <div class="kpi-card success">
+          <span class="kpi-label">Monthly Collections (₹)</span>
+          <span class="kpi-value" id="kpiMonthlyRev">₹0</span>
+          <span class="kpi-sub" id="kpiRevRatio">+0% vs expenses</span>
+        </div>
+        <div class="kpi-card danger">
+          <span class="kpi-label">Operating Expenses (₹)</span>
+          <span class="kpi-value" id="kpiMonthlyExp">₹0</span>
+          <span class="kpi-sub">Rent, Utilities, Kits &amp; Payouts</span>
+        </div>
+        <div class="kpi-card success">
+          <span class="kpi-label">Net Studio Margin (₹)</span>
+          <span class="kpi-value" id="kpiNetProfit">₹0</span>
+          <span class="kpi-sub" id="kpiProfitMargin">0% Operating Margin</span>
+        </div>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="controls-bar">
+        <div class="controls-left">
+          <strong>⚡ Quick Operations:</strong>
+          <button class="btn btn-primary btn-sm" onclick="openAddStudentModal()">+ Enroll Student</button>
+          <button class="btn btn-gold btn-sm" onclick="openRecordFeeModal()">+ Collect Fee</button>
+          <button class="btn btn-outline btn-sm" onclick="openRecordExpenseModal()">+ Record Expense</button>
+          <button class="btn btn-outline btn-sm" onclick="openAttendanceModal()">📅 Daily Attendance</button>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">Studio: <strong>Bagharbari, Guwahati (ISO 9001:2015)</strong></span>
+        </div>
+      </div>
+
+      <!-- Overview Two-Column -->
+      <div class="grid-2col">
+        <!-- Recent Collections -->
+        <div class="panel-card">
+          <h3>
+            <span>💳 Recent Fee Collections</span>
+            <button class="btn btn-outline btn-sm" onclick="switchTab('finance')">View All</button>
+          </h3>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Receipt #</th>
+                  <th>Student</th>
+                  <th>Program</th>
+                  <th>Amount</th>
+                  <th>Mode</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="dashFeeTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Package Renewal Alerts -->
+        <div class="panel-card">
+          <h3>
+            <span>🔔 Renewals Due (Next 7 Days)</span>
+            <button class="btn btn-outline btn-sm" onclick="switchTab('packages')">Manage</button>
+          </h3>
+          <div id="dashRenewalsList">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 2: STUDENT MANAGEMENT
+         ======================================================== -->
+    <div class="tab-view" id="tab-students">
+      <div class="controls-bar">
+        <div class="controls-left">
+          <input type="text" id="studentSearch" class="search-input" placeholder="Search student by name, phone or ID..." oninput="renderStudentsTable()">
+          <select id="studentProgFilter" class="filter-select" onchange="renderStudentsTable()">
+            <option value="all">All Programs</option>
+            <option value="Yoga">Yoga</option>
+            <option value="Abacus">Abacus</option>
+            <option value="Calligraphy">Calligraphy</option>
+          </select>
+          <select id="studentStatusFilter" class="filter-select" onchange="renderStudentsTable()">
+            <option value="all">All Statuses</option>
+            <option value="Active">Active</option>
+            <option value="On Leave">On Leave</option>
+            <option value="Graduated">Graduated</option>
+            <option value="Trial">Trial</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 8px;">
+          <button class="btn btn-outline" onclick="openAttendanceModal()">📅 Mark Attendance</button>
+          <button class="btn btn-primary" onclick="openAddStudentModal()">+ Enroll New Student</button>
+        </div>
+      </div>
+
+      <!-- Students Table -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Student Name</th>
+              <th>Age</th>
+              <th>Guardian / Contact</th>
+              <th>Program</th>
+              <th>Batch Time</th>
+              <th>Current Stage</th>
+              <th>Fee Status</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 3: HRMS & STAFF MANAGEMENT
+         ======================================================== -->
+    <div class="tab-view" id="tab-hrms">
+      <div class="controls-bar">
+        <div class="controls-left">
+          <input type="text" id="staffSearch" class="search-input" placeholder="Search staff by name or role..." oninput="renderStaffTable()">
+          <select id="staffRoleFilter" class="filter-select" onchange="renderStaffTable()">
+            <option value="all">All Designations</option>
+            <option value="Yoga Instructor">Yoga Instructor</option>
+            <option value="Abacus Master Trainer">Abacus Master Trainer</option>
+            <option value="Calligraphy Specialist">Calligraphy Specialist</option>
+            <option value="Operations Coordinator">Operations Coordinator</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="openAddStaffModal()">+ Add Faculty / Staff</button>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Staff ID</th>
+              <th>Full Name</th>
+              <th>Designation</th>
+              <th>Phone</th>
+              <th>Batches Assigned</th>
+              <th>Employment Type</th>
+              <th>Monthly Honorarium</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="staffTbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 4: FINANCIAL & EXPENSES MANAGEMENT
+         ======================================================== -->
+    <div class="tab-view" id="tab-finance">
+      <div class="kpi-grid">
+        <div class="kpi-card success">
+          <span class="kpi-label">Total Collections</span>
+          <span class="kpi-value" id="finTotalCollections">₹0</span>
+          <span class="kpi-sub">This calendar month</span>
+        </div>
+        <div class="kpi-card danger">
+          <span class="kpi-label">Total Expenses</span>
+          <span class="kpi-value" id="finTotalExpenses">₹0</span>
+          <span class="kpi-sub">Operating expenditures</span>
+        </div>
+        <div class="kpi-card gold">
+          <span class="kpi-label">Net Studio Margin</span>
+          <span class="kpi-value" id="finNetMargin">₹0</span>
+          <span class="kpi-sub">Operating Cash Flow</span>
+        </div>
+        <div class="kpi-card info">
+          <span class="kpi-label">Pending / Overdue Fees</span>
+          <span class="kpi-value" id="finPendingFees">₹0</span>
+          <span class="kpi-sub">Uncollected student dues</span>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Collections Ledger -->
+        <div>
+          <div class="controls-bar" style="margin-bottom: 12px;">
+            <strong>💳 Student Fee Ledger</strong>
+            <button class="btn btn-gold btn-sm" onclick="openRecordFeeModal()">+ Collect Fee</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Receipt</th>
+                  <th>Student</th>
+                  <th>Amount</th>
+                  <th>Mode</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="finFeesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Expenses Ledger -->
+        <div>
+          <div class="controls-bar" style="margin-bottom: 12px;">
+            <strong>🧾 Operational Expenses</strong>
+            <button class="btn btn-outline btn-sm" onclick="openRecordExpenseModal()">+ Add Expense</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Vendor / Item</th>
+                  <th>Amount</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="finExpensesTbody">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 5: PACKAGE MANAGEMENT
+         ======================================================== -->
+    <div class="tab-view" id="tab-packages">
+      <div class="controls-bar">
+        <div>
+          <strong>📦 Configured Studio Course Packages &amp; Pricing</strong>
+        </div>
+        <button class="btn btn-primary" onclick="openAddPackageModal()">+ Create New Package</button>
+      </div>
+
+      <div class="table-container" style="margin-bottom: 24px;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Package Code</th>
+              <th>Package Name</th>
+              <th>Program</th>
+              <th>Duration</th>
+              <th>Monthly Fee (₹)</th>
+              <th>Registration (₹)</th>
+              <th>Features / Schedule</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="packagesTbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Renewal Watchlist -->
+      <div class="panel-card">
+        <h3>
+          <span>🔔 Student Package Renewal &amp; Expiry Tracker</span>
+          <span style="font-size: 0.8rem; font-weight: normal; color: var(--text-muted);">WhatsApp reminder alerts</span>
+        </h3>
+        <div class="table-container">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Package</th>
+                <th>Guardian Phone</th>
+                <th>Valid Until</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="renewalsTbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 6: SETTINGS & BACKUP
+         ======================================================== -->
+    <div class="tab-view" id="tab-settings">
+      <div class="grid-2col">
+        <!-- Database Backup / Restore -->
+        <div class="panel-card">
+          <h3>💾 Local Data Backup &amp; Portability</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+            All ERP records (Students, HRMS, Collections, Expenses, and Packages) are saved locally in your browser's persistent storage. You can export a full backup or transfer data between devices.
+          </p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+            <button class="btn btn-primary" onclick="exportDatabaseJSON()">📥 Export Full Backup (JSON)</button>
+            <button class="btn btn-outline" onclick="exportFinanceCSV()">📊 Export Finances to CSV</button>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px;">
+            <label style="font-weight: 700; font-size: 0.85rem; display: block; margin-bottom: 6px;">Restore Backup from File:</label>
+            <input type="file" id="importFileInput" accept=".json" class="form-control" style="margin-bottom: 10px;">
+            <button class="btn btn-gold btn-sm" onclick="importDatabaseJSON()">⚡ Restore Data</button>
+          </div>
+        </div>
+
+        <!-- Security & Demo Reset -->
+        <div class="panel-card">
+          <h3>🔒 Security &amp; Studio System Controls</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 14px;">
+            You can configure a custom administrator PIN to protect staff settings and prevent unauthorized edits.
+          </p>
+          <div class="form-group">
+            <label>Change Security PIN:</label>
+            <input type="password" id="newAdminPin" class="form-control" placeholder="Enter new 4-digit PIN" maxlength="6">
+            <button class="btn btn-outline btn-sm" style="margin-top: 6px; width: fit-content;" onclick="changeAdminPin()">Update PIN</button>
+          </div>
+
+          <div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 20px;">
+            <label style="font-weight: 700; font-size: 0.85rem; color: var(--danger); display: block; margin-bottom: 6px;">Reset Demo Data:</label>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px;">Revert back to verified NOHADAYA baseline seed database.</p>
+            <button class="btn btn-danger-sm" onclick="resetToBaselineData()">⚠️ Re-seed Baseline Records</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="erp-footer">
+    NOHADAYA Mind &amp; Motion Studio • Enterprise Operations Suite • ISO 9001:2015 Certified Entity (MCM-QMS-2023-0984) • Bagharbari, Guwahati
+  </footer>
+
+  <!-- ========================================================
+       MODALS
+       ======================================================== -->
+
+  <!-- Modal: Add / Edit Student -->
+  <div class="modal-backdrop" id="modalStudent">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalStudentTitle">Enroll New Student</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalStudent')">&times;</button>
+      </div>
+      <form class="modal-form" id="studentForm" onsubmit="saveStudent(event)">
+        <input type="hidden" id="stu-edit-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="stu-name" class="form-control" required placeholder="e.g. Aarav Sharma">
+          </div>
+          <div class="form-group">
+            <label>Student Age *</label>
+            <input type="number" id="stu-age" class="form-control" required min="3" max="80" placeholder="e.g. 8">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Guardian Name</label>
+            <input type="text" id="stu-guardian" class="form-control" placeholder="e.g. Rajesh Sharma">
+          </div>
+          <div class="form-group">
+            <label>WhatsApp / Phone *</label>
+            <input type="tel" id="stu-phone" class="form-control" required placeholder="e.g. 9876543210">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Program Enrolled *</label>
+            <select id="stu-prog" class="form-control" required>
+              <option value="Abacus">🧮 Abacus Mental Math</option>
+              <option value="Yoga">🧘 Yoga &amp; Pranayama</option>
+              <option value="Calligraphy">✍️ Calligraphy &amp; Handwriting</option>
+              <option value="Combo">🌟 Mind &amp; Motion Combo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Batch Schedule *</label>
+            <select id="stu-batch" class="form-control" required>
+              <option value="Morning 6:00 AM - 7:30 AM">Morning (6:00 AM - 7:30 AM)</option>
+              <option value="Morning 9:00 AM - 11:00 AM">Morning (9:00 AM - 11:00 AM)</option>
+              <option value="Evening 4:00 PM - 6:00 PM">Evening (4:00 PM - 6:00 PM)</option>
+              <option value="Evening 5:00 PM - 6:30 PM">Evening (5:00 PM - 6:30 PM)</option>
+              <option value="Weekend Intensive">Weekend Intensive</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Current Stage / Level</label>
+            <input type="text" id="stu-stage" class="form-control" placeholder="e.g. Level 2 or Cursive Module 1">
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+            <select id="stu-status" class="form-control">
+              <option value="Active">Active</option>
+              <option value="On Leave">On Leave</option>
+              <option value="Graduated">Graduated</option>
+              <option value="Trial">Trial</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalStudent')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Record Fee Payment -->
+  <div class="modal-backdrop" id="modalFee">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Record Student Fee Payment</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalFee')">&times;</button>
+      </div>
+      <form class="modal-form" id="feeForm" onsubmit="saveFeePayment(event)">
+        <div class="form-group">
+          <label>Select Student *</label>
+          <select id="fee-student" class="form-control" required onchange="autoFillFeeProgram()">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Program / Course</label>
+            <input type="text" id="fee-prog" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label>Amount Collected (₹) *</label>
+            <input type="number" id="fee-amount" class="form-control" required min="100" placeholder="e.g. 500">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Payment Mode *</label>
+            <select id="fee-mode" class="form-control" required>
+              <option value="UPI / GPay / PhonePe">UPI / Google Pay / PhonePe</option>
+              <option value="Cash">Cash</option>
+              <option value="Bank Transfer">Bank Transfer / NEFT</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Payment Date *</label>
+            <input type="date" id="fee-date" class="form-control" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes / Month Covered</label>
+          <input type="text" id="fee-notes" class="form-control" placeholder="e.g. March 2026 Monthly Tuition">
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalFee')">Cancel</button>
+          <button type="submit" class="btn btn-gold">Save &amp; Generate Receipt</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Record Operational Expense -->
+  <div class="modal-backdrop" id="modalExpense">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2>Record Operational Expense</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalExpense')">&times;</button>
+      </div>
+      <form class="modal-form" id="expenseForm" onsubmit="saveExpense(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Expense Category *</label>
+            <select id="exp-cat" class="form-control" required>
+              <option value="Studio Rent">Studio Rent</option>
+              <option value="Electricity &amp; Utilities">Electricity &amp; Utilities</option>
+              <option value="Workbooks &amp; Abacus Kits">Workbooks &amp; Abacus Kits</option>
+              <option value="Faculty &amp; Staff Payout">Faculty &amp; Staff Payout</option>
+              <option value="Marketing &amp; Printing">Marketing &amp; Printing</option>
+              <option value="Maintenance &amp; Sanitation">Maintenance &amp; Sanitation</option>
+              <option value="Miscellaneous">Miscellaneous</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Amount (₹) *</label>
+            <input type="number" id="exp-amount" class="form-control" required min="10" placeholder="e.g. 1500">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Vendor / Payee Name *</label>
+            <input type="text" id="exp-vendor" class="form-control" required placeholder="e.g. Roseland Landlord or Stationery Hub">
+          </div>
+          <div class="form-group">
+            <label>Date *</label>
+            <input type="date" id="exp-date" class="form-control" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Remarks / Notes</label>
+          <input type="text" id="exp-notes" class="form-control" placeholder="Invoice reference or batch details">
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalExpense')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Record Expense</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Modify Staff -->
+  <div class="modal-backdrop" id="modalStaff">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalStaffTitle">Add Faculty / Staff Member</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalStaff')">&times;</button>
+      </div>
+      <form class="modal-form" id="staffForm" onsubmit="saveStaff(event)">
+        <input type="hidden" id="stf-edit-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="stf-name" class="form-control" required placeholder="e.g. Mrs. Tulsi Bordoloi">
+          </div>
+          <div class="form-group">
+            <label>Designation *</label>
+            <select id="stf-role" class="form-control" required>
+              <option value="Yoga Instructor">Yoga Instructor</option>
+              <option value="Abacus Master Trainer">Abacus Master Trainer</option>
+              <option value="Calligraphy Specialist">Calligraphy Specialist</option>
+              <option value="Operations Coordinator">Operations Coordinator</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="stf-phone" class="form-control" required placeholder="e.g. 9101065541">
+          </div>
+          <div class="form-group">
+            <label>Employment Type</label>
+            <select id="stf-type" class="form-control">
+              <option value="Full-Time">Full-Time</option>
+              <option value="Part-Time / Batch-Wise">Part-Time / Batch-Wise</option>
+              <option value="Visiting Consultant">Visiting Consultant</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Batches Assigned</label>
+            <input type="text" id="stf-batches" class="form-control" placeholder="e.g. Morning 6:00 AM &amp; Evening 5:00 PM">
+          </div>
+          <div class="form-group">
+            <label>Monthly Honorarium (₹)</label>
+            <input type="number" id="stf-salary" class="form-control" placeholder="e.g. 8000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Staff Status</label>
+          <select id="stf-status" class="form-control">
+            <option value="Active">Active</option>
+            <option value="On Leave">On Leave</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalStaff')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="stfSubmitBtn">Save Staff Member</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Add / Modify Package -->
+  <div class="modal-backdrop" id="modalPackage">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalPackageTitle">Create Course Package</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalPackage')">&times;</button>
+      </div>
+      <form class="modal-form" id="packageForm" onsubmit="savePackage(event)">
+        <input type="hidden" id="pkg-edit-idx">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Package Code *</label>
+            <input type="text" id="pkg-code" class="form-control" required placeholder="e.g. PKG-YOGA-3D">
+          </div>
+          <div class="form-group">
+            <label>Package Name *</label>
+            <input type="text" id="pkg-name" class="form-control" required placeholder="e.g. Yoga Regular (3 Days/wk)">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Program Discipline *</label>
+            <select id="pkg-prog" class="form-control" required>
+              <option value="Yoga">Yoga</option>
+              <option value="Abacus">Abacus</option>
+              <option value="Calligraphy">Calligraphy</option>
+              <option value="Combo">Combo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Duration *</label>
+            <select id="pkg-duration" class="form-control" required>
+              <option value="Monthly (30 Days)">Monthly (30 Days)</option>
+              <option value="Quarterly (90 Days)">Quarterly (90 Days)</option>
+              <option value="Half-Yearly">Half-Yearly</option>
+              <option value="Annual">Annual</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tuition Fee (₹) *</label>
+            <input type="number" id="pkg-fee" class="form-control" required min="100" placeholder="e.g. 500">
+          </div>
+          <div class="form-group">
+            <label>One-Time Registration (₹)</label>
+            <input type="number" id="pkg-reg" class="form-control" value="200">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Schedule &amp; Features Summary</label>
+            <input type="text" id="pkg-desc" class="form-control" placeholder="e.g. 12 classes/mo, Hatha Yoga &amp; Pranayama">
+          </div>
+          <div class="form-group">
+            <label>Package Status</label>
+            <select id="pkg-status" class="form-control">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="Archived">Archived</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalPackage')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="pkgSubmitBtn">Save Package</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Assign / Modify Student Package -->
+  <div class="modal-backdrop" id="modalStudentPackage">
+    <div class="modal-box" style="max-width:520px;">
+      <div class="modal-head">
+        <h2>Modify Student Package Assignment</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalStudentPackage')">&times;</button>
+      </div>
+      <form class="modal-form" id="studentPackageForm" onsubmit="saveStudentPackageAssignment(event)">
+        <input type="hidden" id="sp-student-id">
+        <div class="form-group">
+          <label>Student</label>
+          <input type="text" id="sp-student-name" class="form-control" readonly>
+        </div>
+        <div class="form-group">
+          <label>Select Course Package *</label>
+          <select id="sp-package-select" class="form-control" required onchange="onSelectStudentPackage()">
+            <!-- Populated dynamically -->
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Updated Program</label>
+            <input type="text" id="sp-prog" class="form-control" readonly>
+          </div>
+          <div class="form-group">
+            <label>Monthly Fee (₹)</label>
+            <input type="number" id="sp-fee" class="form-control" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Extend Validity Until</label>
+          <input type="date" id="sp-validity" class="form-control" required>
+        </div>
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" onclick="closeModal('modalStudentPackage')">Cancel</button>
+          <button type="submit" class="btn btn-gold">Update Student Package</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Attendance Register -->
+  <div class="modal-backdrop" id="modalAttendance">
+    <div class="modal-box" style="max-width: 700px;">
+      <div class="modal-head">
+        <h2>Daily Batch Attendance Register</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalAttendance')">&times;</button>
+      </div>
+      <div style="padding: 16px 20px; background: #F8FAFC; border-bottom: 1px solid var(--border); display: flex; gap: 14px; flex-wrap: wrap;">
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Date:</label>
+          <input type="date" id="att-date" class="form-control" style="padding: 6px 10px;" onchange="loadAttendanceList()">
+        </div>
+        <div>
+          <label style="font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Select Batch:</label>
+          <select id="att-batch-select" class="form-control" style="padding: 6px 10px;" onchange="loadAttendanceList()">
+            <option value="all">All Batches</option>
+            <option value="Morning 6:00 AM - 7:30 AM">Morning (6:00 AM - 7:30 AM) - Yoga</option>
+            <option value="Morning 9:00 AM - 11:00 AM">Morning (9:00 AM - 11:00 AM) - Abacus</option>
+            <option value="Evening 4:00 PM - 6:00 PM">Evening (4:00 PM - 6:00 PM) - Abacus</option>
+            <option value="Evening 5:00 PM - 6:30 PM">Evening (5:00 PM - 6:30 PM) - Yoga/Calligraphy</option>
+          </select>
+        </div>
+      </div>
+      <div style="padding: 16px 20px; max-height: 400px; overflow-y: auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Program</th>
+              <th>Status</th>
+              <th>Mark Attendance</th>
+            </tr>
+          </thead>
+          <tbody id="attTbody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" onclick="closeModal('modalAttendance')">Close</button>
+        <button type="button" class="btn btn-primary" onclick="saveAttendance()">Save Attendance Records</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Printable Receipt / ID Card -->
+  <div class="modal-backdrop" id="modalPrintPreview">
+    <div class="modal-box" style="max-width: 580px;">
+      <div class="modal-head">
+        <h2>Printable Document Preview</h2>
+        <button class="modal-close-icon" onclick="closeModal('modalPrintPreview')">&times;</button>
+      </div>
+      <div style="padding: 20px;">
+        <div id="printableArea">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" onclick="closeModal('modalPrintPreview')">Close</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Document</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       ERP LOGIC & LOCAL PERSISTENCE SCRIPT
+       ======================================================== -->
+  <script>
+    'use strict';
+
+    // --- BASELINE SEED DATABASE ---
+    const BASELINE_DATA = {
+      students: [
+        { id: 'NOH-STU-001', name: 'Aarav Sharma', age: 9, guardian: 'Rajesh Sharma', phone: '9876543210', program: 'Abacus', batch: 'Morning 9:00 AM - 11:00 AM', stage: 'Level 3 (Anzan)', feeStatus: 'Paid', status: 'Active', admitted: '2025-10-12', validUntil: '2026-03-31' },
+        { id: 'NOH-STU-002', name: 'Priyanka Das', age: 28, guardian: 'Self', phone: '9101122334', program: 'Yoga', batch: 'Morning 6:00 AM - 7:30 AM', stage: 'Vinyasa Flow & Pranayama', feeStatus: 'Paid', status: 'Active', admitted: '2025-11-05', validUntil: '2026-03-25' },
+        { id: 'NOH-STU-003', name: 'Rohan Bordoloi', age: 11, guardian: 'N. Bordoloi', phone: '8876121675', program: 'Calligraphy', batch: 'Evening 5:00 PM - 6:30 PM', stage: 'Gothic & Speed Script', feeStatus: 'Paid', status: 'Active', admitted: '2026-01-10', validUntil: '2026-03-18' },
+        { id: 'NOH-STU-004', name: 'Ishita Kalita', age: 7, guardian: 'B. Kalita', phone: '9435012345', program: 'Abacus', batch: 'Evening 4:00 PM - 6:00 PM', stage: 'Level 1 (Direct Calculation)', feeStatus: 'Pending', status: 'Active', admitted: '2026-02-01', validUntil: '2026-03-01' },
+        { id: 'NOH-STU-005', name: 'Tanvi Begum', age: 34, guardian: 'Self', phone: '7002604856', program: 'Yoga', batch: 'Evening 5:00 PM - 6:30 PM', stage: 'Spine Health & Meditation', feeStatus: 'Paid', status: 'Active', admitted: '2025-08-15', validUntil: '2026-04-15' },
+        { id: 'NOH-STU-006', name: 'Debajit Baruah', age: 12, guardian: 'K. Baruah', phone: '9864098765', program: 'Calligraphy', batch: 'Evening 5:00 PM - 6:30 PM', stage: 'Cursive Penmanship', feeStatus: 'Paid', status: 'Active', admitted: '2025-12-01', validUntil: '2026-03-20' }
+      ],
+      staff: [
+        { id: 'NOH-EMP-001', name: 'Mrs. Noor Nahar Begum', role: 'Studio Director & Master Instructor', phone: '7002604856', type: 'Full-Time', batches: 'Morning 6:00 AM & Evening 5:00 PM', salary: 12000, status: 'Active' },
+        { id: 'NOH-EMP-002', name: 'Master Abacus Trainer', role: 'Abacus Master Trainer', phone: '9101065541', type: 'Part-Time / Batch-Wise', batches: 'Morning 9:00 AM & Evening 4:00 PM', salary: 9000, status: 'Active' },
+        { id: 'NOH-EMP-003', name: 'Calligraphy Mentor', role: 'Calligraphy Specialist', phone: '8876121675', type: 'Part-Time / Batch-Wise', batches: 'Evening 5:00 PM - 6:30 PM', salary: 7500, status: 'Active' },
+        { id: 'NOH-EMP-004', name: 'Studio Coordinator', role: 'Operations Coordinator', phone: '9101065541', type: 'Full-Time', batches: 'Front Desk & Admissions', salary: 6500, status: 'Active' }
+      ],
+      fees: [
+        { receiptNo: 'RCP-2026-081', studentId: 'NOH-STU-001', studentName: 'Aarav Sharma', program: 'Abacus', amount: 600, mode: 'UPI / GPay / PhonePe', date: '2026-03-01', notes: 'March 2026 Monthly Tuition' },
+        { receiptNo: 'RCP-2026-082', studentId: 'NOH-STU-002', studentName: 'Priyanka Das', program: 'Yoga', amount: 500, mode: 'UPI / GPay / PhonePe', date: '2026-03-02', notes: 'March 3-Day Batch' },
+        { receiptNo: 'RCP-2026-083', studentId: 'NOH-STU-003', studentName: 'Rohan Bordoloi', program: 'Calligraphy', amount: 500, mode: 'Cash', date: '2026-03-03', notes: 'March Calligraphy Fee' },
+        { receiptNo: 'RCP-2026-084', studentId: 'NOH-STU-005', studentName: 'Tanvi Begum', program: 'Yoga', amount: 800, mode: 'Bank Transfer', date: '2026-03-05', notes: 'March 5-Day Intensive Batch' },
+        { receiptNo: 'RCP-2026-085', studentId: 'NOH-STU-006', studentName: 'Debajit Baruah', program: 'Calligraphy', amount: 700, mode: 'UPI / GPay / PhonePe', date: '2026-03-06', notes: 'March Fee + Practice Workbook' }
+      ],
+      expenses: [
+        { id: 'EXP-001', category: 'Studio Rent', vendor: 'Roseland Property Owner', amount: 8500, date: '2026-03-01', notes: 'Studio 1st Floor Rent (March 2026)' },
+        { id: 'EXP-002', category: 'Electricity & Utilities', vendor: 'APDCL Guwahati', amount: 1420, date: '2026-03-03', notes: 'Electricity bill for studio' },
+        { id: 'EXP-003', category: 'Workbooks & Abacus Kits', vendor: 'NE Green Abacus Central', amount: 2800, date: '2026-03-04', notes: '10 Student workbooks and 4 Soroban kits' },
+        { id: 'EXP-004', category: 'Maintenance & Sanitation', vendor: 'Local Cleaning Service', amount: 950, date: '2026-03-07', notes: 'Monthly deep cleaning and mat sanitizing' }
+      ],
+      packages: [
+        { code: 'PKG-YOGA-3D', name: 'Yoga Regular (3 Days/wk)', program: 'Yoga', duration: 'Monthly (30 Days)', fee: 500, reg: 200, desc: '12 classes/mo, Hatha Yoga, Pranayama & Meditation' },
+        { code: 'PKG-YOGA-5D', name: 'Yoga Unlimited (5 Days/wk)', program: 'Yoga', duration: 'Monthly (30 Days)', fee: 800, reg: 200, desc: '20+ classes/mo, full access to morning/evening batches' },
+        { code: 'PKG-ABACUS-STD', name: 'Abacus Mental Arithmetic', program: 'Abacus', duration: 'Monthly (30 Days)', fee: 600, reg: 200, desc: '8-level NE Green Abacus certified program, ages 5–14' },
+        { code: 'PKG-CALLI-STD', name: 'Calligraphy & Handwriting', program: 'Calligraphy', duration: 'Monthly (30 Days)', fee: 500, reg: 200, desc: 'Cursive, Gothic, and Exam speed handwriting correction' },
+        { code: 'PKG-COMBO-MM', name: 'Mind & Motion Combo (Yoga + Abacus)', program: 'Combo', duration: 'Monthly (30 Days)', fee: 1000, reg: 200, desc: 'Holistic mind and body package (₹100 monthly sibling/combo discount)' }
+      ],
+      attendance: {}
+    };
+
+    // --- STATE MANAGEMENT ---
+    let DB = {};
+
+    function loadDatabase() {
+      const saved = localStorage.getItem('NOHADAYA_ERP_DB');
+      if (saved) {
+        try {
+          DB = JSON.parse(saved);
+        } catch (e) {
+          DB = JSON.parse(JSON.stringify(BASELINE_DATA));
+        }
+      } else {
+        DB = JSON.parse(JSON.stringify(BASELINE_DATA));
+        saveDatabase();
+      }
+    }
+
+    function saveDatabase() {
+      localStorage.setItem('NOHADAYA_ERP_DB', JSON.stringify(DB));
+    }
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      loadDatabase();
+      initLiveClock();
+      setupTabs();
+      refreshAllViews();
+    });
+
+    function initLiveClock() {
+      const clockEl = document.getElementById('liveClock');
+      const update = () => {
+        clockEl.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      };
+      update();
+      setInterval(update, 1000);
+    }
+
+    function setupTabs() {
+      const buttons = document.querySelectorAll('.nav-tab-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const tabId = btn.getAttribute('data-tab');
+          switchTab(tabId);
+        });
+      });
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-view').forEach(v => v.classList.remove('active'));
+      const activeView = document.getElementById('tab-' + tabId);
+      if (activeView) activeView.classList.add('active');
+
+      document.querySelectorAll('.nav-tab-btn').forEach(b => {
+        if (b.getAttribute('data-tab') === tabId) b.classList.add('active');
+        else b.classList.remove('active');
+      });
+
+      refreshAllViews();
+    }
+
+    function refreshAllViews() {
+      updateDashboardKPIs();
+      renderStudentsTable();
+      renderStaffTable();
+      renderFinanceTables();
+      renderPackagesTable();
+      renderRenewalsTable();
+      populateStudentSelects();
+    }
+
+    // --- DASHBOARD KPIS & CALCULATIONS ---
+    function updateDashboardKPIs() {
+      const activeStudents = DB.students.filter(s => s.status === 'Active').length;
+      const activeStaff = DB.staff.filter(s => s.status === 'Active').length;
+      
+      const totalCollections = DB.fees.reduce((sum, f) => sum + Number(f.amount || 0), 0);
+      const totalExpenses = DB.expenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+      const netProfit = totalCollections - totalExpenses;
+      const marginPct = totalCollections > 0 ? Math.round((netProfit / totalCollections) * 100) : 0;
+
+      document.getElementById('kpiActiveStudents').textContent = activeStudents;
+      document.getElementById('badgeStudents').textContent = activeStudents;
+      document.getElementById('kpiActiveStaff').textContent = activeStaff;
+      document.getElementById('badgeStaff').textContent = activeStaff;
+
+      document.getElementById('kpiMonthlyRev').textContent = '₹' + totalCollections.toLocaleString();
+      document.getElementById('kpiMonthlyExp').textContent = '₹' + totalExpenses.toLocaleString();
+      document.getElementById('kpiNetProfit').textContent = (netProfit >= 0 ? '₹' : '-₹') + Math.abs(netProfit).toLocaleString();
+      document.getElementById('kpiProfitMargin').textContent = `${marginPct}% Net Margin`;
+
+      // Recent fees in dashboard
+      const dashTbody = document.getElementById('dashFeeTbody');
+      dashTbody.innerHTML = '';
+      const recentFees = [...DB.fees].reverse().slice(0, 5);
+      recentFees.forEach(f => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${f.receiptNo}</strong></td>
+          <td>${f.studentName}</td>
+          <td><span class="program-tag prog-${f.program.toLowerCase()}">${f.program}</span></td>
+          <td><strong style="color:var(--success);">₹${f.amount}</strong></td>
+          <td>${f.mode}</td>
+          <td>${f.date}</td>
+        `;
+        dashTbody.appendChild(tr);
+      });
+
+      // Quick renewals in dashboard
+      const dashRenewals = document.getElementById('dashRenewalsList');
+      dashRenewals.innerHTML = '';
+      const dueSoon = DB.students.filter(s => s.status === 'Active').slice(0, 4);
+      dueSoon.forEach(s => {
+        const div = document.createElement('div');
+        div.style.padding = '10px 0';
+        div.style.borderBottom = '1px solid var(--border)';
+        div.style.display = 'flex';
+        div.style.alignItems = 'center';
+        div.style.justifyContent = 'space-between';
+        div.innerHTML = `
+          <div>
+            <strong>${s.name}</strong> <span style="font-size:0.75rem; color:var(--text-muted);">(${s.program})</span>
+            <div style="font-size:0.75rem; color:var(--danger);">Expires: ${s.validUntil}</div>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="sendWhatsAppRenewal('${s.phone}', '${s.name}', '${s.program}', 500)">
+            💬 WhatsApp
+          </button>
+        `;
+        dashRenewals.appendChild(div);
+      });
+    }
+
+    // --- STUDENT MANAGEMENT ---
+    function renderStudentsTable() {
+      const tbody = document.getElementById('studentsTbody');
+      tbody.innerHTML = '';
+
+      const query = (document.getElementById('studentSearch')?.value || '').toLowerCase();
+      const progFilter = document.getElementById('studentProgFilter')?.value || 'all';
+      const statusFilter = document.getElementById('studentStatusFilter')?.value || 'all';
+
+      const filtered = DB.students.filter(s => {
+        const matchesQuery = s.name.toLowerCase().includes(query) || s.phone.includes(query) || s.id.toLowerCase().includes(query);
+        const matchesProg = (progFilter === 'all') || (s.program === progFilter);
+        const matchesStatus = (statusFilter === 'all') || (s.status === statusFilter);
+        return matchesQuery && matchesProg && matchesStatus;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="10" style="text-align:center; padding: 24px; color:var(--text-muted);">No student records found.</td></tr>`;
+        return;
+      }
+
+      filtered.forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${s.id}</strong></td>
+          <td>
+            <strong>${s.name}</strong>
+            <div style="font-size:0.74rem; color:var(--text-muted);">Adm: ${s.admitted || 'N/A'}</div>
+          </td>
+          <td>${s.age} yrs</td>
+          <td>
+            ${s.guardian || 'N/A'}<br>
+            <a href="tel:${s.phone}" style="color:var(--primary); font-weight:bold; text-decoration:none;">📞 ${s.phone}</a>
+          </td>
+          <td><span class="program-tag prog-${s.program.toLowerCase()}">${s.program}</span></td>
+          <td><small>${s.batch}</small></td>
+          <td><em>${s.stage || 'Beginner'}</em></td>
+          <td><span class="status-pill status-${s.feeStatus.toLowerCase()}">${s.feeStatus}</span></td>
+          <td><span class="status-pill status-${s.status.toLowerCase()}">${s.status}</span></td>
+          <td>
+            <div style="display:flex; gap:4px;">
+              <button class="btn btn-outline btn-sm" onclick="printStudentIDCard('${s.id}')" title="Print ID Card">🪪</button>
+              <button class="btn btn-outline btn-sm" onclick="editStudent('${s.id}')" title="Edit Student">✏️</button>
+              <button class="btn btn-danger-sm btn-sm" onclick="deleteStudent('${s.id}')" title="Delete">🗑️</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openAddStudentModal() {
+      document.getElementById('modalStudentTitle').textContent = 'Enroll New Student';
+      document.getElementById('studentForm').reset();
+      document.getElementById('stu-edit-id').value = '';
+      openModal('modalStudent');
+    }
+
+    function editStudent(id) {
+      const s = DB.students.find(item => item.id === id);
+      if (!s) return;
+      document.getElementById('modalStudentTitle').textContent = 'Edit Student: ' + s.name;
+      document.getElementById('stu-edit-id').value = s.id;
+      document.getElementById('stu-name').value = s.name;
+      document.getElementById('stu-age').value = s.age;
+      document.getElementById('stu-guardian').value = s.guardian || '';
+      document.getElementById('stu-phone').value = s.phone;
+      document.getElementById('stu-prog').value = s.program;
+      document.getElementById('stu-batch').value = s.batch;
+      document.getElementById('stu-stage').value = s.stage || '';
+      document.getElementById('stu-status').value = s.status;
+      openModal('modalStudent');
+    }
+
+    function saveStudent(e) {
+      e.preventDefault();
+      const editId = document.getElementById('stu-edit-id').value;
+      const name = document.getElementById('stu-name').value.trim();
+      const age = parseInt(document.getElementById('stu-age').value, 10);
+      const guardian = document.getElementById('stu-guardian').value.trim();
+      const phone = document.getElementById('stu-phone').value.trim();
+      const program = document.getElementById('stu-prog').value;
+      const batch = document.getElementById('stu-batch').value;
+      const stage = document.getElementById('stu-stage').value.trim();
+      const status = document.getElementById('stu-status').value;
+
+      if (editId) {
+        const student = DB.students.find(s => s.id === editId);
+        if (student) {
+          student.name = name;
+          student.age = age;
+          student.guardian = guardian;
+          student.phone = phone;
+          student.program = program;
+          student.batch = batch;
+          student.stage = stage;
+          student.status = status;
+        }
+      } else {
+        const newId = 'NOH-STU-' + String(DB.students.length + 1).padStart(3, '0');
+        const nowStr = new Date().toISOString().split('T')[0];
+        // Calculate 30-day expiry
+        const expiry = new Date();
+        expiry.setDate(expiry.getDate() + 30);
+        const expiryStr = expiry.toISOString().split('T')[0];
+
+        DB.students.push({
+          id: newId,
+          name,
+          age,
+          guardian,
+          phone,
+          program,
+          batch,
+          stage,
+          feeStatus: 'Paid',
+          status,
+          admitted: nowStr,
+          validUntil: expiryStr
+        });
+      }
+
+      saveDatabase();
+      closeModal('modalStudent');
+      refreshAllViews();
+    }
+
+    function deleteStudent(id) {
+      if (confirm(`Are you sure you want to remove student ${id}?`)) {
+        DB.students = DB.students.filter(s => s.id !== id);
+        saveDatabase();
+        refreshAllViews();
+      }
+    }
+
+    // --- HRMS / STAFF MANAGEMENT ---
+    function renderStaffTable() {
+      const tbody = document.getElementById('staffTbody');
+      tbody.innerHTML = '';
+
+      const query = (document.getElementById('staffSearch')?.value || '').toLowerCase();
+      const roleFilter = document.getElementById('staffRoleFilter')?.value || 'all';
+
+      const filtered = DB.staff.filter(st => {
+        const matchesQ = st.name.toLowerCase().includes(query) || st.role.toLowerCase().includes(query);
+        const matchesR = (roleFilter === 'all') || (st.role === roleFilter);
+        return matchesQ && matchesR;
+      });
+
+      filtered.forEach(st => {
+        const stStatus = st.status || 'Active';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${st.id}</strong></td>
+          <td><strong>${st.name}</strong></td>
+          <td><span class="program-tag prog-yoga">${st.role}</span></td>
+          <td>📞 ${st.phone}</td>
+          <td><small>${st.batches || 'General'}</small></td>
+          <td>${st.type}</td>
+          <td><strong style="color:var(--primary);">₹${Number(st.salary).toLocaleString()}</strong>/mo</td>
+          <td><span class="status-pill status-${stStatus.toLowerCase().replace(/\s+/g, '')}">${stStatus}</span></td>
+          <td>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-outline btn-sm" onclick="editStaff('${st.id}')" title="Modify Staff Details">✏️ Modify</button>
+              <button class="btn btn-danger-sm btn-sm" onclick="deleteStaff('${st.id}')" title="Remove Staff">🗑️ Delete</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openAddStaffModal() {
+      document.getElementById('staffForm').reset();
+      document.getElementById('modalStaffTitle').textContent = 'Add Faculty / Staff Member';
+      document.getElementById('stf-edit-id').value = '';
+      document.getElementById('stfSubmitBtn').textContent = 'Save Staff Member';
+      openModal('modalStaff');
+    }
+
+    function editStaff(id) {
+      const st = DB.staff.find(s => s.id === id);
+      if (!st) return;
+
+      document.getElementById('modalStaffTitle').textContent = 'Modify Faculty / Staff: ' + st.name;
+      document.getElementById('stf-edit-id').value = st.id;
+      document.getElementById('stf-name').value = st.name;
+      document.getElementById('stf-role').value = st.role;
+      document.getElementById('stf-phone').value = st.phone;
+      document.getElementById('stf-type').value = st.type;
+      document.getElementById('stf-batches').value = st.batches || '';
+      document.getElementById('stf-salary').value = st.salary || '';
+      document.getElementById('stf-status').value = st.status || 'Active';
+      document.getElementById('stfSubmitBtn').textContent = 'Save Changes';
+
+      openModal('modalStaff');
+    }
+
+    function saveStaff(e) {
+      e.preventDefault();
+      const editId = document.getElementById('stf-edit-id').value;
+      const name = document.getElementById('stf-name').value.trim();
+      const role = document.getElementById('stf-role').value;
+      const phone = document.getElementById('stf-phone').value.trim();
+      const type = document.getElementById('stf-type').value;
+      const batches = document.getElementById('stf-batches').value.trim();
+      const salary = parseInt(document.getElementById('stf-salary').value || '0', 10);
+      const status = document.getElementById('stf-status').value;
+
+      if (editId) {
+        // Modify existing staff member
+        const staffMember = DB.staff.find(s => s.id === editId);
+        if (staffMember) {
+          staffMember.name = name;
+          staffMember.role = role;
+          staffMember.phone = phone;
+          staffMember.type = type;
+          staffMember.batches = batches;
+          staffMember.salary = salary;
+          staffMember.status = status;
+        }
+      } else {
+        // Add new staff member
+        const newId = 'NOH-EMP-' + String(DB.staff.length + 1).padStart(3, '0');
+        DB.staff.push({
+          id: newId,
+          name,
+          role,
+          phone,
+          type,
+          batches,
+          salary,
+          status: status || 'Active'
+        });
+      }
+
+      saveDatabase();
+      closeModal('modalStaff');
+      refreshAllViews();
+    }
+
+    function deleteStaff(id) {
+      const st = DB.staff.find(s => s.id === id);
+      const staffName = st ? st.name : id;
+      if (confirm(`Are you sure you want to remove staff member "${staffName}" (${id})?`)) {
+        DB.staff = DB.staff.filter(s => s.id !== id);
+        saveDatabase();
+        refreshAllViews();
+      }
+    }
+
+    // --- FINANCIAL & EXPENSE MANAGEMENT ---
+    function renderFinanceTables() {
+      const feesTbody = document.getElementById('finFeesTbody');
+      const expTbody = document.getElementById('finExpensesTbody');
+      feesTbody.innerHTML = '';
+      expTbody.innerHTML = '';
+
+      const totalCollections = DB.fees.reduce((sum, f) => sum + Number(f.amount || 0), 0);
+      const totalExpenses = DB.expenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+      const net = totalCollections - totalExpenses;
+
+      document.getElementById('finTotalCollections').textContent = '₹' + totalCollections.toLocaleString();
+      document.getElementById('finTotalExpenses').textContent = '₹' + totalExpenses.toLocaleString();
+      document.getElementById('finNetMargin').textContent = (net >= 0 ? '₹' : '-₹') + Math.abs(net).toLocaleString();
+
+      // Pending fees
+      const pendingCount = DB.students.filter(s => s.feeStatus === 'Pending').length;
+      document.getElementById('finPendingFees').textContent = '₹' + (pendingCount * 500).toLocaleString() + ` (${pendingCount} students)`;
+
+      // Fees list
+      [...DB.fees].reverse().forEach(f => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${f.receiptNo}</strong></td>
+          <td>
+            ${f.studentName}
+            <div style="font-size:0.72rem; color:var(--text-muted);">${f.notes || ''}</div>
+          </td>
+          <td><strong style="color:var(--success);">₹${f.amount}</strong></td>
+          <td><small>${f.mode}</small></td>
+          <td>${f.date}</td>
+          <td>
+            <button class="btn btn-outline btn-sm" onclick="printReceipt('${f.receiptNo}')">🖨️ Receipt</button>
+          </td>
+        `;
+        feesTbody.appendChild(tr);
+      });
+
+      // Expenses list
+      [...DB.expenses].reverse().forEach(e => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${e.category}</strong></td>
+          <td>
+            ${e.vendor}
+            <div style="font-size:0.72rem; color:var(--text-muted);">${e.notes || ''}</div>
+          </td>
+          <td><strong style="color:var(--danger);">₹${Number(e.amount).toLocaleString()}</strong></td>
+          <td>${e.date}</td>
+          <td>
+            <button class="btn btn-danger-sm btn-sm" onclick="deleteExpense('${e.id}')">&times;</button>
+          </td>
+        `;
+        expTbody.appendChild(tr);
+      });
+    }
+
+    function openRecordFeeModal() {
+      document.getElementById('feeForm').reset();
+      document.getElementById('fee-date').value = new Date().toISOString().split('T')[0];
+      populateStudentSelects();
+      autoFillFeeProgram();
+      openModal('modalFee');
+    }
+
+    function populateStudentSelects() {
+      const select = document.getElementById('fee-student');
+      if (!select) return;
+      select.innerHTML = '';
+      DB.students.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.id;
+        opt.textContent = `${s.name} (${s.id} - ${s.program})`;
+        select.appendChild(opt);
+      });
+    }
+
+    function autoFillFeeProgram() {
+      const sId = document.getElementById('fee-student').value;
+      const s = DB.students.find(item => item.id === sId);
+      if (s) {
+        document.getElementById('fee-prog').value = s.program;
+        // Default amount based on program
+        let defaultFee = 500;
+        if (s.program === 'Abacus') defaultFee = 600;
+        if (s.program === 'Combo') defaultFee = 1000;
+        document.getElementById('fee-amount').value = defaultFee;
+      }
+    }
+
+    function saveFeePayment(e) {
+      e.preventDefault();
+      const sId = document.getElementById('fee-student').value;
+      const student = DB.students.find(item => item.id === sId);
+      if (!student) return;
+
+      const amount = parseInt(document.getElementById('fee-amount').value, 10);
+      const mode = document.getElementById('fee-mode').value;
+      const date = document.getElementById('fee-date').value;
+      const notes = document.getElementById('fee-notes').value.trim();
+
+      const rNo = 'RCP-2026-' + String(DB.fees.length + 86).padStart(3, '0');
+      DB.fees.push({
+        receiptNo: rNo,
+        studentId: student.id,
+        studentName: student.name,
+        program: student.program,
+        amount,
+        mode,
+        date,
+        notes
+      });
+
+      // Update student validity & status
+      student.feeStatus = 'Paid';
+      const expDate = new Date(date);
+      expDate.setDate(expDate.getDate() + 30);
+      student.validUntil = expDate.toISOString().split('T')[0];
+
+      saveDatabase();
+      closeModal('modalFee');
+      refreshAllViews();
+      printReceipt(rNo);
+    }
+
+    function openRecordExpenseModal() {
+      document.getElementById('expenseForm').reset();
+      document.getElementById('exp-date').value = new Date().toISOString().split('T')[0];
+      openModal('modalExpense');
+    }
+
+    function saveExpense(e) {
+      e.preventDefault();
+      const category = document.getElementById('exp-cat').value;
+      const amount = parseInt(document.getElementById('exp-amount').value, 10);
+      const vendor = document.getElementById('exp-vendor').value.trim();
+      const date = document.getElementById('exp-date').value;
+      const notes = document.getElementById('exp-notes').value.trim();
+
+      const expId = 'EXP-' + String(DB.expenses.length + 1).padStart(3, '0');
+      DB.expenses.push({ id: expId, category, vendor, amount, date, notes });
+
+      saveDatabase();
+      closeModal('modalExpense');
+      refreshAllViews();
+    }
+
+    function deleteExpense(id) {
+      if (confirm('Delete expense record ' + id + '?')) {
+        DB.expenses = DB.expenses.filter(e => e.id !== id);
+        saveDatabase();
+        refreshAllViews();
+      }
+    }
+
+    // --- PACKAGE MANAGEMENT ---
+    function renderPackagesTable() {
+      const tbody = document.getElementById('packagesTbody');
+      tbody.innerHTML = '';
+      if (!DB.packages || DB.packages.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding:20px; color:var(--text-muted);">No packages configured. Click "+ Create New Package" to add one.</td></tr>';
+        return;
+      }
+
+      DB.packages.forEach((p, idx) => {
+        const pStatus = p.status || 'Active';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${p.code}</strong></td>
+          <td><strong>${p.name}</strong></td>
+          <td><span class="program-tag prog-${(p.program || 'yoga').toLowerCase()}">${p.program}</span></td>
+          <td>${p.duration}</td>
+          <td><strong style="color:var(--primary);">₹${Number(p.fee).toLocaleString()}</strong>/mo</td>
+          <td>₹${p.reg}</td>
+          <td><small>${p.desc || ''}</small></td>
+          <td><span class="status-pill status-${pStatus.toLowerCase()}">${pStatus}</span></td>
+          <td>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-outline btn-sm" onclick="editPackage(${idx})" title="Modify Package Details">✏️ Modify</button>
+              <button class="btn btn-danger-sm btn-sm" onclick="deletePackage(${idx})" title="Remove Package">🗑️ Remove</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function openAddPackageModal() {
+      document.getElementById('packageForm').reset();
+      document.getElementById('modalPackageTitle').textContent = 'Create New Course Package';
+      document.getElementById('pkg-edit-idx').value = '';
+      document.getElementById('pkg-code').readOnly = false;
+      document.getElementById('pkgSubmitBtn').textContent = 'Create Package';
+      openModal('modalPackage');
+    }
+
+    function editPackage(idx) {
+      const p = DB.packages[idx];
+      if (!p) return;
+
+      document.getElementById('modalPackageTitle').textContent = 'Modify Package: ' + p.name;
+      document.getElementById('pkg-edit-idx').value = idx;
+      document.getElementById('pkg-code').value = p.code;
+      document.getElementById('pkg-name').value = p.name;
+      document.getElementById('pkg-prog').value = p.program;
+      document.getElementById('pkg-duration').value = p.duration;
+      document.getElementById('pkg-fee').value = p.fee;
+      document.getElementById('pkg-reg').value = p.reg;
+      document.getElementById('pkg-desc').value = p.desc || '';
+      document.getElementById('pkg-status').value = p.status || 'Active';
+      document.getElementById('pkgSubmitBtn').textContent = 'Save Changes';
+
+      openModal('modalPackage');
+    }
+
+    function savePackage(e) {
+      e.preventDefault();
+      const editIdx = document.getElementById('pkg-edit-idx').value;
+      const code = document.getElementById('pkg-code').value.trim();
+      const name = document.getElementById('pkg-name').value.trim();
+      const program = document.getElementById('pkg-prog').value;
+      const duration = document.getElementById('pkg-duration').value;
+      const fee = parseInt(document.getElementById('pkg-fee').value, 10);
+      const reg = parseInt(document.getElementById('pkg-reg').value || '0', 10);
+      const desc = document.getElementById('pkg-desc').value.trim();
+      const status = document.getElementById('pkg-status').value;
+
+      const pkgData = { code, name, program, duration, fee, reg, desc, status };
+
+      if (editIdx !== '' && !isNaN(parseInt(editIdx, 10))) {
+        // Update existing package
+        DB.packages[parseInt(editIdx, 10)] = pkgData;
+      } else {
+        // Check for duplicate code
+        const exists = DB.packages.some(item => item.code.toUpperCase() === code.toUpperCase());
+        if (exists) {
+          alert('A package with code "' + code + '" already exists. Please choose a different code or modify the existing package.');
+          return;
+        }
+        DB.packages.push(pkgData);
+      }
+
+      saveDatabase();
+      closeModal('modalPackage');
+      refreshAllViews();
+    }
+
+    function deletePackage(idx) {
+      const p = DB.packages[idx];
+      if (!p) return;
+
+      if (confirm(`Are you sure you want to remove package "${p.name}" (${p.code})?\n\nThis will remove it from future enrollments.`)) {
+        DB.packages.splice(idx, 1);
+        saveDatabase();
+        refreshAllViews();
+      }
+    }
+
+    // --- STUDENT PACKAGE MODIFICATION / ASSIGNMENT ---
+    function openModifyStudentPackage(studentId) {
+      const s = DB.students.find(item => item.id === studentId);
+      if (!s) return;
+
+      document.getElementById('sp-student-id').value = s.id;
+      document.getElementById('sp-student-name').value = `${s.name} (${s.id})`;
+
+      const sel = document.getElementById('sp-package-select');
+      sel.innerHTML = '';
+      DB.packages.forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p.code;
+        opt.textContent = `${p.name} (₹${p.fee}/mo - ${p.program})`;
+        if (p.program === s.program) opt.selected = true;
+        sel.appendChild(opt);
+      });
+
+      onSelectStudentPackage();
+
+      // Set validity date to 30 days from today
+      const d = new Date();
+      d.setDate(d.getDate() + 30);
+      document.getElementById('sp-validity').value = s.validUntil || d.toISOString().split('T')[0];
+
+      openModal('modalStudentPackage');
+    }
+
+    function onSelectStudentPackage() {
+      const code = document.getElementById('sp-package-select').value;
+      const pkg = DB.packages.find(p => p.code === code);
+      if (pkg) {
+        document.getElementById('sp-prog').value = pkg.program;
+        document.getElementById('sp-fee').value = pkg.fee;
+      }
+    }
+
+    function saveStudentPackageAssignment(e) {
+      e.preventDefault();
+      const sId = document.getElementById('sp-student-id').value;
+      const s = DB.students.find(item => item.id === sId);
+      if (!s) return;
+
+      const code = document.getElementById('sp-package-select').value;
+      const pkg = DB.packages.find(p => p.code === code);
+      if (!pkg) return;
+
+      s.program = pkg.program;
+      s.validUntil = document.getElementById('sp-validity').value;
+
+      saveDatabase();
+      closeModal('modalStudentPackage');
+      refreshAllViews();
+      alert(`Package for ${s.name} updated to "${pkg.name}" (Valid until: ${s.validUntil})`);
+    }
+
+    function renderRenewalsTable() {
+      const tbody = document.getElementById('renewalsTbody');
+      tbody.innerHTML = '';
+
+      DB.students.filter(s => s.status === 'Active').forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${s.name}</strong> (${s.id})</td>
+          <td><span class="program-tag prog-${s.program.toLowerCase()}">${s.program}</span></td>
+          <td>📞 ${s.phone}</td>
+          <td><strong style="color:var(--danger);">${s.validUntil}</strong></td>
+          <td><span class="status-pill status-${s.feeStatus.toLowerCase()}">${s.feeStatus}</span></td>
+          <td>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" onclick="openModifyStudentPackage('${s.id}')" title="Change/Upgrade Package">🔄 Modify Package</button>
+              <button class="btn btn-gold btn-sm" onclick="sendWhatsAppRenewal('${s.phone}', '${s.name}', '${s.program}', 500)">💬 WhatsApp</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function sendWhatsAppRenewal(phone, name, program, amount) {
+      const cleanPhone = phone.replace(/[^0-9]/g, '');
+      const fullPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
+      const msg = encodeURIComponent(`Dear Parent / Student, this is a friendly reminder from NOHADAYA Mind & Motion Studio that the monthly tuition fee (₹${amount}) for ${name} (${program}) is due. You may pay via UPI / GPay to 9101065541. Thank you! 🙏`);
+      window.open(`https://wa.me/${fullPhone}?text=${msg}`, '_blank');
+    }
+
+    // --- ATTENDANCE REGISTER ---
+    function openAttendanceModal() {
+      document.getElementById('att-date').value = new Date().toISOString().split('T')[0];
+      loadAttendanceList();
+      openModal('modalAttendance');
+    }
+
+    function loadAttendanceList() {
+      const tbody = document.getElementById('attTbody');
+      tbody.innerHTML = '';
+      const date = document.getElementById('att-date').value;
+      const batch = document.getElementById('att-batch-select').value;
+
+      const filtered = DB.students.filter(s => {
+        if (s.status !== 'Active') return false;
+        if (batch === 'all') return true;
+        return s.batch.toLowerCase().includes(batch.toLowerCase().substring(0, 10));
+      });
+
+      filtered.forEach(s => {
+        const tr = document.createElement('tr');
+        const key = `${date}_${s.id}`;
+        const currentAtt = DB.attendance[key] || 'Present';
+
+        tr.innerHTML = `
+          <td><strong>${s.name}</strong> (${s.id})</td>
+          <td><span class="program-tag prog-${s.program.toLowerCase()}">${s.program}</span></td>
+          <td><span class="status-pill status-${currentAtt === 'Present' ? 'active' : 'leave'}">${currentAtt}</span></td>
+          <td>
+            <div style="display:flex; gap:6px;">
+              <button type="button" class="btn btn-sm ${currentAtt === 'Present' ? 'btn-primary' : 'btn-outline'}" onclick="setStudentAtt('${key}', 'Present')">✓ Present</button>
+              <button type="button" class="btn btn-sm ${currentAtt === 'Absent' ? 'btn-danger-sm' : 'btn-outline'}" onclick="setStudentAtt('${key}', 'Absent')">✕ Absent</button>
+              <button type="button" class="btn btn-sm ${currentAtt === 'Late' ? 'btn-gold' : 'btn-outline'}" onclick="setStudentAtt('${key}', 'Late')">⏱ Late</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function setStudentAtt(key, status) {
+      DB.attendance[key] = status;
+      loadAttendanceList();
+    }
+
+    function saveAttendance() {
+      saveDatabase();
+      alert('Attendance records saved successfully!');
+      closeModal('modalAttendance');
+    }
+
+    // --- PRINTABLE VOUCHERS (RECEIPT & ID CARD) ---
+    function printReceipt(receiptNo) {
+      const f = DB.fees.find(item => item.receiptNo === receiptNo);
+      if (!f) return;
+
+      const area = document.getElementById('printableArea');
+      area.innerHTML = `
+        <div class="printable-paper">
+          <div class="receipt-header">
+            <div style="font-size:1.8rem; color:var(--accent-gold);">🪷</div>
+            <h3>NOHADAYA MIND &amp; MOTION STUDIO</h3>
+            <p>H/No. 422, Roseland Road, Near Satgaon Nowapara Masjid, Bagharbari, Guwahati 781037<br>
+            A Unit of Mind Castle Mercantile • ISO 9001:2015 Certified (MCM-QMS-2023-0984)</p>
+            <div style="font-size:0.9rem; font-weight:bold; margin-top:8px; color:var(--primary); text-transform:uppercase;">OFFICIAL FEE RECEIPT</div>
+          </div>
+          <table class="receipt-table">
+            <tr><td><strong>Receipt No:</strong></td><td class="strong">${f.receiptNo}</td><td><strong>Date:</strong></td><td>${f.date}</td></tr>
+            <tr><td><strong>Student Name:</strong></td><td class="strong">${f.studentName}</td><td><strong>Student ID:</strong></td><td>${f.studentId}</td></tr>
+            <tr><td><strong>Program Enrolled:</strong></td><td>${f.program}</td><td><strong>Payment Mode:</strong></td><td>${f.mode}</td></tr>
+            <tr><td><strong>Particulars:</strong></td><td colspan="3">${f.notes || 'Monthly Tuition Fee'}</td></tr>
+          </table>
+          <div style="background:#FAF8F5; border:1px solid var(--border); padding:12px 16px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; margin:16px 0;">
+            <span style="font-size:1.1rem; font-weight:bold; color:var(--primary);">TOTAL AMOUNT RECEIVED:</span>
+            <span style="font-size:1.4rem; font-weight:900; color:var(--success);">₹${f.amount}.00</span>
+          </div>
+          <div class="receipt-seal">
+            <div style="font-size:0.75rem; color:var(--text-muted);">
+              System-generated verified receipt.<br>
+              Queries: +91 91010 65541 / +91 88761 21675
+            </div>
+            <div style="text-align:center;">
+              <div style="border-bottom:1px solid #000; width:140px; margin-bottom:4px;"></div>
+              <span style="font-size:0.75rem; font-weight:bold;">Authorised Signatory</span>
+            </div>
+          </div>
+        </div>
+      `;
+      openModal('modalPrintPreview');
+    }
+
+    function printStudentIDCard(id) {
+      const s = DB.students.find(item => item.id === id);
+      if (!s) return;
+
+      const area = document.getElementById('printableArea');
+      area.innerHTML = `
+        <div class="printable-paper" style="max-width:380px; margin:auto; text-align:center;">
+          <div style="background:var(--primary); color:#fff; padding:12px; border-radius:6px 6px 0 0; margin:-24px -24px 16px -24px; border-bottom:2px solid var(--accent-gold);">
+            <h4 style="font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--accent-gold-light); margin:0;">NOHADAYA STUDIO</h4>
+            <small style="font-size:0.7rem; color:#A3CFBB;">Mind &amp; Motion Learning Sanctuary</small>
+          </div>
+          <div style="width:70px; height:70px; border-radius:50%; background:var(--surface-alt); border:2px solid var(--accent-gold); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; font-weight:bold; color:var(--primary);">
+            ${s.name.charAt(0)}
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--primary); margin-bottom:4px;">${s.name}</h3>
+          <span class="program-tag prog-${s.program.toLowerCase()}" style="font-size:0.8rem; padding:3px 10px;">${s.program}</span>
+          <div style="margin:16px 0; font-size:0.85rem; text-align:left; line-height:1.8; background:#F8FAFC; padding:12px; border-radius:6px; border:1px solid var(--border);">
+            <div><strong>Student ID:</strong> ${s.id}</div>
+            <div><strong>Age:</strong> ${s.age} Years</div>
+            <div><strong>Guardian:</strong> ${s.guardian || 'N/A'}</div>
+            <div><strong>Contact:</strong> ${s.phone}</div>
+            <div><strong>Batch:</strong> ${s.batch}</div>
+          </div>
+          <div style="font-size:0.68rem; color:var(--text-muted);">
+            H/No. 422, Roseland Road, Bagharbari, Guwahati 781037<br>
+            Emergency Studio Contact: +91 91010 65541
+          </div>
+        </div>
+      `;
+      openModal('modalPrintPreview');
+    }
+
+    // --- DATA BACKUP & RESTORE ---
+    function exportDatabaseJSON() {
+      const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(DB, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute('href', dataStr);
+      downloadAnchor.setAttribute('download', `NOHADAYA_ERP_BACKUP_${new Date().toISOString().split('T')[0]}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function exportFinanceCSV() {
+      let csv = 'Receipt No,Student ID,Student Name,Program,Amount (INR),Payment Mode,Date,Notes\n';
+      DB.fees.forEach(f => {
+        csv += `"${f.receiptNo}","${f.studentId}","${f.studentName}","${f.program}",${f.amount},"${f.mode}","${f.date}","${f.notes || ''}"\n`;
+      });
+      const dataStr = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+      const a = document.createElement('a');
+      a.href = dataStr;
+      a.download = `NOHADAYA_FINANCES_${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+
+    function importDatabaseJSON() {
+      const input = document.getElementById('importFileInput');
+      if (!input.files || !input.files[0]) {
+        alert('Please select a valid JSON backup file first.');
+        return;
+      }
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (imported.students && imported.fees) {
+            DB = imported;
+            saveDatabase();
+            refreshAllViews();
+            alert('Database restored successfully!');
+          } else {
+            alert('Invalid backup file structure.');
+          }
+        } catch (err) {
+          alert('Failed to parse JSON backup file: ' + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetToBaselineData() {
+      if (confirm('Are you sure you want to reset the database to factory baseline? Any custom data will be replaced.')) {
+        DB = JSON.parse(JSON.stringify(BASELINE_DATA));
+        saveDatabase();
+        refreshAllViews();
+        alert('Database reset to baseline records successfully!');
+      }
+    }
+
+    function changeAdminPin() {
+      const pin = document.getElementById('newAdminPin').value.trim();
+      if (pin.length < 4) {
+        alert('PIN must be at least 4 digits.');
+        return;
+      }
+      localStorage.setItem('NOHADAYA_ADMIN_PIN', pin);
+      alert('Security PIN updated successfully!');
+      document.getElementById('newAdminPin').value = '';
+    }
+
+    // --- MODAL HELPERS ---
+    function openModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('active');
+    }
+
+    function closeModal(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('active');
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.modal-backdrop').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+>>>>>>> f4c8e01 (Update: 2026-09-19 15:47:34 (Auto-sync website, ERP & gallery assets))
 </html>

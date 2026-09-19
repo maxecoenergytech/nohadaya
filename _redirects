@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 # Cloudflare Pages Redirect Rules
 /erp                  /erp/             301
 /erp-admin.html       /erp/             301
 /portal-login.html    /erp/             301
 
+=======
+# Cloudflare Pages Redirect Rules
+/erp                  /erp/             301
+/erp-admin.html       /erp/             301
+/portal-login.html    /erp/             301
+
+>>>>>>> f4c8e01 (Update: 2026-09-19 15:47:34 (Auto-sync website, ERP & gallery assets))
