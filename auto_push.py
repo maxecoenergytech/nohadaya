@@ -62,15 +62,22 @@ if push_res.returncode == 0:
     print("🔒 Live ERP     : https://www.nohadaya.com/erp")
     print("=" * 60)
 else:
-    # If rejected due to remote branch history, try pulling with rebase or forced set-upstream
-    if "fetch first" in push_res.stderr or "non-fast-forward" in push_res.stderr:
-        print("\n🔄 Remote repository has commits. Syncing with remote...")
-        run_cmd("git pull origin main --rebase", check=False)
+    # If rejected due to remote branch history, try pulling with rebase
+    if "fetch first" in push_res.stderr or "non-fast-forward" in push_res.stderr or "rejected" in push_res.stderr:
+        print("\n🔄 Remote repository has newer commits. Syncing with remote...")
+        run_cmd("git pull --rebase --autostash origin main", check=False)
         print("🚀 Retrying push...")
         retry_res = run_cmd("git push -u origin main", check=False)
         if retry_res.returncode == 0:
-            print("\n✅ Successfully synced and pushed to GitHub!")
+            print("\n" + "=" * 60)
+            print("  ✅ SUCCESS! SYNCED & PUSHED TO GITHUB")
+            print("=" * 60)
+            print("🌐 GitHub Repo : https://github.com/maxecoenergytech/nohadaya")
+            print("☁️ Cloudflare   : Auto-deploying in ~10 seconds...")
+            print("🔗 Live Website : https://www.nohadaya.com")
+            print("🔒 Live ERP     : https://www.nohadaya.com/erp")
+            print("=" * 60)
         else:
-            print(f"\n⚠️ Push notice: {retry_res.stderr}")
+            print(f"\n⚠️ Push notice: {retry_res.stderr.strip()}")
     else:
-        print(f"\n⚠️ Push output: {push_res.stderr}")
+        print(f"\n⚠️ Push output: {push_res.stderr.strip()}")
