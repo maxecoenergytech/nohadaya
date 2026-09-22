@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # OS & System Files
 .DS_Store
 Thumbs.db
@@ -18,24 +17,3 @@ yarn-debug.log*
 # Local Env
 .env
 .env.local
-=======
-# OS & System Files
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE & Editor Files
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-
-# Logs & Temporary Files
-*.log
-npm-debug.log*
-yarn-debug.log*
-
-# Local Env
-.env
-.env.local
->>>>>>> f4c8e01 (Update: 2026-09-19 15:47:34 (Auto-sync website, ERP & gallery assets))

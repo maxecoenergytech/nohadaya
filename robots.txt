@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # robots.txt for NOHADAYA – The Mind & Motion Studio
 # Website: https://www.nohadaya.com/
 
@@ -23,29 +22,3 @@ Crawl-delay: 1
 
 # Sitemap Location
 Sitemap: https://www.nohadaya.com/sitemap.xml
-=======
-# robots.txt for NOHADAYA – The Mind & Motion Studio
-# Website: https://www.nohadaya.com/
-
-User-agent: *
-Allow: /
-Allow: /images/
-Allow: /yoga-classes-guwahati/
-Allow: /abacus-classes-guwahati/
-Allow: /calligraphy-classes-guwahati/
-Allow: /blog/
-
-# Disallow internal admin & backend pipelines
-Disallow: /leads-admin.html
-Disallow: /erp-admin.html
-Disallow: /erp/
-Disallow: /portal-login.html
-Disallow: /backend/
-Disallow: /api/
-
-# Crawl Delay
-Crawl-delay: 1
-
-# Sitemap Location
-Sitemap: https://www.nohadaya.com/sitemap.xml
->>>>>>> f4c8e01 (Update: 2026-09-19 15:47:34 (Auto-sync website, ERP & gallery assets))
