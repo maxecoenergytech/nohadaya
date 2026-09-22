@@ -35,160 +35,284 @@
       display: flex;
       flex-direction: column;
     }
-    header {
-      background: linear-gradient(135deg, var(--gd), var(--g));
-      color: #fff;
-      padding: 1rem 2rem;
-      border-bottom: 2px solid var(--go);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    
+    /* ══════ MODERN LEFT SIDEBAR LAYOUT ══════ */
+    .crm-layout {
+      display: flex;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    /* Left Sidebar */
+    .crm-sidebar {
+      width: 280px;
+      min-width: 280px;
+      background: linear-gradient(180deg, #10281E 0%, #1B4332 50%, #0E241B 100%);
+      color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
       position: sticky;
       top: 0;
+      height: 100vh;
+      overflow-y: auto;
       z-index: 100;
+      border-right: 2px solid var(--go);
+      box-shadow: 4px 0 22px rgba(0,0,0,0.18);
+      transition: left 0.3s ease;
     }
-    .header-in {
-      max-width: 1400px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .brand {
+    .crm-sidebar::-webkit-scrollbar { width: 5px; }
+    .crm-sidebar::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 4px; }
+
+    .sidebar-brand {
+      padding: 18px 20px 16px;
       display: flex;
       align-items: center;
       gap: 12px;
-      text-decoration: none;
-      color: #fff;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+      background: rgba(0,0,0,0.18);
     }
-    .brand img {
+    .sidebar-logo {
       width: 44px;
       height: 44px;
-      border-radius: 50%;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--g), var(--gd));
       border: 2px solid var(--go);
-      object-fit: cover;
-    }
-    .brand-text h1 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-family: 'Playfair Display', serif;
+      font-weight: 800;
       font-size: 1.35rem;
-      color: var(--go);
-      letter-spacing: 2px;
+      color: var(--gol);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    .brand-text p {
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.7);
+    .sidebar-brand-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #FFFFFF;
       letter-spacing: 1px;
-      text-transform: uppercase;
+      margin: 0;
     }
-    .header-actions {
+    .sidebar-brand-text span {
+      font-size: 0.68rem;
+      color: var(--gol);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+    .sidebar-close-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.6rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    /* Sidebar User Profile */
+    .sidebar-user-card {
+      margin: 14px 14px 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      border: none;
-      transition: all 0.2s;
-      font-family: inherit;
-    }
-    .btn-gold { background: var(--go); color: #142d21; }
-    .btn-gold:hover { background: var(--gol); }
-    .btn-outline { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); }
-    .btn-outline:hover { background: rgba(255,255,255,0.2); }
-    
-    main {
-      max-width: 1400px;
-      width: 100%;
-      margin: 1.8rem auto;
-      padding: 0 1.5rem;
-      flex: 1;
-    }
-
-    /* STATS KPI STRIP */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1.8rem;
-    }
-    .stat-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.1rem 1.4rem;
-      box-shadow: var(--shadow);
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--go);
+      color: var(--gd);
+      font-weight: 800;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      justify-content: center;
+      font-size: 0.95rem;
     }
-    .stat-card:hover { transform: translateY(-2px); border-color: var(--g); }
-    .stat-val {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      font-weight: 900;
-      color: var(--gd);
-      line-height: 1.1;
-      margin-top: 4px;
-    }
-    .stat-lbl {
-      font-size: 0.75rem;
-      color: var(--text-mid);
-      font-weight: 700;
+    .user-info { overflow: hidden; line-height: 1.25; }
+    .user-name { font-size: 0.82rem; font-weight: 700; color: #FFFFFF; }
+    .user-role { font-size: 0.7rem; color: var(--gol); }
+    .user-status-dot { font-size: 0.65rem; color: #86EFAC; font-weight: 700; display: block; margin-top: 2px; }
+
+    /* Sidebar Section Titles */
+    .sidebar-section-title {
+      padding: 14px 20px 6px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #A3CFBB;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .stat-icon { font-size: 2rem; opacity: 0.85; }
 
-    /* FUNNEL PIPELINE TABS */
-    .funnel-tabs {
+    /* Sidebar Pipeline Funnel Vertical Menu */
+    .sidebar-funnel-menu {
       display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 10px;
-      margin-bottom: 1.2rem;
-      border-bottom: 2px solid var(--border);
+      flex-direction: column;
+      gap: 3px;
+      padding: 0 10px;
     }
     .f-tab {
-      padding: 8px 16px;
-      border-radius: 20px;
-      background: var(--card-bg);
-      border: 1.5px solid var(--border);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--text-mid);
+      width: 100%;
+      background: transparent;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #E2E8F0;
       cursor: pointer;
-      white-space: nowrap;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
+      gap: 10px;
+      transition: all 0.2s ease;
+      border-left: 3.5px solid transparent;
+      text-align: left;
     }
-    .f-tab:hover { border-color: var(--g); color: var(--g); }
+    .f-tab:hover {
+      background: rgba(255,255,255,0.1);
+      color: #FFFFFF;
+      transform: translateX(3px);
+    }
     .f-tab.active {
-      background: var(--gd);
-      color: #fff;
-      border-color: var(--gd);
-      box-shadow: 0 4px 12px rgba(20,45,33,0.25);
+      background: linear-gradient(90deg, rgba(201,168,76,0.28) 0%, rgba(201,168,76,0.08) 100%);
+      color: var(--gol);
+      border-left-color: var(--go);
+      font-weight: 800;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     }
     .f-count {
-      background: rgba(0,0,0,0.08);
-      padding: 2px 7px;
-      border-radius: 12px;
+      margin-left: auto;
       font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.15);
+      color: #FFFFFF;
+      font-weight: 700;
     }
     .f-tab.active .f-count {
       background: var(--go);
-      color: #142d21;
+      color: var(--gd);
+    }
+
+    /* Sidebar Actions & Portals */
+    .sidebar-portals {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 0 10px;
+    }
+    .sidebar-link {
+      width: 100%;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #CBD5E1;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+    .sidebar-link:hover {
+      background: rgba(255,255,255,0.08);
+      color: #FFFFFF;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.72rem;
+      color: #A3CFBB;
+      line-height: 1.4;
+      background: rgba(0,0,0,0.15);
+    }
+
+    /* Main Container & Topbar */
+    .crm-main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      min-height: 100vh;
+    }
+    .crm-topbar {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .btn-sidebar-toggle {
+      display: none;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--gd);
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+    .crm-crumb-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: var(--gd);
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Backdrop for Mobile Sidebar */
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 95;
+    }
+
+    @media (max-width: 992px) {
+      .crm-sidebar {
+        position: fixed;
+        left: -290px;
+        top: 0;
+        height: 100vh;
+        z-index: 110;
+      }
+      .crm-sidebar.mobile-open { left: 0; }
+      .sidebar-backdrop.mobile-open { display: block; }
+      .sidebar-close-btn { display: block; }
+      .btn-sidebar-toggle { display: flex; }
+      main { padding: 0 1rem; margin: 1.2rem auto; }
+      .crm-topbar { padding: 10px 16px; }
     }
 
     /* CONTROLS BAR */
@@ -643,139 +767,233 @@
 </head>
 <body>
 
-<header>
-  <div class="header-in">
-    <a href="index.html" class="brand">
-      <img src="images/logo.jpg" alt="NOHADAYA Logo">
-      <div class="brand-text">
-        <h1>NOHADAYA</h1>
-        <p>Student Lifecycle &amp; Lead Management CRM</p>
-      </div>
-    </a>
-    <div class="header-actions">
-      <button class="btn btn-gold" onclick="openNewLeadModal()" style="font-weight:900; background:linear-gradient(135deg, var(--go) 0%, var(--gol) 100%); color:#142d21; box-shadow:0 3px 10px rgba(0,0,0,0.25);">➕ Add New Lead / Student</button>
-      <a href="erp/" class="btn btn-outline" style="font-weight:bold;">💼 Operations ERP</a>
-      <a href="index.html" class="btn btn-outline">← Website</a>
-      <button class="btn btn-outline" onclick="exportToCSV()">📥 CSV</button>
-      <button class="btn btn-outline" onclick="loadLeads()">🔄 Refresh</button>
-    </div>
-  </div>
-</header>
+<div class="crm-layout">
 
-<main>
-  <!-- STATS STRIP -->
-  <div class="stats-grid">
-    <div class="stat-card" onclick="filterByStage('')">
-      <div>
-        <div class="stat-lbl">Total Students / Leads</div>
-        <div class="stat-val" id="stat-total">0</div>
+  <!-- ════════════════════════════════════════════════════════
+       LEFT SIDEBAR NAVIGATION & LIFECYCLE FUNNEL
+       ════════════════════════════════════════════════════════ -->
+  <aside class="crm-sidebar" id="crmSidebar">
+    <!-- Sidebar Brand Header -->
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">N</div>
+      <div class="sidebar-brand-text">
+        <h2>NOHADAYA</h2>
+        <span>Student Lifecycle CRM</span>
       </div>
-      <div class="stat-icon">📋</div>
+      <button type="button" class="sidebar-close-btn" onclick="toggleMobileCrmSidebar()" title="Close Sidebar">&times;</button>
     </div>
-    <div class="stat-card" onclick="filterByStage('TRIAL_BOOKED')">
-      <div>
-        <div class="stat-lbl">Trials Scheduled</div>
-        <div class="stat-val" id="stat-trials" style="color:#2563eb;">0</div>
-      </div>
-      <div class="stat-icon">📅</div>
-    </div>
-    <div class="stat-card" onclick="filterByStage('ADMITTED')">
-      <div>
-        <div class="stat-lbl">Admissions Confirmed</div>
-        <div class="stat-val" id="stat-admitted" style="color:#16a34a;">0</div>
-      </div>
-      <div class="stat-icon">🎓</div>
-    </div>
-    <div class="stat-card" onclick="filterByStage('PAID')">
-      <div>
-        <div class="stat-lbl">Active Paid Students</div>
-        <div class="stat-val" id="stat-paid" style="color:#059669;">0</div>
-      </div>
-      <div class="stat-icon">💳</div>
-    </div>
-    <div class="stat-card" onclick="filterByStage('RENEWAL_DUE')">
-      <div>
-        <div class="stat-lbl">Renewals Due &lt; 7 Days</div>
-        <div class="stat-val" id="stat-renewals" style="color:#dc2626;">0</div>
-      </div>
-      <div class="stat-icon">🔔</div>
-    </div>
-  </div>
 
-  <!-- FUNNEL TABS -->
-  <div class="funnel-tabs" id="funnelTabs">
-    <div class="f-tab active" data-stage="" onclick="selectFunnelTab(this, '')">
-      All Pipeline <span class="f-count" id="fc-all">0</span>
+    <!-- Active User Card -->
+    <div class="sidebar-user-card">
+      <div class="user-avatar">N</div>
+      <div class="user-info">
+        <div class="user-name">Mrs. Noor Nahar Begum</div>
+        <div class="user-role">Studio Director</div>
+        <span class="user-status-dot">🟢 CRM Active</span>
+      </div>
     </div>
-    <div class="f-tab" data-stage="NEW_LEAD" onclick="selectFunnelTab(this, 'NEW_LEAD')">
-      📥 1. New Inquiries <span class="f-count" id="fc-new">0</span>
-    </div>
-    <div class="f-tab" data-stage="TRIAL_BOOKED" onclick="selectFunnelTab(this, 'TRIAL_BOOKED')">
-      📅 2. Trial Booked <span class="f-count" id="fc-trial-b">0</span>
-    </div>
-    <div class="f-tab" data-stage="TRIAL_ATTENDED" onclick="selectFunnelTab(this, 'TRIAL_ATTENDED')">
-      🧘 3. Trial Attended <span class="f-count" id="fc-trial-a">0</span>
-    </div>
-    <div class="f-tab" data-stage="FOLLOW_UP" onclick="selectFunnelTab(this, 'FOLLOW_UP')">
-      📞 4. Follow-up Active <span class="f-count" id="fc-fu">0</span>
-    </div>
-    <div class="f-tab" data-stage="ADMITTED" onclick="selectFunnelTab(this, 'ADMITTED')">
-      🎓 5. Admitted <span class="f-count" id="fc-adm">0</span>
-    </div>
-    <div class="f-tab" data-stage="PAID" onclick="selectFunnelTab(this, 'PAID')">
-      💳 6. Active &amp; Paid <span class="f-count" id="fc-paid">0</span>
-    </div>
-    <div class="f-tab" data-stage="RENEWAL_DUE" onclick="selectFunnelTab(this, 'RENEWAL_DUE')">
-      🔄 7. Renewals Due <span class="f-count" id="fc-ren">0</span>
-    </div>
-  </div>
 
-  <!-- SEARCH & FILTER -->
-  <div class="controls-bar">
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="searchInput" placeholder="Search by student name, phone, admission #, or ref code..." oninput="renderTable()">
+    <!-- Section: Quick Lead Entry Action -->
+    <div style="padding: 6px 12px 10px;">
+      <button type="button" class="btn btn-gold" onclick="openNewLeadModal()" style="width:100%; justify-content:center; font-weight:800; background:linear-gradient(135deg, var(--go) 0%, var(--gol) 100%); color:#142d21; box-shadow:0 3px 10px rgba(0,0,0,0.25);">
+        ➕ Add New Lead / Student
+      </button>
     </div>
-    <div class="filter-group">
-      <select class="filter-select" id="programFilter" onchange="renderTable()">
-        <option value="">All Programs</option>
-        <option value="Yoga">Yoga Classes</option>
-        <option value="Abacus">Abacus Training</option>
-        <option value="Calligraphy">Calligraphy Classes</option>
-      </select>
-      <select class="filter-select" id="paymentFilter" onchange="renderTable()">
-        <option value="">Payment: All</option>
-        <option value="PAID">Paid</option>
-        <option value="UNPAID">Unpaid / Pending</option>
-      </select>
-      <button type="button" class="btn btn-gold" onclick="openNewLeadModal()" style="padding:7px 14px; font-size:0.84rem; font-weight:800;">➕ New Lead Entry</button>
+
+    <!-- Section: Lifecycle Funnel Menu -->
+    <div class="sidebar-section-title">PIPELINE STAGES</div>
+    <nav class="sidebar-funnel-menu" id="funnelTabs">
+      <button type="button" class="f-tab active" data-stage="" onclick="selectFunnelTab(this, '')">
+        <span>📋</span>
+        <span>All Pipeline</span>
+        <span class="f-count" id="fc-all">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="NEW_LEAD" onclick="selectFunnelTab(this, 'NEW_LEAD')">
+        <span>📥</span>
+        <span>1. New Inquiries</span>
+        <span class="f-count" id="fc-new">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="TRIAL_BOOKED" onclick="selectFunnelTab(this, 'TRIAL_BOOKED')">
+        <span>📅</span>
+        <span>2. Trial Booked</span>
+        <span class="f-count" id="fc-trial-b">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="TRIAL_ATTENDED" onclick="selectFunnelTab(this, 'TRIAL_ATTENDED')">
+        <span>🧘</span>
+        <span>3. Trial Attended</span>
+        <span class="f-count" id="fc-trial-a">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="FOLLOW_UP" onclick="selectFunnelTab(this, 'FOLLOW_UP')">
+        <span>📞</span>
+        <span>4. Follow-up Active</span>
+        <span class="f-count" id="fc-fu">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="ADMITTED" onclick="selectFunnelTab(this, 'ADMITTED')">
+        <span>🎓</span>
+        <span>5. Admitted</span>
+        <span class="f-count" id="fc-adm">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="PAID" onclick="selectFunnelTab(this, 'PAID')">
+        <span>💳</span>
+        <span>6. Active &amp; Paid</span>
+        <span class="f-count" id="fc-paid">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="RENEWAL_DUE" onclick="selectFunnelTab(this, 'RENEWAL_DUE')">
+        <span>🔄</span>
+        <span>7. Renewals Due</span>
+        <span class="f-count" id="fc-ren">0</span>
+      </button>
+    </nav>
+
+    <!-- Section: Portals & Utilities -->
+    <div class="sidebar-section-title" style="margin-top: 14px;">STUDIO PORTALS</div>
+    <div class="sidebar-portals">
+      <a href="erp/" class="sidebar-link">
+        <span>💼</span>
+        <span>Operations ERP Suite</span>
+      </a>
+      <a href="index.html" class="sidebar-link" target="_blank">
+        <span>🌐</span>
+        <span>Public Website</span>
+      </a>
+      <button type="button" class="sidebar-link" onclick="exportToCSV()">
+        <span>📥</span>
+        <span>Export CSV Ledger</span>
+      </button>
+      <button type="button" class="sidebar-link" onclick="loadLeads()">
+        <span>🔄</span>
+        <span>Refresh Leads Data</span>
+      </button>
     </div>
-  </div>
 
-  <!-- CRM PIPELINE TABLE -->
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Ref / Adm No</th>
-          <th>Student Name</th>
-          <th>Contact &amp; Age</th>
-          <th>Program &amp; Batch</th>
-          <th>Lifecycle Stage</th>
-          <th>Trial Date / Status</th>
-          <th>Fee &amp; Renewal</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody id="leadsBody">
-        <tr>
-          <td colspan="8" style="text-align:center; padding:3rem; color:var(--text-mid);">Loading student lifecycle CRM...</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</main>
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <strong>NOHADAYA Studio</strong><br>
+      <small>ISO 9001:2015 Certified Entity</small><br>
+      <span style="font-size:0.68rem; color:#86EFAC;">Bagharbari, Guwahati</span>
+    </div>
+  </aside>
 
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="crmSidebarBackdrop" onclick="toggleMobileCrmSidebar()"></div>
+
+  <!-- ════════════════════════════════════════════════════════
+       RIGHT MAIN CONTAINER & WORKSPACE
+       ════════════════════════════════════════════════════════ -->
+  <div class="crm-main-container">
+    <!-- Topbar Header -->
+    <header class="crm-topbar">
+      <div class="topbar-left">
+        <button type="button" class="btn-sidebar-toggle" onclick="toggleMobileCrmSidebar()" title="Toggle Navigation Menu">
+          ☰
+        </button>
+        <div class="crm-crumb-title">
+          <span id="activeCrmCrumb">📋 Student Lifecycle &amp; Lead Management</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="btn btn-gold btn-sm" onclick="openNewLeadModal()" style="font-weight:800;">
+          ➕ Add Lead Entry
+        </button>
+        <a href="erp/" class="btn btn-outline btn-sm" style="color:var(--gd); border-color:var(--border);">
+          💼 ERP
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- STATS STRIP -->
+      <div class="stats-grid">
+        <div class="stat-card" onclick="filterByStage('')">
+          <div>
+            <div class="stat-lbl">Total Students / Leads</div>
+            <div class="stat-val" id="stat-total">0</div>
+          </div>
+          <div class="stat-icon">📋</div>
+        </div>
+        <div class="stat-card" onclick="filterByStage('TRIAL_BOOKED')">
+          <div>
+            <div class="stat-lbl">Trials Scheduled</div>
+            <div class="stat-val" id="stat-trials" style="color:#2563eb;">0</div>
+          </div>
+          <div class="stat-icon">📅</div>
+        </div>
+        <div class="stat-card" onclick="filterByStage('ADMITTED')">
+          <div>
+            <div class="stat-lbl">Admissions Confirmed</div>
+            <div class="stat-val" id="stat-admitted" style="color:#16a34a;">0</div>
+          </div>
+          <div class="stat-icon">🎓</div>
+        </div>
+        <div class="stat-card" onclick="filterByStage('PAID')">
+          <div>
+            <div class="stat-lbl">Active Paid Students</div>
+            <div class="stat-val" id="stat-paid" style="color:#059669;">0</div>
+          </div>
+          <div class="stat-icon">💳</div>
+        </div>
+        <div class="stat-card" onclick="filterByStage('RENEWAL_DUE')">
+          <div>
+            <div class="stat-lbl">Renewals Due &lt; 7 Days</div>
+            <div class="stat-val" id="stat-renewals" style="color:#dc2626;">0</div>
+          </div>
+          <div class="stat-icon">🔔</div>
+        </div>
+      </div>
+
+      <!-- SEARCH & FILTER -->
+      <div class="controls-bar">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="Search by student name, phone, admission #, or ref code..." oninput="renderTable()">
+        </div>
+        <div class="filter-group">
+          <select class="filter-select" id="programFilter" onchange="renderTable()">
+            <option value="">All Programs</option>
+            <option value="Yoga">Yoga Classes</option>
+            <option value="Abacus">Abacus Training</option>
+            <option value="Calligraphy">Calligraphy Classes</option>
+          </select>
+          <select class="filter-select" id="paymentFilter" onchange="renderTable()">
+            <option value="">Payment: All</option>
+            <option value="PAID">Paid</option>
+            <option value="UNPAID">Unpaid / Pending</option>
+          </select>
+          <button type="button" class="btn btn-gold" onclick="openNewLeadModal()" style="padding:7px 14px; font-size:0.84rem; font-weight:800;">➕ New Lead Entry</button>
+        </div>
+      </div>
+
+      <!-- CRM PIPELINE TABLE -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Ref / Adm No</th>
+              <th>Student Name</th>
+              <th>Contact &amp; Age</th>
+              <th>Program &amp; Batch</th>
+              <th>Lifecycle Stage</th>
+              <th>Trial Date / Status</th>
+              <th>Fee &amp; Renewal</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="leadsBody">
+            <tr>
+              <td colspan="8" style="text-align:center; padding:3rem; color:var(--text-mid);">Loading student lifecycle CRM...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer style="margin-top:auto; padding:1.2rem; text-align:center; font-size:0.78rem; color:var(--text-mid); border-top:1px solid var(--border); background:#fff;">
+      NOHADAYA Mind &amp; Motion Studio &bull; Roseland Academy Road, Bagharbari, Guwahati, Assam 781037<br>
+      Owner: Mrs. Noor Nahar Begum (+91 70026 04856 / +91 70990 79914) &bull; Confidential Student CRM
+    </footer>
+  </div><!-- End .crm-main-container -->
+</div><!-- End .crm-layout -->
 
 <!-- ════════ MODAL: ADD NEW LEAD / INQUIRY ENTRY ════════ -->
 <div class="drawer-overlay" id="newLeadModal">
@@ -1305,10 +1523,31 @@ function updateCounts() {
   document.getElementById('fc-ren').textContent = renewalsDue.length;
 }
 
+
+function toggleMobileCrmSidebar() {
+  const sb = document.getElementById('crmSidebar');
+  const bd = document.getElementById('crmSidebarBackdrop');
+  if (sb) sb.classList.toggle('mobile-open');
+  if (bd) bd.classList.toggle('mobile-open');
+}
+
 function selectFunnelTab(el, stage) {
   document.querySelectorAll('.f-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
   currentStageFilter = stage;
+  
+  const crumbEl = document.getElementById('activeCrmCrumb');
+  if (crumbEl) {
+    crumbEl.innerHTML = el.innerHTML.replace(/<span class="f-count"[^>]*>.*?<\/span>/g, '').trim() + ' Leads';
+  }
+
+  const sb = document.getElementById('crmSidebar');
+  const bd = document.getElementById('crmSidebarBackdrop');
+  if (sb && sb.classList.contains('mobile-open')) {
+    sb.classList.remove('mobile-open');
+    if (bd) bd.classList.remove('mobile-open');
+  }
+
   renderTable();
 }
 
