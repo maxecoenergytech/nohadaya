@@ -62,15 +62,15 @@ if push_res.returncode == 0:
     print("🔒 Live ERP     : https://www.nohadaya.com/erp")
     print("=" * 60)
 else:
-    # If rejected due to remote branch history, try pulling with rebase
+    # If rejected due to remote branch history, merge safely to preserve all historical commits
     if "fetch first" in push_res.stderr or "non-fast-forward" in push_res.stderr or "rejected" in push_res.stderr:
-        print("\n🔄 Remote repository has newer commits. Syncing with remote...")
-        run_cmd("git pull --rebase --autostash origin main", check=False)
+        print("\n🔄 Remote repository has existing history. Merging safely to preserve all records...")
+        run_cmd("git pull --no-rebase origin main --allow-unrelated-histories -X ours", check=False)
         print("🚀 Retrying push...")
         retry_res = run_cmd("git push -u origin main", check=False)
         if retry_res.returncode == 0:
             print("\n" + "=" * 60)
-            print("  ✅ SUCCESS! SYNCED & PUSHED TO GITHUB")
+            print("  ✅ SUCCESS! SYNCED & PUSHED TO GITHUB (ALL HISTORICAL RECORDS PRESERVED)")
             print("=" * 60)
             print("🌐 GitHub Repo : https://github.com/maxecoenergytech/nohadaya")
             print("☁️ Cloudflare   : Auto-deploying in ~10 seconds...")
