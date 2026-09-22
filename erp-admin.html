@@ -2159,6 +2159,9 @@
       </div>
       <div class="modal-foot">
         <button type="button" class="btn btn-outline" onclick="closeModal('modalPrintPreview')">Close</button>
+        <button type="button" class="btn btn-gold" id="btnSendWhatsAppReceipt" onclick="sendActiveReceiptViaWhatsApp()" style="background:#25D366; color:#FFFFFF; border:none; font-weight:800; display:inline-flex; align-items:center; gap:6px; box-shadow:0 2px 8px rgba(37,211,102,0.3);">
+          <span>💬</span> Send via WhatsApp
+        </button>
         <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Document</button>
       </div>
     </div>
@@ -2711,8 +2714,9 @@
             <td><small>${escapeHtml(f.mode || '')}</small></td>
             <td>${escapeHtml(f.date || '')}</td>
             <td>
-              <div style="display:flex; gap:6px;">
-                <button class="btn btn-outline btn-sm" onclick="printReceipt('${escapeHtml(f.receiptNo)}')" title="Print Voucher Receipt">🖨️ Receipt</button>
+              <div style="display:flex; gap:5px; flex-wrap:wrap;">
+                <button class="btn btn-outline btn-sm" onclick="printReceipt('${escapeHtml(f.receiptNo)}')" title="View / Print Receipt">🖨️ Receipt</button>
+                <button class="btn btn-sm" style="background:#25D366; color:#FFFFFF; border:none; font-weight:700;" onclick="sendFeeReceiptWhatsApp('${escapeHtml(f.receiptNo)}')" title="Send Receipt on WhatsApp">💬 WhatsApp</button>
                 <button class="btn btn-danger-sm btn-sm" onclick="deleteFeePayment('${escapeHtml(f.receiptNo)}')" title="Remove / Delete Fee Entry">🗑️ Delete</button>
               </div>
             </td>
@@ -3124,7 +3128,102 @@
     }
 
     // --- PRINTABLE VOUCHERS (RECEIPT & ID CARD) ---
+    
+    let activePreviewReceiptNo = null;
+    let activePreviewStudentId = null;
+
+    function sendActiveReceiptViaWhatsApp() {
+      if (activePreviewReceiptNo) {
+        sendFeeReceiptWhatsApp(activePreviewReceiptNo);
+      } else if (activePreviewStudentId) {
+        sendStudentIDCardWhatsApp(activePreviewStudentId);
+      } else {
+        alert('No active document selected to send.');
+      }
+    }
+
+    function sendFeeReceiptWhatsApp(receiptNo) {
+      const f = DB.fees.find(item => item.receiptNo === receiptNo);
+      if (!f) {
+        alert('Receipt not found.');
+        return;
+      }
+
+      // Find student phone number
+      let phone = '';
+      const s = DB.students.find(item => item.id === f.studentId || item.name.toLowerCase() === f.studentName.toLowerCase());
+      if (s && s.phone) {
+        phone = s.phone;
+      }
+
+      if (!phone) {
+        phone = prompt(`Enter parent / student WhatsApp phone number for ${f.studentName}:`, '91');
+        if (!phone) return;
+      }
+
+      const cleanPhone = phone.replace(/[^0-9]/g, '');
+      const fullPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
+
+      const receiptMsg = 
+`🪷 *NOHADAYA MIND & MOTION STUDIO*
+*OFFICIAL FEE PAYMENT RECEIPT*
+━━━━━━━━━━━━━━━━━━━━━━━━
+📄 *Receipt No:* ${f.receiptNo}
+👤 *Student Name:* ${f.studentName} (${f.studentId || 'NOH-STUDENT'})
+🎯 *Program Enrolled:* ${f.program}
+💰 *Total Amount Received:* ₹${Number(f.amount).toLocaleString()}.00
+💳 *Payment Mode:* ${f.mode}
+📅 *Receipt Date:* ${f.date}
+📝 *Particulars:* ${f.notes || 'Monthly Tuition Fee'}
+━━━━━━━━━━━━━━━━━━━━━━━━
+📍 *Studio Address:* H/No. 422, Roseland Road, Near Satgaon Nowapara Masjid, Bagharbari, Guwahati 781037
+✨ _A Unit of Mind Castle Mercantile • ISO 9001:2015 Certified_
+📞 *Studio Helpdesk:* +91 91010 65541 / +91 88761 21675
+
+_Thank you for learning with NOHADAYA Studio! 🙏_`;
+
+      const encodedMsg = encodeURIComponent(receiptMsg);
+      window.open(`https://wa.me/${fullPhone}?text=${encodedMsg}`, '_blank');
+      showToast(`Opening WhatsApp receipt for ${f.studentName}...`);
+    }
+
+    function sendStudentIDCardWhatsApp(studentId) {
+      const s = DB.students.find(item => item.id === studentId);
+      if (!s) return;
+
+      let phone = s.phone || '';
+      if (!phone) {
+        phone = prompt(`Enter WhatsApp number for ${s.name}:`, '91');
+        if (!phone) return;
+      }
+
+      const cleanPhone = phone.replace(/[^0-9]/g, '');
+      const fullPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
+
+      const cardMsg = 
+`🪷 *NOHADAYA MIND & MOTION STUDIO*
+*OFFICIAL STUDENT ID VOUCHER*
+━━━━━━━━━━━━━━━━━━━━━━━━
+🆔 *Student ID:* ${s.id}
+👤 *Full Name:* ${s.name}
+🎂 *Age:* ${s.age} Years
+🎯 *Program:* ${s.program}
+⏰ *Assigned Batch:* ${s.batch}
+🛡️ *Guardian Contact:* ${s.phone} (${s.guardian || 'Guardian'})
+━━━━━━━━━━━━━━━━━━━━━━━━
+📍 *Studio:* Roseland Road, Bagharbari, Guwahati 781037
+📞 *Emergency Desk:* +91 91010 65541
+
+_Welcome to NOHADAYA Learning Sanctuary! 🧘🧮✍️_`;
+
+      const encodedMsg = encodeURIComponent(cardMsg);
+      window.open(`https://wa.me/${fullPhone}?text=${encodedMsg}`, '_blank');
+      showToast(`Opening WhatsApp ID Card for ${s.name}...`);
+    }
+
     function printReceipt(receiptNo) {
+      activePreviewReceiptNo = receiptNo;
+      activePreviewStudentId = null;
       const f = DB.fees.find(item => item.receiptNo === receiptNo);
       if (!f) return;
 
@@ -3164,6 +3263,8 @@
     }
 
     function printStudentIDCard(id) {
+      activePreviewStudentId = id;
+      activePreviewReceiptNo = null;
       const s = DB.students.find(item => item.id === id);
       if (!s) return;
 
