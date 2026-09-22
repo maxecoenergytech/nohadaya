@@ -1073,8 +1073,14 @@
         <!-- Collections Ledger -->
         <div>
           <div class="controls-bar" style="margin-bottom: 12px;">
-            <strong>💳 Student Fee Ledger</strong>
-            <button class="btn btn-gold btn-sm" onclick="openRecordFeeModal()">+ Collect Fee</button>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <strong>💳 Student Fee Ledger</strong>
+              <span style="font-size:0.75rem; color:var(--text-muted);">(${DB.fees ? DB.fees.length : 0} entries)</span>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-gold btn-sm" onclick="openRecordFeeModal()">+ Collect Fee</button>
+              <button class="btn btn-danger-sm btn-sm" onclick="clearAllFeeRecords()" title="Remove all fee entries">🗑️ Clear All</button>
+            </div>
           </div>
           <div class="table-container">
             <table class="data-table">
@@ -1098,8 +1104,14 @@
         <!-- Expenses Ledger -->
         <div>
           <div class="controls-bar" style="margin-bottom: 12px;">
-            <strong>🧾 Operational Expenses</strong>
-            <button class="btn btn-outline btn-sm" onclick="openRecordExpenseModal()">+ Add Expense</button>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <strong>🧾 Operational Expenses</strong>
+              <span style="font-size:0.75rem; color:var(--text-muted);">(${DB.expenses ? DB.expenses.length : 0} entries)</span>
+            </div>
+            <div style="display:flex; gap:6px;">
+              <button class="btn btn-outline btn-sm" onclick="openRecordExpenseModal()">+ Add Expense</button>
+              <button class="btn btn-danger-sm btn-sm" onclick="clearAllExpenseRecords()" title="Remove all expense entries">🗑️ Clear All</button>
+            </div>
           </div>
           <div class="table-container">
             <table class="data-table">
@@ -2373,23 +2385,30 @@
       document.getElementById('finPendingFees').textContent = '₹' + (pendingCount * 500).toLocaleString() + ` (${pendingCount} students)`;
 
       // Fees list
-      [...DB.fees].reverse().forEach(f => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${f.receiptNo}</strong></td>
-          <td>
-            ${f.studentName}
-            <div style="font-size:0.72rem; color:var(--text-muted);">${f.notes || ''}</div>
-          </td>
-          <td><strong style="color:var(--success);">₹${f.amount}</strong></td>
-          <td><small>${f.mode}</small></td>
-          <td>${f.date}</td>
-          <td>
-            <button class="btn btn-outline btn-sm" onclick="printReceipt('${f.receiptNo}')">🖨️ Receipt</button>
-          </td>
-        `;
-        feesTbody.appendChild(tr);
-      });
+      if (!DB.fees || DB.fees.length === 0) {
+        feesTbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px; color:var(--text-muted);">No fee receipts found. Click "+ Collect Fee" to record an entry.</td></tr>';
+      } else {
+        [...DB.fees].reverse().forEach(f => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>${escapeHtml(f.receiptNo)}</strong></td>
+            <td>
+              <strong>${escapeHtml(f.studentName)}</strong>
+              <div style="font-size:0.72rem; color:var(--text-muted);">${escapeHtml(f.notes || '')}</div>
+            </td>
+            <td><strong style="color:var(--success);">₹${Number(f.amount || 0).toLocaleString()}</strong></td>
+            <td><small>${escapeHtml(f.mode || '')}</small></td>
+            <td>${escapeHtml(f.date || '')}</td>
+            <td>
+              <div style="display:flex; gap:6px;">
+                <button class="btn btn-outline btn-sm" onclick="printReceipt('${escapeHtml(f.receiptNo)}')" title="Print Voucher Receipt">🖨️ Receipt</button>
+                <button class="btn btn-danger-sm btn-sm" onclick="deleteFeePayment('${escapeHtml(f.receiptNo)}')" title="Remove / Delete Fee Entry">🗑️ Delete</button>
+              </div>
+            </td>
+          `;
+          feesTbody.appendChild(tr);
+        });
+      }
 
       // Expenses list
       [...DB.expenses].reverse().forEach(e => {
@@ -2477,6 +2496,43 @@
       closeModal('modalFee');
       refreshAllViews();
       printReceipt(rNo);
+    }
+
+    
+    function deleteFeePayment(receiptNo) {
+      const f = DB.fees.find(item => item.receiptNo === receiptNo);
+      const studentName = f ? f.studentName : 'Student';
+      const amount = f ? Number(f.amount).toLocaleString() : '0';
+      if (confirm(`Are you sure you want to remove fee receipt "${receiptNo}" (₹${amount} for ${studentName})?\n\nThis will remove the entry from collections and financial reports.`)) {
+        DB.fees = DB.fees.filter(item => item.receiptNo !== receiptNo);
+        recordErpActivity('Financial & Fees', 'Fee Entry Removed', `Deleted fee receipt ${receiptNo} (₹${amount} for ${studentName})`);
+        saveDatabase();
+        refreshAllViews();
+        showToast(`Fee receipt ${receiptNo} deleted.`);
+      }
+    }
+
+    
+    function clearAllFeeRecords() {
+      if (confirm('Are you sure you want to remove ALL fee entries from the ledger? This will reset fee collections to zero.')) {
+        const count = DB.fees.length;
+        DB.fees = [];
+        recordErpActivity('Financial & Fees', 'Ledger Cleared', `Cleared all ${count} fee collection records from ledger`);
+        saveDatabase();
+        refreshAllViews();
+        showToast('All fee entries removed.');
+      }
+    }
+
+    function clearAllExpenseRecords() {
+      if (confirm('Are you sure you want to remove ALL operational expense entries? This will reset expenses to zero.')) {
+        const count = DB.expenses.length;
+        DB.expenses = [];
+        recordErpActivity('Operational Expenses', 'Expenses Cleared', `Cleared all ${count} expense records from ledger`);
+        saveDatabase();
+        refreshAllViews();
+        showToast('All expense entries removed.');
+      }
     }
 
     function openRecordExpenseModal() {
