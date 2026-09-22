@@ -653,9 +653,10 @@
       </div>
     </a>
     <div class="header-actions">
-      <a href="erp/" class="btn btn-gold" style="font-weight:bold; margin-right:6px;">💼 Operations ERP</a>
-      <a href="index.html" class="btn btn-outline">← Back to Website</a>
-      <button class="btn btn-gold" onclick="exportToCSV()">📥 Export Full CSV</button>
+      <button class="btn btn-gold" onclick="openNewLeadModal()" style="font-weight:900; background:linear-gradient(135deg, var(--go) 0%, var(--gol) 100%); color:#142d21; box-shadow:0 3px 10px rgba(0,0,0,0.25);">➕ Add New Lead / Student</button>
+      <a href="erp/" class="btn btn-outline" style="font-weight:bold;">💼 Operations ERP</a>
+      <a href="index.html" class="btn btn-outline">← Website</a>
+      <button class="btn btn-outline" onclick="exportToCSV()">📥 CSV</button>
       <button class="btn btn-outline" onclick="loadLeads()">🔄 Refresh</button>
     </div>
   </div>
@@ -747,6 +748,7 @@
         <option value="PAID">Paid</option>
         <option value="UNPAID">Unpaid / Pending</option>
       </select>
+      <button type="button" class="btn btn-gold" onclick="openNewLeadModal()" style="padding:7px 14px; font-size:0.84rem; font-weight:800;">➕ New Lead Entry</button>
     </div>
   </div>
 
@@ -773,6 +775,73 @@
     </table>
   </div>
 </main>
+
+
+<!-- ════════ MODAL: ADD NEW LEAD / INQUIRY ENTRY ════════ -->
+<div class="drawer-overlay" id="newLeadModal">
+  <div class="drawer" style="max-width: 580px;">
+    <div class="drawer-header">
+      <div>
+        <h2>➕ Add New Student Lead / Inquiry</h2>
+        <small>Create an inquiry record in CRM pipeline</small>
+      </div>
+      <button class="drawer-close" onclick="closeNewLeadModal()">&times;</button>
+    </div>
+    <form id="newLeadForm" onsubmit="saveNewLead(event)" style="display:flex; flex-direction:column; gap:0;">
+      <div class="drawer-body" style="gap:1.2rem; padding:1.4rem 1.6rem;">
+        <div class="form-row">
+          <div class="f-field">
+            <label>Student / Parent Name *</label>
+            <input type="text" id="nl-name" required placeholder="e.g. Aarav Sharma / Rajesh Sharma">
+          </div>
+          <div class="f-field">
+            <label>Phone / WhatsApp *</label>
+            <input type="tel" id="nl-phone" required placeholder="e.g. 9876543210">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Program Discipline *</label>
+            <select id="nl-program" required>
+              <option value="Yoga Classes">🧘 Yoga Classes</option>
+              <option value="Abacus Training">🔢 Abacus Training</option>
+              <option value="Calligraphy Classes">✍️ Calligraphy Classes</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Student Age / Group</label>
+            <input type="text" id="nl-age" placeholder="e.g. 9 Years or Adult">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Initial Pipeline Stage *</label>
+            <select id="nl-stage" required>
+              <option value="NEW_LEAD">📥 1. New Inquiry / Lead</option>
+              <option value="TRIAL_BOOKED">📅 2. Free Trial Booked</option>
+              <option value="TRIAL_ATTENDED">🧘 3. Trial Attended</option>
+              <option value="FOLLOW_UP">📞 4. Follow-up Active</option>
+              <option value="ADMITTED">🎓 5. Admission Confirmed</option>
+              <option value="PAID">💳 6. Paid &amp; Active</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Preferred Batch</label>
+            <input type="text" id="nl-batch" placeholder="e.g. Morning 6:00 AM / Evening 4:00 PM">
+          </div>
+        </div>
+        <div class="f-field">
+          <label>Inquiry Notes / Source</label>
+          <textarea id="nl-notes" rows="2" placeholder="e.g. Inquired via Website Contact / Referred by friend / Wants weekend batch"></textarea>
+        </div>
+      </div>
+      <div class="drawer-footer" style="padding:1rem 1.6rem; border-top:1px solid var(--border); background:#f8faf9; display:flex; justify-content:flex-end; gap:10px;">
+        <button type="button" class="btn btn-outline" style="color:var(--gd); border-color:var(--border);" onclick="closeNewLeadModal()">Cancel</button>
+        <button type="submit" class="btn btn-gold" style="font-weight:800;">➕ Save Lead Entry</button>
+      </div>
+    </form>
+  </div>
+</div>
 
 <!-- ════════ STUDENT 360° LIFECYCLE DRAWER / MODAL ════════ -->
 <div class="drawer-overlay" id="lifecycleDrawer">
@@ -1024,12 +1093,163 @@
 </footer>
 
 <script>
+
+/* ══════ NEW LEAD MODAL & ENTRY FUNCTIONS ══════ */
+const BASELINE_LEADS = [
+  {
+    lead_id: 'NOH-2026-001',
+    admission_no: 'ADM-26-0101',
+    name: 'Aarav Sharma',
+    phone: '9876543210',
+    email: 'rajesh.sharma@example.com',
+    program: 'Abacus Training',
+    age_group: '9 Years',
+    batch: 'Morning 9:00 AM - 11:00 AM',
+    stage: 'PAID',
+    payment_status: 'PAID',
+    fee_amount: 1500,
+    trial_date: '2026-02-15',
+    trial_status: 'ATTENDED',
+    created_at: '2026-02-10',
+    renewal_due_date: '2026-03-31'
+  },
+  {
+    lead_id: 'NOH-2026-002',
+    admission_no: 'ADM-26-0102',
+    name: 'Priyanka Das',
+    phone: '9101122334',
+    email: 'priyanka.das@example.com',
+    program: 'Yoga Classes',
+    age_group: '28 Years (Adult)',
+    batch: 'Morning 6:00 AM - 7:30 AM',
+    stage: 'PAID',
+    payment_status: 'PAID',
+    fee_amount: 1500,
+    trial_date: '2026-02-20',
+    trial_status: 'ATTENDED',
+    created_at: '2026-02-18',
+    renewal_due_date: '2026-03-25'
+  },
+  {
+    lead_id: 'NOH-2026-003',
+    admission_no: 'ADM-26-0103',
+    name: 'Rohan Bordoloi',
+    phone: '8876121675',
+    email: 'bordoloi.r@example.com',
+    program: 'Calligraphy Classes',
+    age_group: '11 Years',
+    batch: 'Evening 5:00 PM - 6:30 PM',
+    stage: 'ADMITTED',
+    payment_status: 'UNPAID',
+    fee_amount: 1200,
+    trial_date: '2026-03-01',
+    trial_status: 'ATTENDED',
+    created_at: '2026-02-28',
+    renewal_due_date: '2026-03-28'
+  },
+  {
+    lead_id: 'NOH-2026-004',
+    admission_no: '',
+    name: 'Ishita Kalita',
+    phone: '9435012345',
+    email: 'kalita.family@example.com',
+    program: 'Abacus Training',
+    age_group: '7 Years',
+    batch: 'Evening 4:00 PM - 6:00 PM',
+    stage: 'TRIAL_BOOKED',
+    payment_status: 'UNPAID',
+    fee_amount: 1500,
+    trial_date: '2026-03-25',
+    trial_time: '16:00',
+    trial_status: 'SCHEDULED',
+    created_at: '2026-03-15'
+  },
+  {
+    lead_id: 'NOH-2026-005',
+    admission_no: '',
+    name: 'Ananya Dutta',
+    phone: '7002604856',
+    email: 'ananya.dutta@example.com',
+    program: 'Yoga Classes',
+    age_group: 'Adult (Evening Batch)',
+    batch: 'Evening 5:00 PM - 6:30 PM',
+    stage: 'NEW_LEAD',
+    payment_status: 'UNPAID',
+    fee_amount: 1500,
+    created_at: '2026-03-20',
+    message: 'Inquired via website contact form for Spine Health & Meditation.'
+  }
+];
+
+function openNewLeadModal() {
+  document.getElementById('newLeadForm').reset();
+  document.getElementById('newLeadModal').classList.add('open');
+}
+
+function closeNewLeadModal() {
+  document.getElementById('newLeadModal').classList.remove('open');
+}
+
+function saveNewLead(e) {
+  e.preventDefault();
+  const name = document.getElementById('nl-name').value.trim();
+  const phone = document.getElementById('nl-phone').value.trim();
+  const program = document.getElementById('nl-program').value;
+  const age_group = document.getElementById('nl-age').value.trim();
+  const stage = document.getElementById('nl-stage').value;
+  const batch = document.getElementById('nl-batch').value.trim();
+  const notes = document.getElementById('nl-notes').value.trim();
+
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0];
+  const refCode = 'NOH-' + now.getFullYear() + '-' + String(allLeads.length + 1).padStart(3, '0');
+
+  const newLead = {
+    lead_id: refCode,
+    name,
+    phone,
+    email: '',
+    program,
+    age_group,
+    stage,
+    batch: batch || 'Morning / Evening Batch',
+    message: notes,
+    follow_up_notes: notes,
+    payment_status: stage === 'PAID' ? 'PAID' : 'UNPAID',
+    fee_amount: 1500,
+    created_at: dateStr,
+    trial_status: stage === 'TRIAL_BOOKED' ? 'SCHEDULED' : (stage === 'TRIAL_ATTENDED' ? 'ATTENDED' : 'NOT_SCHEDULED')
+  };
+
+  allLeads.unshift(newLead);
+  localStorage.setItem('nohadaya_leads', JSON.stringify(allLeads));
+  closeNewLeadModal();
+  updateCounts();
+  renderTable();
+  alert(`Lead entry for "${name}" created successfully with ID: ${refCode}`);
+}
+
+function deleteLead(index) {
+  const l = allLeads[index];
+  if (!l) return;
+  if (confirm(`Are you sure you want to remove lead inquiry for "${l.name}" (${l.phone})?`)) {
+    allLeads.splice(index, 1);
+    localStorage.setItem('nohadaya_leads', JSON.stringify(allLeads));
+    updateCounts();
+    renderTable();
+  }
+}
+
 let allLeads = [];
 let activeLeadIndex = -1;
 let currentStageFilter = '';
 
 async function loadLeads() {
-  const localLeads = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
+  let localLeads = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
+  if (localLeads.length === 0) {
+    localLeads = JSON.parse(JSON.stringify(BASELINE_LEADS));
+    localStorage.setItem('nohadaya_leads', JSON.stringify(localLeads));
+  }
   let apiLeads = [];
 
   try {
@@ -1138,7 +1358,12 @@ function renderTable() {
   });
 
   if (filtered.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:3rem; color:var(--text-mid);">No students found matching your criteria.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="8" style="text-align:center; padding:3.5rem 1rem; color:var(--text-mid);">
+      <div style="font-size:2rem; margin-bottom:8px;">📋</div>
+      <strong style="font-size:1.1rem; color:var(--gd); display:block; margin-bottom:6px;">No student leads found in this view.</strong>
+      <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:14px;">Create your first lead inquiry or click below to add a student to the CRM pipeline.</p>
+      <button class="btn btn-gold" onclick="openNewLeadModal()" style="font-weight:800; padding:9px 20px;">➕ Add New Lead Entry</button>
+    </td></tr>`;
     return;
   }
 
@@ -1203,6 +1428,7 @@ function renderTable() {
             <button class="act-btn act-manage" onclick="openDrawer(${origIndex})" title="Manage Student Lifecycle">⚙️ Lifecycle</button>
             <a href="https://wa.me/${waPhone}" target="_blank" class="act-btn act-wa" title="WhatsApp Student">💬</a>
             <a href="tel:+${cleanPhone}" class="act-btn act-call" title="Call Student">📞</a>
+            <button class="act-btn" style="background:#fee2e2; color:#dc2626;" onclick="deleteLead(${origIndex})" title="Remove Lead">🗑️</button>
           </div>
         </td>
       </tr>
