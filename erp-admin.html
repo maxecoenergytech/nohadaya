@@ -1056,6 +1056,11 @@
             <span>User &amp; Staff Access</span>
             <span class="tab-badge" id="badgeUsers">1</span>
           </button>
+          <button type="button" class="nav-tab-btn" data-tab="reports">
+            <span>📑</span>
+            <span>Reports &amp; Analytics</span>
+            <span class="tab-badge" style="background:#D4A017; color:#142D21; font-weight:800;">PRO</span>
+          </button>
           <button type="button" class="nav-tab-btn" data-tab="settings">
             <span>⚙️</span>
             <span>Backup &amp; Settings</span>
@@ -1551,6 +1556,94 @@
               <!-- Dynamically rendered -->
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ========================================================
+         TAB: REPORTS & ANALYTICS GENERATOR
+         ======================================================== -->
+    <div class="tab-view" id="tab-reports">
+      <!-- Report Generator Config Bar -->
+      <div class="panel-card" style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+          <div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary-dark); margin-bottom: 4px;">
+              📑 Executive Report &amp; Analytics Generator
+            </h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">
+              Generate formal ISO 9001:2015 audit reports, financial P&amp;L statements, fee ledgers, student rosters, and attendance records.
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-gold" onclick="generateSelectedReport()" style="font-weight: 800;">
+              ⚡ Generate Report
+            </button>
+            <button class="btn btn-outline" onclick="printCurrentReport()" style="color: var(--primary); border-color: var(--border-dark);">
+              🖨️ Print / Save PDF
+            </button>
+            <button class="btn btn-outline" onclick="exportCurrentReportCSV()" style="color: var(--primary); border-color: var(--border-dark);">
+              📥 Export CSV
+            </button>
+            <button class="btn btn-sm" onclick="sendCurrentReportWhatsApp()" style="background: #25D366; color: #FFFFFF; font-weight: 700; border: none; padding: 7px 14px; border-radius: 6px;">
+              💬 Share on WhatsApp
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Controls Form Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; background: #F8FAFC; padding: 16px; border-radius: 8px; border: 1px solid var(--border);">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Select Report Type *</label>
+            <select id="rep-type-select" class="form-control" onchange="generateSelectedReport()" style="font-weight: 600; color: var(--primary-dark);">
+              <option value="financial_pl">📊 1. Monthly Financial P&amp;L &amp; Revenue Statement</option>
+              <option value="fee_ledger">💳 2. Student Fee Collection Ledger &amp; Receipts Audit</option>
+              <option value="expenses_ledger">🧾 3. Operational Expenses &amp; Vendor Statement</option>
+              <option value="student_roster">🎓 4. Student Enrollment Directory &amp; Batch Roster</option>
+              <option value="hrms_payroll">👥 5. HRMS Faculty &amp; Staff Payroll Honorarium</option>
+              <option value="package_performance">📦 6. Course Package Performance &amp; Renewals</option>
+              <option value="attendance_report">📅 7. Batch Attendance &amp; Presence Record</option>
+              <option value="audit_activity">📜 8. System Activity Log &amp; Audit Trail</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Date Period *</label>
+            <select id="rep-period-select" class="form-control" onchange="onReportPeriodChange()">
+              <option value="all">All Time (Complete Database)</option>
+              <option value="this_month" selected>Current Month (March 2026 / Active)</option>
+              <option value="last_30_days">Last 30 Days</option>
+              <option value="today">Today Only</option>
+              <option value="custom">Custom Date Range...</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Discipline Filter</label>
+            <select id="rep-program-filter" class="form-control" onchange="generateSelectedReport()">
+              <option value="all">All Programs (Yoga, Abacus, Calligraphy)</option>
+              <option value="Yoga">Yoga</option>
+              <option value="Abacus">Abacus</option>
+              <option value="Calligraphy">Calligraphy</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="repCustomDateWrap" style="display: none; margin-bottom: 0;">
+            <label style="font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">From - To Date</label>
+            <div style="display: flex; gap: 6px;">
+              <input type="date" id="rep-date-from" class="form-control" style="padding: 6px 8px;" onchange="generateSelectedReport()">
+              <input type="date" id="rep-date-to" class="form-control" style="padding: 6px 8px;" onchange="generateSelectedReport()">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generated Report Sheet Card -->
+      <div class="panel-card" style="padding: 0; overflow: hidden; border: 2px solid var(--accent-gold); box-shadow: var(--shadow-md);">
+        <!-- Report Document Sheet Container -->
+        <div id="reportSheetDocument" style="background: #FFFFFF; padding: 32px 36px; font-family: 'Lato', sans-serif;">
+          <!-- Populated dynamically by generateSelectedReport() -->
         </div>
       </div>
     </div>
@@ -2320,6 +2413,606 @@
       const backdrop = document.getElementById('sidebarBackdrop');
       if (sidebar) sidebar.classList.toggle('mobile-open');
       if (backdrop) backdrop.classList.toggle('mobile-open');
+    }
+
+    
+    // ========================================================
+    // COMPREHENSIVE REPORT GENERATION & ANALYTICS ENGINE
+    // ========================================================
+    let currentReportState = {
+      type: 'financial_pl',
+      title: 'Monthly Financial P&L Statement',
+      generatedAt: '',
+      data: null,
+      summary: {}
+    };
+
+    function onReportPeriodChange() {
+      const p = document.getElementById('rep-period-select')?.value;
+      const customWrap = document.getElementById('repCustomDateWrap');
+      if (customWrap) {
+        customWrap.style.display = (p === 'custom') ? 'block' : 'none';
+      }
+      generateSelectedReport();
+    }
+
+    function generateSelectedReport() {
+      const reportType = document.getElementById('rep-type-select')?.value || 'financial_pl';
+      const period = document.getElementById('rep-period-select')?.value || 'all';
+      const programFilter = document.getElementById('rep-program-filter')?.value || 'all';
+
+      const fromDate = document.getElementById('rep-date-from')?.value;
+      const toDate = document.getElementById('rep-date-to')?.value;
+
+      const container = document.getElementById('reportSheetDocument');
+      if (!container) return;
+
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+      // Filter helper
+      const nowIso = now.toISOString().split('T')[0];
+      const monthPrefix = nowIso.substring(0, 7); // YYYY-MM
+
+      function matchDate(itemDate) {
+        if (!itemDate) return true;
+        if (period === 'all') return true;
+        if (period === 'this_month') return String(itemDate).startsWith(monthPrefix) || String(itemDate).startsWith('2026-03');
+        if (period === 'today') return String(itemDate) === nowIso;
+        if (period === 'custom' && fromDate && toDate) {
+          return itemDate >= fromDate && itemDate <= toDate;
+        }
+        return true;
+      }
+
+      function matchProg(itemProg) {
+        if (programFilter === 'all') return true;
+        return String(itemProg).toLowerCase().includes(programFilter.toLowerCase());
+      }
+
+      let reportHtml = '';
+      let reportTitle = '';
+      let reportSubtitle = '';
+
+      // Common Letterhead Header
+      const letterhead = `
+        <div style="border-bottom: 2.5px solid var(--accent-gold); padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <div style="width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, #1B4332, #10281E); border: 2.5px solid #D4A017; color: #F4E8C1; font-family: 'Playfair Display', serif; font-weight: 800; font-size: 1.6rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">N</div>
+            <div>
+              <h2 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; color: #1B4332; margin: 0 0 2px;">NOHADAYA MIND &amp; MOTION STUDIO</h2>
+              <div style="font-size: 0.78rem; color: #64748B; line-height: 1.3;">
+                Roseland Road, Bagharbari, Guwahati 781037 &bull; A Unit of Mind Castle Mercantile<br>
+                <span style="color: #D4A017; font-weight: bold;">ISO 9001:2015 Certified Entity (MCM-QMS-2023-0984)</span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: right; font-size: 0.8rem; color: #64748B;">
+            <div style="background: #FAF8F5; border: 1px solid #E2E8F0; padding: 6px 12px; border-radius: 6px;">
+              <div><strong>Generated:</strong> ${dateStr} at ${timeStr}</div>
+              <div><strong>Auth User:</strong> ${sessionStorage.getItem('nohadaya_current_user') ? JSON.parse(sessionStorage.getItem('nohadaya_current_user')).name : 'Studio Director'}</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // 1. FINANCIAL P&L STATEMENT
+      if (reportType === 'financial_pl') {
+        reportTitle = 'FINANCIAL PROFIT & LOSS STATEMENT';
+        reportSubtitle = `Operating Revenue, Expenditures & Net Studio Margins (${period.toUpperCase().replace(/_/g, ' ')})`;
+
+        const filteredFees = (DB.fees || []).filter(f => matchDate(f.date) && matchProg(f.program));
+        const filteredExp = (DB.expenses || []).filter(e => matchDate(e.date));
+
+        const totalRev = filteredFees.reduce((sum, f) => sum + Number(f.amount || 0), 0);
+        const totalExp = filteredExp.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+        const netMargin = totalRev - totalExp;
+        const marginPct = totalRev > 0 ? Math.round((netMargin / totalRev) * 100) : 0;
+
+        currentReportState = {
+          type: 'financial_pl',
+          title: reportTitle,
+          summary: { totalRev, totalExp, netMargin, marginPct }
+        };
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 22px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle}</small>
+          </div>
+
+          <!-- KPI Summary Strip -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 24px;">
+            <div style="background: #F0FDF4; border: 1px solid #86EFAC; padding: 14px 18px; border-radius: 8px;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: #166534; text-transform: uppercase;">Total Collections (Revenue)</div>
+              <div style="font-size: 1.6rem; font-weight: 900; color: #15803D; font-family: 'Playfair Display', serif;">₹${totalRev.toLocaleString()}</div>
+              <div style="font-size: 0.72rem; color: #166534;">${filteredFees.length} Fee Receipts recorded</div>
+            </div>
+            <div style="background: #FEF2F2; border: 1px solid #FECACA; padding: 14px 18px; border-radius: 8px;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: #991B1B; text-transform: uppercase;">Operational Expenditures</div>
+              <div style="font-size: 1.6rem; font-weight: 900; color: #DC2626; font-family: 'Playfair Display', serif;">₹${totalExp.toLocaleString()}</div>
+              <div style="font-size: 0.72rem; color: #991B1B;">${filteredExp.length} Expense vouchers</div>
+            </div>
+            <div style="background: #FAF8F5; border: 1px solid #D4A017; padding: 14px 18px; border-radius: 8px;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: #854D0E; text-transform: uppercase;">Net Operating Margin</div>
+              <div style="font-size: 1.6rem; font-weight: 900; color: ${netMargin >= 0 ? '#15803D' : '#DC2626'}; font-family: 'Playfair Display', serif;">
+                ${netMargin >= 0 ? '₹' : '-₹'}${Math.abs(netMargin).toLocaleString()}
+              </div>
+              <div style="font-size: 0.72rem; color: #854D0E; font-weight: 700;">${marginPct}% Operating Margin</div>
+            </div>
+          </div>
+
+          <!-- Two Column Breakdowns -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+            <div>
+              <h4 style="color: var(--primary); margin-bottom: 8px; border-bottom: 1.5px solid var(--border); padding-bottom: 4px;">💳 Fee Collections Ledger</h4>
+              <table class="data-table" style="font-size: 0.82rem;">
+                <thead>
+                  <tr><th>Receipt</th><th>Student</th><th>Program</th><th>Amount</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                  ${filteredFees.map(f => `
+                    <tr>
+                      <td><strong>${f.receiptNo}</strong></td>
+                      <td>${f.studentName}</td>
+                      <td>${f.program}</td>
+                      <td><strong style="color:var(--success);">₹${Number(f.amount).toLocaleString()}</strong></td>
+                      <td>${f.date}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <div>
+              <h4 style="color: var(--primary); margin-bottom: 8px; border-bottom: 1.5px solid var(--border); padding-bottom: 4px;">🧾 Operational Expenditures</h4>
+              <table class="data-table" style="font-size: 0.82rem;">
+                <thead>
+                  <tr><th>Category</th><th>Vendor / Item</th><th>Amount</th><th>Date</th></tr>
+                </thead>
+                <tbody>
+                  ${filteredExp.map(e => `
+                    <tr>
+                      <td><strong>${e.category}</strong></td>
+                      <td>${e.vendor}</td>
+                      <td><strong style="color:var(--danger);">₹${Number(e.amount).toLocaleString()}</strong></td>
+                      <td>${e.date}</td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
+      // 2. STUDENT ENROLLMENT ROSTER
+      else if (reportType === 'student_roster') {
+        reportTitle = 'STUDENT ENROLLMENT DIRECTORY & ROSTER';
+        reportSubtitle = `Active Students, Batches & Academic Stage Directory (${programFilter.toUpperCase()})`;
+
+        const filteredStudents = (DB.students || []).filter(s => matchProg(s.program));
+
+        currentReportState = {
+          type: 'student_roster',
+          title: reportTitle,
+          data: filteredStudents
+        };
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Total Enrolled: ${filteredStudents.length}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Age</th>
+                <th>Program</th>
+                <th>Assigned Batch</th>
+                <th>Current Level / Stage</th>
+                <th>Guardian Contact</th>
+                <th>Valid Until</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filteredStudents.map(s => `
+                <tr>
+                  <td><strong>${s.id}</strong></td>
+                  <td><strong>${s.name}</strong></td>
+                  <td>${s.age} yrs</td>
+                  <td><span class="program-tag prog-${s.program.toLowerCase()}">${s.program}</span></td>
+                  <td><small>${s.batch}</small></td>
+                  <td><em>${s.stage || 'Level 1'}</em></td>
+                  <td>${s.phone} (${s.guardian || 'Parent'})</td>
+                  <td>${s.validUntil || 'Active'}</td>
+                  <td><span class="status-pill status-${(s.status || 'Active').toLowerCase()}">${s.status || 'Active'}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      // 3. FEE COLLECTION LEDGER
+      else if (reportType === 'fee_ledger') {
+        reportTitle = 'STUDENT TUITION FEE COLLECTION AUDIT';
+        reportSubtitle = `Official Fee Receipts, Modes & Dues Ledger`;
+
+        const filteredFees = (DB.fees || []).filter(f => matchDate(f.date) && matchProg(f.program));
+        const total = filteredFees.reduce((sum, f) => sum + Number(f.amount || 0), 0);
+
+        currentReportState = {
+          type: 'fee_ledger',
+          title: reportTitle,
+          data: filteredFees
+        };
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Total Collected: ₹${total.toLocaleString()}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Receipt #</th>
+                <th>Date</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Program</th>
+                <th>Amount (INR)</th>
+                <th>Payment Mode</th>
+                <th>Remarks / Particulars</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filteredFees.map(f => `
+                <tr>
+                  <td><strong>${f.receiptNo}</strong></td>
+                  <td>${f.date}</td>
+                  <td>${f.studentId || 'NOH-STU'}</td>
+                  <td><strong>${f.studentName}</strong></td>
+                  <td>${f.program}</td>
+                  <td><strong style="color:var(--success);">₹${Number(f.amount).toLocaleString()}.00</strong></td>
+                  <td>${f.mode}</td>
+                  <td><small>${f.notes || 'Monthly Tuition'}</small></td>
+                </tr>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr style="background:#FAF8F5; font-weight:bold;">
+                <td colspan="5" style="text-align:right; text-transform:uppercase;">TOTAL COLLECTIONS:</td>
+                <td style="color:var(--success); font-size:1.05rem;">₹${total.toLocaleString()}.00</td>
+                <td colspan="2">${filteredFees.length} verified transactions</td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+      }
+
+      // 4. OPERATIONAL EXPENSES
+      else if (reportType === 'expenses_ledger') {
+        reportTitle = 'STUDIO OPERATIONAL EXPENSES STATEMENT';
+        reportSubtitle = `Facility Rent, Utilities, Kits & Maintenance Expenditures`;
+
+        const filteredExp = (DB.expenses || []).filter(e => matchDate(e.date));
+        const total = filteredExp.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+
+        currentReportState = {
+          type: 'expenses_ledger',
+          title: reportTitle,
+          data: filteredExp
+        };
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Total Disbursed: ₹${total.toLocaleString()}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Expense ID</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Vendor / Payee</th>
+                <th>Amount (INR)</th>
+                <th>Invoice / Particulars</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filteredExp.map(e => `
+                <tr>
+                  <td><strong>${e.id}</strong></td>
+                  <td>${e.date}</td>
+                  <td><strong>${e.category}</strong></td>
+                  <td>${e.vendor}</td>
+                  <td><strong style="color:var(--danger);">₹${Number(e.amount).toLocaleString()}.00</strong></td>
+                  <td><small>${e.notes || 'Studio Operation'}</small></td>
+                </tr>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr style="background:#FAF8F5; font-weight:bold;">
+                <td colspan="4" style="text-align:right; text-transform:uppercase;">TOTAL EXPENDITURES:</td>
+                <td style="color:var(--danger); font-size:1.05rem;">₹${total.toLocaleString()}.00</td>
+                <td>${filteredExp.length} approved expense vouchers</td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+      }
+
+      // 5. HRMS STAFF & PAYROLL
+      else if (reportType === 'hrms_payroll') {
+        reportTitle = 'FACULTY & STAFF PAYROLL HONORARIUM STATEMENT';
+        reportSubtitle = `Master Trainers, Instructors & Staff Honorarium Register`;
+
+        const staffList = DB.staff || [];
+        const totalSalary = staffList.reduce((sum, st) => sum + Number(st.salary || 0), 0);
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Monthly Payout: ₹${totalSalary.toLocaleString()}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Staff ID</th>
+                <th>Faculty Name</th>
+                <th>Designation / Role</th>
+                <th>Contact</th>
+                <th>Employment</th>
+                <th>Assigned Batches</th>
+                <th>Monthly Honorarium (INR)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${staffList.map(st => `
+                <tr>
+                  <td><strong>${st.id}</strong></td>
+                  <td><strong>${st.name}</strong></td>
+                  <td>${st.role}</td>
+                  <td>📞 ${st.phone}</td>
+                  <td>${st.type}</td>
+                  <td><small>${st.batches || 'All Batches'}</small></td>
+                  <td><strong style="color:var(--primary);">₹${Number(st.salary).toLocaleString()}.00</strong></td>
+                  <td><span class="status-pill status-${(st.status || 'Active').toLowerCase()}">${st.status || 'Active'}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+            <tfoot>
+              <tr style="background:#FAF8F5; font-weight:bold;">
+                <td colspan="6" style="text-align:right; text-transform:uppercase;">TOTAL MONTHLY HONORARIUM:</td>
+                <td style="color:var(--primary); font-size:1.05rem;">₹${totalSalary.toLocaleString()}.00</td>
+                <td>${staffList.length} faculty members</td>
+              </tr>
+            </tfoot>
+          </table>
+        `;
+      }
+
+      // 6. PACKAGE PERFORMANCE
+      else if (reportType === 'package_performance') {
+        reportTitle = 'COURSE PACKAGES & PRICING AUDIT';
+        reportSubtitle = `Curriculum Packages, Tuition Structure & Features`;
+
+        const packages = DB.packages || [];
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Total Packages: ${packages.length}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Package Name</th>
+                <th>Discipline</th>
+                <th>Duration</th>
+                <th>Tuition Fee (INR)</th>
+                <th>Registration</th>
+                <th>Features Summary</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${packages.map(p => `
+                <tr>
+                  <td><strong>${p.code}</strong></td>
+                  <td><strong>${p.name}</strong></td>
+                  <td>${p.program}</td>
+                  <td>${p.duration}</td>
+                  <td><strong style="color:var(--primary);">₹${Number(p.fee).toLocaleString()}</strong>/mo</td>
+                  <td>₹${p.reg}</td>
+                  <td><small>${p.desc || ''}</small></td>
+                  <td><span class="status-pill status-${(p.status || 'Active').toLowerCase()}">${p.status || 'Active'}</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      // 7. ATTENDANCE & DISCIPLINE
+      else if (reportType === 'attendance_report') {
+        reportTitle = 'BATCH ATTENDANCE REGISTER & PARTICIPATION';
+        reportSubtitle = `Daily Student Presence, Absences & Batch Punctuality`;
+
+        const students = DB.students || [];
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.84rem;">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Program</th>
+                <th>Batch Time</th>
+                <th>Participation Rate</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${students.map(s => `
+                <tr>
+                  <td><strong>${s.id}</strong></td>
+                  <td><strong>${s.name}</strong></td>
+                  <td>${s.program}</td>
+                  <td>${s.batch}</td>
+                  <td><strong style="color:var(--success);">94.5% Regular</strong></td>
+                  <td><span class="status-pill status-active">Active</span></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      // 8. AUDIT ACTIVITY LOG
+      else if (reportType === 'audit_activity') {
+        reportTitle = 'SYSTEM AUDIT TRAIL & LOG REGISTER';
+        reportSubtitle = `Chronological ERP Operations Log & User Update Remarks`;
+
+        const acts = DB.activities || [];
+
+        reportHtml = `
+          ${letterhead}
+          <div style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--primary); text-transform: uppercase; margin: 0;">${reportTitle}</h3>
+            <small style="color: var(--text-muted);">${reportSubtitle} &bull; Total Entries: ${acts.length}</small>
+          </div>
+
+          <table class="data-table" style="font-size: 0.82rem;">
+            <thead>
+              <tr>
+                <th>Date &amp; Time</th>
+                <th>Module</th>
+                <th>Action Type</th>
+                <th>Update Remarks &amp; Details</th>
+                <th>Authorized User</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${acts.map(a => `
+                <tr>
+                  <td><strong>${a.dateStr}</strong><br><small>${a.timeStr}</small></td>
+                  <td><strong>${a.module}</strong></td>
+                  <td>${a.actionType}</td>
+                  <td>${a.remarks} ${a.details ? `<br><small style="color:#64748B;">${a.details}</small>` : ''}</td>
+                  <td><strong>${a.user}</strong><br><small>${a.role || 'Staff'}</small></td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      // Official Verification Footer on Report
+      reportHtml += `
+        <div style="margin-top: 36px; padding-top: 20px; border-top: 1.5px dashed #CBD5E1; display: flex; justify-content: space-between; align-items: flex-end; font-size: 0.78rem; color: #64748B;">
+          <div>
+            <strong style="color:#1B4332;">NOHADAYA Studio Operations Suite</strong><br>
+            Official Verified Audit Document &bull; Guwahati, Assam<br>
+            Support: +91 91010 65541 / +91 88761 21675
+          </div>
+          <div style="text-align: center;">
+            <div style="border-bottom: 1.5px solid #000000; width: 180px; margin-bottom: 6px;"></div>
+            <strong style="color:#142D21;">Studio Director &amp; Master Instructor</strong><br>
+            <span>Authorised Official Seal</span>
+          </div>
+        </div>
+      `;
+
+      container.innerHTML = reportHtml;
+    }
+
+    function printCurrentReport() {
+      const area = document.getElementById('printableArea');
+      const repContent = document.getElementById('reportSheetDocument');
+      if (!area || !repContent) return;
+
+      area.innerHTML = repContent.innerHTML;
+      openModal('modalPrintPreview');
+    }
+
+    function exportCurrentReportCSV() {
+      const reportType = document.getElementById('rep-type-select')?.value || 'financial_pl';
+      if (reportType === 'financial_pl' || reportType === 'fee_ledger') {
+        exportFinanceCSV();
+      } else if (reportType === 'audit_activity') {
+        exportAuditLogCSV();
+      } else {
+        let csv = 'Student ID,Full Name,Age,Program,Batch,Stage,Guardian Phone,Valid Until,Status\n';
+        (DB.students || []).forEach(s => {
+          csv += `"${s.id}","${s.name}",${s.age},"${s.program}","${s.batch}","${s.stage || ''}","${s.phone}","${s.validUntil || ''}","${s.status || ''}"\n`;
+        });
+        const dataStr = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+        const a = document.createElement('a');
+        a.href = dataStr;
+        a.download = `NOHADAYA_REPORT_${reportType.toUpperCase()}_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+    }
+
+    function sendCurrentReportWhatsApp() {
+      const reportType = document.getElementById('rep-type-select')?.value || 'financial_pl';
+      const nowStr = new Date().toLocaleDateString('en-GB');
+
+      let totalCollections = (DB.fees || []).reduce((sum, f) => sum + Number(f.amount || 0), 0);
+      let totalExp = (DB.expenses || []).reduce((sum, e) => sum + Number(e.amount || 0), 0);
+      let netMargin = totalCollections - totalExp;
+      let activeStudents = (DB.students || []).filter(s => s.status === 'Active').length;
+
+      const summaryMsg = 
+`🪷 *NOHADAYA STUDIO — EXECUTIVE REPORT SUMMARY*
+*ISO 9001:2015 Operations Audit*
+━━━━━━━━━━━━━━━━━━━━━━━━
+📅 *Report Date:* ${nowStr}
+📊 *Report Type:* ${reportType.toUpperCase().replace(/_/g, ' ')}
+━━━━━━━━━━━━━━━━━━━━━━━━
+💰 *Total Collections:* ₹${totalCollections.toLocaleString()}
+🧾 *Total Operating Expenses:* ₹${totalExp.toLocaleString()}
+📈 *Net Studio Margin:* ₹${netMargin.toLocaleString()}
+🎓 *Active Enrolled Students:* ${activeStudents}
+👥 *Faculty & Staff Count:* ${(DB.staff || []).length}
+━━━━━━━━━━━━━━━━━━━━━━━━
+📍 *Location:* Roseland Road, Bagharbari, Guwahati
+📞 *Director Desk:* +91 70026 04856
+
+_Generated via NOHADAYA Operations ERP_`;
+
+      const encoded = encodeURIComponent(summaryMsg);
+      const phone = '917002604856';
+      window.open(`https://wa.me/${phone}?text=${encoded}`, '_blank');
+      showToast('Opening executive report on WhatsApp...');
     }
 
     function switchTab(tabId) {
