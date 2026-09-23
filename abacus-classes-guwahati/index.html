@@ -989,7 +989,108 @@
       }
     }
 
-  </style>
+  
+    /* ═══ NAVIGATION DROPDOWN ARCHITECTURE ═══ */
+    .nav-item-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav-drop-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: rgba(255,255,255,.88);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .2s;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+    }
+    .nav-drop-btn:hover, .nav-item-dropdown:hover > .nav-drop-btn {
+      color: var(--gol);
+    }
+    .nav-drop-arrow {
+      font-size: 0.65rem;
+      transition: transform 0.2s ease;
+    }
+    .nav-item-dropdown:hover .nav-drop-arrow {
+      transform: rotate(180deg);
+    }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 210px;
+      background: rgba(18, 43, 32, 0.98);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid var(--go);
+      border-radius: 12px;
+      padding: 8px 0;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+      z-index: 1050;
+      list-style: none;
+      margin: 8px 0 0 0;
+    }
+    .nav-item-dropdown:hover .nav-dropdown-menu,
+    .nav-item-dropdown:focus-within .nav-dropdown-menu {
+      display: block;
+    }
+    .nav-dropdown-menu li {
+      width: 100%;
+      padding: 0;
+    }
+    .nav-dropdown-menu a {
+      display: block !important;
+      padding: 9px 18px !important;
+      font-size: 0.78rem !important;
+      font-weight: 700 !important;
+      color: #FFFFFF !important;
+      text-transform: none !important;
+      letter-spacing: 0.5px !important;
+      transition: background 0.2s ease, color 0.2s ease !important;
+      white-space: nowrap !important;
+    }
+    .nav-dropdown-menu a:hover {
+      background: rgba(201, 168, 76, 0.2) !important;
+      color: var(--gol) !important;
+      padding-left: 22px !important;
+    }
+
+    @media (max-width: 768px) {
+      .nav-item-dropdown {
+        flex-direction: column;
+        width: 100%;
+      }
+      .nav-drop-btn {
+        font-size: 0.92rem;
+        padding: 6px 0;
+      }
+      .nav-dropdown-menu {
+        position: static;
+        display: block;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        box-shadow: none;
+        width: 100%;
+        margin: 6px 0 10px 0;
+        border-radius: 8px;
+      }
+      .nav-dropdown-menu a {
+        text-align: center !important;
+        padding: 8px 12px !important;
+        font-size: 0.85rem !important;
+      }
+    }
+
+</style>
   <link rel="stylesheet" href="../css/chatbot.css" />
 </head>
 <body>
@@ -1008,15 +1109,36 @@
         <small>The Mind &amp; Motion Studio</small>
       </div>
     </a>
-        <ul class="nav-ul" id="navMenu">
+            <ul class="nav-ul" id="navMenu">
       <li><a href="../">Home</a></li>
-      <li><a href="../yoga-classes-guwahati/">Yoga</a></li>
-      <li><a href="#overview" class="active">Abacus</a></li>
-      <li><a href="../calligraphy-classes-guwahati/">Calligraphy</a></li>
-      <li><a href="#schedule">Schedule</a></li>
+      
+      <!-- About Dropdown -->
+      <li class="nav-item-dropdown">
+        <a href="../#about" class="nav-drop-btn">About <span class="nav-drop-arrow">▼</span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../#story">📖 Our Story</a></li>
+          <li><a href="../#director">👩‍💼 Founder / Director</a></li>
+          <li><a href="../#instructors">👩‍🏫 Instructors</a></li>
+        </ul>
+      </li>
+
+      <!-- Programs Dropdown -->
+      <li class="nav-item-dropdown">
+        <a href="../#programs" class="nav-drop-btn">Programs <span class="nav-drop-arrow">▼</span></a>
+        <ul class="nav-dropdown-menu">
+          <li><a href="../yoga-classes-guwahati/">🧘 Yoga</a></li>
+          <li><a href="../abacus-classes-guwahati/">🔢 Abacus</a></li>
+          <li><a href="../calligraphy-classes-guwahati/">✍️ Calligraphy</a></li>
+        </ul>
+      </li>
+
+      <li><a href="../#fees-schedule">Fees &amp; Schedule</a></li>
+      <li><a href="../#achievements">Achievements</a></li>
+      <li><a href="../#gallery">Gallery</a></li>
+      <li><a href="../#reviews">Reviews</a></li>
       <li><a href="../blog/index.html">Blog</a></li>
-      <li><a href="#faq">FAQs</a></li>
-      <li><a href="#" onclick="openDemoModal();return false;" class="ncta" style="white-space:nowrap; padding:8px 16px;">Free Demo</a></li>
+      <li><a href="../#contact">Contact</a></li>
+      <li><a href="#" onclick="openTrialModal();return false;" class="ncta" aria-label="Book Free Trial">✨ Book Free Trial</a></li>
     </ul>
     <div class="nav-right">
       <a href="https://www.facebook.com/share/1MRAeuXqxL/" target="_blank" rel="noopener noreferrer" title="Facebook" style="color:#fff;">
