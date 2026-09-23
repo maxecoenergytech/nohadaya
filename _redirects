@@ -2,4 +2,8 @@
 /erp                  /erp/             301
 /erp-admin.html       /erp/             301
 /portal-login.html    /erp/             301
+/fees-schedule        /schedule/        301
+/fees-schedule/       /schedule/        301
+/timetable            /schedule/        301
+
 

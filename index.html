@@ -3463,7 +3463,7 @@
       <!-- Instructor 1: Mrs. Noor Nahar Begum -->
       <div class="card reveal" style="display:flex;flex-direction:column;border:1.5px solid var(--border);padding:24px;">
         <div style="height:280px;border-radius:12px;overflow:hidden;margin-bottom:18px;">
-          <img src="images/director.jpg" alt="Mrs. Noor Nahar Begum – Studio Director & Master Instructor at NOHADAYA" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;" />
+          <img src="images/director.jpg" alt="Mrs. Noor Nahar Begum – Studio Director & Master Instructor at NOHADAYA" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;" / loading="lazy">
         </div>
         <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gd);margin-bottom:4px;">Mrs. Noor Nahar Begum</h3>
         <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Studio Director &amp; Master Instructor</div>
@@ -3481,7 +3481,7 @@
       <!-- Instructor 2: Rubi Barman -->
       <div class="card reveal" style="display:flex;flex-direction:column;border:1.5px solid var(--border);padding:24px;">
         <div style="height:280px;border-radius:12px;overflow:hidden;margin-bottom:18px;">
-          <img src="images/yoga_class.jpg" alt="Rubi Barman – Certified Yoga Instructor at NOHADAYA" style="width:100%;height:100%;object-fit:cover;" />
+          <img src="images/yoga_class.jpg" alt="Rubi Barman – Certified Yoga Instructor at NOHADAYA" style="width:100%;height:100%;object-fit:cover;" / loading="lazy">
         </div>
         <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--gd);margin-bottom:4px;">Rubi Barman</h3>
         <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Certified Yoga Instructor</div>
@@ -3583,55 +3583,117 @@
   </div>
 </section>
 
-<!-- ════════ SECTION 8: FEES & CLASSES ════════ -->
+<!-- ════════ SECTION 8: FEES & SCHEDULE (CENTRAL SOURCE OF TRUTH) ════════ -->
 <section class="schedule" id="fees-schedule" style="background:var(--bg2);padding:80px 24px;">
-  <div class="sec-in" style="max-width:1100px;margin:0 auto;">
+  <div class="sec-in" style="max-width:1150px;margin:0 auto;">
     <div style="text-align:center;">
-      <div class="sbadge">📅 Transparent Overview</div>
-      <h2 class="stitle">Fees &amp; <span>Classes</span></h2>
+      <div class="sbadge">📅 Master Schedule &amp; Timetable</div>
+      <h2 class="stitle">Fees &amp; <span>Class Schedule</span></h2>
       <div class="divider"></div>
-      <p style="color:var(--text-mid);max-width:680px;margin:0 auto 2.5rem;">
-        Clear, affordable monthly tuition with complimentary trial classes for new learners.
+      <p style="color:var(--text-mid);max-width:700px;margin:0 auto 2.5rem;">
+        Unified central schedule across all programs. Transparent monthly tuition with complimentary trial classes for new learners.
       </p>
     </div>
 
-    <div class="table-container" style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);">
-      <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.95rem;">
+    <!-- Central Master Timetable Table -->
+    <div class="table-container" style="background:var(--card-bg);border:1.5px solid var(--border);border-radius:18px;overflow-x:auto;box-shadow:var(--shadow);margin-bottom:30px;">
+      <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.92rem;min-width:700px;">
         <thead>
           <tr style="background:var(--gd);color:#ffffff;">
-            <th style="padding:16px 20px;font-weight:800;">Program</th>
-            <th style="padding:16px 20px;font-weight:800;">Suitable For</th>
-            <th style="padding:16px 20px;font-weight:800;">Monthly Fee</th>
-            <th style="padding:16px 20px;font-weight:800;">Trial Class</th>
+            <th style="padding:16px 18px;font-weight:800;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Program</th>
+            <th style="padding:16px 18px;font-weight:800;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Days</th>
+            <th style="padding:16px 18px;font-weight:800;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Morning</th>
+            <th style="padding:16px 18px;font-weight:800;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Evening</th>
+            <th style="padding:16px 18px;font-weight:800;text-transform:uppercase;font-size:0.85rem;letter-spacing:0.5px;">Fee &amp; Trial</th>
           </tr>
         </thead>
         <tbody>
+          
+          <!-- Yoga -->
           <tr style="border-bottom:1px solid var(--border);">
-            <td style="padding:16px 20px;font-weight:700;color:var(--gd);">🧘 Yoga</td>
-            <td style="padding:16px 20px;color:var(--text-mid);">Children / Teenagers / Adults</td>
-            <td style="padding:16px 20px;color:var(--text);font-weight:800;">₹500 / month</td>
-            <td style="padding:16px 20px;"><span style="background:#d8f3dc;color:#1b4332;padding:4px 10px;border-radius:20px;font-weight:800;font-size:0.8rem;">Free Trial</span></td>
+            <td style="padding:16px 18px;font-weight:700;color:var(--gd);">
+              <div style="font-size:1rem;">🧘 Yoga</div>
+              <small style="color:var(--text-mid);font-weight:normal;">Adults, Teens &amp; Beginners</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <strong>Mon – Fri</strong><br/>
+              <small style="color:var(--text-mid);">+ Sun Special</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>6:00 AM – 7:15 AM</strong></div>
+              <div><strong>7:15 AM – 8:30 AM</strong></div>
+              <div style="font-size:0.8rem;color:var(--go);margin-top:4px;"><em>Sun: 7:00 AM – 9:00 AM</em></div>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>5:30 PM – 6:45 PM</strong></div>
+              <small style="color:var(--text-mid);">Evening Vinyasa</small>
+            </td>
+            <td style="padding:16px 18px;">
+              <div style="font-weight:800;color:var(--text);">₹500 / mo</div>
+              <span style="background:#d8f3dc;color:#1b4332;padding:3px 8px;border-radius:12px;font-weight:800;font-size:0.75rem;">Free Trial</span>
+            </td>
           </tr>
+
+          <!-- Abacus -->
           <tr style="border-bottom:1px solid var(--border);">
-            <td style="padding:16px 20px;font-weight:700;color:#1a2a4a;">🔢 Abacus</td>
-            <td style="padding:16px 20px;color:var(--text-mid);">Children (Ages 5–14)</td>
-            <td style="padding:16px 20px;color:var(--text);font-weight:800;">₹500 / month</td>
-            <td style="padding:16px 20px;"><span style="background:#d8f3dc;color:#1b4332;padding:4px 10px;border-radius:20px;font-weight:800;font-size:0.8rem;">Free Trial</span></td>
+            <td style="padding:16px 18px;font-weight:700;color:#1a2a4a;">
+              <div style="font-size:1rem;">🔢 Abacus</div>
+              <small style="color:var(--text-mid);font-weight:normal;">Children (Ages 5–14)</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <strong>Tue, Wed, Thu, Fri</strong><br/>
+              <strong>Sat &amp; Sun</strong>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>10:00 AM – 11:30 AM</strong></div>
+              <small style="color:var(--text-mid);">Weekend Batch</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>4:00 PM – 5:30 PM</strong> (Tue/Thu Juniors)</div>
+              <div><strong>4:00 PM – 5:30 PM</strong> (Wed/Fri Seniors)</div>
+              <div style="font-size:0.8rem;color:var(--text-mid);">3:30 PM – 5:00 PM (Sat/Sun)</div>
+            </td>
+            <td style="padding:16px 18px;">
+              <div style="font-weight:800;color:var(--text);">₹500 / mo</div>
+              <span style="background:#d8f3dc;color:#1b4332;padding:3px 8px;border-radius:12px;font-weight:800;font-size:0.75rem;">Free Trial</span>
+            </td>
           </tr>
+
+          <!-- Calligraphy & Handwriting -->
           <tr>
-            <td style="padding:16px 20px;font-weight:700;color:#3a1a2a;">✍️ Calligraphy &amp; Handwriting</td>
-            <td style="padding:16px 20px;color:var(--text-mid);">Children / Learners / Adults</td>
-            <td style="padding:16px 20px;color:var(--text);font-weight:800;">₹500 / month</td>
-            <td style="padding:16px 20px;"><span style="background:#d8f3dc;color:#1b4332;padding:4px 10px;border-radius:20px;font-weight:800;font-size:0.8rem;">Free Trial</span></td>
+            <td style="padding:16px 18px;font-weight:700;color:#3a1a2a;">
+              <div style="font-size:1rem;">✍️ Calligraphy &amp; Handwriting</div>
+              <small style="color:var(--text-mid);font-weight:normal;">School Students &amp; Adults</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <strong>Wed &amp; Fri</strong><br/>
+              <strong>Sat &amp; Sun</strong>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>11:30 AM – 1:00 PM</strong></div>
+              <small style="color:var(--text-mid);">Weekend Batch</small>
+            </td>
+            <td style="padding:16px 18px;color:var(--text);">
+              <div><strong>4:00 PM – 5:30 PM</strong> (Weekend)</div>
+              <div><strong>5:30 PM – 7:00 PM</strong> (Wed/Fri Prep)</div>
+            </td>
+            <td style="padding:16px 18px;">
+              <div style="font-weight:800;color:var(--text);">₹500 / mo</div>
+              <span style="background:#d8f3dc;color:#1b4332;padding:3px 8px;border-radius:12px;font-weight:800;font-size:0.75rem;">Free Trial</span>
+            </td>
           </tr>
+
         </tbody>
       </table>
     </div>
 
     <!-- Complete Schedule CTA -->
-    <div style="text-align:center;margin-top:30px;">
-      <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%20Studio%2C%20please%20share%20the%20complete%20timetable%20and%20fee%20structure." target="_blank" rel="noopener noreferrer" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:30px;font-weight:800;text-decoration:none;font-size:0.95rem;">
-        View Complete Fees &amp; Schedule &rarr;
+    <div style="text-align:center;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <a href="schedule/" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:30px;font-weight:800;text-decoration:none;font-size:0.95rem;">
+        View Dedicated Schedule Page &rarr;
+      </a>
+      <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%20Studio%2C%20please%20confirm%20open%20slots%20for%20the%20current%20schedule." target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;font-weight:800;padding:14px 30px;border-radius:30px;text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;">
+        WhatsApp Schedule Enquiry
       </a>
     </div>
   </div>

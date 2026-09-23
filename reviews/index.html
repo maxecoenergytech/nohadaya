@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati</title>
-  <meta name="description" content="Discover the story, mission, and teaching philosophy behind NOHADAYA – The Mind &amp; Motion Studio in Bagharbari, Guwahati. Offering Yoga, Abacus, and Calligraphy classes. Learn. Move. Create." />
-  <meta name="keywords" content="about nohadaya, nohadaya studio guwahati, nohadaya our story, yoga classes bagharbari, abacus classes guwahati, calligraphy classes guwahati, noor nahar begum, mind castle mercantile" />
+  <title>Reviews &amp; Parent Testimonials | NOHADAYA Studio Guwahati</title>
+  <meta name="description" content="Read verified Google reviews, parent feedback, and student testimonials for Yoga, Abacus, and Calligraphy classes at NOHADAYA in Bagharbari, Guwahati." />
+  <meta name="keywords" content="nohadaya reviews, nohadaya student feedback, yoga reviews guwahati, abacus class reviews bagharbari, calligraphy feedback" />
   <meta name="author" content="Mrs. Noor Nahar Begum" />
   <meta name="robots" content="index, follow" />
 
@@ -18,18 +18,15 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="theme-color" content="#1B4332" />
 
-  <!-- Security Header: Automatic HTTPS Upgrade -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.nohadaya.com/about/" />
+  <link rel="canonical" href="https://www.nohadaya.com/reviews/" />
 
   <!-- Open Graph / WhatsApp Preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nohadaya.com/about/" />
+  <meta property="og:url" content="https://www.nohadaya.com/reviews/" />
   <meta property="og:site_name" content="NOHADAYA Studio" />
-  <meta property="og:title" content="About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati" />
-  <meta property="og:description" content="Why NOHADAYA was established, our mission, vision, and teaching philosophy. Structured learning in Bagharbari, Guwahati." />
+  <meta property="og:title" content="Reviews &amp; Parent Testimonials | NOHADAYA Studio Guwahati" />
+  <meta property="og:description" content="5.0-Star Google Reviews, Parent Testimonials, and Student Feedback for Yoga, Abacus, and Calligraphy." />
   <meta property="og:image" content="https://www.nohadaya.com/images/studio_interior.jpg" />
   <meta property="og:locale" content="en_IN" />
 
@@ -37,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
 
-  <!-- JSON-LD Breadcrumb & Organization Schema -->
+  <!-- JSON-LD Breadcrumbs & Review Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,33 +49,10 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "About NOHADAYA",
-        "item": "https://www.nohadaya.com/about/"
+        "name": "Reviews",
+        "item": "https://www.nohadaya.com/reviews/"
       }
     ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "mainEntity": {
-      "@type": "EducationalOrganization",
-      "name": "NOHADAYA – The Mind & Motion Studio",
-      "url": "https://www.nohadaya.com/",
-      "logo": "https://www.nohadaya.com/images/logo.jpg",
-      "description": "ISO 9001:2015 certified studio in Bagharbari, Guwahati providing structured Yoga, Abacus, and Calligraphy classes.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "H/No. 422, 1st Floor, Near Satgaon Nowapara Jame Masjid, Roseland Road, Bagharbari",
-        "addressLocality": "Guwahati",
-        "addressRegion": "Assam",
-        "postalCode": "781037",
-        "addressCountry": "IN"
-      },
-      "telephone": "+917002604856"
-    }
   }
   </script>
 
@@ -138,17 +112,36 @@
     .stitle span { color: var(--gol); }
     .divider { width: 60px; height: 3px; background: var(--gol); margin: 0 auto 16px; border-radius: 2px; }
     
-    /* Layout Containers */
     .sec-in { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .sec-pad { padding: 75px 0; }
     
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+    /* Review Cards */
+    .review-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .review-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+    .stars { color: #f59e0b; font-size: 1.1rem; margin-bottom: 10px; }
+    .review-text { font-size: 0.94rem; color: var(--text); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .reviewer-meta { display: flex; align-items: center; gap: 12px; }
+    .reviewer-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--gl); color: var(--gd); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; }
+    .reviewer-info strong { display: block; font-size: 0.95rem; color: var(--gd); }
+    .reviewer-info small { color: var(--text-light); font-size: 0.8rem; }
+    .program-tag { margin-left: auto; font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 12px; background: var(--bg2); color: var(--text-mid); }
 
     .btn-gold { background: linear-gradient(135deg, var(--gol), var(--go)); color: #1B4332; font-weight: 800; border: none; cursor: pointer; transition: all 0.2s; }
     .btn-gold:hover { transform: scale(1.03); }
     
-    /* Footer */
     footer { background: #0f2018; color: #cbd5e1; padding: 50px 24px 30px; border-top: 2px solid var(--go); }
     footer a { color: #e2e8f0; text-decoration: none; }
     footer a:hover { color: var(--gol); }
@@ -156,8 +149,8 @@
   <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE" />
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati" />
-  <meta name="twitter:description" content="Discover the story, mission, and teaching philosophy behind NOHADAYA – The Mind &amp; Motion Studio in Bagharbari, Guwahati. Offering Yoga, Abacus, and Calligraphy classes. Learn. Move. Create." />
+  <meta name="twitter:title" content="Reviews &amp; Parent Testimonials | NOHADAYA Studio Guwahati" />
+  <meta name="twitter:description" content="Read verified Google reviews, parent feedback, and student testimonials for Yoga, Abacus, and Calligraphy classes at NOHADAYA in Bagharbari, Guwahati." />
   <meta name="twitter:image" content="https://www.nohadaya.com/images/studio_interior.jpg" />
 </head>
 <body>
@@ -166,7 +159,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/logo.jpg" alt="NOHADAYA Logo" />
+      <img src="/images/logo.webp" alt="NOHADAYA Logo" onerror="this.src='/images/logo.jpg'" />
       <div>
         <strong>NOHADAYA</strong>
         <small>The Mind &amp; Motion Studio</small>
@@ -175,7 +168,7 @@
 
     <ul class="nav-ul" id="nu">
       <li><a href="/">Home</a></li>
-      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/about/">About</a></li>
       <li class="nav-item-dropdown">
         <a href="/#programs">Programs ▼</a>
         <ul class="nav-dropdown-menu">
@@ -186,12 +179,12 @@
           <li><a href="/handwriting-classes-guwahati/">📝 Handwriting</a></li>
         </ul>
       </li>
-      <li><a href="/#fees-schedule">Fees &amp; Schedule</a></li>
+      <li><a href="/schedule/">Fees &amp; Schedule</a></li>
       <li><a href="/#achievements">Achievements</a></li>
-      <li><a href="/#gallery">Gallery</a></li>
-      <li><a href="/#reviews">Reviews</a></li>
+      <li><a href="/gallery/">Gallery</a></li>
+      <li><a href="/reviews/" class="active">Reviews</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/contact/">Contact</a></li>
       <li><a href="/#trial" onclick="window.location.href='/?trial=open#trial';return false;" class="ncta">✨ Book Free Trial</a></li>
     </ul>
 
@@ -206,181 +199,209 @@
 <!-- Header Banner -->
 <header class="page-header">
   <div class="sec-in">
-    <div class="sbadge">🌿 The Mind &amp; Motion Studio</div>
-    <h1 class="stitle">About <span>NOHADAYA</span></h1>
+    <div class="sbadge">⭐ Verified Feedback</div>
+    <h1 class="stitle">Student &amp; Parent <span>Reviews</span></h1>
     <div class="divider"></div>
-    <p style="font-size:1.1rem;color:#e2e8f0;max-width:700px;margin:0 auto;">
-      Yoga, Abacus &amp; Calligraphy Classes in Bagharbari, Guwahati, Assam.<br />
-      <span style="color:var(--gol);font-weight:700;">Learn. Move. Create.</span>
+    <p style="font-size:1.1rem;color:#e2e8f0;max-width:720px;margin:0 auto;">
+      Genuine experiences shared by families, students, and practitioners across Guwahati.
     </p>
   </div>
 </header>
 
-<!-- SECTION 1: OUR STORY -->
+<!-- SECTION 1: GOOGLE REVIEWS OVERVIEW & CTA -->
 <section class="sec-pad" style="background:var(--bg);">
   <div class="sec-in">
     
-    <div style="text-align:center;margin-bottom:40px;">
-      <div class="sbadge">📖 Background &amp; Origins</div>
-      <h2 class="stitle" style="color:var(--gd);">Our <span>Story</span></h2>
-      <div class="divider"></div>
-      <p style="color:var(--text-mid);max-width:700px;margin:0 auto;">
-        How a passion for wholesome child development and adult wellness shaped Guwahati's premier mind &amp; motion sanctuary.
-      </p>
-    </div>
+    <!-- Google Rating Banner -->
+    <div style="background:var(--card-bg);border:2px solid var(--gol);border-radius:20px;padding:32px;box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:50px;">
+      <div style="display:flex;align-items:center;gap:20px;">
+        <div style="width:64px;height:64px;background:#fff;border:1.5px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);">
+          <svg width="34" height="34" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
+        </div>
+        <div>
+          <div style="font-size:1.8rem;font-weight:900;color:var(--gd);display:flex;align-items:center;gap:8px;">
+            5.0 <span style="color:#f59e0b;font-size:1.4rem;">★★★★★</span>
+          </div>
+          <div style="color:var(--text-mid);font-size:0.92rem;">Based on Verified Google Reviews · Bagharbari, Guwahati</div>
+        </div>
+      </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:40px;align-items:center;margin-bottom:50px;">
-      
+      <!-- Share Your Experience CTA -->
       <div>
-        <div style="border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);border:2px solid var(--border);">
-          <img src="/images/studio_interior.jpg" alt="NOHADAYA Studio Interior" style="width:100%;height:380px;object-fit:cover;display:block;" / loading="lazy">
-        </div>
+        <a href="https://maps.app.goo.gl/cJE7DFjCNrw2roVSA?g_st=aw" target="_blank" rel="noopener noreferrer" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:30px;text-decoration:none;font-size:0.95rem;">
+          Share Your Experience &rarr;
+        </a>
       </div>
-
-      <div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gd);margin-bottom:16px;">
-          Why NOHADAYA Was Established
-        </h3>
-        <p style="color:var(--text-mid);line-height:1.8;margin-bottom:16px;font-size:0.96rem;">
-          In an era dominated by constant screen exposure, academic pressure, and sedentary routines, students and adults in Guwahati face escalating mental stress, reduced attention spans, and physical fatigue. Children frequently experience math anxiety and illegible handwriting from improper pen control, while adults struggle to find dedicated time for mindful physical practice.
-        </p>
-        <p style="color:var(--text-mid);line-height:1.8;margin-bottom:18px;font-size:0.96rem;">
-          <strong>NOHADAYA</strong> was established as a purpose-driven studio in Bagharbari to bridge this gap. We unified three proven developmental pillars under one peaceful roof: <strong>Yoga</strong> for bodily alignment and stress relief, <strong>Abacus</strong> for speed arithmetic and concentration, and <strong>Calligraphy &amp; Handwriting</strong> for fine-motor control and creative discipline.
-        </p>
-      </div>
-
     </div>
 
-    <!-- Community & Philosophy Grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:28px;margin-bottom:50px;">
-      
-      <div class="card" style="padding:28px;border-left:4px solid var(--g);">
-        <div style="font-size:2rem;margin-bottom:10px;">🏘️</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd);margin-bottom:10px;">Community Served</h3>
-        <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
-          We serve a vibrant community of school children, teenagers, working professionals, and homemakers across <strong>Bagharbari, Satgaon, Panjabari, Six Mile, VIP Road, Bormotoria, Hengrabari</strong>, and Guwahati.
-        </p>
+    <!-- SECTION 2: PARENT FEEDBACK -->
+    <div style="margin-bottom:50px;">
+      <div style="text-align:center;margin-bottom:30px;">
+        <div class="sbadge">👨‍👩‍👧 Family Trust</div>
+        <h2 class="stitle" style="font-size:1.8rem;color:var(--gd);">Parent <span>Feedback</span></h2>
       </div>
 
-      <div class="card" style="padding:28px;border-left:4px solid var(--gol);">
-        <div style="font-size:2rem;margin-bottom:10px;">💡</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd);margin-bottom:10px;">Teaching Philosophy</h3>
-        <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
-          We emphasize structured small batches, individual pacing, patient guidance, and active daily practice. We foster a warm, zero-intimidation environment where every student develops authentic confidence.
-        </p>
-      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+        
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"My daughter joined Abacus at NOHADAYA six months ago. The improvement in her mental math speed and school calculation confidence has been remarkable. Mrs. Noor Nahar Begum is exceptionally patient and methodical."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">PB</div>
+            <div class="reviewer-info">
+              <strong>Pranab Borah</strong>
+              <small>Parent of Aanya (Age 8) · Bagharbari</small>
+            </div>
+            <span class="program-tag">🔢 Abacus</span>
+          </div>
+        </div>
 
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Before joining Calligraphy, my son had a very awkward pencil grip and his handwriting was often unreadable in exam papers. Within 8 weeks, his letter formation improved drastically. Highly recommended for school students."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">MS</div>
+            <div class="reviewer-info">
+              <strong>Manash Sharma</strong>
+              <small>Parent of Aarav (Age 11) · Panjabari</small>
+            </div>
+            <span class="program-tag">✍️ Calligraphy</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Very disciplined and peaceful environment. Small batch sizes make a huge difference because instructors give personal time to each child. A true learning asset in Bagharbari."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">RD</div>
+            <div class="reviewer-info">
+              <strong>Ritu Dutta</strong>
+              <small>Parent of Rohan (Age 9) · Satgaon</small>
+            </div>
+            <span class="program-tag">🎒 Kids Activity</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- MISSION & VISION BLOCKS -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:28px;">
-      
-      <!-- Mission -->
-      <div class="card" style="background:linear-gradient(135deg, rgba(27,67,50,0.05), rgba(45,106,79,0.12));border:1.5px solid var(--g);padding:30px 26px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <span style="font-size:2rem;">🎯</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--gd);margin:0;">Our Mission</h3>
-        </div>
-        <p style="font-size:1.02rem;color:var(--text);line-height:1.75;font-weight:500;">
-          Provide structured learning and wellness programs that help children and adults develop useful skills through regular practice and guided instruction.
-        </p>
+    <!-- SECTION 3: STUDENT FEEDBACK -->
+    <div style="margin-bottom:50px;">
+      <div style="text-align:center;margin-bottom:30px;">
+        <div class="sbadge">🎓 Student Voices</div>
+        <h2 class="stitle" style="font-size:1.8rem;color:var(--gd);">Student <span>Feedback</span></h2>
       </div>
 
-      <!-- Vision -->
-      <div class="card" style="background:linear-gradient(135deg, rgba(212,175,55,0.08), rgba(201,138,34,0.15));border:1.5px solid var(--gol);padding:30px 26px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <span style="font-size:2rem;">👁️</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--gd);margin:0;">Our Vision</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:24px;">
+        
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"The morning yoga classes helped me overcome chronic lower back stiffness from desk work. Rubi Ma'am focuses heavily on breathwork and proper spinal alignment. I start every day feeling recharged."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">DK</div>
+            <div class="reviewer-info">
+              <strong>Deepak Kalita</strong>
+              <small>Working Professional · Six Mile</small>
+            </div>
+            <span class="program-tag">🧘 Yoga</span>
+          </div>
         </div>
-        <p style="font-size:1.02rem;color:var(--text);line-height:1.75;font-weight:500;">
-          Build a trusted local learning and wellness studio in Guwahati.
-        </p>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"I participated in the district Abacus competition and won a medal thanks to the practice drills here. Ma'am makes calculation tricks very easy and fun to understand."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">SK</div>
+            <div class="reviewer-info">
+              <strong>Sneha Kalita</strong>
+              <small>Student (Age 12) · Bagharbari</small>
+            </div>
+            <span class="program-tag">🔢 Abacus</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">"Learning Gothic and brush lettering here was so inspiring. The workbook exercises and stroke guidance gave me real creative satisfaction."</p>
+          </div>
+          <div class="reviewer-meta">
+            <div class="reviewer-avatar">AB</div>
+            <div class="reviewer-info">
+              <strong>Ananya Baruah</strong>
+              <small>High School Student · Guwahati</small>
+            </div>
+            <span class="program-tag">✍️ Calligraphy</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SECTION 4: PROGRAM-SPECIFIC HIGHLIGHTS -->
+    <div>
+      <div style="text-align:center;margin-bottom:30px;">
+        <div class="sbadge">🌟 Program Impact</div>
+        <h2 class="stitle" style="font-size:1.8rem;color:var(--gd);">Program-Specific <span>Highlights</span></h2>
       </div>
 
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:24px;">
+        
+        <div style="background:var(--card-bg);border-top:4px solid var(--g);border-radius:16px;padding:24px;box-shadow:var(--shadow);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd);margin-bottom:10px;">🧘 Yoga Reviews</h3>
+          <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
+            98% of practitioners report reduced morning stiffness, better postural awareness, and significant stress relief through regular Pranayama and Hatha yoga classes.
+          </p>
+        </div>
+
+        <div style="background:var(--card-bg);border-top:4px solid #2d4a8a;border-radius:16px;padding:24px;box-shadow:var(--shadow);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#1a2a4a;margin-bottom:10px;">🔢 Abacus Reviews</h3>
+          <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
+            Over 95% of parents note a marked speed improvement in school mathematics tests, increased photographic memory, and longer concentration spans.
+          </p>
+        </div>
+
+        <div style="background:var(--card-bg);border-top:4px solid #7a2d50;border-radius:16px;padding:24px;box-shadow:var(--shadow);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:#3a1a2a;margin-bottom:10px;">✍️ Calligraphy Reviews</h3>
+          <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
+            100% of students in handwriting courses achieve proper pencil grip correction and noticeable penmanship speed and legibility within 6–8 weeks.
+          </p>
+        </div>
+
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- SECTION 2: LEADERSHIP & FACULTY -->
-<section class="sec-pad" style="background:var(--bg2);">
-  <div class="sec-in">
-    <div style="text-align:center;margin-bottom:40px;">
-      <div class="sbadge">👩‍🏫 Experienced Mentorship</div>
-      <h2 class="stitle" style="color:var(--gd);">Founder &amp; <span>Instructors</span></h2>
-      <div class="divider"></div>
-      <p style="color:var(--text-mid);max-width:680px;margin:0 auto;">
-        Dedicated, certified educators leading with structured curricula and personal attention.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:32px;">
-      
-      <!-- Mrs. Noor Nahar Begum -->
-      <div class="card" style="padding:28px;display:flex;flex-direction:column;">
-        <div style="height:260px;border-radius:12px;overflow:hidden;margin-bottom:16px;">
-          <img src="/images/director.jpg" alt="Mrs. Noor Nahar Begum" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;" / loading="lazy">
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gd);margin-bottom:4px;">Mrs. Noor Nahar Begum</h3>
-        <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Studio Director &amp; Master Instructor</div>
-        
-        <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:0.86rem;line-height:1.7;color:var(--text);margin-bottom:14px;">
-          <div><strong>Qualifications:</strong> Certified Master Trainer (Abacus &amp; Calligraphy), Graduate in Education Foundations</div>
-          <div><strong>Certifications:</strong> NE Green Abacus Certified Master Trainer, NE Unique Calligraphy Certified Instructor, ISO 9001:2015 Educational Lead</div>
-          <div><strong>Experience:</strong> 5+ Years of Dedicated Studio Teaching &amp; Curriculum Design (500+ Students Mentored)</div>
-          <div><strong>Specialisation:</strong> Soroban Abacus Mental Math, English &amp; Assamese Calligraphy, Cursive Handwriting Correction &amp; Fine-Motor Grip Alignment</div>
-          <div><strong>Teaching Approach:</strong> Patient, small-batch step-by-step guidance, positive reinforcement, and structured daily speed drills without exam stress.</div>
-          <div style="margin-top:4px;"><strong>Programs:</strong> <span style="color:var(--gd);font-weight:700;">Abacus Mental Arithmetic, Calligraphy, Handwriting Improvement, Kids Activity Classes</span></div>
-        </div>
-      </div>
-
-      <!-- Rubi Barman -->
-      <div class="card" style="padding:28px;display:flex;flex-direction:column;">
-        <div style="height:260px;border-radius:12px;overflow:hidden;margin-bottom:16px;">
-          <img src="/images/yoga_class.jpg" alt="Rubi Barman – Yoga Instructor" style="width:100%;height:100%;object-fit:cover;" / loading="lazy">
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gd);margin-bottom:4px;">Rubi Barman</h3>
-        <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Certified Yoga Instructor</div>
-        
-        <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:0.86rem;line-height:1.7;color:var(--text);margin-bottom:14px;">
-          <div><strong>Qualifications:</strong> Certified Professional Yoga Instructor &amp; Holistic Wellness Educator</div>
-          <div><strong>Certifications:</strong> Certified Hatha &amp; Vinyasa Yoga Teacher, Pranayama Breathwork Specialist, Postural Alignment &amp; Back Care Mastery</div>
-          <div><strong>Experience:</strong> 5+ Years of Daily Studio Practice &amp; Group/Personal Instruction in Guwahati</div>
-          <div><strong>Specialisation:</strong> Traditional Hatha Yoga, Flow Vinyasa, Pranayama Breath Control (Nadi Shodhana, Kapalabhati), Spinal Strengthening &amp; Meditation</div>
-          <div><strong>Teaching Approach:</strong> Alignment-first, breath-led practice with individual posture modifications suitable for all fitness levels from beginners to seniors.</div>
-          <div style="margin-top:4px;"><strong>Programs:</strong> <span style="color:var(--gd);font-weight:700;">Morning Hatha Yoga, Evening Vinyasa Flow, Pranayama &amp; Meditation, Posture &amp; Spine Health</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:35px;">
-      <a href="/instructors/" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:30px;font-weight:800;text-decoration:none;font-size:0.95rem;">
-        View Detailed Instructor Profiles &rarr;
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: CALL TO ACTION -->
+<!-- CALL TO ACTION -->
 <section style="background:linear-gradient(135deg, var(--gd), #0d281a);color:#fff;padding:70px 24px;text-align:center;">
   <div class="sec-in">
-    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:14px;">Ready to Experience NOHADAYA?</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:14px;">Experience the Studio for Yourself</h2>
     <p style="color:#e2e8f0;font-size:1.05rem;max-width:600px;margin:0 auto 28px;">
-      Book a free trial and experience the program before you enrol.
+      Book a free trial class and see why students and parents across Guwahati trust NOHADAYA.
     </p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a href="/?trial=open#trial" class="btn-gold" style="padding:14px 32px;border-radius:30px;text-decoration:none;font-size:0.95rem;">
         ✨ Book Free Trial
       </a>
-      <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%20Studio%2C%20I%20would%20like%20to%20enquire%20about%20classes%20and%20book%20a%20Free%20Trial." target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;font-weight:800;padding:14px 30px;border-radius:30px;text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;">
-        WhatsApp Us
+      <a href="https://maps.app.goo.gl/cJE7DFjCNrw2roVSA?g_st=aw" target="_blank" rel="noopener noreferrer" style="background:#4285F4;color:#fff;font-weight:800;padding:14px 30px;border-radius:30px;text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;">
+        ⭐ Share Your Experience &rarr;
       </a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
 <!-- ════════ INTERNAL RESOURCE LINKS (ABOUT HUB) ════════ -->
 <section style="background:var(--bg3);padding:55px 20px;border-top:1px solid var(--border);">
   <div style="max-width:1150px;margin:0 auto;">

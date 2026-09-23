@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati</title>
-  <meta name="description" content="Discover the story, mission, and teaching philosophy behind NOHADAYA – The Mind &amp; Motion Studio in Bagharbari, Guwahati. Offering Yoga, Abacus, and Calligraphy classes. Learn. Move. Create." />
-  <meta name="keywords" content="about nohadaya, nohadaya studio guwahati, nohadaya our story, yoga classes bagharbari, abacus classes guwahati, calligraphy classes guwahati, noor nahar begum, mind castle mercantile" />
+  <title>Gallery – Studio, Classes &amp; Student Work | NOHADAYA Guwahati</title>
+  <meta name="description" content="Explore photographs of Yoga batches, Abacus championships, Calligraphy student portfolios, studio interior, and award ceremonies at NOHADAYA in Bagharbari, Guwahati." />
+  <meta name="keywords" content="nohadaya gallery, yoga photos guwahati, abacus competition photos, calligraphy student work, nohadaya studio bagharbari" />
   <meta name="author" content="Mrs. Noor Nahar Begum" />
   <meta name="robots" content="index, follow" />
 
@@ -18,18 +18,15 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <meta name="theme-color" content="#1B4332" />
 
-  <!-- Security Header: Automatic HTTPS Upgrade -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.nohadaya.com/about/" />
+  <link rel="canonical" href="https://www.nohadaya.com/gallery/" />
 
   <!-- Open Graph / WhatsApp Preview -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.nohadaya.com/about/" />
+  <meta property="og:url" content="https://www.nohadaya.com/gallery/" />
   <meta property="og:site_name" content="NOHADAYA Studio" />
-  <meta property="og:title" content="About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati" />
-  <meta property="og:description" content="Why NOHADAYA was established, our mission, vision, and teaching philosophy. Structured learning in Bagharbari, Guwahati." />
+  <meta property="og:title" content="Gallery – Studio, Classes &amp; Student Work | NOHADAYA Guwahati" />
+  <meta property="og:description" content="Authentic photos of Yoga practice, Abacus competitions, Calligraphy lettering, and student milestones." />
   <meta property="og:image" content="https://www.nohadaya.com/images/studio_interior.jpg" />
   <meta property="og:locale" content="en_IN" />
 
@@ -37,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
 
-  <!-- JSON-LD Breadcrumb & Organization Schema -->
+  <!-- JSON-LD Breadcrumbs -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -52,33 +49,10 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "About NOHADAYA",
-        "item": "https://www.nohadaya.com/about/"
+        "name": "Gallery",
+        "item": "https://www.nohadaya.com/gallery/"
       }
     ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "mainEntity": {
-      "@type": "EducationalOrganization",
-      "name": "NOHADAYA – The Mind & Motion Studio",
-      "url": "https://www.nohadaya.com/",
-      "logo": "https://www.nohadaya.com/images/logo.jpg",
-      "description": "ISO 9001:2015 certified studio in Bagharbari, Guwahati providing structured Yoga, Abacus, and Calligraphy classes.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "H/No. 422, 1st Floor, Near Satgaon Nowapara Jame Masjid, Roseland Road, Bagharbari",
-        "addressLocality": "Guwahati",
-        "addressRegion": "Assam",
-        "postalCode": "781037",
-        "addressCountry": "IN"
-      },
-      "telephone": "+917002604856"
-    }
   }
   </script>
 
@@ -138,17 +112,93 @@
     .stitle span { color: var(--gol); }
     .divider { width: 60px; height: 3px; background: var(--gol); margin: 0 auto 16px; border-radius: 2px; }
     
-    /* Layout Containers */
     .sec-in { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .sec-pad { padding: 75px 0; }
-    
-    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+
+    /* Category Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      color: var(--text-mid);
+      padding: 8px 18px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--gd);
+      color: #ffffff;
+      border-color: var(--gd);
+      box-shadow: 0 4px 12px rgba(27,67,50,0.25);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .gallery-item {
+      background: var(--card-bg);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .gallery-thumb {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .gallery-item:hover .gallery-thumb img {
+      transform: scale(1.05);
+    }
+    .gallery-cat-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(27,67,50,0.85);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .gallery-caption {
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+    }
 
     .btn-gold { background: linear-gradient(135deg, var(--gol), var(--go)); color: #1B4332; font-weight: 800; border: none; cursor: pointer; transition: all 0.2s; }
     .btn-gold:hover { transform: scale(1.03); }
     
-    /* Footer */
     footer { background: #0f2018; color: #cbd5e1; padding: 50px 24px 30px; border-top: 2px solid var(--go); }
     footer a { color: #e2e8f0; text-decoration: none; }
     footer a:hover { color: var(--gol); }
@@ -156,8 +206,8 @@
   <meta name="google-site-verification" content="YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE" />
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="About NOHADAYA – Our Story, Mission &amp; Vision | Guwahati" />
-  <meta name="twitter:description" content="Discover the story, mission, and teaching philosophy behind NOHADAYA – The Mind &amp; Motion Studio in Bagharbari, Guwahati. Offering Yoga, Abacus, and Calligraphy classes. Learn. Move. Create." />
+  <meta name="twitter:title" content="Gallery – Studio, Classes &amp; Student Work | NOHADAYA Guwahati" />
+  <meta name="twitter:description" content="Explore photographs of Yoga batches, Abacus championships, Calligraphy student portfolios, studio interior, and award ceremonies at NOHADAYA in Bagharbari, Guwahati." />
   <meta name="twitter:image" content="https://www.nohadaya.com/images/studio_interior.jpg" />
 </head>
 <body>
@@ -166,7 +216,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a href="/" class="nav-logo">
-      <img src="/images/logo.jpg" alt="NOHADAYA Logo" />
+      <img src="/images/logo.webp" alt="NOHADAYA Logo" onerror="this.src='/images/logo.jpg'" />
       <div>
         <strong>NOHADAYA</strong>
         <small>The Mind &amp; Motion Studio</small>
@@ -175,7 +225,7 @@
 
     <ul class="nav-ul" id="nu">
       <li><a href="/">Home</a></li>
-      <li><a href="/about/" class="active">About</a></li>
+      <li><a href="/about/">About</a></li>
       <li class="nav-item-dropdown">
         <a href="/#programs">Programs ▼</a>
         <ul class="nav-dropdown-menu">
@@ -186,12 +236,12 @@
           <li><a href="/handwriting-classes-guwahati/">📝 Handwriting</a></li>
         </ul>
       </li>
-      <li><a href="/#fees-schedule">Fees &amp; Schedule</a></li>
+      <li><a href="/schedule/">Fees &amp; Schedule</a></li>
       <li><a href="/#achievements">Achievements</a></li>
-      <li><a href="/#gallery">Gallery</a></li>
-      <li><a href="/#reviews">Reviews</a></li>
+      <li><a href="/gallery/" class="active">Gallery</a></li>
+      <li><a href="/reviews/">Reviews</a></li>
       <li><a href="/blog/">Blog</a></li>
-      <li><a href="/#contact">Contact</a></li>
+      <li><a href="/contact/">Contact</a></li>
       <li><a href="/#trial" onclick="window.location.href='/?trial=open#trial';return false;" class="ncta">✨ Book Free Trial</a></li>
     </ul>
 
@@ -206,95 +256,177 @@
 <!-- Header Banner -->
 <header class="page-header">
   <div class="sec-in">
-    <div class="sbadge">🌿 The Mind &amp; Motion Studio</div>
-    <h1 class="stitle">About <span>NOHADAYA</span></h1>
+    <div class="sbadge">📸 Visual Journey</div>
+    <h1 class="stitle">Studio &amp; Student <span>Gallery</span></h1>
     <div class="divider"></div>
-    <p style="font-size:1.1rem;color:#e2e8f0;max-width:700px;margin:0 auto;">
-      Yoga, Abacus &amp; Calligraphy Classes in Bagharbari, Guwahati, Assam.<br />
-      <span style="color:var(--gol);font-weight:700;">Learn. Move. Create.</span>
+    <p style="font-size:1.1rem;color:#e2e8f0;max-width:720px;margin:0 auto;">
+      A showcase of daily practice, championships, student artwork, workshops, and milestones at NOHADAYA Bagharbari.
     </p>
   </div>
 </header>
 
-<!-- SECTION 1: OUR STORY -->
 <section class="sec-pad" style="background:var(--bg);">
   <div class="sec-in">
     
-    <div style="text-align:center;margin-bottom:40px;">
-      <div class="sbadge">📖 Background &amp; Origins</div>
-      <h2 class="stitle" style="color:var(--gd);">Our <span>Story</span></h2>
-      <div class="divider"></div>
-      <p style="color:var(--text-mid);max-width:700px;margin:0 auto;">
-        How a passion for wholesome child development and adult wellness shaped Guwahati's premier mind &amp; motion sanctuary.
-      </p>
+    <!-- 9 CATEGORY FILTER TABS -->
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterGallery('all')">All Photos</button>
+      <button class="filter-btn" onclick="filterGallery('yoga')">🧘 Yoga</button>
+      <button class="filter-btn" onclick="filterGallery('abacus')">🔢 Abacus</button>
+      <button class="filter-btn" onclick="filterGallery('calligraphy')">✍️ Calligraphy</button>
+      <button class="filter-btn" onclick="filterGallery('students')">🎒 Students</button>
+      <button class="filter-btn" onclick="filterGallery('competitions')">🏆 Competitions</button>
+      <button class="filter-btn" onclick="filterGallery('events')">🎉 Events</button>
+      <button class="filter-btn" onclick="filterGallery('workshops')">🛠️ Workshops</button>
+      <button class="filter-btn" onclick="filterGallery('studio')">🏛️ Studio</button>
+      <button class="filter-btn" onclick="filterGallery('certificates')">📜 Certificates</button>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:40px;align-items:center;margin-bottom:50px;">
+    <!-- GALLERY GRID (Compressed WebP Images) -->
+    <div class="gallery-grid" id="galleryGrid">
       
-      <div>
-        <div style="border-radius:18px;overflow:hidden;box-shadow:var(--shadow-lg);border:2px solid var(--border);">
-          <img src="/images/studio_interior.jpg" alt="NOHADAYA Studio Interior" style="width:100%;height:380px;object-fit:cover;display:block;" / loading="lazy">
+      <!-- Item 1: Yoga Class -->
+      <div class="gallery-item" data-category="yoga students">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/yoga_class.webp" type="image/webp">
+            <img src="/images/yoga_class.jpg" alt="Yoga Batch Session at NOHADAYA" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Yoga</span>
         </div>
+        <div class="gallery-caption">Daily Yoga Batch: Hatha &amp; Posture Alignment</div>
       </div>
 
-      <div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--gd);margin-bottom:16px;">
-          Why NOHADAYA Was Established
-        </h3>
-        <p style="color:var(--text-mid);line-height:1.8;margin-bottom:16px;font-size:0.96rem;">
-          In an era dominated by constant screen exposure, academic pressure, and sedentary routines, students and adults in Guwahati face escalating mental stress, reduced attention spans, and physical fatigue. Children frequently experience math anxiety and illegible handwriting from improper pen control, while adults struggle to find dedicated time for mindful physical practice.
-        </p>
-        <p style="color:var(--text-mid);line-height:1.8;margin-bottom:18px;font-size:0.96rem;">
-          <strong>NOHADAYA</strong> was established as a purpose-driven studio in Bagharbari to bridge this gap. We unified three proven developmental pillars under one peaceful roof: <strong>Yoga</strong> for bodily alignment and stress relief, <strong>Abacus</strong> for speed arithmetic and concentration, and <strong>Calligraphy &amp; Handwriting</strong> for fine-motor control and creative discipline.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- Community & Philosophy Grid -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:28px;margin-bottom:50px;">
-      
-      <div class="card" style="padding:28px;border-left:4px solid var(--g);">
-        <div style="font-size:2rem;margin-bottom:10px;">🏘️</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd);margin-bottom:10px;">Community Served</h3>
-        <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
-          We serve a vibrant community of school children, teenagers, working professionals, and homemakers across <strong>Bagharbari, Satgaon, Panjabari, Six Mile, VIP Road, Bormotoria, Hengrabari</strong>, and Guwahati.
-        </p>
-      </div>
-
-      <div class="card" style="padding:28px;border-left:4px solid var(--gol);">
-        <div style="font-size:2rem;margin-bottom:10px;">💡</div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gd);margin-bottom:10px;">Teaching Philosophy</h3>
-        <p style="font-size:0.92rem;color:var(--text-mid);line-height:1.7;">
-          We emphasize structured small batches, individual pacing, patient guidance, and active daily practice. We foster a warm, zero-intimidation environment where every student develops authentic confidence.
-        </p>
-      </div>
-
-    </div>
-
-    <!-- MISSION & VISION BLOCKS -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:28px;">
-      
-      <!-- Mission -->
-      <div class="card" style="background:linear-gradient(135deg, rgba(27,67,50,0.05), rgba(45,106,79,0.12));border:1.5px solid var(--g);padding:30px 26px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <span style="font-size:2rem;">🎯</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--gd);margin:0;">Our Mission</h3>
+      <!-- Item 2: Yoga Back Strengthening -->
+      <div class="gallery-item" data-category="yoga workshops">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/yoga_back_strengthening.webp" type="image/webp">
+            <img src="/images/yoga_back_strengthening.jpg" alt="Spinal Health & Posture Workshop" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Yoga</span>
         </div>
-        <p style="font-size:1.02rem;color:var(--text);line-height:1.75;font-weight:500;">
-          Provide structured learning and wellness programs that help children and adults develop useful skills through regular practice and guided instruction.
-        </p>
+        <div class="gallery-caption">Back Strengthening &amp; Spinal Mobility Practice</div>
       </div>
 
-      <!-- Vision -->
-      <div class="card" style="background:linear-gradient(135deg, rgba(212,175,55,0.08), rgba(201,138,34,0.15));border:1.5px solid var(--gol);padding:30px 26px;">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-          <span style="font-size:2rem;">👁️</span>
-          <h3 style="font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--gd);margin:0;">Our Vision</h3>
+      <!-- Item 3: Yoga Cobra Pose -->
+      <div class="gallery-item" data-category="yoga workshops">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/yoga_cobra_bhujangasana.webp" type="image/webp">
+            <img src="/images/yoga_cobra_bhujangasana.jpg" alt="Bhujangasana Yoga Demonstration" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Yoga</span>
         </div>
-        <p style="font-size:1.02rem;color:var(--text);line-height:1.75;font-weight:500;">
-          Build a trusted local learning and wellness studio in Guwahati.
-        </p>
+        <div class="gallery-caption">Bhujangasana (Cobra Pose) Alignment Demonstration</div>
+      </div>
+
+      <!-- Item 4: Yoga Core Balance -->
+      <div class="gallery-item" data-category="yoga students">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/yoga_core_balance.webp" type="image/webp">
+            <img src="/images/yoga_core_balance.jpg" alt="Core Stability & Balance Class" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Yoga</span>
+        </div>
+        <div class="gallery-caption">Core Stability &amp; Equilibrium Training</div>
+      </div>
+
+      <!-- Item 5: Yoga Day Event -->
+      <div class="gallery-item" data-category="yoga events workshops">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/yoga_day_event.webp" type="image/webp">
+            <img src="/images/yoga_day_event.jpg" alt="International Yoga Day Community Gathering" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Events</span>
+        </div>
+        <div class="gallery-caption">International Yoga Day Celebration &amp; Workshop</div>
+      </div>
+
+      <!-- Item 6: Abacus Competition -->
+      <div class="gallery-item" data-category="abacus competitions students">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/abacus_competition.webp" type="image/webp">
+            <img src="/images/abacus_competition.jpg" alt="Abacus Championship Winners & Medalists" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Competitions</span>
+        </div>
+        <div class="gallery-caption">District Abacus Championship Winners &amp; Medalists</div>
+      </div>
+
+      <!-- Item 7: Calligraphy Work -->
+      <div class="gallery-item" data-category="calligraphy students">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/calligraphy_work.webp" type="image/webp">
+            <img src="/images/calligraphy_work.jpg" alt="Student Calligraphy & Penmanship Portfolio" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Calligraphy</span>
+        </div>
+        <div class="gallery-caption">Student Calligraphy Portfolio: Cursive &amp; Gothic Scripts</div>
+      </div>
+
+      <!-- Item 8: Award Ceremony -->
+      <div class="gallery-item" data-category="competitions events certificates">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/award_ceremony.webp" type="image/webp">
+            <img src="/images/award_ceremony.jpg" alt="Annual Certificate & Award Distribution" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Certificates</span>
+        </div>
+        <div class="gallery-caption">Annual Certificate &amp; Trophy Felicitation Ceremony</div>
+      </div>
+
+      <!-- Item 9: Studio Interior -->
+      <div class="gallery-item" data-category="studio workshops">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/studio_interior.webp" type="image/webp">
+            <img src="/images/studio_interior.jpg" alt="NOHADAYA Studio Interior in Bagharbari" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Studio</span>
+        </div>
+        <div class="gallery-caption">Air-Conditioned, Peaceful Studio Learning Space</div>
+      </div>
+
+      <!-- Item 10: Instructor Guidance -->
+      <div class="gallery-item" data-category="students workshops abacus calligraphy">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/instructor_guidance.webp" type="image/webp">
+            <img src="/images/instructor_guidance.jpg" alt="Individual Mentorship and Posture Correction" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Students</span>
+        </div>
+        <div class="gallery-caption">One-on-One Student Guidance &amp; Practice Drills</div>
+      </div>
+
+      <!-- Item 11: Director Profile -->
+      <div class="gallery-item" data-category="certificates studio">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/director.webp" type="image/webp">
+            <img src="/images/director.jpg" alt="Mrs. Noor Nahar Begum Master Trainer" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Studio</span>
+        </div>
+        <div class="gallery-caption">Master Instructor &amp; Studio Director Consultation</div>
+      </div>
+
+      <!-- Item 12: Studio Flyer & Program Overview -->
+      <div class="gallery-item" data-category="certificates studio">
+        <div class="gallery-thumb">
+          <picture>
+            <source srcset="/images/flyer.webp" type="image/webp">
+            <img src="/images/flyer.jpg" alt="Official Program Curriculum Overview" loading="lazy" />
+          </picture>
+          <span class="gallery-cat-tag">Certificates</span>
+        </div>
+        <div class="gallery-caption">ISO 9001:2015 Program Curriculum &amp; Level Structure</div>
       </div>
 
     </div>
@@ -302,85 +434,24 @@
   </div>
 </section>
 
-<!-- SECTION 2: LEADERSHIP & FACULTY -->
-<section class="sec-pad" style="background:var(--bg2);">
-  <div class="sec-in">
-    <div style="text-align:center;margin-bottom:40px;">
-      <div class="sbadge">👩‍🏫 Experienced Mentorship</div>
-      <h2 class="stitle" style="color:var(--gd);">Founder &amp; <span>Instructors</span></h2>
-      <div class="divider"></div>
-      <p style="color:var(--text-mid);max-width:680px;margin:0 auto;">
-        Dedicated, certified educators leading with structured curricula and personal attention.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:32px;">
-      
-      <!-- Mrs. Noor Nahar Begum -->
-      <div class="card" style="padding:28px;display:flex;flex-direction:column;">
-        <div style="height:260px;border-radius:12px;overflow:hidden;margin-bottom:16px;">
-          <img src="/images/director.jpg" alt="Mrs. Noor Nahar Begum" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;" / loading="lazy">
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gd);margin-bottom:4px;">Mrs. Noor Nahar Begum</h3>
-        <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Studio Director &amp; Master Instructor</div>
-        
-        <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:0.86rem;line-height:1.7;color:var(--text);margin-bottom:14px;">
-          <div><strong>Qualifications:</strong> Certified Master Trainer (Abacus &amp; Calligraphy), Graduate in Education Foundations</div>
-          <div><strong>Certifications:</strong> NE Green Abacus Certified Master Trainer, NE Unique Calligraphy Certified Instructor, ISO 9001:2015 Educational Lead</div>
-          <div><strong>Experience:</strong> 5+ Years of Dedicated Studio Teaching &amp; Curriculum Design (500+ Students Mentored)</div>
-          <div><strong>Specialisation:</strong> Soroban Abacus Mental Math, English &amp; Assamese Calligraphy, Cursive Handwriting Correction &amp; Fine-Motor Grip Alignment</div>
-          <div><strong>Teaching Approach:</strong> Patient, small-batch step-by-step guidance, positive reinforcement, and structured daily speed drills without exam stress.</div>
-          <div style="margin-top:4px;"><strong>Programs:</strong> <span style="color:var(--gd);font-weight:700;">Abacus Mental Arithmetic, Calligraphy, Handwriting Improvement, Kids Activity Classes</span></div>
-        </div>
-      </div>
-
-      <!-- Rubi Barman -->
-      <div class="card" style="padding:28px;display:flex;flex-direction:column;">
-        <div style="height:260px;border-radius:12px;overflow:hidden;margin-bottom:16px;">
-          <img src="/images/yoga_class.jpg" alt="Rubi Barman – Yoga Instructor" style="width:100%;height:100%;object-fit:cover;" / loading="lazy">
-        </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gd);margin-bottom:4px;">Rubi Barman</h3>
-        <div style="color:var(--go);font-size:0.85rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;">Certified Yoga Instructor</div>
-        
-        <div style="background:var(--bg);border-radius:10px;padding:14px;font-size:0.86rem;line-height:1.7;color:var(--text);margin-bottom:14px;">
-          <div><strong>Qualifications:</strong> Certified Professional Yoga Instructor &amp; Holistic Wellness Educator</div>
-          <div><strong>Certifications:</strong> Certified Hatha &amp; Vinyasa Yoga Teacher, Pranayama Breathwork Specialist, Postural Alignment &amp; Back Care Mastery</div>
-          <div><strong>Experience:</strong> 5+ Years of Daily Studio Practice &amp; Group/Personal Instruction in Guwahati</div>
-          <div><strong>Specialisation:</strong> Traditional Hatha Yoga, Flow Vinyasa, Pranayama Breath Control (Nadi Shodhana, Kapalabhati), Spinal Strengthening &amp; Meditation</div>
-          <div><strong>Teaching Approach:</strong> Alignment-first, breath-led practice with individual posture modifications suitable for all fitness levels from beginners to seniors.</div>
-          <div style="margin-top:4px;"><strong>Programs:</strong> <span style="color:var(--gd);font-weight:700;">Morning Hatha Yoga, Evening Vinyasa Flow, Pranayama &amp; Meditation, Posture &amp; Spine Health</span></div>
-        </div>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:35px;">
-      <a href="/instructors/" class="btn-gold" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:30px;font-weight:800;text-decoration:none;font-size:0.95rem;">
-        View Detailed Instructor Profiles &rarr;
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: CALL TO ACTION -->
+<!-- CALL TO ACTION -->
 <section style="background:linear-gradient(135deg, var(--gd), #0d281a);color:#fff;padding:70px 24px;text-align:center;">
   <div class="sec-in">
-    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:14px;">Ready to Experience NOHADAYA?</h2>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:14px;">Visit Our Studio in Bagharbari</h2>
     <p style="color:#e2e8f0;font-size:1.05rem;max-width:600px;margin:0 auto 28px;">
-      Book a free trial and experience the program before you enrol.
+      Tour our learning environment and attend a complimentary demo session with your child.
     </p>
     <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
       <a href="/?trial=open#trial" class="btn-gold" style="padding:14px 32px;border-radius:30px;text-decoration:none;font-size:0.95rem;">
         ✨ Book Free Trial
       </a>
-      <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%20Studio%2C%20I%20would%20like%20to%20enquire%20about%20classes%20and%20book%20a%20Free%20Trial." target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;font-weight:800;padding:14px 30px;border-radius:30px;text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;">
+      <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%20Studio%2C%20I%20would%20like%20to%20plan%20a%20studio%20visit." target="_blank" rel="noopener noreferrer" style="background:#25D366;color:#fff;font-weight:800;padding:14px 30px;border-radius:30px;text-decoration:none;font-size:0.95rem;display:inline-flex;align-items:center;gap:8px;">
         WhatsApp Us
       </a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
 <!-- ════════ INTERNAL RESOURCE LINKS (ABOUT HUB) ════════ -->
 <section style="background:var(--bg3);padding:55px 20px;border-top:1px solid var(--border);">
   <div style="max-width:1150px;margin:0 auto;">
@@ -464,6 +535,24 @@
     &copy; 2026 NOHADAYA – The Mind &amp; Motion Studio. All rights reserved.
   </div>
 </footer>
+
+<script>
+function filterGallery(category) {
+  const items = document.querySelectorAll('.gallery-item');
+  const buttons = document.querySelectorAll('.filter-btn');
+  
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+
+  items.forEach(item => {
+    if (category === 'all' || item.getAttribute('data-category').includes(category)) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
 
 </body>
 </html>
