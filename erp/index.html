@@ -4854,5 +4854,71 @@ function renderVisitorStats() {
     </div>
   </div>
         
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   5-MINUTE INACTIVITY AUTO-LOGOUT SECURITY ENGINE
+   ══════════════════════════════════════════════════════════ */
+(function initInactivityAutoLogout() {
+  const INACTIVITY_LIMIT_MS = 5 * 60 * 1000; // 5 Minutes (300,000 ms)
+  let inactivityTimer = null;
+  let warningTimer = null;
+
+  function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    clearTimeout(warningTimer);
+
+    // Hide any previous warning toast
+    const existingToast = document.getElementById('session-inactivity-toast');
+    if (existingToast) existingToast.remove();
+
+    // 1. Set 4m 30s gentle warning (30 seconds before auto logout)
+    warningTimer = setTimeout(() => {
+      showInactivityWarningToast();
+    }, INACTIVITY_LIMIT_MS - 30000);
+
+    // 2. Set 5m hard auto logout
+    inactivityTimer = setTimeout(() => {
+      performInactivityLogout();
+    }, INACTIVITY_LIMIT_MS);
+  }
+
+  function showInactivityWarningToast() {
+    if (document.getElementById('session-inactivity-toast')) return;
+    const toast = document.createElement('div');
+    toast.id = 'session-inactivity-toast';
+    toast.innerHTML = `
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-size:1.5rem;">⏳</span>
+        <div>
+          <strong style="display:block; font-size:0.9rem; color:#fff; font-weight:800;">Session Inactivity Warning</strong>
+          <span style="font-size:0.78rem; color:#fca5a5;">Logging out in 30 seconds due to inactivity. Move your mouse or press any key to continue.</span>
+        </div>
+      </div>
+    `;
+    toast.style.cssText = 'position:fixed; top:20px; right:20px; z-index:999999; background:linear-gradient(135deg, #7f1d1d, #991b1b); color:#fff; padding:14px 22px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.4); border:1.5px solid #f87171; font-family:system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; animation:fadeIn 0.3s ease-out;';
+    document.body.appendChild(toast);
+  }
+
+  function performInactivityLogout() {
+    sessionStorage.removeItem('nohadaya_backend_auth');
+    sessionStorage.removeItem('nohadaya_current_user');
+    sessionStorage.removeItem('nohadaya_crm_session');
+    localStorage.removeItem('nohadaya_crm_session');
+
+    alert("🔒 Session Expired: You have been automatically logged out due to 5 minutes of inactivity for security.");
+    window.location.href = '../portal-login.html';
+  }
+
+  // Active user interaction listeners to reset the 5-minute countdown
+  ['mousemove', 'mousedown', 'keydown', 'scroll', 'touchstart', 'click'].forEach(evt => {
+    window.addEventListener(evt, resetInactivityTimer, { passive: true });
+  });
+
+  // Start initial timer on page load
+  resetInactivityTimer();
+})();
+</script>
+
 </body>
 </html>
