@@ -1962,9 +1962,34 @@ function saveNewLead(e) {
 function deleteLead(index) {
   const l = allLeads[index];
   if (!l) return;
-  if (confirm(`Are you sure you want to remove lead inquiry for "${l.name}" (${l.phone})?`)) {
+  if (confirm(`Are you sure you want to permanently remove lead inquiry for "${l.name}" (${l.phone})?`)) {
+    const leadKey = l.id || l.lead_id || (l.name + '_' + l.phone);
+    const legacyKey = l.lead_id || (l.name + l.phone);
+
+    // 1. Permanently register in deleted set
+    let deletedSet = [];
+    try {
+      deletedSet = JSON.parse(localStorage.getItem('nohadaya_deleted_leads') || '[]');
+    } catch(e) { deletedSet = []; }
+
+    if (!deletedSet.includes(leadKey)) deletedSet.push(leadKey);
+    if (l.lead_id && !deletedSet.includes(l.lead_id)) deletedSet.push(l.lead_id);
+    if (!deletedSet.includes(legacyKey)) deletedSet.push(legacyKey);
+    localStorage.setItem('nohadaya_deleted_leads', JSON.stringify(deletedSet));
+
+    // 2. Remove from active memory and localStorage
     allLeads.splice(index, 1);
     localStorage.setItem('nohadaya_leads', JSON.stringify(allLeads));
+    localStorage.setItem('nohadaya_leads_initialized', 'true');
+
+    // 3. Send delete request to backend server if available
+    try {
+      const idToDelete = l.id || l.lead_id;
+      if (idToDelete) {
+        fetch(`/api/contact/leads/${idToDelete}`, { method: 'DELETE' }).catch(() => {});
+      }
+    } catch(e) {}
+
     updateCounts();
     renderTable();
   }
@@ -1975,13 +2000,30 @@ let activeLeadIndex = -1;
 let currentStageFilter = '';
 
 async function loadLeads() {
-  let localLeads = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
-  if (localLeads.length === 0) {
+  const isInitialized = localStorage.getItem('nohadaya_leads_initialized');
+  let localLeads = null;
+  try {
+    const raw = localStorage.getItem('nohadaya_leads');
+    if (raw !== null) localLeads = JSON.parse(raw);
+  } catch(e) { localLeads = null; }
+
+  // Only load default baseline sample leads on the VERY FIRST visit
+  // Never re-seed if the user has initialized or cleared the database
+  if (localLeads === null && !isInitialized) {
     localLeads = JSON.parse(JSON.stringify(BASELINE_LEADS));
     localStorage.setItem('nohadaya_leads', JSON.stringify(localLeads));
+    localStorage.setItem('nohadaya_leads_initialized', 'true');
+  } else if (localLeads === null) {
+    localLeads = [];
   }
-  let apiLeads = [];
 
+  // Load deleted IDs blacklist
+  let deletedSet = [];
+  try {
+    deletedSet = JSON.parse(localStorage.getItem('nohadaya_deleted_leads') || '[]');
+  } catch(e) { deletedSet = []; }
+
+  let apiLeads = [];
   try {
     const res = await fetch('/api/contact/leads', { signal: AbortSignal.timeout(2500) });
     if (res.ok) {
@@ -1995,11 +2037,18 @@ async function loadLeads() {
   const seen = new Set();
   const merged = [];
 
-  for (const l of [...apiLeads, ...localLeads]) {
-    const key = l.lead_id || (l.name + l.phone);
+  for (const l of [...localLeads, ...apiLeads]) {
+    const key = l.id || l.lead_id || (l.name + '_' + l.phone);
+    const legacyKey = l.lead_id || (l.name + l.phone);
+
+    // Skip permanently deleted leads
+    if (deletedSet.includes(key) || deletedSet.includes(legacyKey) || (l.lead_id && deletedSet.includes(l.lead_id))) {
+      continue;
+    }
+
     if (!seen.has(key)) {
       seen.add(key);
-      // Map old stage names to standard 10 stages
+      // Map stage names
       if (l.stage === 'NEW_LEAD') l.stage = 'NEW';
       if (l.stage === 'TRIAL_BOOKED') l.stage = 'TRIAL BOOKED';
       if (l.stage === 'TRIAL_ATTENDED') l.stage = 'TRIAL ATTENDED';
@@ -2012,8 +2061,19 @@ async function loadLeads() {
   }
 
   allLeads = merged;
+  localStorage.setItem('nohadaya_leads', JSON.stringify(allLeads));
   updateCounts();
   renderTable();
+}
+
+function restoreDefaultSampleLeads() {
+  if (confirm("Restore default sample leads for demonstration? Your custom added leads will be preserved.")) {
+    localStorage.removeItem('nohadaya_deleted_leads');
+    localStorage.setItem('nohadaya_leads', JSON.stringify(BASELINE_LEADS));
+    localStorage.setItem('nohadaya_leads_initialized', 'true');
+    loadLeads();
+    alert("Sample leads restored!");
+  }
 }
 
 function updateCounts() {
