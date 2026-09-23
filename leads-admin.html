@@ -801,47 +801,67 @@
     </div>
 
     <!-- Section: Lifecycle Funnel Menu -->
-    <div class="sidebar-section-title">PIPELINE STAGES</div>
+    <div class="sidebar-section-title">PIPELINE STAGES (10 STAGES)</div>
     <nav class="sidebar-funnel-menu" id="funnelTabs">
       <button type="button" class="f-tab active" data-stage="" onclick="selectFunnelTab(this, '')">
         <span>📋</span>
-        <span>All Pipeline</span>
+        <span>All Leads</span>
         <span class="f-count" id="fc-all">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="NEW_LEAD" onclick="selectFunnelTab(this, 'NEW_LEAD')">
+      <button type="button" class="f-tab" data-stage="NEW" onclick="selectFunnelTab(this, 'NEW')">
         <span>📥</span>
-        <span>1. New Inquiries</span>
+        <span>1. NEW</span>
         <span class="f-count" id="fc-new">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="TRIAL_BOOKED" onclick="selectFunnelTab(this, 'TRIAL_BOOKED')">
+      <button type="button" class="f-tab" data-stage="CONTACTED" onclick="selectFunnelTab(this, 'CONTACTED')">
+        <span>📞</span>
+        <span>2. CONTACTED</span>
+        <span class="f-count" id="fc-contacted">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="INTERESTED" onclick="selectFunnelTab(this, 'INTERESTED')">
+        <span>✨</span>
+        <span>3. INTERESTED</span>
+        <span class="f-count" id="fc-interested">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="TRIAL BOOKED" onclick="selectFunnelTab(this, 'TRIAL BOOKED')">
         <span>📅</span>
-        <span>2. Trial Booked</span>
+        <span>4. TRIAL BOOKED</span>
         <span class="f-count" id="fc-trial-b">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="TRIAL_ATTENDED" onclick="selectFunnelTab(this, 'TRIAL_ATTENDED')">
+      <button type="button" class="f-tab" data-stage="TRIAL ATTENDED" onclick="selectFunnelTab(this, 'TRIAL ATTENDED')">
         <span>🧘</span>
-        <span>3. Trial Attended</span>
+        <span>5. TRIAL ATTENDED</span>
         <span class="f-count" id="fc-trial-a">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="FOLLOW_UP" onclick="selectFunnelTab(this, 'FOLLOW_UP')">
-        <span>📞</span>
-        <span>4. Follow-up Active</span>
+      <button type="button" class="f-tab" data-stage="FOLLOW-UP" onclick="selectFunnelTab(this, 'FOLLOW-UP')">
+        <span>💬</span>
+        <span>6. FOLLOW-UP</span>
         <span class="f-count" id="fc-fu">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="ADMITTED" onclick="selectFunnelTab(this, 'ADMITTED')">
+      <button type="button" class="f-tab" data-stage="ADMISSION" onclick="selectFunnelTab(this, 'ADMISSION')">
         <span>🎓</span>
-        <span>5. Admitted</span>
+        <span>7. ADMISSION</span>
         <span class="f-count" id="fc-adm">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="PAID" onclick="selectFunnelTab(this, 'PAID')">
-        <span>💳</span>
-        <span>6. Active &amp; Paid</span>
-        <span class="f-count" id="fc-paid">0</span>
+      <button type="button" class="f-tab" data-stage="ACTIVE STUDENT" onclick="selectFunnelTab(this, 'ACTIVE STUDENT')">
+        <span>🌟</span>
+        <span>8. ACTIVE STUDENT</span>
+        <span class="f-count" id="fc-active">0</span>
       </button>
-      <button type="button" class="f-tab" data-stage="RENEWAL_DUE" onclick="selectFunnelTab(this, 'RENEWAL_DUE')">
+      <button type="button" class="f-tab" data-stage="RENEWAL" onclick="selectFunnelTab(this, 'RENEWAL')">
         <span>🔄</span>
-        <span>7. Renewals Due</span>
+        <span>9. RENEWAL</span>
         <span class="f-count" id="fc-ren">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="REFERRAL" onclick="selectFunnelTab(this, 'REFERRAL')">
+        <span>🤝</span>
+        <span>10. REFERRAL</span>
+        <span class="f-count" id="fc-ref">0</span>
+      </button>
+      <button type="button" class="f-tab" data-stage="LOST" onclick="selectFunnelTab(this, 'LOST')">
+        <span>❌</span>
+        <span>LOST / DROPPED</span>
+        <span class="f-count" id="fc-lost">0</span>
       </button>
     </nav>
 
@@ -997,11 +1017,11 @@
 
 <!-- ════════ MODAL: ADD NEW LEAD / INQUIRY ENTRY ════════ -->
 <div class="drawer-overlay" id="newLeadModal">
-  <div class="drawer" style="max-width: 580px;">
+  <div class="drawer" style="max-width: 600px;">
     <div class="drawer-header">
       <div>
         <h2>➕ Add New Student Lead / Inquiry</h2>
-        <small>Create an inquiry record in CRM pipeline</small>
+        <small>Standard 10-Field Lead Capture &amp; CRM Funnel</small>
       </div>
       <button class="drawer-close" onclick="closeNewLeadModal()">&times;</button>
     </div>
@@ -1009,48 +1029,91 @@
       <div class="drawer-body" style="gap:1.2rem; padding:1.4rem 1.6rem;">
         <div class="form-row">
           <div class="f-field">
-            <label>Student / Parent Name *</label>
-            <input type="text" id="nl-name" required placeholder="e.g. Aarav Sharma / Rajesh Sharma">
+            <label>1. Parent / Enquirer Name *</label>
+            <input type="text" id="nl-name" required placeholder="e.g. Rajesh Sharma">
           </div>
           <div class="f-field">
-            <label>Phone / WhatsApp *</label>
+            <label>2. Phone / WhatsApp *</label>
             <input type="tel" id="nl-phone" required placeholder="e.g. 9876543210">
           </div>
         </div>
+
         <div class="form-row">
           <div class="f-field">
-            <label>Program Discipline *</label>
+            <label>3. Email Address</label>
+            <input type="email" id="nl-email" placeholder="e.g. parent@example.com">
+          </div>
+          <div class="f-field">
+            <label>4. Student / Participant Name</label>
+            <input type="text" id="nl-student" placeholder="e.g. Aarav Sharma">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="f-field">
+            <label>5. Student Age / Group</label>
+            <input type="text" id="nl-age" placeholder="e.g. 9 Years or Adult">
+          </div>
+          <div class="f-field">
+            <label>6. Program Discipline *</label>
             <select id="nl-program" required>
               <option value="Yoga Classes">🧘 Yoga Classes</option>
               <option value="Abacus Training">🔢 Abacus Training</option>
               <option value="Calligraphy Classes">✍️ Calligraphy Classes</option>
+              <option value="Handwriting Classes">📝 Handwriting Classes</option>
+              <option value="Kids Activity Classes">🌟 Kids Activity Classes</option>
             </select>
           </div>
-          <div class="f-field">
-            <label>Student Age / Group</label>
-            <input type="text" id="nl-age" placeholder="e.g. 9 Years or Adult">
-          </div>
         </div>
+
         <div class="form-row">
           <div class="f-field">
-            <label>Initial Pipeline Stage *</label>
-            <select id="nl-stage" required>
-              <option value="NEW_LEAD">📥 1. New Inquiry / Lead</option>
-              <option value="TRIAL_BOOKED">📅 2. Free Trial Booked</option>
-              <option value="TRIAL_ATTENDED">🧘 3. Trial Attended</option>
-              <option value="FOLLOW_UP">📞 4. Follow-up Active</option>
-              <option value="ADMITTED">🎓 5. Admission Confirmed</option>
-              <option value="PAID">💳 6. Paid &amp; Active</option>
+            <label>7. Preferred Batch</label>
+            <input type="text" id="nl-batch" placeholder="e.g. Morning 6:00 AM / Evening 4:00 PM">
+          </div>
+          <div class="f-field">
+            <label>8. Preferred Contact Method</label>
+            <select id="nl-contact-method">
+              <option value="WhatsApp">💬 WhatsApp (Fastest)</option>
+              <option value="Phone Call">📞 Phone Call</option>
+              <option value="Email">📧 Email</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="f-field">
+            <label>9. Lead Source</label>
+            <select id="nl-source">
+              <option value="Google Search">Google Search</option>
+              <option value="Social Media (Instagram / Facebook)">Social Media (Instagram / Facebook)</option>
+              <option value="Friend / Family Referral">Friend / Family Referral</option>
+              <option value="WhatsApp Direct">WhatsApp Direct</option>
+              <option value="Walking By / Studio Banner">Walking By / Studio Banner</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div class="f-field">
-            <label>Preferred Batch</label>
-            <input type="text" id="nl-batch" placeholder="e.g. Morning 6:00 AM / Evening 4:00 PM">
+            <label>10. Initial Pipeline Stage *</label>
+            <select id="nl-stage" required>
+              <option value="NEW">📥 1. NEW (New Inquiry)</option>
+              <option value="CONTACTED">📞 2. CONTACTED</option>
+              <option value="INTERESTED">✨ 3. INTERESTED</option>
+              <option value="TRIAL BOOKED">📅 4. TRIAL BOOKED</option>
+              <option value="TRIAL ATTENDED">🧘 5. TRIAL ATTENDED</option>
+              <option value="FOLLOW-UP">💬 6. FOLLOW-UP</option>
+              <option value="ADMISSION">🎓 7. ADMISSION</option>
+              <option value="ACTIVE STUDENT">🌟 8. ACTIVE STUDENT</option>
+              <option value="RENEWAL">🔄 9. RENEWAL</option>
+              <option value="REFERRAL">🤝 10. REFERRAL</option>
+              <option value="LOST">❌ LOST / DROPPED</option>
+            </select>
           </div>
         </div>
+
         <div class="f-field">
-          <label>Inquiry Notes / Source</label>
-          <textarea id="nl-notes" rows="2" placeholder="e.g. Inquired via Website Contact / Referred by friend / Wants weekend batch"></textarea>
+          <label>Inquiry Message / Remarks</label>
+          <textarea id="nl-notes" rows="2" placeholder="e.g. Inquired via Website Contact / Needs posture guidance / Weekend preference"></textarea>
         </div>
       </div>
       <div class="drawer-footer" style="padding:1rem 1.6rem; border-top:1px solid var(--border); background:#f8faf9; display:flex; justify-content:flex-end; gap:10px;">
@@ -1063,7 +1126,7 @@
 
 <!-- ════════ STUDENT 360° LIFECYCLE DRAWER / MODAL ════════ -->
 <div class="drawer-overlay" id="lifecycleDrawer">
-  <div class="drawer">
+  <div class="drawer" style="max-width: 680px;">
     <div class="drawer-header">
       <div>
         <h2 id="d-student-name">Student Full Name</h2>
@@ -1073,38 +1136,64 @@
     </div>
 
     <div class="drawer-body">
-      <!-- VISUAL 6-STEP ROADMAP -->
-      <div class="lifecycle-track">
-        <div class="lc-step" id="step-lead" onclick="setLeadStage('NEW_LEAD')">
-          <div class="lc-circle">1</div>
-          <span>Inquiry</span>
+      <!-- VISUAL 10-STEP ROADMAP -->
+      <div style="font-size:0.75rem; font-weight:800; color:var(--text-mid); text-transform:uppercase; margin-bottom:6px; letter-spacing:0.5px;">10-Stage Pipeline Progress</div>
+      <div class="lifecycle-track" style="flex-wrap:nowrap; overflow-x:auto;">
+        <div class="lc-step" id="step-NEW" onclick="setLeadStage('NEW')"><div class="lc-circle">1</div><span>New</span></div>
+        <div class="lc-step" id="step-CONTACTED" onclick="setLeadStage('CONTACTED')"><div class="lc-circle">2</div><span>Contacted</span></div>
+        <div class="lc-step" id="step-INTERESTED" onclick="setLeadStage('INTERESTED')"><div class="lc-circle">3</div><span>Interested</span></div>
+        <div class="lc-step" id="step-TRIAL_BOOKED" onclick="setLeadStage('TRIAL BOOKED')"><div class="lc-circle">4</div><span>Trial Booked</span></div>
+        <div class="lc-step" id="step-TRIAL_ATTENDED" onclick="setLeadStage('TRIAL ATTENDED')"><div class="lc-circle">5</div><span>Attended</span></div>
+        <div class="lc-step" id="step-FOLLOW_UP" onclick="setLeadStage('FOLLOW-UP')"><div class="lc-circle">6</div><span>Follow-up</span></div>
+        <div class="lc-step" id="step-ADMISSION" onclick="setLeadStage('ADMISSION')"><div class="lc-circle">7</div><span>Admission</span></div>
+        <div class="lc-step" id="step-ACTIVE_STUDENT" onclick="setLeadStage('ACTIVE STUDENT')"><div class="lc-circle">8</div><span>Active</span></div>
+        <div class="lc-step" id="step-RENEWAL" onclick="setLeadStage('RENEWAL')"><div class="lc-circle">9</div><span>Renewal</span></div>
+        <div class="lc-step" id="step-REFERRAL" onclick="setLeadStage('REFERRAL')"><div class="lc-circle">10</div><span>Referral</span></div>
+      </div>
+
+      <!-- CURRENT STAGE CONTROLLER -->
+      <div class="section-box" style="background: #f0fdf4; border-color: #86efac;">
+        <div class="section-title" style="color: var(--gd); margin-bottom: 8px;">
+          <span>🎯 Current Lead Stage</span>
+          <span id="d-current-stage-badge" style="background:var(--g); color:#fff; padding:3px 10px; border-radius:12px; font-size:0.75rem; font-weight:800;">NEW</span>
         </div>
-        <div class="lc-step" id="step-trial-b" onclick="setLeadStage('TRIAL_BOOKED')">
-          <div class="lc-circle">2</div>
-          <span>Trial Booked</span>
-        </div>
-        <div class="lc-step" id="step-trial-a" onclick="setLeadStage('TRIAL_ATTENDED')">
-          <div class="lc-circle">3</div>
-          <span>Attended</span>
-        </div>
-        <div class="lc-step" id="step-fu" onclick="setLeadStage('FOLLOW_UP')">
-          <div class="lc-circle">4</div>
-          <span>Follow-up</span>
-        </div>
-        <div class="lc-step" id="step-adm" onclick="setLeadStage('ADMITTED')">
-          <div class="lc-circle">5</div>
-          <span>Admission</span>
-        </div>
-        <div class="lc-step" id="step-paid" onclick="setLeadStage('PAID')">
-          <div class="lc-circle">6</div>
-          <span>Paid / Active</span>
+        <div class="form-row" style="margin-bottom:0;">
+          <div class="f-field">
+            <label>Update Pipeline Stage</label>
+            <select id="df-stage" onchange="setLeadStage(this.value)" style="font-weight:700; color:var(--gd);">
+              <option value="NEW">📥 1. NEW (New Lead)</option>
+              <option value="CONTACTED">📞 2. CONTACTED</option>
+              <option value="INTERESTED">✨ 3. INTERESTED</option>
+              <option value="TRIAL BOOKED">📅 4. TRIAL BOOKED</option>
+              <option value="TRIAL ATTENDED">🧘 5. TRIAL ATTENDED</option>
+              <option value="FOLLOW-UP">💬 6. FOLLOW-UP</option>
+              <option value="ADMISSION">🎓 7. ADMISSION</option>
+              <option value="ACTIVE STUDENT">🌟 8. ACTIVE STUDENT</option>
+              <option value="RENEWAL">🔄 9. RENEWAL</option>
+              <option value="REFERRAL">🤝 10. REFERRAL</option>
+              <option value="LOST">❌ LOST / DROPPED</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Lost Reason (If Lost / Dropped)</label>
+            <select id="df-lost-reason">
+              <option value="">— None / Active —</option>
+              <option value="Not Interested">Not Interested</option>
+              <option value="Fee Issue">Fee Issue</option>
+              <option value="Timing Issue">Timing Issue</option>
+              <option value="Distance">Distance</option>
+              <option value="No Response">No Response</option>
+              <option value="Joined Elsewhere">Joined Elsewhere</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 1: INQUIRY & CONTACT -->
       <div class="section-box">
         <div class="section-title">
-          <span>📋 1. Inquiry &amp; Student Profile</span>
+          <span>📋 1. Enquirer &amp; Student Profile</span>
           <div style="display:flex; gap:8px;">
             <a id="d-call-btn" href="#" class="btn btn-gold" style="padding:4px 10px; font-size:0.75rem;">📞 Call</a>
             <a id="d-wa-chat" href="#" target="_blank" class="btn-wa-trigger" style="padding:4px 10px; font-size:0.75rem;">💬 WhatsApp</a>
@@ -1112,7 +1201,7 @@
         </div>
         <div class="form-row">
           <div class="f-field">
-            <label>Student / Parent Name</label>
+            <label>Parent / Enquirer Name</label>
             <input type="text" id="df-name">
           </div>
           <div class="f-field">
@@ -1126,20 +1215,40 @@
         </div>
         <div class="form-row">
           <div class="f-field">
+            <label>Student / Participant Name</label>
+            <input type="text" id="df-student" placeholder="Participant's Name">
+          </div>
+          <div class="f-field">
             <label>Program</label>
             <select id="df-program">
               <option value="Yoga Classes">🧘 Yoga Classes</option>
               <option value="Abacus Training">🔢 Abacus Training</option>
               <option value="Calligraphy Classes">✍️ Calligraphy Classes</option>
+              <option value="Handwriting Classes">📝 Handwriting Classes</option>
+              <option value="Kids Activity Classes">🌟 Kids Activity Classes</option>
             </select>
           </div>
           <div class="f-field">
             <label>Student Age / Group</label>
             <input type="text" id="df-age" placeholder="e.g. 8 years">
           </div>
+        </div>
+        <div class="form-row">
           <div class="f-field">
             <label>Preferred Batch</label>
             <input type="text" id="df-batch" placeholder="e.g. Morning 6:00 AM">
+          </div>
+          <div class="f-field">
+            <label>Preferred Contact Method</label>
+            <select id="df-contact-method">
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Phone Call">Phone Call</option>
+              <option value="Email">Email</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label>Source</label>
+            <input type="text" id="df-source" placeholder="Website / Google / Friend">
           </div>
         </div>
       </div>
@@ -1317,19 +1426,24 @@ const BASELINE_LEADS = [
   {
     lead_id: 'NOH-2026-001',
     admission_no: 'ADM-26-0101',
-    name: 'Aarav Sharma',
+    name: 'Rajesh Sharma',
     phone: '9876543210',
     email: 'rajesh.sharma@example.com',
+    student_name: 'Aarav Sharma',
     program: 'Abacus Training',
     age_group: '9 Years',
     batch: 'Morning 9:00 AM - 11:00 AM',
-    stage: 'PAID',
+    contact_method: 'WhatsApp',
+    source: 'Google Search',
+    stage: 'ACTIVE STUDENT',
     payment_status: 'PAID',
     fee_amount: 1500,
     trial_date: '2026-02-15',
     trial_status: 'ATTENDED',
+    admission_date: '2026-02-18',
     created_at: '2026-02-10',
-    renewal_due_date: '2026-03-31'
+    renewal_due_date: '2026-03-31',
+    message: 'Parent enrolled child for Abacus level 1.'
   },
   {
     lead_id: 'NOH-2026-002',
@@ -1337,50 +1451,64 @@ const BASELINE_LEADS = [
     name: 'Priyanka Das',
     phone: '9101122334',
     email: 'priyanka.das@example.com',
+    student_name: 'Priyanka Das',
     program: 'Yoga Classes',
     age_group: '28 Years (Adult)',
     batch: 'Morning 6:00 AM - 7:30 AM',
-    stage: 'PAID',
+    contact_method: 'Phone Call',
+    source: 'Instagram',
+    stage: 'ACTIVE STUDENT',
     payment_status: 'PAID',
     fee_amount: 1500,
     trial_date: '2026-02-20',
     trial_status: 'ATTENDED',
+    admission_date: '2026-02-22',
     created_at: '2026-02-18',
-    renewal_due_date: '2026-03-25'
+    renewal_due_date: '2026-03-25',
+    message: 'Practicing Vinyasa Flow & Pranayama.'
   },
   {
     lead_id: 'NOH-2026-003',
     admission_no: 'ADM-26-0103',
-    name: 'Rohan Bordoloi',
+    name: 'N. Bordoloi',
     phone: '8876121675',
     email: 'bordoloi.r@example.com',
+    student_name: 'Rohan Bordoloi',
     program: 'Calligraphy Classes',
     age_group: '11 Years',
     batch: 'Evening 5:00 PM - 6:30 PM',
-    stage: 'ADMITTED',
+    contact_method: 'WhatsApp',
+    source: 'Friend / Family Referral',
+    stage: 'ADMISSION',
     payment_status: 'UNPAID',
     fee_amount: 1200,
     trial_date: '2026-03-01',
     trial_status: 'ATTENDED',
+    admission_date: '2026-03-05',
     created_at: '2026-02-28',
-    renewal_due_date: '2026-03-28'
+    renewal_due_date: '2026-03-28',
+    message: 'Completed trial session. Awaiting fee clearance.'
   },
   {
     lead_id: 'NOH-2026-004',
     admission_no: '',
-    name: 'Ishita Kalita',
+    name: 'B. Kalita',
     phone: '9435012345',
     email: 'kalita.family@example.com',
+    student_name: 'Ishita Kalita',
     program: 'Abacus Training',
     age_group: '7 Years',
     batch: 'Evening 4:00 PM - 6:00 PM',
-    stage: 'TRIAL_BOOKED',
+    contact_method: 'WhatsApp',
+    source: 'Studio Banner',
+    stage: 'TRIAL BOOKED',
     payment_status: 'UNPAID',
     fee_amount: 1500,
     trial_date: '2026-03-25',
     trial_time: '16:00',
     trial_status: 'SCHEDULED',
-    created_at: '2026-03-15'
+    created_at: '2026-03-15',
+    message: 'Booked trial slot for Wednesday batch.'
   },
   {
     lead_id: 'NOH-2026-005',
@@ -1388,14 +1516,53 @@ const BASELINE_LEADS = [
     name: 'Ananya Dutta',
     phone: '7002604856',
     email: 'ananya.dutta@example.com',
+    student_name: 'Ananya Dutta',
     program: 'Yoga Classes',
     age_group: 'Adult (Evening Batch)',
     batch: 'Evening 5:00 PM - 6:30 PM',
-    stage: 'NEW_LEAD',
+    contact_method: 'WhatsApp',
+    source: 'Website Contact Form',
+    stage: 'NEW',
     payment_status: 'UNPAID',
     fee_amount: 1500,
     created_at: '2026-03-20',
     message: 'Inquired via website contact form for Spine Health & Meditation.'
+  },
+  {
+    lead_id: 'NOH-2026-006',
+    admission_no: '',
+    name: 'Manish Talukdar',
+    phone: '9864011223',
+    email: 'manish.t@example.com',
+    student_name: 'Kavya Talukdar',
+    program: 'Abacus Training',
+    age_group: '6 Years',
+    batch: 'Evening 4:00 PM',
+    contact_method: 'Phone Call',
+    source: 'Google Search',
+    stage: 'CONTACTED',
+    payment_status: 'UNPAID',
+    fee_amount: 1500,
+    created_at: '2026-03-21',
+    message: 'Spoke regarding course syllabus and batch timings.'
+  },
+  {
+    lead_id: 'NOH-2026-007',
+    admission_no: '',
+    name: 'Dimple Saikia',
+    phone: '9706044556',
+    email: 'dimple.s@example.com',
+    student_name: 'Dimple Saikia',
+    program: 'Yoga Classes',
+    age_group: '32 Years',
+    batch: 'Morning 6:00 AM',
+    contact_method: 'WhatsApp',
+    source: 'Friend Referral',
+    stage: 'INTERESTED',
+    payment_status: 'UNPAID',
+    fee_amount: 1500,
+    created_at: '2026-03-21',
+    message: 'Interested in morning batch starting next week.'
   }
 ];
 
@@ -1410,13 +1577,17 @@ function closeNewLeadModal() {
 
 function saveNewLead(e) {
   e.preventDefault();
-  const name = document.getElementById('nl-name').value.trim();
-  const phone = document.getElementById('nl-phone').value.trim();
-  const program = document.getElementById('nl-program').value;
-  const age_group = document.getElementById('nl-age').value.trim();
-  const stage = document.getElementById('nl-stage').value;
-  const batch = document.getElementById('nl-batch').value.trim();
-  const notes = document.getElementById('nl-notes').value.trim();
+  const name           = document.getElementById('nl-name').value.trim();
+  const phone          = document.getElementById('nl-phone').value.trim();
+  const email          = document.getElementById('nl-email').value.trim();
+  const student_name   = (document.getElementById('nl-student')?.value || name).trim();
+  const age_group      = document.getElementById('nl-age').value.trim();
+  const program        = document.getElementById('nl-program').value;
+  const batch          = document.getElementById('nl-batch').value.trim();
+  const contact_method = document.getElementById('nl-contact-method').value;
+  const source         = document.getElementById('nl-source').value;
+  const stage          = document.getElementById('nl-stage').value;
+  const notes          = document.getElementById('nl-notes').value.trim();
 
   const now = new Date();
   const dateStr = now.toISOString().split('T')[0];
@@ -1426,17 +1597,20 @@ function saveNewLead(e) {
     lead_id: refCode,
     name,
     phone,
-    email: '',
+    email,
+    student_name: student_name || name,
     program,
     age_group,
     stage,
     batch: batch || 'Morning / Evening Batch',
+    contact_method,
+    source,
     message: notes,
     follow_up_notes: notes,
-    payment_status: stage === 'PAID' ? 'PAID' : 'UNPAID',
+    payment_status: (stage === 'ACTIVE STUDENT' || stage === 'RENEWAL') ? 'PAID' : 'UNPAID',
     fee_amount: 1500,
     created_at: dateStr,
-    trial_status: stage === 'TRIAL_BOOKED' ? 'SCHEDULED' : (stage === 'TRIAL_ATTENDED' ? 'ATTENDED' : 'NOT_SCHEDULED')
+    trial_status: stage === 'TRIAL BOOKED' ? 'SCHEDULED' : (stage === 'TRIAL ATTENDED' ? 'ATTENDED' : 'NOT_SCHEDULED')
   };
 
   allLeads.unshift(newLead);
@@ -1487,8 +1661,14 @@ async function loadLeads() {
     const key = l.lead_id || (l.name + l.phone);
     if (!seen.has(key)) {
       seen.add(key);
-      // Ensure stage exists
-      if (!l.stage) l.stage = l.payment_status === 'PAID' ? 'PAID' : (l.status === 'ENROLLED' ? 'ADMITTED' : 'NEW_LEAD');
+      // Map old stage names to standard 10 stages
+      if (l.stage === 'NEW_LEAD') l.stage = 'NEW';
+      if (l.stage === 'TRIAL_BOOKED') l.stage = 'TRIAL BOOKED';
+      if (l.stage === 'TRIAL_ATTENDED') l.stage = 'TRIAL ATTENDED';
+      if (l.stage === 'FOLLOW_UP') l.stage = 'FOLLOW-UP';
+      if (l.stage === 'ADMITTED') l.stage = 'ADMISSION';
+      if (l.stage === 'PAID') l.stage = 'ACTIVE STUDENT';
+      if (!l.stage) l.stage = 'NEW';
       merged.push(l);
     }
   }
@@ -1502,27 +1682,30 @@ function updateCounts() {
   document.getElementById('stat-total').textContent = allLeads.length;
   document.getElementById('fc-all').textContent = allLeads.length;
 
-  const count = (stage) => allLeads.filter(l => l.stage === stage).length;
+  const count = (stage) => allLeads.filter(l => (l.stage || 'NEW').toUpperCase() === stage.toUpperCase()).length;
 
-  document.getElementById('fc-new').textContent = count('NEW_LEAD');
-  document.getElementById('fc-trial-b').textContent = count('TRIAL_BOOKED');
-  document.getElementById('fc-trial-a').textContent = count('TRIAL_ATTENDED');
-  document.getElementById('fc-fu').textContent = count('FOLLOW_UP');
-  document.getElementById('fc-adm').textContent = count('ADMITTED');
-  document.getElementById('fc-paid').textContent = count('PAID');
+  if (document.getElementById('fc-new')) document.getElementById('fc-new').textContent = count('NEW');
+  if (document.getElementById('fc-contacted')) document.getElementById('fc-contacted').textContent = count('CONTACTED');
+  if (document.getElementById('fc-interested')) document.getElementById('fc-interested').textContent = count('INTERESTED');
+  if (document.getElementById('fc-trial-b')) document.getElementById('fc-trial-b').textContent = count('TRIAL BOOKED');
+  if (document.getElementById('fc-trial-a')) document.getElementById('fc-trial-a').textContent = count('TRIAL ATTENDED');
+  if (document.getElementById('fc-fu')) document.getElementById('fc-fu').textContent = count('FOLLOW-UP');
+  if (document.getElementById('fc-adm')) document.getElementById('fc-adm').textContent = count('ADMISSION');
+  if (document.getElementById('fc-active')) document.getElementById('fc-active').textContent = count('ACTIVE STUDENT');
+  if (document.getElementById('fc-ren')) document.getElementById('fc-ren').textContent = count('RENEWAL');
+  if (document.getElementById('fc-ref')) document.getElementById('fc-ref').textContent = count('REFERRAL');
+  if (document.getElementById('fc-lost')) document.getElementById('fc-lost').textContent = count('LOST') + count('DROPPED');
 
-  document.getElementById('stat-trials').textContent = count('TRIAL_BOOKED') + count('TRIAL_ATTENDED');
-  document.getElementById('stat-admitted').textContent = count('ADMITTED') + count('PAID');
-  document.getElementById('stat-paid').textContent = count('PAID');
+  if (document.getElementById('stat-trials')) document.getElementById('stat-trials').textContent = count('TRIAL BOOKED') + count('TRIAL ATTENDED');
+  if (document.getElementById('stat-admitted')) document.getElementById('stat-admitted').textContent = count('ADMISSION') + count('ACTIVE STUDENT');
+  if (document.getElementById('stat-paid')) document.getElementById('stat-paid').textContent = count('ACTIVE STUDENT');
 
   // Renewals due in <= 7 days
   const now = new Date();
   const sevenDays = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const renewalsDue = allLeads.filter(l => l.renewal_due_date && l.renewal_due_date <= sevenDays);
-  document.getElementById('stat-renewals').textContent = renewalsDue.length;
-  document.getElementById('fc-ren').textContent = renewalsDue.length;
+  if (document.getElementById('stat-renewals')) document.getElementById('stat-renewals').textContent = renewalsDue.length;
 }
-
 
 function toggleMobileCrmSidebar() {
   const sb = document.getElementById('crmSidebar');
@@ -1563,7 +1746,7 @@ function getProgClass(prog) {
   const p = (prog || '').toLowerCase();
   if (p.includes('yoga')) return 'prog-yoga';
   if (p.includes('abacus')) return 'prog-abacus';
-  if (p.includes('calligraphy')) return 'prog-calligraphy';
+  if (p.includes('calligraphy') || p.includes('handwriting')) return 'prog-calligraphy';
   return '';
 }
 
@@ -1579,7 +1762,9 @@ function renderTable() {
   const filtered = allLeads.filter(l => {
     const matchSearch = !search ||
       (l.name || '').toLowerCase().includes(search) ||
+      (l.student_name || '').toLowerCase().includes(search) ||
       (l.phone || '').includes(search) ||
+      (l.email || '').toLowerCase().includes(search) ||
       (l.lead_id || '').toLowerCase().includes(search) ||
       (l.admission_no || '').toLowerCase().includes(search);
 
@@ -1587,8 +1772,10 @@ function renderTable() {
     const matchPay = !payFilter || l.payment_status === payFilter;
 
     let matchStage = true;
-    if (currentStageFilter === 'RENEWAL_DUE') {
-      matchStage = l.renewal_due_date && l.renewal_due_date <= sevenDaysStr;
+    if (currentStageFilter === 'RENEWAL') {
+      matchStage = (l.stage === 'RENEWAL') || (l.renewal_due_date && l.renewal_due_date <= sevenDaysStr);
+    } else if (currentStageFilter === 'LOST') {
+      matchStage = (l.stage === 'LOST') || (l.stage === 'DROPPED');
     } else if (currentStageFilter) {
       matchStage = l.stage === currentStageFilter;
     }
@@ -1606,19 +1793,24 @@ function renderTable() {
     return;
   }
 
-  tbody.innerHTML = filtered.map((l, index) => {
+  tbody.innerHTML = filtered.map((l) => {
     const origIndex = allLeads.indexOf(l);
     const cleanPhone = (l.phone || '').replace(/\D/g, '');
     const waPhone = cleanPhone.startsWith('91') ? cleanPhone : '91' + cleanPhone;
 
-    const stageTitles = {
-      'NEW_LEAD': '📥 1. New Lead',
-      'TRIAL_BOOKED': '📅 2. Trial Booked',
-      'TRIAL_ATTENDED': '🧘 3. Attended',
-      'FOLLOW_UP': '📞 4. Follow-up',
-      'ADMITTED': '🎓 5. Admitted',
-      'PAID': '💳 6. Paid & Active',
-      'DROPPED': '❌ Dropped'
+    const stageColors = {
+      'NEW': '#2563eb',
+      'CONTACTED': '#0891b2',
+      'INTERESTED': '#d97706',
+      'TRIAL BOOKED': '#7c3aed',
+      'TRIAL ATTENDED': '#9333ea',
+      'FOLLOW-UP': '#ea580c',
+      'ADMISSION': '#16a34a',
+      'ACTIVE STUDENT': '#059669',
+      'RENEWAL': '#c026d3',
+      'REFERRAL': '#0d9488',
+      'LOST': '#dc2626',
+      'DROPPED': '#dc2626'
     };
 
     let renewalTag = '—';
@@ -1634,25 +1826,35 @@ function renderTable() {
       }
     }
 
+    const stageKey = l.stage || 'NEW';
+    const badgeColor = stageColors[stageKey] || '#2d6a4f';
+
     return `
-      <tr onclick="openDrawer(${origIndex})">
+      <tr onclick="openDrawer(${origIndex})" style="cursor:pointer;">
         <td>
-          <strong>${l.admission_no || l.lead_id || 'NOH-LEAD'}</strong><br>
+          <strong style="color:var(--gd);">${l.lead_id || 'NOH-LEAD'}</strong><br>
           <small style="color:var(--text-lt);">${l.created_at || 'Recent'}</small>
+          ${l.admission_no ? `<br><small style="color:var(--go); font-weight:700;">🎓 ${l.admission_no}</small>` : ''}
         </td>
         <td>
           <strong style="font-size:0.95rem;">${escapeHtml(l.name)}</strong>
+          ${l.student_name && l.student_name !== l.name ? `<br><small style="color:var(--text-mid);">Child: <strong>${escapeHtml(l.student_name)}</strong></small>` : ''}
+          ${l.source ? `<br><small style="color:var(--text-lt);">📍 ${escapeHtml(l.source)}</small>` : ''}
         </td>
         <td>
           <a href="tel:+${cleanPhone}" onclick="event.stopPropagation()" style="color:var(--g); font-weight:700; text-decoration:none;">📞 ${escapeHtml(l.phone)}</a><br>
           <small style="color:var(--text-mid);">${escapeHtml(l.age_group || 'Age not specified')}</small>
+          ${l.contact_method ? `<br><small style="color:var(--go);">Via: ${escapeHtml(l.contact_method)}</small>` : ''}
         </td>
         <td>
-          <span class="prog-badge ${getProgClass(l.program)}">${escapeHtml(l.program)}</span><br>
+          <span class="prog-badge ${getProgClass(l.program)}">${escapeHtml(l.program || 'Yoga Classes')}</span><br>
           <small style="color:var(--text-lt);">${escapeHtml(l.batch || 'Any batch')}</small>
         </td>
         <td>
-          <span class="stage-badge stage-${l.stage || 'NEW_LEAD'}">${stageTitles[l.stage] || l.stage}</span>
+          <span style="background:${badgeColor}; color:#fff; padding:4px 10px; border-radius:12px; font-size:0.75rem; font-weight:800; display:inline-block; white-space:nowrap;">
+            ${escapeHtml(stageKey)}
+          </span>
+          ${l.lost_reason ? `<br><small style="color:#dc2626; font-weight:700;">Reason: ${escapeHtml(l.lost_reason)}</small>` : ''}
         </td>
         <td>
           <div>${l.trial_date ? '📅 ' + l.trial_date : '<span style="color:var(--text-lt);">Not scheduled</span>'}</div>
@@ -1664,9 +1866,9 @@ function renderTable() {
         </td>
         <td onclick="event.stopPropagation()">
           <div class="act-btns">
-            <button class="act-btn act-manage" onclick="openDrawer(${origIndex})" title="Manage Student Lifecycle">⚙️ Lifecycle</button>
-            <a href="https://wa.me/${waPhone}" target="_blank" class="act-btn act-wa" title="WhatsApp Student">💬</a>
-            <a href="tel:+${cleanPhone}" class="act-btn act-call" title="Call Student">📞</a>
+            <button class="act-btn act-manage" onclick="openDrawer(${origIndex})" title="Manage Student Lifecycle">⚙️ 360°</button>
+            <a href="https://wa.me/${waPhone}" target="_blank" class="act-btn act-wa" title="WhatsApp Lead">💬</a>
+            <a href="tel:+${cleanPhone}" class="act-btn act-call" title="Call Lead">📞</a>
             <button class="act-btn" style="background:#fee2e2; color:#dc2626;" onclick="deleteLead(${origIndex})" title="Remove Lead">🗑️</button>
           </div>
         </td>
@@ -1681,7 +1883,7 @@ function openDrawer(index) {
   const l = allLeads[index];
   if (!l) return;
 
-  document.getElementById('d-student-name').textContent = l.name || 'Student';
+  document.getElementById('d-student-name').textContent = l.student_name || l.name || 'Student';
   document.getElementById('d-ref-code').textContent = `LEAD REF: ${l.lead_id || 'NOH-2026'} | ADM: ${l.admission_no || 'Pending'}`;
 
   const cleanPhone = (l.phone || '').replace(/\D/g, '');
@@ -1692,9 +1894,16 @@ function openDrawer(index) {
   document.getElementById('df-name').value = l.name || '';
   document.getElementById('df-phone').value = l.phone || '';
   document.getElementById('df-email').value = l.email || '';
+  document.getElementById('df-student').value = l.student_name || l.name || '';
   document.getElementById('df-program').value = l.program || 'Yoga Classes';
   document.getElementById('df-age').value = l.age_group || '';
   document.getElementById('df-batch').value = l.batch || '';
+  document.getElementById('df-contact-method').value = l.contact_method || 'WhatsApp';
+  document.getElementById('df-source').value = l.source || '';
+
+  document.getElementById('df-stage').value = l.stage || 'NEW';
+  document.getElementById('df-lost-reason').value = l.lost_reason || '';
+  document.getElementById('d-current-stage-badge').textContent = l.stage || 'NEW';
 
   document.getElementById('df-trial-date').value = l.trial_date || '';
   document.getElementById('df-trial-time').value = l.trial_time || '07:00';
@@ -1718,7 +1927,7 @@ function openDrawer(index) {
   document.getElementById('df-last-renewal').value = l.last_renewal_date || '';
 
   updateRenewalStatusBadge(l.renewal_due_date);
-  updateRoadmapSteps(l.stage || 'NEW_LEAD');
+  updateRoadmapSteps(l.stage || 'NEW');
 
   document.getElementById('d-save-status').textContent = 'Ready to update.';
   document.getElementById('lifecycleDrawer').classList.add('open');
@@ -1746,39 +1955,44 @@ function updateRenewalStatusBadge(dueDate) {
 }
 
 function updateRoadmapSteps(stage) {
-  const steps = ['step-lead', 'step-trial-b', 'step-trial-a', 'step-fu', 'step-adm', 'step-paid'];
-  const stageMap = {
-    'NEW_LEAD': 0,
-    'TRIAL_BOOKED': 1,
-    'TRIAL_ATTENDED': 2,
-    'FOLLOW_UP': 3,
-    'ADMITTED': 4,
-    'PAID': 5
-  };
-  const currentLevel = stageMap[stage] !== undefined ? stageMap[stage] : 0;
+  const stepIds = [
+    'step-NEW', 'step-CONTACTED', 'step-INTERESTED',
+    'step-TRIAL_BOOKED', 'step-TRIAL_ATTENDED', 'step-FOLLOW_UP',
+    'step-ADMISSION', 'step-ACTIVE_STUDENT', 'step-RENEWAL', 'step-REFERRAL'
+  ];
+  const stageOrder = [
+    'NEW', 'CONTACTED', 'INTERESTED',
+    'TRIAL BOOKED', 'TRIAL ATTENDED', 'FOLLOW-UP',
+    'ADMISSION', 'ACTIVE STUDENT', 'RENEWAL', 'REFERRAL'
+  ];
 
-  steps.forEach((id, idx) => {
+  const currentIdx = stageOrder.indexOf((stage || 'NEW').toUpperCase());
+
+  stepIds.forEach((id, idx) => {
     const el = document.getElementById(id);
+    if (!el) return;
     el.classList.remove('active', 'completed');
-    if (idx < currentLevel) el.classList.add('completed');
-    if (idx === currentLevel) el.classList.add('active');
+    if (idx < currentIdx) el.classList.add('completed');
+    if (idx === currentIdx) el.classList.add('active');
   });
 }
 
 function setLeadStage(stage) {
   if (activeLeadIndex === -1) return;
   allLeads[activeLeadIndex].stage = stage;
+  document.getElementById('df-stage').value = stage;
+  document.getElementById('d-current-stage-badge').textContent = stage;
   updateRoadmapSteps(stage);
 }
 
 function onTrialStatusChange(status) {
-  if (status === 'SCHEDULED') setLeadStage('TRIAL_BOOKED');
-  if (status === 'ATTENDED') setLeadStage('TRIAL_ATTENDED');
+  if (status === 'SCHEDULED') setLeadStage('TRIAL BOOKED');
+  if (status === 'ATTENDED') setLeadStage('TRIAL ATTENDED');
 }
 
 function onPaymentStatusChange(status) {
   if (status === 'PAID') {
-    setLeadStage('PAID');
+    setLeadStage('ACTIVE STUDENT');
     const now = new Date();
     document.getElementById('df-pay-date').value = now.toISOString().slice(0, 10);
     const nextMonth = new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
@@ -1794,7 +2008,7 @@ function generateAdmissionNo() {
   const rnd = Math.floor(1000 + Math.random() * 9000);
   document.getElementById('df-adm-no').value = `NOH-26-${pCode}-${rnd}`;
   document.getElementById('df-adm-date').value = new Date().toISOString().slice(0, 10);
-  setLeadStage('ADMITTED');
+  setLeadStage('ADMISSION');
 }
 
 /* ══════ AUTOMATED WHATSAPP TEMPLATES ══════ */
@@ -1806,6 +2020,7 @@ function getStudentPhone() {
 
 function sendTrialConfirmationWA() {
   const name = document.getElementById('df-name').value;
+  const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
   const date = document.getElementById('df-trial-date').value;
   const time = document.getElementById('df-trial-time').value;
@@ -1817,7 +2032,7 @@ function sendTrialConfirmationWA() {
 
   const msg = encodeURIComponent(`Namaste ${name}! 🌿
 
-We are pleased to confirm your Free Trial Class at *NOHADAYA Mind & Motion Studio*:
+We are pleased to confirm the Free Trial Class for *${student}* at *NOHADAYA Mind & Motion Studio*:
 
 🧘 *Program:* ${prog}
 📅 *Date:* ${date}
@@ -1832,11 +2047,12 @@ Please arrive 10 minutes early in comfortable clothing. For any directions assis
 
 function sendFollowupWA() {
   const name = document.getElementById('df-name').value;
+  const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
 
   const msg = encodeURIComponent(`Hi ${name}! 🌿
 
-Thank you for visiting *NOHADAYA Studio* for your ${prog} trial session. 
+Thank you for visiting *NOHADAYA Studio* for *${student}'s* ${prog} session. 
 
 Mrs. Noor Nahar Begum and our faculty were delighted to meet you. We have structured monthly and quarterly batches starting this week.
 
@@ -1850,13 +2066,14 @@ Warm regards,
 
 function sendAdmissionWelcomeWA() {
   const name = document.getElementById('df-name').value;
+  const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
   const admNo = document.getElementById('df-adm-no').value || 'ADM-2026';
   const batch = document.getElementById('df-batch').value || 'Regular Batch';
 
   const msg = encodeURIComponent(`🎉 *Congratulations & Welcome to NOHADAYA!*
 
-Dear ${name}, your admission is officially confirmed:
+Dear ${name}, the admission for *${student}* is officially confirmed:
 
 📜 *Admission No:* ${admNo}
 🧘 *Enrolled Program:* ${prog}
@@ -1870,6 +2087,7 @@ We are committed to nurturing mind, motion, and creativity on your learning jour
 
 function sendPaymentReceiptWA() {
   const name = document.getElementById('df-name').value;
+  const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
   const amount = document.getElementById('df-fee-amount').value || '1500';
   const recNo = document.getElementById('df-receipt-no').value || ('REC-' + Date.now().toString().slice(-4));
@@ -1877,7 +2095,7 @@ function sendPaymentReceiptWA() {
 
   const msg = encodeURIComponent(`🧾 *NOHADAYA Tuition Fee Receipt*
 
-Student: ${name}
+Student: ${student} (Parent: ${name})
 Program: ${prog}
 Receipt No: ${recNo}
 Amount Received: ₹${amount}
@@ -1891,6 +2109,7 @@ Thank you for your prompt payment! A unit of Mind Castle Mercantile.`);
 
 function sendRenewalReminderWA() {
   const name = document.getElementById('df-name').value;
+  const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
   const amount = document.getElementById('df-fee-amount').value || '1500';
   const dueDate = document.getElementById('df-renewal-date').value || 'Upcoming';
@@ -1899,7 +2118,7 @@ function sendRenewalReminderWA() {
 
 Dear ${name},
 
-This is a friendly reminder that your monthly membership renewal for *${prog}* is due on *${dueDate}*.
+This is a friendly reminder that the monthly membership renewal for *${student}* (*${prog}*) is due on *${dueDate}*.
 
 💰 *Amount Due:* ₹${amount}
 📲 *Pay via UPI:* 7002604856@upi (or scan QR at studio reception)
@@ -1920,9 +2139,14 @@ async function saveStudentLifecycle() {
     name: document.getElementById('df-name').value.trim(),
     phone: document.getElementById('df-phone').value.trim(),
     email: document.getElementById('df-email').value.trim(),
+    student_name: document.getElementById('df-student').value.trim(),
     program: document.getElementById('df-program').value,
     age_group: document.getElementById('df-age').value.trim(),
     batch: document.getElementById('df-batch').value.trim(),
+    contact_method: document.getElementById('df-contact-method').value,
+    source: document.getElementById('df-source').value.trim(),
+    stage: document.getElementById('df-stage').value,
+    lost_reason: document.getElementById('df-lost-reason').value,
     trial_date: document.getElementById('df-trial-date').value,
     trial_time: document.getElementById('df-trial-time').value,
     trial_status: document.getElementById('df-trial-status').value,
@@ -1938,8 +2162,7 @@ async function saveStudentLifecycle() {
     payment_date: document.getElementById('df-pay-date').value,
     receipt_no: document.getElementById('df-receipt-no').value.trim(),
     renewal_due_date: document.getElementById('df-renewal-date').value,
-    last_renewal_date: document.getElementById('df-last-renewal').value,
-    stage: lead.stage || 'NEW_LEAD'
+    last_renewal_date: document.getElementById('df-last-renewal').value
   };
 
   Object.assign(lead, updated);
@@ -1972,45 +2195,37 @@ function exportToCSV() {
     alert("No leads to export!");
     return;
   }
+  // Standard 16 Columns as defined in NOHADAYA Database Architecture
   const headers = [
-    "Lead ID", "Admission No", "Stage", "Student Name", "Phone", "Email",
-    "Program", "Age Group", "Batch", "Trial Date", "Trial Status",
-    "Follow-up Date", "Follow-up Notes", "Admission Date", "Enrollment Type",
-    "Fee Amount", "Payment Status", "Payment Mode", "Payment Date", "Receipt No",
-    "Renewal Due Date", "Last Renewal Date", "Created At"
+    "Lead ID", "Date", "Name", "Phone", "Email", "Student",
+    "Age", "Program", "Source", "Status", "Trial",
+    "Admission", "Fee", "Follow-up", "Lost Reason", "Remarks"
   ];
 
   const rows = allLeads.map(l => [
     `"${l.lead_id || ''}"`,
-    `"${l.admission_no || ''}"`,
-    `"${l.stage || 'NEW_LEAD'}"`,
+    `"${l.created_at || ''}"`,
     `"${(l.name || '').replace(/"/g, '""')}"`,
     `"${l.phone || ''}"`,
     `"${l.email || ''}"`,
-    `"${(l.program || '').replace(/"/g, '""')}"`,
+    `"${(l.student_name || l.name || '').replace(/"/g, '""')}"`,
     `"${l.age_group || ''}"`,
-    `"${l.batch || ''}"`,
-    `"${l.trial_date || ''}"`,
-    `"${l.trial_status || ''}"`,
-    `"${l.follow_up_date || ''}"`,
-    `"${(l.follow_up_notes || l.message || '').replace(/"/g, '""')}"`,
-    `"${l.admission_date || ''}"`,
-    `"${l.enrollment_type || ''}"`,
-    `"${l.fee_amount || 0}"`,
-    `"${l.payment_status || 'UNPAID'}"`,
-    `"${l.payment_mode || ''}"`,
-    `"${l.payment_date || ''}"`,
-    `"${l.receipt_no || ''}"`,
-    `"${l.renewal_due_date || ''}"`,
-    `"${l.last_renewal_date || ''}"`,
-    `"${l.created_at || ''}"`
+    `"${(l.program || '').replace(/"/g, '""')}"`,
+    `"${(l.source || 'Website').replace(/"/g, '""')}"`,
+    `"${l.stage || 'NEW'}"`,
+    `"${(l.trial_date ? l.trial_date + ' (' + (l.trial_status || 'SCHEDULED') + ')' : 'Not Scheduled').replace(/"/g, '""')}"`,
+    `"${(l.admission_no ? l.admission_no + ' (' + (l.admission_date || '') + ')' : 'Pending').replace(/"/g, '""')}"`,
+    `"${(l.payment_status === 'PAID' ? '₹' + (l.fee_amount || 0) + ' PAID' : 'UNPAID').replace(/"/g, '""')}"`,
+    `"${(l.follow_up_date ? l.follow_up_date + ': ' + (l.follow_up_notes || '') : (l.follow_up_notes || '')).replace(/"/g, '""')}"`,
+    `"${(l.lost_reason || '').replace(/"/g, '""')}"`,
+    `"${(l.message || '').replace(/"/g, '""')}"`
   ]);
 
   const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
   const encodedUri = encodeURI(csvContent);
   const link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  link.setAttribute("download", `NOHADAYA_Student_Lifecycle_CRM_${new Date().toISOString().slice(0,10)}.csv`);
+  link.setAttribute("download", `NOHADAYA_Lead_Database_${new Date().toISOString().slice(0,10)}.csv`);
   document.body.appendChild(link);
   link.click();
   link.remove();
@@ -2055,12 +2270,12 @@ function promoteLeadToERP() {
 
   erpDb.students.push({
     id: newId,
-    name: lead.name || 'New Student',
-    age: lead.age || 8,
-    guardian: lead.guardian || 'Parent/Guardian',
+    name: lead.student_name || lead.name || 'New Student',
+    age: lead.age_group ? parseInt(lead.age_group) || 8 : 8,
+    guardian: lead.name || 'Parent/Guardian',
     phone: lead.phone || '',
     program: prog,
-    batch: lead.preferredBatch || 'Morning 9:00 AM - 11:00 AM',
+    batch: lead.batch || 'Morning 9:00 AM - 11:00 AM',
     stage: 'Level 1 (Enrolled via CRM)',
     feeStatus: 'Paid',
     status: 'Active',
@@ -2069,7 +2284,7 @@ function promoteLeadToERP() {
   });
 
   localStorage.setItem('NOHADAYA_ERP_DB', JSON.stringify(erpDb));
-  alert(`🎉 Success! ${lead.name || 'Lead'} has been enrolled into the Operations ERP as ${newId}!
+  alert(`🎉 Success! ${lead.student_name || lead.name || 'Lead'} has been enrolled into the Operations ERP as ${newId}!
 Opening Operations ERP...`);
   window.location.href = 'erp/';
 }

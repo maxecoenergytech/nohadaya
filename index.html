@@ -2718,18 +2718,24 @@
         <input type="text" name="_gotcha" id="af-gotcha" style="display:none !important;" tabindex="-1" autocomplete="off" />
         <div class="mf-row">
           <div class="mf-group">
-            <label>Full Name *</label>
+            <label>Parent / Enquirer Name *</label>
             <input type="text" id="af-name" placeholder="Your full name" required />
           </div>
           <div class="mf-group">
-            <label>Phone Number *</label>
+            <label>Phone / WhatsApp *</label>
             <input type="tel" id="af-phone" placeholder="+91 XXXXX XXXXX" required />
           </div>
         </div>
 
-        <div class="mf-group">
-          <label>Email Address</label>
-          <input type="email" id="af-email" placeholder="you@email.com" />
+        <div class="mf-row">
+          <div class="mf-group">
+            <label>Email Address</label>
+            <input type="email" id="af-email" placeholder="you@email.com" />
+          </div>
+          <div class="mf-group">
+            <label>Participant / Student Name</label>
+            <input type="text" id="af-student" placeholder="Participant's name (if for child/other)" />
+          </div>
         </div>
 
         <div class="mf-row">
@@ -2740,13 +2746,14 @@
               <option>🧘 Yoga Classes</option>
               <option>🔢 Abacus Training</option>
               <option>✍️ Calligraphy Classes</option>
+              <option>📝 Handwriting Classes</option>
               <option>🌟 All Three Programs</option>
               <option>📅 Free Trial Class</option>
               <option>🌿 Special Workshop</option>
             </select>
           </div>
           <div class="mf-group">
-            <label>Student's Age</label>
+            <label>Participant's Age</label>
             <select id="af-age">
               <option value="">— Select —</option>
               <option>5 – 10 years</option>
@@ -2771,17 +2778,26 @@
             </select>
           </div>
           <div class="mf-group">
-            <label>How Did You Hear About Us?</label>
-            <select id="af-source">
-              <option value="">— Select —</option>
-              <option>Friend / Family</option>
-              <option>Social Media</option>
-              <option>Google Search</option>
-              <option>WhatsApp</option>
-              <option>Walking By</option>
-              <option>Other</option>
+            <label>Preferred Contact Method</label>
+            <select id="af-contact-method">
+              <option value="WhatsApp">💬 WhatsApp (Fastest)</option>
+              <option value="Phone Call">📞 Phone Call</option>
+              <option value="Email">📧 Email</option>
             </select>
           </div>
+        </div>
+
+        <div class="mf-group">
+          <label>How Did You Hear About Us?</label>
+          <select id="af-source">
+            <option value="">— Select —</option>
+            <option>Google Search</option>
+            <option>Social Media (Instagram / Facebook)</option>
+            <option>Friend / Family Referral</option>
+            <option>WhatsApp</option>
+            <option>Walking By / Studio Banner</option>
+            <option>Other</option>
+          </select>
         </div>
 
         <div class="mf-group">
@@ -3969,15 +3985,17 @@ function printCertificate() {
 }
 
 function getFormData() {
-  const name    = document.getElementById('af-name').value.trim();
-  const phone   = document.getElementById('af-phone').value.trim();
-  const email   = document.getElementById('af-email').value.trim();
-  const program = document.getElementById('af-program').value;
-  const age     = document.getElementById('af-age').value;
-  const batch   = document.getElementById('af-batch').value;
-  const source  = document.getElementById('af-source').value;
-  const msg     = document.getElementById('af-msg').value.trim();
-  return { name, phone, email, program, age, batch, source, msg };
+  const name           = document.getElementById('af-name').value.trim();
+  const phone          = document.getElementById('af-phone').value.trim();
+  const email          = document.getElementById('af-email').value.trim();
+  const student        = (document.getElementById('af-student')?.value || '').trim();
+  const program        = document.getElementById('af-program').value;
+  const age            = document.getElementById('af-age').value;
+  const batch          = document.getElementById('af-batch').value;
+  const contact_method = document.getElementById('af-contact-method')?.value || 'WhatsApp';
+  const source         = document.getElementById('af-source').value;
+  const msg            = document.getElementById('af-msg').value.trim();
+  return { name, phone, email, student, program, age, batch, contact_method, source, msg };
 }
 
 function validateForm() {
@@ -3990,34 +4008,46 @@ function validateForm() {
 
 function sendViaWhatsApp() {
   if (!validateForm()) return;
-  const { name, phone, email, program, age, batch, source, msg } = getFormData();
+  const { name, phone, email, student, program, age, batch, contact_method, source, msg } = getFormData();
   
   // Record lead in backend/database & local cache
   const cleanDigits = phone.replace(/\D/g, '');
-  const leadId = `NOH-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${cleanDigits.slice(-4)}`;
+  const leadId = `NOH-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${cleanDigits.slice(-4) || 'LEAD'}`;
   recordLead({
     lead_id: leadId,
     created_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-    name, phone, email, program, age_group: age, batch, source, message: msg,
-    status: 'NEW'
+    name,
+    phone,
+    email,
+    student_name: student || name,
+    program,
+    age_group: age,
+    batch,
+    contact_method,
+    source,
+    message: msg,
+    status: 'NEW',
+    stage: 'NEW'
   });
 
   const message =
 `🪷 *NOHADAYA – New Admission Enquiry*
 ─────────────────────────
-👤 *Name:* ${name}
+👤 *Parent / Enquirer:* ${name}
 📱 *Phone:* ${phone}
 📧 *Email:* ${email || 'Not provided'}
+👶 *Participant Name:* ${student || name}
 ─────────────────────────
 📚 *Program:* ${program}
 🎂 *Age Group:* ${age || 'Not specified'}
-⏰ *Preferred Batch:* ${batch || 'Any'}
-💬 *How they found us:* ${source || 'Not specified'}
+⏰ *Preferred Batch:* ${batch || 'Any Available'}
+📞 *Preferred Contact:* ${contact_method}
+💬 *Source:* ${source || 'Website'}
 ─────────────────────────
-📝 *Message:*
-${msg || 'No additional message.'}
+📝 *Message / Notes:*
+${msg || 'Interested in class batches, fees and free trial details.'}
 ─────────────────────────
-_Sent from NOHADAYA website_`;
+_Sent from NOHADAYA Official Website_`;
 
   const encoded = encodeURIComponent(message);
   
@@ -4037,22 +4067,24 @@ _Sent from NOHADAYA website_`;
 
 function sendViaEmail() {
   if (!validateForm()) return;
-  const { name, phone, email, program, age, batch, source, msg } = getFormData();
+  const { name, phone, email, student, program, age, batch, contact_method, source, msg } = getFormData();
 
   const subject = encodeURIComponent(`NOHADAYA Admission Enquiry – ${program}`);
   const body = encodeURIComponent(
 `NOHADAYA – New Admission Enquiry
 ================================
-Name: ${name}
+Enquirer Name: ${name}
 Phone: ${phone}
 Email: ${email || 'Not provided'}
+Participant Name: ${student || name}
 Program: ${program}
 Age Group: ${age || 'Not specified'}
-Preferred Batch: ${batch || 'Any'}
+Preferred Batch: ${batch || 'Any Available'}
+Preferred Contact: ${contact_method}
 How Found Us: ${source || 'Not specified'}
 
 Message:
-${msg || 'No additional message.'}
+${msg || 'Interested in class batches, fees and free trial details.'}
 
 Sent from NOHADAYA website.`
   );

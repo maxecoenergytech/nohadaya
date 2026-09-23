@@ -273,45 +273,103 @@
         <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--gd);margin-bottom:6px;">Send an Inquiry / Book Trial</h2>
         <p style="color:var(--text-mid);font-size:0.92rem;margin-bottom:20px;">Fill out the form below and our studio team will confirm your slot via WhatsApp or Phone within 2 hours.</p>
 
-        <form action="https://formspree.io/f/xyz" method="POST" onsubmit="alert('Thank you! Your trial inquiry has been received. Our team will contact you shortly.'); return false;">
-          <div class="form-group">
-            <label for="c-name">Full Name *</label>
-            <input type="text" id="c-name" class="form-control" placeholder="e.g. Ananya Sharma" required />
+        <form id="contactPageForm" onsubmit="handleContactSubmit(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label for="c-name" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Parent / Enquirer Name *</label>
+              <input type="text" id="c-name" class="form-control" placeholder="e.g. Ananya Sharma" required />
+            </div>
+            <div class="form-group">
+              <label for="c-phone" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">WhatsApp / Phone Number *</label>
+              <input type="tel" id="c-phone" class="form-control" placeholder="+91 XXXXX XXXXX" required />
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label for="c-email" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Email Address</label>
+              <input type="email" id="c-email" class="form-control" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label for="c-student" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Participant / Student Name</label>
+              <input type="text" id="c-student" class="form-control" placeholder="Student name (if for child)" />
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label for="c-program" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Program of Interest *</label>
+              <select id="c-program" class="form-control" required>
+                <option value="">Select a Program</option>
+                <option value="Yoga Classes">🧘 Yoga (Adults / Teens / Beginners)</option>
+                <option value="Abacus Classes">🔢 Abacus Mental Math (Ages 5–14)</option>
+                <option value="Calligraphy Classes">✍️ Calligraphy &amp; Penmanship</option>
+                <option value="Handwriting Classes">📝 Handwriting Improvement</option>
+                <option value="Kids Activity Classes">🌟 Kids Activity Classes</option>
+                <option value="All Programs">✨ Multiple Programs</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-age" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Participant's Age</label>
+              <select id="c-age" class="form-control">
+                <option value="">Select Age Group</option>
+                <option value="5 – 10 years">5 – 10 years</option>
+                <option value="11 – 15 years">11 – 15 years</option>
+                <option value="16 – 20 years">16 – 20 years</option>
+                <option value="21 – 35 years">21 – 35 years</option>
+                <option value="36 – 50 years">36 – 50 years</option>
+                <option value="51+ years">51+ years</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div class="form-group">
+              <label for="c-batch" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Preferred Timing Slot</label>
+              <select id="c-batch" class="form-control">
+                <option value="Morning (6:00 AM – 9:00 AM)">🌅 Morning (6:00 AM – 9:00 AM)</option>
+                <option value="Mid-Morning (9:00 AM – 12:00 PM)">☀️ Mid-Morning (9:00 AM – 12:00 PM)</option>
+                <option value="Evening (4:00 PM – 7:00 PM)">🌇 Evening (4:00 PM – 7:00 PM)</option>
+                <option value="Weekend Special">🌿 Weekend Special</option>
+                <option value="Any Available">Any Available</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="c-contact-method" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Preferred Contact Method</label>
+              <select id="c-contact-method" class="form-control">
+                <option value="WhatsApp">💬 WhatsApp (Fastest)</option>
+                <option value="Phone Call">📞 Phone Call</option>
+                <option value="Email">📧 Email</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="c-phone">WhatsApp / Phone Number *</label>
-            <input type="tel" id="c-phone" class="form-control" placeholder="+91 XXXXX XXXXX" required />
-          </div>
-
-          <div class="form-group">
-            <label for="c-program">Program of Interest *</label>
-            <select id="c-program" class="form-control" required>
-              <option value="">Select a Program</option>
-              <option value="yoga">🧘 Yoga (Adults / Teens / Beginners)</option>
-              <option value="abacus">🔢 Abacus Mental Math (Ages 5–14)</option>
-              <option value="calligraphy">✍️ Calligraphy &amp; Handwriting Improvement</option>
-              <option value="all">🌟 Multiple Programs</option>
+            <label for="c-source" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">How Did You Hear About Us?</label>
+            <select id="c-source" class="form-control">
+              <option value="">— Select Source —</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Social Media (Instagram / Facebook)">Social Media (Instagram / Facebook)</option>
+              <option value="Friend / Family Referral">Friend / Family Referral</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Walking By / Studio Banner">Walking By / Studio Banner</option>
+              <option value="Other">Other</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="c-batch">Preferred Timing Slot</label>
-            <select id="c-batch" class="form-control">
-              <option value="morning">Morning Batch (6:00 AM – 8:30 AM / 10:00 AM)</option>
-              <option value="evening">Evening Batch (4:00 PM – 7:00 PM)</option>
-              <option value="weekend">Weekend Special</option>
-            </select>
+            <label for="c-msg" style="display:block;font-size:0.85rem;font-weight:700;margin-bottom:4px;">Message / Health Conditions / Questions</label>
+            <textarea id="c-msg" class="form-control" rows="3" placeholder="Tell us about specific goals, questions or schedule preferences..."></textarea>
           </div>
 
-          <div class="form-group">
-            <label for="c-msg">Message or Questions</label>
-            <textarea id="c-msg" class="form-control" rows="3" placeholder="Tell us about the student's age or specific goals..."></textarea>
+          <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+            <button type="button" onclick="sendContactViaWhatsApp()" class="btn-gold" style="flex:1;min-width:200px;padding:14px;border-radius:10px;font-size:0.95rem;background:#25D366;border-color:#25D366;color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;cursor:pointer;">
+              📲 Send via WhatsApp Instantly
+            </button>
+            <button type="submit" class="btn-gold" style="flex:1;min-width:200px;padding:14px;border-radius:10px;font-size:0.95rem;cursor:pointer;">
+              ✨ Submit Inquiry Form
+            </button>
           </div>
-
-          <button type="submit" class="btn-gold" style="width:100%;padding:14px;border-radius:10px;font-size:0.98rem;margin-top:10px;">
-            ✨ Submit Inquiry &amp; Book Free Trial
-          </button>
         </form>
       </div>
 
@@ -498,6 +556,128 @@
     &copy; 2026 NOHADAYA – The Mind &amp; Motion Studio. All rights reserved.
   </div>
 </footer>
+
+<script>
+function getContactPageData() {
+  const name           = document.getElementById('c-name').value.trim();
+  const phone          = document.getElementById('c-phone').value.trim();
+  const email          = document.getElementById('c-email').value.trim();
+  const student        = document.getElementById('c-student').value.trim();
+  const program        = document.getElementById('c-program').value;
+  const age            = document.getElementById('c-age').value;
+  const batch          = document.getElementById('c-batch').value;
+  const contact_method = document.getElementById('c-contact-method').value;
+  const source         = document.getElementById('c-source').value;
+  const msg            = document.getElementById('c-msg').value.trim();
+  return { name, phone, email, student, program, age, batch, contact_method, source, msg };
+}
+
+function recordContactLead(lead) {
+  try {
+    const leads = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
+    leads.unshift(lead);
+    localStorage.setItem('nohadaya_leads', JSON.stringify(leads.slice(0, 100)));
+  } catch (e) {}
+  try {
+    fetch('/api/contact/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lead)
+    }).catch(() => {});
+  } catch (e) {}
+}
+
+function sendContactViaWhatsApp() {
+  const d = getContactPageData();
+  if (!d.name) { alert('Please enter your full name.'); document.getElementById('c-name').focus(); return; }
+  if (!d.phone) { alert('Please enter your phone number.'); document.getElementById('c-phone').focus(); return; }
+  if (!d.program) { alert('Please select a program of interest.'); document.getElementById('c-program').focus(); return; }
+
+  const cleanDigits = d.phone.replace(/\D/g, '');
+  const leadId = `NOH-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${cleanDigits.slice(-4) || 'LEAD'}`;
+
+  recordContactLead({
+    lead_id: leadId,
+    created_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    name: d.name,
+    phone: d.phone,
+    email: d.email,
+    student_name: d.student || d.name,
+    program: d.program,
+    age_group: d.age,
+    batch: d.batch,
+    contact_method: d.contact_method,
+    source: d.source,
+    message: d.msg,
+    status: 'NEW',
+    stage: 'NEW'
+  });
+
+  const message =
+`🪷 *NOHADAYA – New Admission Enquiry*
+─────────────────────────
+👤 *Parent / Enquirer:* ${d.name}
+📱 *Phone:* ${d.phone}
+📧 *Email:* ${d.email || 'Not provided'}
+👶 *Participant Name:* ${d.student || d.name}
+─────────────────────────
+📚 *Program:* ${d.program}
+🎂 *Age Group:* ${d.age || 'Not specified'}
+⏰ *Preferred Batch:* ${d.batch || 'Any Available'}
+📞 *Preferred Contact:* ${d.contact_method || 'WhatsApp'}
+💬 *Source:* ${d.source || 'Website Contact Form'}
+─────────────────────────
+📝 *Message / Notes:*
+${d.msg || 'Interested in class batches, fees and free trial details.'}
+─────────────────────────
+_Sent from NOHADAYA Contact Page_`;
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', {
+      'event_category': 'Contact',
+      'event_label': d.program,
+      'method': 'WhatsApp'
+    });
+  }
+
+  window.open(`https://wa.me/917002604856?text=${encodeURIComponent(message)}`, '_blank');
+}
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const d = getContactPageData();
+  const cleanDigits = d.phone.replace(/\D/g, '');
+  const leadId = `NOH-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${cleanDigits.slice(-4) || 'LEAD'}`;
+
+  recordContactLead({
+    lead_id: leadId,
+    created_at: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    name: d.name,
+    phone: d.phone,
+    email: d.email,
+    student_name: d.student || d.name,
+    program: d.program,
+    age_group: d.age,
+    batch: d.batch,
+    contact_method: d.contact_method,
+    source: d.source,
+    message: d.msg,
+    status: 'NEW',
+    stage: 'NEW'
+  });
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', {
+      'event_category': 'Contact',
+      'event_label': d.program,
+      'method': 'Form'
+    });
+  }
+
+  alert(`Thank you, ${d.name}! Your inquiry for ${d.program} has been registered (Ref: ${leadId}). Our studio team will reach out to you via ${d.contact_method || 'WhatsApp'} shortly.`);
+  document.getElementById('contactPageForm').reset();
+}
+</script>
 
 </body>
 </html>
