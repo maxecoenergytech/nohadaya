@@ -892,6 +892,10 @@
         <span>🔄</span>
         <span>Refresh Leads Data</span>
       </button>
+      <button type="button" class="sidebar-link" onclick="handleCrmLogout()" style="color:#fca5a5; background:rgba(220,38,38,0.18); border:1px solid rgba(220,38,38,0.35); margin-top:8px; font-weight:700;">
+        <span>🚪</span>
+        <span>Log Out &amp; Lock CRM</span>
+      </button>
     </div>
 
     <!-- Sidebar Footer -->
@@ -937,6 +941,9 @@
         <a href="erp/" class="btn btn-outline btn-sm" style="color:var(--gd); border-color:var(--border);">
           💼 ERP
         </a>
+        <button type="button" class="btn btn-outline btn-sm" onclick="handleCrmLogout()" style="color:#dc2626; border-color:#fca5a5; background:#fef2f2; font-weight:800; display:inline-flex; align-items:center; gap:5px;" title="Log Out &amp; Lock CRM Session">
+          <span>🚪</span> Log Out
+        </button>
       </div>
     </header>
 
@@ -2963,6 +2970,18 @@ function renderVisitorStats() {
   }
 }
 
+
+/* ══════ CRM LOGOUT & SESSION MANAGEMENT ══════ */
+function handleCrmLogout() {
+  if (confirm("Are you sure you want to log out and lock this CRM session?")) {
+    sessionStorage.removeItem('nohadaya_backend_auth');
+    sessionStorage.removeItem('nohadaya_current_user');
+    sessionStorage.removeItem('nohadaya_crm_session');
+    localStorage.removeItem('nohadaya_crm_session');
+    window.location.href = 'portal-login.html';
+  }
+}
+
 </script>
 
   <script src="js/tracker.js" defer>
@@ -3087,6 +3106,18 @@ function renderVisitorStats() {
         </div>
       `;
     }).join('');
+  }
+}
+
+
+/* ══════ CRM LOGOUT & SESSION MANAGEMENT ══════ */
+function handleCrmLogout() {
+  if (confirm("Are you sure you want to log out and lock this CRM session?")) {
+    sessionStorage.removeItem('nohadaya_backend_auth');
+    sessionStorage.removeItem('nohadaya_current_user');
+    sessionStorage.removeItem('nohadaya_crm_session');
+    localStorage.removeItem('nohadaya_crm_session');
+    window.location.href = 'portal-login.html';
   }
 }
 
