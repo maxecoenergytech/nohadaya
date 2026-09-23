@@ -13,9 +13,9 @@
   // --- KNOWLEDGE BASE CONFIGURATION ---
   const STUDIO_INFO = {
     name: 'NOHADAYA Mind & Motion Studio',
-    phone: '+91 91010 65541',
+    phone: '+91 70026 04856',
     phone2: '+91 88761 21675',
-    whatsapp: '919101065541',
+    whatsapp: '917002604856',
     address: 'H/No. 422, 1st Floor, Roseland Road, Near Satgaon Nowapara Jame Masjid, Behind Apple Pie, Bagharbari, Guwahati, Assam 781037',
     mapsUrl: 'https://maps.google.com/?q=NOHADAYA+Mind+and+Motion+Studio+Bagharbari+Guwahati',
     fees: {
@@ -146,7 +146,7 @@
       id: 'contact',
       patterns: [/\b(contact|phone|call|mobile|number|email|whatsapp|reach|touch)\b/i],
       response: () => ({
-        text: `📞 **Contact NOHADAYA Directly**:\n\n• **Phone**: +91 91010 65541 / +91 88761 21675\n• **WhatsApp**: +91 91010 65541\n• **Email**: nohadayastudio@gmail.com\n• **Studio**: Bagharbari, Guwahati (Open Mon–Sat, 6:00 AM – 7:30 PM)`,
+        text: `📞 **Contact NOHADAYA Directly**:\n\n• **Phone**: +91 70026 04856 / +91 88761 21675\n• **WhatsApp**: +91 70026 04856\n• **Email**: nohadayastudio@gmail.com\n• **Studio**: Bagharbari, Guwahati (Open Mon–Sat, 6:00 AM – 7:30 PM)`,
         actions: [
           { text: '📞 Call Now', action: 'call' },
           { text: '💬 Chat on WhatsApp', action: 'whatsapp', query: 'Hello NOHADAYA team, I have a quick question.' }
@@ -163,7 +163,7 @@
       actions: [
         { text: '✨ Book Free Trial', action: 'book_trial' },
         { text: '💬 Ask on WhatsApp', action: 'whatsapp', query: `Hi, I have a question about: ${query}` },
-        { text: '📞 Call +91 91010 65541', action: 'call' }
+        { text: '📞 Call +91 70026 04856', action: 'call' }
       ],
       chips: ['💰 Fees & Pricing', '🕒 Batch Timings', '📍 Studio Location', '👶 Abacus Age Group']
     };
@@ -388,7 +388,7 @@ NOHADAYA offers:
 1. Yoga & Meditation: ₹500/mo (3 days) or ₹800/mo (5 days). Morning 6:00-7:30 AM, Evening 5:00-6:30 PM.
 2. Abacus Mental Math: ₹600/mo for children 5-14 years. NE Green Abacus affiliated.
 3. Calligraphy & Handwriting: ₹500/mo for ages 6+ to adults.
-Location: H/No. 422, 1st Floor, Roseland Road, Near Satgaon Nowapara Jame Masjid, Bagharbari, Guwahati. Phone: +91 91010 65541.
+Location: H/No. 422, 1st Floor, Roseland Road, Near Satgaon Nowapara Jame Masjid, Bagharbari, Guwahati. Phone: +91 70026 04856.
 Keep your response concise, polite, helpful, and encourage booking a free trial class.`;
 
       const response = await fetch(
