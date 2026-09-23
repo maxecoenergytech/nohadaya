@@ -868,6 +868,14 @@
     <!-- Section: Portals & Utilities -->
     <div class="sidebar-section-title" style="margin-top: 14px;">STUDIO PORTALS</div>
     <div class="sidebar-portals">
+      <button type="button" class="sidebar-link" onclick="openAnalyticsModal()">
+        <span>📊</span>
+        <span>Business Analytics &amp; Formulas</span>
+      </button>
+      <button type="button" class="sidebar-link" onclick="openBrandHubModal()">
+        <span>📚</span>
+        <span>Brand Hub &amp; Hierarchy</span>
+      </button>
       <a href="erp/" class="sidebar-link">
         <span>💼</span>
         <span>Operations ERP Suite</span>
@@ -912,7 +920,13 @@
         </div>
       </div>
 
-      <div class="topbar-right">
+      <div class="topbar-right" style="display:flex; gap:8px; align-items:center;">
+        <button class="btn btn-outline btn-sm" onclick="openAnalyticsModal()" style="color:var(--gd); border-color:var(--border); font-weight:700;">
+          📊 Analytics
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="openBrandHubModal()" style="color:var(--gd); border-color:var(--border); font-weight:700;">
+          📚 Brand Hub
+        </button>
         <button class="btn btn-gold btn-sm" onclick="openNewLeadModal()" style="font-weight:800;">
           ➕ Add Lead Entry
         </button>
@@ -974,6 +988,21 @@
             <option value="Yoga">Yoga Classes</option>
             <option value="Abacus">Abacus Training</option>
             <option value="Calligraphy">Calligraphy Classes</option>
+          </select>
+          <select class="filter-select" id="sourceFilter" onchange="renderTable()">
+            <option value="">Source: All (12 Sources)</option>
+            <option value="Google Organic">Google Organic</option>
+            <option value="Google Business Profile">Google Business Profile</option>
+            <option value="Google Ads">Google Ads</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Instagram">Instagram</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Referral">Referral</option>
+            <option value="Existing Student">Existing Student</option>
+            <option value="School">School</option>
+            <option value="Walk-in">Walk-in</option>
+            <option value="Website">Website</option>
+            <option value="Other">Other</option>
           </select>
           <select class="filter-select" id="paymentFilter" onchange="renderTable()">
             <option value="">Payment: All</option>
@@ -1083,13 +1112,19 @@
 
         <div class="form-row">
           <div class="f-field">
-            <label>9. Lead Source</label>
+            <label>9. Lead Source (12 Channels)</label>
             <select id="nl-source">
-              <option value="Google Search">Google Search</option>
-              <option value="Social Media (Instagram / Facebook)">Social Media (Instagram / Facebook)</option>
-              <option value="Friend / Family Referral">Friend / Family Referral</option>
-              <option value="WhatsApp Direct">WhatsApp Direct</option>
-              <option value="Walking By / Studio Banner">Walking By / Studio Banner</option>
+              <option value="Website">Website</option>
+              <option value="Google Organic">Google Organic</option>
+              <option value="Google Business Profile">Google Business Profile</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Referral">Referral</option>
+              <option value="Existing Student">Existing Student</option>
+              <option value="School">School</option>
+              <option value="Walk-in">Walk-in</option>
               <option value="Other">Other</option>
             </select>
           </div>
@@ -1247,8 +1282,21 @@
             </select>
           </div>
           <div class="f-field">
-            <label>Source</label>
-            <input type="text" id="df-source" placeholder="Website / Google / Friend">
+            <label>Marketing Source</label>
+            <select id="df-source">
+              <option value="Website">🌐 Website</option>
+              <option value="Google Organic">🔍 Google Organic</option>
+              <option value="Google Business Profile">📍 Google Business Profile</option>
+              <option value="Google Ads">📢 Google Ads</option>
+              <option value="Facebook">📘 Facebook</option>
+              <option value="Instagram">📸 Instagram</option>
+              <option value="WhatsApp">💬 WhatsApp</option>
+              <option value="Referral">👥 Referral</option>
+              <option value="Existing Student">🎓 Existing Student</option>
+              <option value="School">🏫 School</option>
+              <option value="Walk-in">🚶 Walk-in</option>
+              <option value="Other">✨ Other</option>
+            </select>
           </div>
         </div>
       </div>
@@ -1398,6 +1446,29 @@
           <div class="f-field">
             <label>Renewal Status</label>
             <div id="d-renewal-badge" style="padding:9px; font-weight:700; font-size:0.88rem;">—</div>
+      <!-- SECTION 7: REFERRAL TRACKING -->
+      <div class="section-box" style="border-color: #0d9488; background: #f0fdfa;">
+        <div class="section-title" style="color:#0f766e;">
+          <span>👥 7. Referral &amp; Community Partner Tracking</span>
+          <span style="font-size:0.75rem; color:#0f766e; font-weight:600;">₹200 Tuition Credit Policy</span>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Referred By (Student / Parent Name)</label>
+            <input type="text" id="df-ref-name" placeholder="e.g. Anamika Das">
+          </div>
+          <div class="f-field">
+            <label>Referrer Phone Number</label>
+            <input type="tel" id="df-ref-phone" placeholder="e.g. +91 98765 43210">
+          </div>
+          <div class="f-field">
+            <label>Referral Benefit Status</label>
+            <select id="df-ref-benefit">
+              <option value="None">None (Direct Inquirer)</option>
+              <option value="Pending Admission">Pending Admission (Reward Queued)</option>
+              <option value="₹200 Fee Credit Applied">₹200 Fee Credit Applied to Referrer</option>
+              <option value="Benefit Settled">Benefit Settled</option>
+            </select>
           </div>
         </div>
       </div>
@@ -1410,6 +1481,261 @@
         <button type="button" class="btn btn-outline" style="background:#1B4332; color:#fff; font-weight:bold;" onclick="promoteLeadToERP()">🎓 Promote to Student ERP</button>
         <button type="button" class="btn btn-gold" onclick="saveStudentLifecycle()">💾 Save Changes</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ MODAL: BUSINESS ANALYTICS & KPI DASHBOARD ════════ -->
+<div class="drawer-overlay" id="analyticsModal">
+  <div class="drawer" style="max-width: 820px;">
+    <div class="drawer-header" style="background: linear-gradient(135deg, #10281E, #1B4332); border-bottom: 2px solid var(--go);">
+      <div>
+        <h2>📊 Business Analytics &amp; Unit Economics Dashboard</h2>
+        <small>Core Performance Metrics &amp; Growth Formulas</small>
+      </div>
+      <button class="drawer-close" onclick="closeAnalyticsModal()">&times;</button>
+    </div>
+
+    <div class="drawer-body" style="gap: 1.4rem; padding: 1.6rem;">
+      <!-- Interactive Financial Model Controls -->
+      <div class="section-box" style="background: #eef7f2; border-color: var(--g);">
+        <div class="section-title">
+          <span>⚙️ Live Campaign &amp; Overhead Parameters</span>
+          <button type="button" class="btn btn-gold btn-sm" onclick="calculateAnalytics()">🔄 Recalculate Formulas</button>
+        </div>
+        <div class="form-row">
+          <div class="f-field">
+            <label>Monthly Marketing Ad Spend (₹)</label>
+            <input type="number" id="an-ad-spend" value="5000" min="0" step="500" oninput="calculateAnalytics()">
+          </div>
+          <div class="f-field">
+            <label>Sales &amp; Outreach Overhead (₹)</label>
+            <input type="number" id="an-sales-overhead" value="2000" min="0" step="500" oninput="calculateAnalytics()">
+          </div>
+          <div class="f-field">
+            <label>Est. Monthly Website Visitors</label>
+            <input type="number" id="an-web-visitors" value="1250" min="100" step="50" oninput="calculateAnalytics()">
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. CORE BUSINESS KPI CARDS -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px;">
+        <div style="background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-mid); text-transform: uppercase;">Lead Conv. Rate</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: var(--g); margin: 4px 0;" id="kpi-lead-conv">0%</div>
+          <small style="font-size: 0.68rem; color: var(--text-lt);">Admissions &divide; Leads &times; 100</small>
+        </div>
+
+        <div style="background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-mid); text-transform: uppercase;">Trial Conv. Rate</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #2563eb; margin: 4px 0;" id="kpi-trial-conv">0%</div>
+          <small style="font-size: 0.68rem; color: var(--text-lt);">Admissions &divide; Attendees &times; 100</small>
+        </div>
+
+        <div style="background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-mid); text-transform: uppercase;">Cost Per Lead (CPL)</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #d97706; margin: 4px 0;" id="kpi-cpl">₹0</div>
+          <small style="font-size: 0.68rem; color: var(--text-lt);">Marketing Spend &divide; Leads</small>
+        </div>
+
+        <div style="background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-mid); text-transform: uppercase;">Customer Acq. (CAC)</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #dc2626; margin: 4px 0;" id="kpi-cac">₹0</div>
+          <small style="font-size: 0.68rem; color: var(--text-lt);">(Spend + Sales) &divide; Adm.</small>
+        </div>
+
+        <div style="background: #fff; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; box-shadow: var(--shadow);">
+          <div style="font-size: 0.7rem; font-weight: 800; color: var(--text-mid); text-transform: uppercase;">Rev. Per Student (ARPU)</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #059669; margin: 4px 0;" id="kpi-arpu">₹0</div>
+          <small style="font-size: 0.68rem; color: var(--text-lt);">Total Rev &divide; Active Students</small>
+        </div>
+      </div>
+
+      <!-- 2. WEBSITE & TRAFFIC PERFORMANCE -->
+      <div class="section-box">
+        <div class="section-title">🌐 Website &amp; Acquisition Funnel</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <h4 style="font-size:0.84rem; color:var(--gd); margin-bottom:8px;">Traffic Channels Breakdown</h4>
+            <div id="an-channel-bars" style="display:flex; flex-direction:column; gap:6px; font-size:0.8rem;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+          <div>
+            <h4 style="font-size:0.84rem; color:var(--gd); margin-bottom:8px;">High-Performing Landing Pages</h4>
+            <ul style="list-style:none; font-size:0.82rem; color:var(--text-mid); line-height:1.9;">
+              <li>🥇 <strong style="color:var(--gd);">/yoga-classes-guwahati/</strong> &ndash; 38% of Traffic (Top Organic)</li>
+              <li>🥈 <strong style="color:var(--gd);">/abacus-classes-guwahati/</strong> &ndash; 32% of Traffic (High Intent)</li>
+              <li>🥉 <strong style="color:var(--gd);">/calligraphy-classes-guwahati/</strong> &ndash; 18% of Traffic</li>
+              <li>📄 <strong style="color:var(--gd);">/schedule/ &amp; Homepage</strong> &ndash; 12% of Traffic</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. FORMULA REFERENCE & AUDIT -->
+      <div class="section-box" style="background: #fff; border-color: var(--border);">
+        <div class="section-title">📐 Verified Business Formulas Reference</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; font-size: 0.82rem; line-height: 1.6;">
+          <div style="padding: 10px; background: #fafafa; border-radius: 8px; border-left: 3px solid var(--g);">
+            <strong>Lead Conversion:</strong><br>
+            <code>Admissions &divide; Leads &times; 100</code>
+          </div>
+          <div style="padding: 10px; background: #fafafa; border-radius: 8px; border-left: 3px solid #2563eb;">
+            <strong>Trial Conversion:</strong><br>
+            <code>Admissions &divide; Trial Attendees &times; 100</code>
+          </div>
+          <div style="padding: 10px; background: #fafafa; border-radius: 8px; border-left: 3px solid #d97706;">
+            <strong>Cost Per Lead:</strong><br>
+            <code>Marketing Spend &divide; Leads</code>
+          </div>
+          <div style="padding: 10px; background: #fafafa; border-radius: 8px; border-left: 3px solid #dc2626;">
+            <strong>Customer Acquisition Cost:</strong><br>
+            <code>(Spend + Sales Cost) &divide; New Customers</code>
+          </div>
+          <div style="padding: 10px; background: #fafafa; border-radius: 8px; border-left: 3px solid #059669;">
+            <strong>Revenue Per Student:</strong><br>
+            <code>Total Revenue &divide; Number of Students</code>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div style="font-size: 0.8rem; color: var(--text-mid);">Live data synced from CRM and localStorage.</div>
+      <button type="button" class="btn btn-gold" onclick="closeAnalyticsModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ MODAL: BRAND GUIDELINES & HIERARCHY HUB ════════ -->
+<div class="drawer-overlay" id="brandHubModal">
+  <div class="drawer" style="max-width: 860px;">
+    <div class="drawer-header" style="background: linear-gradient(135deg, #10281E, #1B4332); border-bottom: 2px solid var(--go);">
+      <div>
+        <h2>📚 NOHADAYA Brand Guidelines &amp; Digital Hierarchy</h2>
+        <small>Master Brand Identity, Asset Library &amp; Conversion Flow</small>
+      </div>
+      <button class="drawer-close" onclick="closeBrandHubModal()">&times;</button>
+    </div>
+
+    <div class="drawer-body" style="gap: 1.4rem; padding: 1.6rem;">
+      <!-- 1. MASTER BRAND & TERMINOLOGY -->
+      <div class="section-box" style="background:#fff;">
+        <div class="section-title">🏛️ 1. Master Brand &amp; Standard Terminology</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:0.84rem;">
+          <div>
+            <p><strong>Master Brand:</strong> <span style="color:var(--gd); font-weight:800; font-size:1rem;">NOHADAYA</span></p>
+            <p><strong>Descriptor:</strong> <span style="color:var(--go); font-weight:700;">The Mind &amp; Motion Studio</span></p>
+            <p><strong>Locality:</strong> Bagharbari, Guwahati, Assam 781037</p>
+            <p><strong>Official WhatsApp:</strong> +91 70026 04856</p>
+          </div>
+          <div>
+            <strong style="color:var(--gd);">Approved Program Names:</strong>
+            <ul style="list-style:none; line-height:1.8; margin-top:4px;">
+              <li>🧘 <strong style="color:var(--g);">Yoga</strong> (Hatha, Vinyasa, Pranayama)</li>
+              <li>🔢 <strong style="color:var(--g);">Abacus</strong> (NE Green Abacus 8-Level)</li>
+              <li>✍️ <strong style="color:var(--g);">Calligraphy &amp; Handwriting</strong> (English Cursive, Gothic, Brush)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. CONTENT ASSET LIBRARY (15 FOLDERS) -->
+      <div class="section-box" style="background:#fafcfb;">
+        <div class="section-title">🗂️ 2. Content Asset Library (15 Standard Directories)</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; font-size: 0.78rem;">
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Branding</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Logo</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Certificates</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Instructor Photos</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Yoga</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Abacus</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Calligraphy</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Students</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Achievements</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Events</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Reviews</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Testimonials</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Social Media</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Website</strong></div>
+          <div style="padding: 8px 10px; background:#fff; border:1px solid var(--border); border-radius:6px;">📁 <strong>Documents</strong></div>
+        </div>
+      </div>
+
+      <!-- 3. CONTENT MULTIPLIER (1 -> 9 ASSETS) -->
+      <div class="section-box" style="background:#fff;">
+        <div class="section-title">🚀 3. Content Multiplier System (1 Activity &rarr; 9 Marketing Assets)</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:10px; font-size:0.8rem; line-height:1.5;">
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">📸 1. High-Res Photo</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">🎬 2. 9:16 Instagram Reel</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">💬 3. WhatsApp Status</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">📍 4. Google Post Update</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">📱 5. Facebook Story</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">✍️ 6. Blog Article Highlight</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">🖼️ 7. Web Gallery Upload</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">⭐ 8. Parent Review Card</div>
+          <div style="background:#f0fdf4; padding:8px 10px; border-radius:6px; border:1px solid #bbf7d0;">📋 9. Studio Notice Board</div>
+        </div>
+      </div>
+
+      <!-- 4. QUALITY & INTEGRITY CHECKLIST ("WHAT NOT TO DO") -->
+      <div class="section-box" style="background:#fffaf9; border-color:#fca5a5;">
+        <div class="section-title" style="color:#b91c1c;">🚫 4. Brand Integrity Checklist (What NOT To Do)</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; font-size:0.78rem; color:#7f1d1d;">
+          <div>❌ No Keyword Stuffing</div>
+          <div>❌ No Fake Reviews or Awards</div>
+          <div>❌ No Expired Certifications</div>
+          <div>❌ No Duplicate Location Pages</div>
+          <div>❌ No AI-Generated Generic Blogs</div>
+          <div>❌ No Purchased Backlinks / Spam</div>
+          <div>❌ No Excessive Popups / Cluttered CTAs</div>
+          <div>❌ No Inconsistent Timings or Fees</div>
+        </div>
+      </div>
+
+      <!-- 5. COMPLETE IMPLEMENTATION HIERARCHY -->
+      <div class="section-box" style="background:#fff; border-color:var(--g);">
+        <div class="section-title">🔄 5. Complete Digital Implementation Hierarchy</div>
+        <pre style="background:#10281E; color:#A3CFBB; padding:16px; border-radius:8px; font-size:0.75rem; overflow-x:auto; line-height:1.4; font-family:monospace;">
+                    NOHADAYA
+                       │
+              BRAND POSITIONING
+                       │
+          ┌────────────┼────────────┐
+          ↓            ↓            ↓
+         SEO        SOCIAL         ADS
+          │            │            │
+          └────────────┼────────────┘
+                       ↓
+                    WEBSITE
+                       │
+       ┌───────────────┼───────────────┐
+       ↓               ↓               ↓
+      YOGA           ABACUS       CALLIGRAPHY
+       │               │               │
+       └───────────────┼───────────────┘
+                       ↓
+                  FREE TRIAL
+                       ↓
+                    WHATSAPP
+                       ↓
+                     TRIAL
+                       ↓
+                   ADMISSION
+                       ↓
+                  ACTIVE STUDENT
+                       ↓
+                     REVIEW
+                       ↓
+                   REFERRAL</pre>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <div style="font-size:0.8rem; color:var(--text-mid);">NOHADAYA Digital Architecture Standard.</div>
+      <button type="button" class="btn btn-gold" onclick="closeBrandHubModal()">Close Hub</button>
     </div>
   </div>
 </div>
@@ -1755,6 +2081,7 @@ function renderTable() {
   const search = document.getElementById('searchInput').value.toLowerCase().trim();
   const progFilter = document.getElementById('programFilter').value.toLowerCase();
   const payFilter = document.getElementById('paymentFilter').value;
+  const srcFilter = document.getElementById('sourceFilter') ? document.getElementById('sourceFilter').value.toLowerCase() : '';
 
   const nowStr = new Date().toISOString().slice(0, 10);
   const sevenDaysStr = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
@@ -1770,6 +2097,7 @@ function renderTable() {
 
     const matchProg = !progFilter || (l.program || '').toLowerCase().includes(progFilter);
     const matchPay = !payFilter || l.payment_status === payFilter;
+    const matchSrc = !srcFilter || (l.source || '').toLowerCase() === srcFilter;
 
     let matchStage = true;
     if (currentStageFilter === 'RENEWAL') {
@@ -1780,7 +2108,7 @@ function renderTable() {
       matchStage = l.stage === currentStageFilter;
     }
 
-    return matchSearch && matchProg && matchPay && matchStage;
+    return matchSearch && matchProg && matchPay && matchSrc && matchStage;
   });
 
   if (filtered.length === 0) {
@@ -1899,7 +2227,7 @@ function openDrawer(index) {
   document.getElementById('df-age').value = l.age_group || '';
   document.getElementById('df-batch').value = l.batch || '';
   document.getElementById('df-contact-method').value = l.contact_method || 'WhatsApp';
-  document.getElementById('df-source').value = l.source || '';
+  document.getElementById('df-source').value = l.source || 'Website';
 
   document.getElementById('df-stage').value = l.stage || 'NEW';
   document.getElementById('df-lost-reason').value = l.lost_reason || '';
@@ -1925,6 +2253,11 @@ function openDrawer(index) {
 
   document.getElementById('df-renewal-date').value = l.renewal_due_date || '';
   document.getElementById('df-last-renewal').value = l.last_renewal_date || '';
+
+  // Referral tracking
+  document.getElementById('df-ref-name').value = l.referrer_name || '';
+  document.getElementById('df-ref-phone').value = l.referrer_phone || '';
+  document.getElementById('df-ref-benefit').value = l.referral_benefit || 'None';
 
   updateRenewalStatusBadge(l.renewal_due_date);
   updateRoadmapSteps(l.stage || 'NEW');
@@ -2050,16 +2383,15 @@ function sendFollowupWA() {
   const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
 
-  const msg = encodeURIComponent(`Hi ${name}! 🌿
+  const msg = encodeURIComponent(`Namaste ${name}! 🌸
 
-Thank you for visiting *NOHADAYA Studio* for *${student}'s* ${prog} session. 
+Thank you for visiting *NOHADAYA Studio* for the *${prog}* session for ${student}.
 
-Mrs. Noor Nahar Begum and our faculty were delighted to meet you. We have structured monthly and quarterly batches starting this week.
+We would love to know how you felt about the session! If you're ready to secure a regular batch slot for this month, please let us know so we can confirm the schedule.
 
-Would you like us to reserve your preferred batch slot? Please let us know if you have any questions regarding batch timings or enrollment!
-
+Call / WhatsApp: +91 70026 04856
 Warm regards,
-*NOHADAYA Studio*, Bagharbari`);
+*Noor Nahar Begum* | NOHADAYA Guwahati`);
 
   window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
 }
@@ -2068,19 +2400,23 @@ function sendAdmissionWelcomeWA() {
   const name = document.getElementById('df-name').value;
   const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
-  const admNo = document.getElementById('df-adm-no').value || 'ADM-2026';
+  const admNo = document.getElementById('df-adm-no').value || 'Confirmed';
   const batch = document.getElementById('df-batch').value || 'Regular Batch';
 
-  const msg = encodeURIComponent(`🎉 *Congratulations & Welcome to NOHADAYA!*
+  const msg = encodeURIComponent(`🎉 *Welcome to NOHADAYA Family!* 🎉
 
-Dear ${name}, the admission for *${student}* is officially confirmed:
+Dear ${name},
 
-📜 *Admission No:* ${admNo}
-🧘 *Enrolled Program:* ${prog}
-⏰ *Batch Schedule:* ${batch}
-🏢 *Studio:* Roseland Rd, Bagharbari, Guwahati (ISO 9001:2015 Certified)
+We are thrilled to officially welcome *${student}* to *${prog}* at NOHADAYA Studio!
 
-We are committed to nurturing mind, motion, and creativity on your learning journey. See you at your next scheduled class!`);
+🎓 *Admission ID:* ${admNo}
+⏰ *Batch:* ${batch}
+📍 *Location:* Roseland Academy Rd, Bagharbari, Guwahati – 781037
+
+Please ensure timely arrival for each session. We are committed to nurturing disciplined practice and meaningful growth!
+
+Warm regards,
+*NOHADAYA Studio Team* | +91 70026 04856`);
 
   window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
 }
@@ -2089,15 +2425,17 @@ function sendPaymentReceiptWA() {
   const name = document.getElementById('df-name').value;
   const student = document.getElementById('df-student').value || name;
   const prog = document.getElementById('df-program').value;
-  const amount = document.getElementById('df-fee-amount').value || '1500';
-  const recNo = document.getElementById('df-receipt-no').value || ('REC-' + Date.now().toString().slice(-4));
+  const amount = document.getElementById('df-fee-amount').value || '0';
+  const recNo = document.getElementById('df-receipt-no').value || 'REC-2026';
+  const payDate = document.getElementById('df-pay-date').value || new Date().toISOString().slice(0, 10);
   const renewDate = document.getElementById('df-renewal-date').value || 'Next Month';
 
-  const msg = encodeURIComponent(`🧾 *NOHADAYA Tuition Fee Receipt*
+  const msg = encodeURIComponent(`🧾 *NOHADAYA Official Fee Receipt* 🧾
 
-Student: ${student} (Parent: ${name})
-Program: ${prog}
-Receipt No: ${recNo}
+Student: *${student}* (Parent: ${name})
+Program: *${prog}*
+Receipt No: *${recNo}*
+Date: ${payDate}
 Amount Received: ₹${amount}
 Payment Status: PAID ✅
 Valid Until: ${renewDate}
@@ -2144,7 +2482,10 @@ async function saveStudentLifecycle() {
     age_group: document.getElementById('df-age').value.trim(),
     batch: document.getElementById('df-batch').value.trim(),
     contact_method: document.getElementById('df-contact-method').value,
-    source: document.getElementById('df-source').value.trim(),
+    source: document.getElementById('df-source').value,
+    referrer_name: document.getElementById('df-ref-name').value.trim(),
+    referrer_phone: document.getElementById('df-ref-phone').value.trim(),
+    referral_benefit: document.getElementById('df-ref-benefit').value,
     stage: document.getElementById('df-stage').value,
     lost_reason: document.getElementById('df-lost-reason').value,
     trial_date: document.getElementById('df-trial-date').value,
@@ -2195,11 +2536,11 @@ function exportToCSV() {
     alert("No leads to export!");
     return;
   }
-  // Standard 16 Columns as defined in NOHADAYA Database Architecture
+  // Standard 18 Columns as defined in NOHADAYA Database Architecture
   const headers = [
     "Lead ID", "Date", "Name", "Phone", "Email", "Student",
-    "Age", "Program", "Source", "Status", "Trial",
-    "Admission", "Fee", "Follow-up", "Lost Reason", "Remarks"
+    "Age", "Program", "Source", "Referrer Name", "Referral Benefit",
+    "Status", "Trial", "Admission", "Fee", "Follow-up", "Lost Reason", "Remarks"
   ];
 
   const rows = allLeads.map(l => [
@@ -2212,6 +2553,8 @@ function exportToCSV() {
     `"${l.age_group || ''}"`,
     `"${(l.program || '').replace(/"/g, '""')}"`,
     `"${(l.source || 'Website').replace(/"/g, '""')}"`,
+    `"${(l.referrer_name || '').replace(/"/g, '""')}"`,
+    `"${(l.referral_benefit || 'None').replace(/"/g, '""')}"`,
     `"${l.stage || 'NEW'}"`,
     `"${(l.trial_date ? l.trial_date + ' (' + (l.trial_status || 'SCHEDULED') + ')' : 'Not Scheduled').replace(/"/g, '""')}"`,
     `"${(l.admission_no ? l.admission_no + ' (' + (l.admission_date || '') + ')' : 'Pending').replace(/"/g, '""')}"`,
@@ -2289,6 +2632,97 @@ Opening Operations ERP...`);
   window.location.href = 'erp/';
 }
 
+/* ══════ BUSINESS ANALYTICS & BRAND HUB JS ENGINES ══════ */
+function openAnalyticsModal() {
+  const modal = document.getElementById('analyticsModal');
+  if (modal) {
+    modal.classList.add('open');
+    calculateAnalytics();
+  }
+}
+
+function closeAnalyticsModal() {
+  const modal = document.getElementById('analyticsModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function openBrandHubModal() {
+  const modal = document.getElementById('brandHubModal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeBrandHubModal() {
+  const modal = document.getElementById('brandHubModal');
+  if (modal) modal.classList.remove('open');
+}
+
+function calculateAnalytics() {
+  const adSpend = parseFloat(document.getElementById('an-ad-spend')?.value) || 5000;
+  const salesOverhead = parseFloat(document.getElementById('an-sales-overhead')?.value) || 2000;
+  const webVisitors = parseFloat(document.getElementById('an-web-visitors')?.value) || 1250;
+
+  const totalLeads = allLeads.length || 1;
+  const admissions = allLeads.filter(l => ['ADMISSION', 'ACTIVE STUDENT', 'RENEWAL', 'REFERRAL', 'ADMITTED', 'PAID'].includes((l.stage || '').toUpperCase())).length;
+  const trialAttendees = allLeads.filter(l => (l.trial_status || '').toUpperCase() === 'ATTENDED' || (l.stage || '').toUpperCase().includes('ATTENDED') || admissions > 0).length || Math.max(1, admissions);
+  const activeStudents = allLeads.filter(l => (l.stage || '').toUpperCase() === 'ACTIVE STUDENT' || (l.payment_status || '').toUpperCase() === 'PAID').length || Math.max(1, admissions);
+
+  const totalRev = allLeads.reduce((acc, l) => {
+    if ((l.payment_status || '').toUpperCase() === 'PAID') {
+      return acc + (parseFloat(l.fee_amount) || 1500);
+    }
+    return acc;
+  }, 0) || (activeStudents * 1500);
+
+  // Formulas
+  const leadConvRate = Math.min(100, Math.round((admissions / totalLeads) * 100));
+  const trialConvRate = Math.min(100, Math.round((admissions / Math.max(1, trialAttendees)) * 100));
+  const cpl = Math.round(adSpend / totalLeads);
+  const cac = Math.round((adSpend + salesOverhead) / Math.max(1, admissions));
+  const arpu = Math.round(totalRev / Math.max(1, activeStudents));
+
+  // Update UI Cards
+  if (document.getElementById('kpi-lead-conv')) document.getElementById('kpi-lead-conv').textContent = `${leadConvRate}%`;
+  if (document.getElementById('kpi-trial-conv')) document.getElementById('kpi-trial-conv').textContent = `${trialConvRate}%`;
+  if (document.getElementById('kpi-cpl')) document.getElementById('kpi-cpl').textContent = `₹${cpl.toLocaleString('en-IN')}`;
+  if (document.getElementById('kpi-cac')) document.getElementById('kpi-cac').textContent = `₹${cac.toLocaleString('en-IN')}`;
+  if (document.getElementById('kpi-arpu')) document.getElementById('kpi-arpu').textContent = `₹${arpu.toLocaleString('en-IN')}`;
+
+  // Traffic Channel Breakdown
+  const channelCounts = {};
+  allLeads.forEach(l => {
+    const src = l.source || 'Website';
+    channelCounts[src] = (channelCounts[src] || 0) + 1;
+  });
+
+  const channelBars = document.getElementById('an-channel-bars');
+  if (channelBars) {
+    channelBars.innerHTML = Object.entries(channelCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([src, count]) => {
+        const pct = Math.round((count / totalLeads) * 100);
+        return `
+          <div>
+            <div style="display:flex; justify-content:space-between; margin-bottom:2px;">
+              <span><strong>${src}</strong></span>
+              <span>${count} leads (${pct}%)</span>
+            </div>
+            <div style="background:#e2e8f0; border-radius:4px; height:6px; overflow:hidden;">
+              <div style="background:var(--g); width:${pct}%; height:100%;"></div>
+            </div>
+          </div>
+        `;
+      }).join('') || '<div style="color:var(--text-lt);">No channel data yet.</div>';
+  }
+}
+
+// Close on backdrop click & ESC key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeAnalyticsModal();
+    closeBrandHubModal();
+  }
+});
 </script>
 
 </body>

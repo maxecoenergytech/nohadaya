@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School &amp; Institutional Programs in Guwahati | NOHADAYA Studio</title>
+  <meta name="description" content="NOHADAYA offers structured school workshops in Guwahati: Abacus Mental Maths, Handwriting Mastery, Calligraphy, and Yoga &amp; Mindfulness for schools, coaching centres, and residential communities." />
+  <link rel="canonical" href="https://www.nohadaya.com/school-programs/" />
+  
+  <meta property="og:title" content="School &amp; Institutional Skill Programs in Guwahati | NOHADAYA" />
+  <meta property="og:description" content="Customized offline and campus workshops for schools, coaching institutes, and communities in Guwahati by certified master educators." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.nohadaya.com/school-programs/" />
+  <meta property="og:image" content="https://www.nohadaya.com/images/abacus_competition.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <style>
+    :root {
+      --gd: #142d21; --g: #2d6a4f; --gl: #d8f3dc; --go: #c9a84c; --gol: #e6c875;
+      --bg: #f8faf9; --bg2: #ffffff; --bg3: #edf4f0; --text: #1a3a2a; --text-mid: #3d6350;
+      --text-lt: #6b8f7d; --border: #cbe3d6; --shadow: 0 4px 20px rgba(20,45,33,0.08);
+      --shadow-lg: 0 12px 36px rgba(20,45,33,0.14); --card-bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    
+    /* Navigation */
+    nav { background: var(--gd); border-bottom: 2px solid var(--go); position: sticky; top: 0; z-index: 1000; }
+    .nav-in { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff; }
+    .nav-logo img { width: 44px; height: 44px; border-radius: 8px; border: 1.5px solid var(--go); }
+    .nav-logo strong { font-family: 'Playfair Display', serif; font-size: 1.25rem; letter-spacing: 1px; }
+    .nav-logo small { display: block; font-size: 0.72rem; color: var(--gol); }
+    .nav-links { display: flex; align-items: center; gap: 18px; list-style: none; }
+    .nav-links a { color: #e2e8f0; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gol); }
+    .btn-cta { background: linear-gradient(135deg, var(--go), var(--gol)); color: var(--gd); padding: 8px 18px; border-radius: 20px; font-weight: 800; font-size: 0.85rem; text-decoration: none; border: none; cursor: pointer; }
+
+    /* Header */
+    .page-header { background: linear-gradient(135deg, #10281E 0%, #1B4332 60%, #0E241B 100%); color: #fff; padding: 60px 20px; text-align: center; border-bottom: 3px solid var(--go); }
+    .badge-top { display: inline-block; background: rgba(201,168,76,0.2); color: var(--gol); border: 1px solid var(--go); padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; }
+    .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 14px; }
+    .page-header p { font-size: 1.1rem; color: #d8f3dc; max-width: 760px; margin: 0 auto; }
+
+    /* Container */
+    .sec-in { max-width: 1140px; margin: 0 auto; padding: 50px 20px; }
+    .sec-title { text-align: center; margin-bottom: 36px; }
+    .sec-title h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gd); margin-bottom: 8px; }
+    .sec-title p { color: var(--text-mid); font-size: 1rem; max-width: 680px; margin: 0 auto; }
+
+    /* Program Grid */
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 14px; padding: 26px; box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--go); }
+    .card-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .card h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--gd); margin-bottom: 10px; }
+    .card p { font-size: 0.92rem; color: var(--text-mid); margin-bottom: 14px; line-height: 1.6; }
+    .card-feat { list-style: none; font-size: 0.86rem; color: var(--text); margin-bottom: 18px; }
+    .card-feat li { margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+
+    /* Institutional Benefits */
+    .benefit-box { background: var(--bg2); border-left: 5px solid var(--g); padding: 20px 24px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 16px; }
+    .benefit-box h4 { color: var(--gd); font-size: 1.05rem; margin-bottom: 4px; }
+
+    /* Form Section */
+    .form-wrapper { background: #fff; border: 2px solid var(--go); border-radius: 16px; padding: 36px; box-shadow: var(--shadow-lg); max-width: 760px; margin: 0 auto; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .form-control { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 0.92rem; }
+    .form-control:focus { outline: none; border-color: var(--g); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+
+    /* Footer */
+    footer { background: #0c1c14; color: #94a3b8; padding: 45px 20px 25px; border-top: 2px solid var(--go); font-size: 0.88rem; }
+    .foot-in { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; margin-bottom: 30px; }
+    .foot-in h4 { color: var(--gol); font-family: 'Playfair Display', serif; margin-bottom: 12px; font-size: 1.05rem; }
+    .foot-in a { color: #cbd5e1; text-decoration: none; display: block; margin-bottom: 8px; transition: color 0.2s; }
+    .foot-in a:hover { color: #fff; }
+    .foot-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <img src="/images/logo.webp" alt="NOHADAYA Logo" onerror="this.src='/images/logo.jpg'" />
+      <div>
+        <strong>NOHADAYA</strong>
+        <small>The Mind &amp; Motion Studio</small>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/yoga-classes-guwahati/">Yoga</a></li>
+      <li><a href="/abacus-classes-guwahati/">Abacus</a></li>
+      <li><a href="/calligraphy-classes-guwahati/">Calligraphy</a></li>
+      <li><a href="/school-programs/" class="active">Schools</a></li>
+      <li><a href="/corporate-yoga-guwahati/">Corporate</a></li>
+      <li><a href="/contact/">Contact</a></li>
+      <li><a href="https://wa.me/917002604856?text=Hello%20NOHADAYA,%20we%20are%20interested%20in%20School%20Partnership%20Programs." target="_blank" class="btn-cta">WhatsApp Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <span class="badge-top">🏫 Institutional Outreach &amp; Campus Workshops</span>
+  <h1>School &amp; Community Skill Programs in Guwahati</h1>
+  <p>Certified, activity-based workshops in Abacus Mental Maths, Board-Exam Handwriting, Artistic Calligraphy, and Yoga &amp; Mindfulness for schools, coaching institutes, and residential clubs across Guwahati.</p>
+</header>
+
+<main>
+  <!-- WORKSHOPS OFFERED -->
+  <section class="sec-in">
+    <div class="sec-title">
+      <h2>Structured Workshops for Students</h2>
+      <p>Customized 1-day, weekend, or semester-long co-curricular modules tailored to school age groups (Classes 1 to 10).</p>
+    </div>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="card-icon">🔢</div>
+        <h3>School Abacus &amp; Mental Maths</h3>
+        <p>Tactile Soroban training to eliminate math anxiety, boost concentration, and build rapid mental arithmetic skills.</p>
+        <ul class="card-feat">
+          <li>✓ Classes 1 to 8 customized syllabus</li>
+          <li>✓ Speed calculation demonstrations</li>
+          <li>✓ Teacher &amp; parent orientation</li>
+        </ul>
+        <a href="#partner-form" class="btn-cta" style="display:block; text-align:center;">Book Abacus Demo</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>Handwriting Legibility Bootcamp</h3>
+        <p>Specialized workshops for CBSE and SEBA students to improve speed, letter alignment, and board exam legibility.</p>
+        <ul class="card-feat">
+          <li>✓ Ergonomic pen grasp correction</li>
+          <li>✓ 3-Hour exam speed writing drills</li>
+          <li>✓ Individual diagnostic sheets</li>
+        </ul>
+        <a href="#partner-form" class="btn-cta" style="display:block; text-align:center;">Request Handwriting Demo</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">✍️</div>
+        <h3>Calligraphy &amp; Penmanship</h3>
+        <p>Fostering fine-motor creativity and artistic expression through structured Gothic, Italic, and brush lettering.</p>
+        <ul class="card-feat">
+          <li>✓ Specialized nib &amp; brush training</li>
+          <li>✓ Creative school project styling</li>
+          <li>✓ Certificate of Participation</li>
+        </ul>
+        <a href="#partner-form" class="btn-cta" style="display:block; text-align:center;">Book Calligraphy Camp</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🧘</div>
+        <h3>Kids Yoga &amp; Mindfulness</h3>
+        <p>Gentle posture, spine strengthening, and breathing routines designed to reduce digital eye strain and improve attention span.</p>
+        <ul class="card-feat">
+          <li>✓ Postural alignment for growing kids</li>
+          <li>✓ Exam stress reduction breathing</li>
+          <li>✓ Non-competitive wellness fun</li>
+        </ul>
+        <a href="#partner-form" class="btn-cta" style="display:block; text-align:center;">Book School Yoga Session</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE PARTNER WITH -->
+  <section style="background: var(--bg3); padding: 50px 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="sec-in" style="padding:0;">
+      <div class="sec-title">
+        <h2>Who We Collaborate With in Guwahati</h2>
+        <p>Bringing high-quality, structured learning to institutions across Kamrup Metropolitan.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div class="benefit-box">
+          <h4>🏫 K-12 Schools (CBSE, SEBA, ICSE)</h4>
+          <p style="font-size:0.9rem; color:var(--text-mid);">In-school co-curricular activity (CCA) periods, annual summer camps, and exam preparation masterclasses.</p>
+        </div>
+        <div class="benefit-box">
+          <h4>📚 Coaching &amp; Tutoring Centres</h4>
+          <p style="font-size:0.9rem; color:var(--text-mid);">Weekend brain-development and focus enhancement add-on modules for enrolled students.</p>
+        </div>
+        <div class="benefit-box">
+          <h4>🏡 Residential Societies &amp; Apartments</h4>
+          <p style="font-size:0.9rem; color:var(--text-mid);">Community hall weekend batches in Panjabari, Six Mile, VIP Road, Satgaon, and Khanapara.</p>
+        </div>
+        <div class="benefit-box">
+          <h4>🏆 Youth Clubs &amp; NGOs</h4>
+          <p style="font-size:0.9rem; color:var(--text-mid);">Holiday skill workshops, handwriting competitions, and youth wellness camps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERSHIP FORM -->
+  <section class="sec-in" id="partner-form">
+    <div class="form-wrapper">
+      <div style="text-align:center; margin-bottom:24px;">
+        <span class="badge-top">🤝 Partner With NOHADAYA</span>
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gd);">Request an Institutional Workshop Proposal</h2>
+        <p style="font-size:0.92rem; color:var(--text-mid);">Fill out your institution's details below or connect directly with our program director.</p>
+      </div>
+
+      <form id="schoolInquiryForm" onsubmit="handleSchoolFormSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Institution / School Name *</label>
+            <input type="text" id="sch-inst" class="form-control" placeholder="e.g. Army Public School / Residential Society" required />
+          </div>
+          <div class="form-group">
+            <label>Contact Person Name &amp; Designation *</label>
+            <input type="text" id="sch-name" class="form-control" placeholder="e.g. Principal / CCA Coordinator" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone / WhatsApp Number *</label>
+            <input type="tel" id="sch-phone" class="form-control" placeholder="+91 XXXXX XXXXX" required />
+          </div>
+          <div class="form-group">
+            <label>Official Email Address</label>
+            <input type="email" id="sch-email" class="form-control" placeholder="school@example.com" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Program of Interest *</label>
+            <select id="sch-prog" class="form-control" required>
+              <option value="">— Select Workshop —</option>
+              <option value="Abacus Mental Maths Workshop">Abacus Mental Maths Workshop</option>
+              <option value="Handwriting Improvement Bootcamp">Handwriting Improvement Bootcamp</option>
+              <option value="Calligraphy Masterclass">Calligraphy Masterclass</option>
+              <option value="Kids Yoga & Mindfulness Session">Kids Yoga &amp; Mindfulness Session</option>
+              <option value="Comprehensive Multi-Skill Camp">Comprehensive Multi-Skill Camp</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estimated Student Count &amp; Classes</label>
+            <input type="text" id="sch-count" class="form-control" placeholder="e.g. 150 Students (Classes 3 to 7)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Campus Location / Locality in Guwahati</label>
+          <input type="text" id="sch-loc" class="form-control" placeholder="e.g. Panjabari / Six Mile / Satgaon / Beltola" />
+        </div>
+
+        <div class="form-group">
+          <label>Specific Requirements / Proposed Dates</label>
+          <textarea id="sch-msg" class="form-control" rows="3" placeholder="Tell us about your event dates, time duration, or specific learning outcomes..."></textarea>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px;">
+          <button type="button" onclick="sendSchoolViaWhatsApp()" class="btn-cta" style="flex:1; min-width:200px; padding:14px; background:#25D366; color:#fff; font-size:0.95rem; text-align:center;">
+            📲 Send Proposal Request on WhatsApp
+          </button>
+          <button type="submit" class="btn-cta" style="flex:1; min-width:200px; padding:14px; font-size:0.95rem; text-align:center;">
+            📩 Submit Institutional Inquiry
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-in">
+    <div>
+      <h4>NOHADAYA</h4>
+      <p style="line-height:1.7;">The Mind &amp; Motion Studio<br/>Roseland Academy Road, Bagharbari, Guwahati – 781037<br/>A Unit of Mind Castle Mercantile (ISO 9001:2015 Certified)</p>
+    </div>
+    <div>
+      <h4>Programs</h4>
+      <a href="/yoga-classes-guwahati/">Yoga Classes</a>
+      <a href="/abacus-classes-guwahati/">Abacus Training</a>
+      <a href="/calligraphy-classes-guwahati/">Calligraphy &amp; Handwriting</a>
+      <a href="/school-programs/">School Programs</a>
+      <a href="/corporate-yoga-guwahati/">Corporate Wellness</a>
+    </div>
+    <div>
+      <h4>Trust &amp; Legal</h4>
+      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href="/terms-and-conditions/">Terms &amp; Conditions</a>
+      <a href="/refund-policy/">Refund &amp; Cancellation</a>
+      <a href="/child-safety-policy/">Child Safety Policy</a>
+      <a href="/photo-video-consent/">Photo / Video Consent</a>
+    </div>
+    <div>
+      <h4>Contact Coordinator</h4>
+      <p>📞 Phone: <a href="tel:+917002604856" style="display:inline; color:#fff;">+91 70026 04856</a></p>
+      <p>✉️ Email: <a href="mailto:nohadayastudio@gmail.com" style="display:inline; color:#fff;">nohadayastudio@gmail.com</a></p>
+      <p>📍 Guwahati, Assam</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    &copy; 2026 NOHADAYA – The Mind &amp; Motion Studio. All rights reserved.
+  </div>
+</footer>
+
+<script>
+function getSchoolFormData() {
+  return {
+    inst: document.getElementById('sch-inst').value.trim(),
+    name: document.getElementById('sch-name').value.trim(),
+    phone: document.getElementById('sch-phone').value.trim(),
+    email: document.getElementById('sch-email').value.trim(),
+    prog: document.getElementById('sch-prog').value,
+    count: document.getElementById('sch-count').value.trim(),
+    loc: document.getElementById('sch-loc').value.trim(),
+    msg: document.getElementById('sch-msg').value.trim()
+  };
+}
+
+function sendSchoolViaWhatsApp() {
+  const d = getSchoolFormData();
+  if (!d.inst) { alert('Please enter your School / Institution Name.'); document.getElementById('sch-inst').focus(); return; }
+  if (!d.name) { alert('Please enter Contact Person Name.'); document.getElementById('sch-name').focus(); return; }
+  if (!d.phone) { alert('Please enter Phone Number.'); document.getElementById('sch-phone').focus(); return; }
+
+  const cleanDigits = d.phone.replace(/\D/g, '');
+  const leadId = `NOH-SCH-${new Date().toISOString().slice(2, 10).replace(/-/g, '')}-${cleanDigits.slice(-4) || 'INST'}`;
+
+  try {
+    const local = JSON.parse(localStorage.getItem('nohadaya_leads') || '[]');
+    local.unshift({
+      lead_id: leadId,
+      name: d.name + ` (${d.inst})`,
+      phone: d.phone,
+      email: d.email,
+      student_name: d.inst,
+      program: d.prog || 'School Program',
+      age_group: d.count || 'School Students',
+      batch: d.loc || 'Campus',
+      source: 'School',
+      contact_method: 'WhatsApp',
+      stage: 'NEW',
+      message: d.msg,
+      created_at: new Date().toISOString().slice(0, 10)
+    });
+    localStorage.setItem('nohadaya_leads', JSON.stringify(local.slice(0, 100)));
+  } catch (e) {}
+
+  const text =
+`🏫 *NOHADAYA – School Partnership Inquiry*
+─────────────────────────
+🏢 *Institution:* ${d.inst}
+👤 *Contact Person:* ${d.name}
+📱 *Phone:* ${d.phone}
+📧 *Email:* ${d.email || 'Not provided'}
+─────────────────────────
+📚 *Program:* ${d.prog || 'School Skill Workshop'}
+👥 *Estimated Count:* ${d.count || 'To be finalized'}
+📍 *Location:* ${d.loc || 'Guwahati'}
+─────────────────────────
+📝 *Requirements:*
+${d.msg || 'Interested in receiving official workshop proposal.'}
+─────────────────────────
+_Sent from NOHADAYA School Portal_`;
+
+  window.open(`https://wa.me/917002604856?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function handleSchoolFormSubmit(e) {
+  e.preventDefault();
+  sendSchoolViaWhatsApp();
+  document.getElementById('schoolInquiryForm').reset();
+}
+</script>
+
+</body>
+</html>
