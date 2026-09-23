@@ -2413,10 +2413,53 @@ We are thrilled to officially welcome *${student}* to *${prog}* at NOHADAYA Stud
 ⏰ *Batch:* ${batch}
 📍 *Location:* Roseland Academy Rd, Bagharbari, Guwahati – 781037
 
-Please ensure timely arrival for each session. We are committed to nurturing disciplined practice and meaningful growth!
+Please ensure timely arrival for each session.\n\n📦 *Recommended Practice Kit:* Browse our instructor-tested home tools at https://www.nohadaya.com/blog/student-kits-recommended-tools/ to ensure optimal daily practice.
 
 Warm regards,
 *NOHADAYA Studio Team* | +91 70026 04856`);
+
+  window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
+}
+
+
+function sendStarterKitWA() {
+  const name = document.getElementById('df-name').value || 'Parent';
+  const student = document.getElementById('df-student').value || name;
+  const prog = (document.getElementById('df-program').value || 'Yoga').toLowerCase();
+
+  let kitText = '';
+  let kitUrl = 'https://www.nohadaya.com/blog/student-kits-recommended-tools/';
+
+  if (prog.includes('abacus')) {
+    kitText = `🔢 *Abacus Home Practice Kit:*
+1. 17-Digit Japanese Soroban Frame (with Reset Button): https://www.amazon.in/gp/aw/d/B0CD2DWHV9?pd_rd_plhdr=t&hsa_cr_id=0&qid=1790185128&sr=1-2-941ebe59-d25b-49d0-b214-12cc5b66c90f&i=specialty-aps&aref=x7zvDi9JGf&_encoding=UTF8&pd_rd_w=9cI0P&content-id=amzn1.sym.7b6188a8-103f-4f88-b43a-19aba06e30c1%3Aamzn1.sym.7b6188a8-103f-4f88-b43a-19aba06e30c1&pf_rd_p=7b6188a8-103f-4f88-b43a-19aba06e30c1&pf_rd_r=1Z9SP79R4CY08NK4DDSE&pd_rd_wg=xiJr5&pd_rd_r=79fb8eb2-55b4-452d-8316-41e2a447c80e&th=1&linkCode=ll2&tag=nohadaya-21&linkId=ee757b3c6569e77ae97a6dc6d177e3b3&ref_=as_li_ss_tl
+2. Speed Math Level 1 Practice Workbook: https://www.amazon.in/s?k=Abacus+Speed+Math+Practice+Workbook&tag=nohadaya-21`;
+  } else if (prog.includes('calligraphy') || prog.includes('handwriting')) {
+    kitText = `✍️ *Calligraphy & Handwriting Kit:*
+1. Pilot Parallel Chisel Pen (or Tombow Brush Pen): https://www.amazon.in/s?k=Pilot+Parallel+Calligraphy+Pen&tag=nohadaya-21
+2. Silicone Ergonomic Tripod Grip Corrector (3-Pack): https://www.amazon.in/s?k=Ergonomic+Pencil+Grip+Corrector+Kids&tag=nohadaya-21
+3. 4-Line Cursive Guideline Practice Pad: https://www.amazon.in/s?k=Calligraphy+Practice+Pad+100+GSM&tag=nohadaya-21`;
+  } else {
+    kitText = `🧘 *Yoga & Posture Practice Kit:*
+1. 6mm High-Density Anti-Skid TPE Mat (with Alignment Lines): https://www.amazon.in/s?k=6mm+TPE+Yoga+Mat+with+Alignment+Lines&tag=nohadaya-21
+2. Natural Cork Yoga Blocks (Set of 2) & 8ft Cotton Strap: https://www.amazon.in/s?k=Cork+Yoga+Blocks+Set+of+2&tag=nohadaya-21`;
+  }
+
+  const msg = encodeURIComponent(`📦 *Recommended Student Practice Kit – NOHADAYA* 📦
+
+Dear ${name},
+
+To ensure *${student}* achieves optimal progress in daily home practice, our instructors recommend having the following classroom-tested tools:
+
+${kitText}
+
+🌐 *View Full Verified Student Kit Directory:*
+${kitUrl}
+
+*Note:* Standard daily 15-minute home practice is essential for maximum skill retention.
+
+Warm regards,
+*NOHADAYA Studio Faculty* | +91 70026 04856`);
 
   window.open(`https://wa.me/${getStudentPhone()}?text=${msg}`, '_blank');
 }

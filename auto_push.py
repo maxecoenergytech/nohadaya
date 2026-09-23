@@ -11,8 +11,11 @@ print("=" * 60)
 print(f"📁 Repository Directory: {repo_dir}")
 print(f"🔗 Target GitHub Remote: {remote_url}\n")
 
-def run_cmd(cmd, cwd=repo_dir, check=True):
+def run_cmd(cmd, cwd=repo_dir, check=True, interactive=False):
     print(f"👉 Running: {cmd}")
+    if interactive:
+        res = subprocess.run(cmd, shell=True, cwd=cwd)
+        return res
     res = subprocess.run(cmd, shell=True, cwd=cwd, text=True, capture_output=True)
     if res.stdout.strip():
         print(res.stdout.strip())
@@ -50,7 +53,7 @@ else:
 
 # 5. Push to GitHub
 print("\n🚀 Pushing to GitHub (main branch)...")
-push_res = run_cmd("git push -u origin main", check=False)
+push_res = run_cmd("git push -u origin main", check=False, interactive=True)
 
 if push_res.returncode == 0:
     print("\n" + "=" * 60)
@@ -63,7 +66,8 @@ if push_res.returncode == 0:
     print("=" * 60)
 else:
     # If rejected due to remote branch history, merge safely to preserve all historical commits
-    if "fetch first" in push_res.stderr or "non-fast-forward" in push_res.stderr or "rejected" in push_res.stderr:
+    stderr_txt = push_res.stderr or ""
+    if "fetch first" in stderr_txt or "non-fast-forward" in stderr_txt or "rejected" in stderr_txt:
         print("\n🔄 Remote repository has existing history. Merging safely to preserve all records...")
         run_cmd("git pull --no-rebase origin main --allow-unrelated-histories -X ours", check=False)
         print("🚀 Retrying push...")

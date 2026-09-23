@@ -11,9 +11,12 @@ desktop.ini
 
 # Logs & Temporary Files
 *.log
+*.tmp
+*.zip
 npm-debug.log*
 yarn-debug.log*
 
 # Local Env
 .env
 .env.local
+
