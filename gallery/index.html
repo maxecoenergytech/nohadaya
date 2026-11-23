@@ -282,7 +282,8 @@
     
     <!-- 9 CATEGORY FILTER TABS -->
     <div class="filter-tabs">
-      <button class="filter-btn active" onclick="filterGallery('all')">All Photos</button>
+      <button class="filter-btn active" onclick="filterGallery('all')">All Photos &amp; Videos</button>
+      <button class="filter-btn" onclick="filterGallery('videos')">🎬 Videos &amp; Reels</button>
       <button class="filter-btn" onclick="filterGallery('yoga')">🧘 Yoga</button>
       <button class="filter-btn" onclick="filterGallery('abacus')">🔢 Abacus</button>
       <button class="filter-btn" onclick="filterGallery('calligraphy')">✍️ Calligraphy</button>
@@ -296,6 +297,35 @@
 
     <!-- GALLERY GRID (Compressed WebP Images) -->
     <div class="gallery-grid" id="galleryGrid">
+
+      <!-- Item: Studio Video Ad (Landscape 16:9) -->
+      <div class="gallery-item" data-category="videos studio">
+        <div class="gallery-thumb" style="height:auto; min-height:220px; background:#000;">
+          <video controls playsinline preload="metadata" poster="/images/studio_interior.webp" style="width:100%; height:100%; display:block; border-radius:12px 12px 0 0;" title="NOHADAYA Studio Showcase Video">
+            <source src="/videos/nohadaya-studio-promo.mp4" type="video/mp4">
+          </video>
+          <span class="gallery-cat-tag" style="background:#b91c1c;">🎬 Video Commercial</span>
+        </div>
+        <div class="gallery-caption">
+          <strong>NOHADAYA Studio Commercial Film</strong>
+          <p style="font-size:0.8rem;color:#64748b;margin-top:4px;">14-Second official promo showcasing Yoga, Abacus &amp; Calligraphy classes in Guwahati.</p>
+        </div>
+      </div>
+
+      <!-- Item: Student Highlights Reel (Portrait 9:16) -->
+      <div class="gallery-item" data-category="videos students">
+        <div class="gallery-thumb" style="height:auto; min-height:220px; background:#000;">
+          <video controls playsinline preload="metadata" poster="/images/nohadaya-student-achievement.webp" style="width:100%; height:100%; max-height:360px; object-fit:contain; display:block; border-radius:12px 12px 0 0;" title="NOHADAYA Student Highlights Reel">
+            <source src="/videos/nohadaya-reel-ad.mp4" type="video/mp4">
+          </video>
+          <span class="gallery-cat-tag" style="background:#b91c1c;">📱 Social Reel</span>
+        </div>
+        <div class="gallery-caption">
+          <strong>Student Highlights &amp; Practice Reel</strong>
+          <p style="font-size:0.8rem;color:#64748b;margin-top:4px;">17-Second vertical reel capturing student learning moments and concentration.</p>
+        </div>
+      </div>
+
       
       <!-- Item 1: Yoga Class -->
       <div class="gallery-item" data-category="yoga students">

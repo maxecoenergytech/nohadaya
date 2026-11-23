@@ -2694,6 +2694,242 @@
       }
     }
 
+
+    /* ══════════════════════════════════════════
+       VIDEO ADVERTISEMENT SHOWCASE STYLING
+    ══════════════════════════════════════════ */
+    .btn-hero-video {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1.5px solid rgba(212, 175, 55, 0.7);
+      padding: 13px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .btn-hero-video:hover {
+      background: rgba(212, 175, 55, 0.25);
+      border-color: #D4AF37;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+    }
+
+    .video-ad-sec {
+      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg3) 50%, var(--bg2) 100%);
+      padding: 90px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .video-ad-wrapper {
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+    .video-ad-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    @media (max-width: 960px) {
+      .video-ad-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .video-ad-player-card {
+      background: #0e2017;
+      border: 2px solid #D4AF37;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      position: relative;
+    }
+    .video-ad-screen {
+      width: 100%;
+      display: block;
+      background: #000;
+      outline: none;
+    }
+    .video-ad-screen.landscape {
+      aspect-ratio: 16 / 9;
+      max-height: 480px;
+      object-fit: cover;
+    }
+    .video-ad-screen.portrait {
+      aspect-ratio: 9 / 16;
+      max-height: 520px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    .video-tab-switch {
+      display: inline-flex;
+      background: rgba(0, 0, 0, 0.08);
+      padding: 6px;
+      border-radius: 35px;
+      gap: 6px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+    }
+    .video-tab-btn {
+      padding: 10px 22px;
+      border-radius: 25px;
+      border: none;
+      background: transparent;
+      color: var(--text-mid);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+    .video-tab-btn.active {
+      background: #1B4332;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(27, 67, 50, 0.3);
+    }
+
+    .video-live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(220, 38, 38, 0.1);
+      color: #dc2626;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #dc2626;
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulseLive 1.5s infinite;
+    }
+    @keyframes pulseLive {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 10px #dc2626; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    .video-sound-pill {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 16px;
+      border-radius: 25px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: all 0.2s;
+      z-index: 10;
+    }
+    .video-sound-pill:hover {
+      background: #D4AF37;
+      color: #1B4332;
+      border-color: #D4AF37;
+    }
+
+    /* Floating Corner Video Ad Widget */
+    .floating-video-ad {
+      position: fixed;
+      bottom: 26px;
+      left: 26px;
+      z-index: 995;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #1B4332 0%, #0d281a 100%);
+      color: #ffffff;
+      padding: 8px 16px 8px 10px;
+      border-radius: 35px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      border: 1.5px solid #D4AF37;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: floatBadge 3s ease-in-out infinite;
+    }
+    .floating-video-ad:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .floating-video-icon {
+      width: 38px;
+      height: 38px;
+      background: #D4AF37;
+      color: #1B4332;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    .floating-video-text {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .floating-video-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .floating-video-sub {
+      font-size: 0.70rem;
+      color: #A3CFBB;
+    }
+    .floating-video-close {
+      margin-left: 6px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+    }
+    .floating-video-close:hover {
+      color: #fff;
+    }
+    @media (max-width: 600px) {
+      .floating-video-ad {
+        bottom: 85px;
+        left: 16px;
+        padding: 6px 12px 6px 8px;
+      }
+    }
+
 </style>
   <link rel="stylesheet" href="css/chatbot.css" />
 </head>
@@ -3341,6 +3577,167 @@
     </div>
   </div>
 </section>
+
+<!-- ════════ SECTION: STUDIO VIDEO ADVERTISEMENT SHOWCASE ════════ -->
+<section class="sec video-ad-sec" id="video-ad">
+  <div class="video-ad-wrapper">
+    
+    <!-- Section Header -->
+    <div style="text-align:center;">
+      <div class="video-live-badge">
+        <span class="live-dot"></span>
+        <span>Studio Commercial · Watch In Action</span>
+      </div>
+      <h2 class="stitle" style="margin-top:6px;">Experience <span>NOHADAYA</span> in Motion</h2>
+      <div class="divider" style="margin:12px auto 16px;"></div>
+      <p style="color:var(--text-mid);max-width:720px;margin:0 auto 20px;font-size:1.05rem;line-height:1.6;">
+        Watch our official commercial film &amp; discover daily classes in <strong>Yoga</strong>, <strong>Abacus Mental Arithmetic</strong>, and <strong>Calligraphy</strong> at Bagharbari, Guwahati.
+      </p>
+
+      <!-- Video Format Switcher Tabs -->
+      <div class="video-tab-switch">
+        <button type="button" class="video-tab-btn active" id="btnTabLandscape" onclick="switchVideoTab('landscape')">
+          <span>🖥️</span> Studio Showcase Film (14s)
+        </button>
+        <button type="button" class="video-tab-btn" id="btnTabPortrait" onclick="switchVideoTab('portrait')">
+          <span>📱</span> Highlights Reel Ad (17s)
+        </button>
+      </div>
+    </div>
+
+    <!-- Video Showcase Grid -->
+    <div class="video-ad-grid">
+      
+      <!-- Left Column: Interactive Video Player Card -->
+      <div class="video-ad-player-card">
+        
+        <!-- Video 1: Landscape Commercial -->
+        <div id="wrapperLandscape" style="position:relative; width:100%;">
+          <video 
+            id="videoPromoLandscape" 
+            class="video-ad-screen landscape" 
+            src="videos/nohadaya-studio-promo.mp4" 
+            poster="images/studio_interior.webp"
+            playsinline 
+            loop 
+            muted 
+            controls 
+            preload="metadata"
+            title="NOHADAYA Studio Showcase Commercial">
+            Your browser does not support the video tag.
+          </video>
+          <button type="button" class="video-sound-pill" id="soundPillLandscape" onclick="toggleVideoSound('videoPromoLandscape', 'soundPillLandscape')">
+            🔊 Tap for Sound
+          </button>
+        </div>
+
+        <!-- Video 2: Portrait Reel Ad -->
+        <div id="wrapperPortrait" style="position:relative; width:100%; display:none; background:#000; text-align:center; padding:10px 0;">
+          <video 
+            id="videoPromoPortrait" 
+            class="video-ad-screen portrait" 
+            src="videos/nohadaya-reel-ad.mp4" 
+            poster="images/nohadaya-student-achievement.webp"
+            playsinline 
+            loop 
+            muted 
+            controls 
+            preload="metadata"
+            title="NOHADAYA Student Highlights Reel">
+            Your browser does not support the video tag.
+          </video>
+          <button type="button" class="video-sound-pill" id="soundPillPortrait" onclick="toggleVideoSound('videoPromoPortrait', 'soundPillPortrait')">
+            🔊 Tap for Sound
+          </button>
+        </div>
+
+        <!-- Video Bottom Strip -->
+        <div style="background:rgba(14,32,23,0.95); padding:14px 20px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid rgba(212,175,55,0.3); font-size:0.82rem; color:#A3CFBB;">
+          <span>🎬 Official Production · NOHADAYA The Mind &amp; Motion Studio</span>
+          <span style="color:#D4AF37; font-weight:700;">HD 1080p · Stereo Audio</span>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Ad Value Pitch & High-Converting Action Box -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        
+        <div style="background:var(--card-bg); border:1.5px solid var(--border); border-radius:18px; padding:28px 24px; box-shadow:var(--shadow);">
+          <div style="display:inline-block; font-size:0.75rem; font-weight:800; color:#1B4332; background:var(--gl); padding:4px 12px; border-radius:12px; text-transform:uppercase; margin-bottom:12px;">
+            ✨ Certified Excellence
+          </div>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--text); margin-bottom:12px; line-height:1.3;">
+            Where Mind Sharpens &amp; Body Strengthens
+          </h3>
+          <p style="font-size:0.92rem; color:var(--text-mid); line-height:1.6; margin-bottom:20px;">
+            Experience personalized teaching under <strong>Mrs. Noor Nahar Begum</strong> (Director &amp; Master Trainer) and certified faculty in a serene, distraction-free environment.
+          </p>
+
+          <!-- Core Feature Bullets -->
+          <div style="display:flex; flex-direction:column; gap:12px; font-size:0.9rem; margin-bottom:24px;">
+            <div style="display:flex; align-items:flex-start; gap:10px;">
+              <span style="color:#15803d; font-size:1.1rem; line-height:1;">✅</span>
+              <div><strong>Certified Yoga Instruction:</strong> Traditional Hatha, Vinyasa Flow, Pranayama &amp; posture correction for stress relief and joint health.</div>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px;">
+              <span style="color:#15803d; font-size:1.1rem; line-height:1;">✅</span>
+              <div><strong>8-Level Abacus Program:</strong> Proven Japanese Soroban curriculum that builds lightning-fast calculation &amp; photographic memory.</div>
+            </div>
+            <div style="display:flex; align-items:flex-start; gap:10px;">
+              <span style="color:#15803d; font-size:1.1rem; line-height:1;">✅</span>
+              <div><strong>Calligraphy &amp; Handwriting:</strong> Specialized penmanship training to fix messy writing, hand fatigue &amp; boost exam marks.</div>
+            </div>
+          </div>
+
+          <!-- Special Trial Pass Box -->
+          <div style="background:linear-gradient(135deg, rgba(212,175,55,0.15) 0%, rgba(27,67,50,0.08) 100%); border:1.5px dashed #D4AF37; border-radius:14px; padding:16px; margin-bottom:22px; text-align:center;">
+            <div style="font-size:0.85rem; font-weight:800; color:#1B4332; text-transform:uppercase; letter-spacing:0.5px;">
+              🎁 Limited Seat Opportunity
+            </div>
+            <div style="font-size:1.1rem; font-weight:900; color:var(--text); margin:4px 0;">
+              Complimentary 1-Day Trial Class
+            </div>
+            <div style="font-size:0.8rem; color:var(--text-mid);">
+              Book your trial session today &bull; Mats &amp; workbooks provided at the studio
+            </div>
+          </div>
+
+          <!-- Conversion CTAs -->
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button type="button" class="btn-hero-trial" onclick="openTrialModal();" style="flex:1; min-width:180px; justify-content:center; padding:14px 20px;">
+              <span>✨</span> Book Free Trial Now
+            </button>
+            <a href="https://wa.me/917002604856?text=Hi%20NOHADAYA%2C%20I%20watched%20your%20studio%20video%20and%20would%20like%20to%20know%20more%20about%20classes" target="_blank" rel="noopener noreferrer" class="btn-hero-wa" style="flex:1; min-width:180px; justify-content:center; padding:14px 20px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp Us
+            </a>
+          </div>
+
+          <div style="margin-top:14px; text-align:center;">
+            <a href="#contact" style="font-size:0.82rem; color:var(--text-lt); text-decoration:underline;">
+              📍 Roseland Road, Near Satgaon Nowapara Masjid, Bagharbari, Guwahati
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- Floating Corner Video Ad Widget (Bottom-Left) -->
+<div class="floating-video-ad" id="floatingVideoAd" onclick="playPromoVideo();">
+  <div class="floating-video-icon">▶</div>
+  <div class="floating-video-text">
+    <span class="floating-video-title">🎬 Studio Video Ad</span>
+    <span class="floating-video-sub">Watch 14s Studio Film</span>
+  </div>
+  <button type="button" class="floating-video-close" onclick="event.stopPropagation(); dismissFloatingAd();" title="Close video badge">&times;</button>
+</div>
+
 
 <!-- ════════ SECTION 4: PROGRAMS FOR EVERY LEARNING GOAL ════════ -->
 <section class="sec goals-sec" id="goals" style="background:var(--bg2);padding:80px 24px;">
@@ -4470,5 +4867,91 @@ setTimeout(() => {
   </script>
 
   <script src="js/tracker.js" defer></script>
+<script>
+
+/* ══════════════════════════════════════════
+   VIDEO ADVERTISEMENT INTERACTIVE CONTROLS
+══════════════════════════════════════════ */
+function switchVideoTab(mode) {
+  const btnL = document.getElementById('btnTabLandscape');
+  const btnP = document.getElementById('btnTabPortrait');
+  const wrapL = document.getElementById('wrapperLandscape');
+  const wrapP = document.getElementById('wrapperPortrait');
+  const vidL = document.getElementById('videoPromoLandscape');
+  const vidP = document.getElementById('videoPromoPortrait');
+
+  if (mode === 'landscape') {
+    if (btnL) btnL.classList.add('active');
+    if (btnP) btnP.classList.remove('active');
+    if (wrapL) wrapL.style.display = 'block';
+    if (wrapP) wrapP.style.display = 'none';
+    if (vidP) { vidP.pause(); }
+    if (vidL) { vidL.play().catch(e => console.log('Autoplay muted ok')); }
+  } else {
+    if (btnP) btnP.classList.add('active');
+    if (btnL) btnL.classList.remove('active');
+    if (wrapP) wrapP.style.display = 'block';
+    if (wrapL) wrapL.style.display = 'none';
+    if (vidL) { vidL.pause(); }
+    if (vidP) { vidP.play().catch(e => console.log('Autoplay muted ok')); }
+  }
+}
+
+function toggleVideoSound(videoId, pillId) {
+  const vid = document.getElementById(videoId);
+  const pill = document.getElementById(pillId);
+  if (!vid) return;
+
+  if (vid.muted) {
+    vid.muted = false;
+    if (pill) pill.textContent = '🔊 Sound ON (Tap to Mute)';
+  } else {
+    vid.muted = true;
+    if (pill) pill.textContent = '🔇 Muted (Tap for Sound)';
+  }
+}
+
+function playPromoVideo() {
+  const target = document.getElementById('video-ad');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const vid = document.getElementById('videoPromoLandscape');
+    if (vid) {
+      vid.play().catch(e => console.log('Play on click ok'));
+    }
+  }
+}
+
+function dismissFloatingAd() {
+  const badge = document.getElementById('floatingVideoAd');
+  if (badge) {
+    badge.style.display = 'none';
+    sessionStorage.setItem('nohadaya_video_ad_dismissed', 'true');
+  }
+}
+
+// Auto-play video on viewport enter (muted) & check if dismissed
+document.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('nohadaya_video_ad_dismissed') === 'true') {
+    const badge = document.getElementById('floatingVideoAd');
+    if (badge) badge.style.display = 'none';
+  }
+
+  const promoVid = document.getElementById('videoPromoLandscape');
+  if (promoVid && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          promoVid.play().catch(e => {});
+        } else {
+          promoVid.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(promoVid);
+  }
+});
+
+</script>
 </body>
 </html>
